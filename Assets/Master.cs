@@ -15,32 +15,35 @@ public class Master : MonoBehaviour
     {
         DontDestroyOnLoad(gameObject);
         _game = StartCoroutine(Game());
-
     }
 
     IEnumerator Game()
     {
-        MenuReturn menuChoice = MenuReturn.Null;
-        yield return Menu((m) => menuChoice = m);
-
-        switch (menuChoice)
+        while(true)
         {
-            case MenuReturn.StartGame:
-                yield return _gameplay.RunGame();
-                break;
+            MenuReturn menuChoice = MenuReturn.Null;
+            yield return Menu((m) => menuChoice = m);
 
-            case MenuReturn.Credit:
-                yield return Credit();
-                break;
+            switch (menuChoice)
+            {
+                case MenuReturn.StartGame:
+                    yield return _gameplay.RunGame();
+                    break;
 
-            case MenuReturn.Tuto:
-                yield return Tuto();
-                break;
+                case MenuReturn.Credit:
+                    yield return Credit();
+                    break;
 
-            case MenuReturn.Null:
-            default:
-                break;
+                case MenuReturn.Tuto:
+                    yield return Tuto();
+                    break;
+
+                case MenuReturn.Null:
+                default:
+                    break;
+            }
         }
+
 
         yield break;
     }
@@ -56,6 +59,7 @@ public class Master : MonoBehaviour
     enum MenuReturn { Null, StartGame, Credit, Tuto }
     IEnumerator Menu(Action<MenuReturn> @return)
     {
+        _menuAnimation.gameObject.SetActive(true);
         yield return _menuAnimation.PlayAndWait(_menuOpenAnimation.name);
 
         MenuReturn choice = MenuReturn.Null;
@@ -68,8 +72,10 @@ public class Master : MonoBehaviour
         _gameButton.onClick.RemoveAllListeners();
         _creditButton.onClick.RemoveAllListeners();
         _tutoButton.onClick.RemoveAllListeners();
+        @return.Invoke(choice);
 
         yield return _menuAnimation.PlayAndWait(_menuCloseAnimation.name);
+        _menuAnimation.gameObject.SetActive(false);
         yield break;
     }
 
@@ -81,6 +87,7 @@ public class Master : MonoBehaviour
     [SerializeField] Button _returnButton;
     IEnumerator Credit()
     {
+        _creditAnimation.gameObject.SetActive(true);
         yield return _creditAnimation.PlayAndWait(_creditOpenAnimation.name);
 
         bool done = false;
@@ -89,6 +96,7 @@ public class Master : MonoBehaviour
         _returnButton.onClick.RemoveAllListeners();
 
         yield return _creditAnimation.PlayAndWait(_creditCloseAnimation.name);
+        _creditAnimation.gameObject.SetActive(false);
         yield break;
     }
 
@@ -99,6 +107,7 @@ public class Master : MonoBehaviour
     [SerializeField] Button _nextButton;
     IEnumerator Tuto()
     {
+        _tutoAnimation.gameObject.SetActive(true);
         yield return _tutoAnimation.PlayAndWait(_tutoOpenAnimation.name);
 
         bool done = false;
@@ -107,6 +116,7 @@ public class Master : MonoBehaviour
         _nextButton.onClick.RemoveAllListeners();
 
         yield return _tutoAnimation.PlayAndWait(_tutoCloseAnimation.name);
+        _tutoAnimation.gameObject.SetActive(false);
         yield break;
     }
 
