@@ -341,6 +341,7 @@ MonoBehaviour:
   _nextWanderingPosRange: {x: 5, y: 15}
   _wanderOnPlayerLost: 1
   _shootingManager: {fileID: 0}
+  _bulletPower: 10
   _shootingDistance: 35
   _shootingSpreadRange: {x: -7.5, y: 7.5}
   _shootingDelays: {x: 1, y: 1}

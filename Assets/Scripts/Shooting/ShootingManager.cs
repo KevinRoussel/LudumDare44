@@ -33,17 +33,15 @@ public class ShootingManager : MonoBehaviour {
         }        
     }
 
-    public void Shoot (Transform shootingTransform, Vector2 spreadRange) {
+    public void Shoot (Transform shootingTransform, Vector2 spreadRange, int bulletPower) {
 
         BaseProjectile projectile = null;
 
         foreach (BaseProjectile p in _pool) {
-
             if (!p.gameObject.activeSelf) {
                 projectile = p;
                 break;
             }
-
         }
 
         if(!projectile && _canExpand)
@@ -52,10 +50,10 @@ public class ShootingManager : MonoBehaviour {
         if(projectile)
         {
             Vector3 spreadDir = Quaternion.Euler(0, UnityEngine.Random.Range(spreadRange.x, spreadRange.y), 0) * shootingTransform.forward;
+            projectile.Power = bulletPower;
             projectile.transform.SetPositionAndRotation(shootingTransform.position, Quaternion.LookRotation(spreadDir));
             projectile.gameObject.SetActive(true);
         }
-
     }
 
     BaseProjectile AddProjectileToPool() {

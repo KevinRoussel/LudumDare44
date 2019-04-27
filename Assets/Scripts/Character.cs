@@ -18,7 +18,7 @@ public class Character : MonoBehaviour
     public event Action EndDeath;
     public event Action StartAttack;
     public event Action StartHit;
-    public event Action OnTakeDamage;
+    public event Action<int> OnTakeDamage;
     public event Action EndHit;
 
     public event Action<Vector3> OnStartDodge;
@@ -334,7 +334,7 @@ public class Character : MonoBehaviour
     bool _isInvincible = false;
     Coroutine _hitCoroutine;
 
-    void Hit(int amount)
+    public void Hit(int amount)
     {
         if (_hitCoroutine != null)
         {
@@ -348,6 +348,12 @@ public class Character : MonoBehaviour
             {
                 ShieldHit(amount);
             }
+            else
+            {
+                HP = Mathf.Max(0, HP - amount);
+                print(HP);
+                OnTakeDamage?.Invoke(HP);
+            }
 
             if (HP <= 0)
             {
@@ -355,9 +361,11 @@ public class Character : MonoBehaviour
                 foreach (var el in GetComponentsInParent<Collider>()) el.enabled = false;
                 _navMeshAgent.enabled = false;
 
-                EndDeath?.Invoke();
-            }
+                yield return new WaitForSeconds(2f);
 
+                EndDeath?.Invoke();
+                Destroy(gameObject);
+            }
             else
             {
                 StartHit?.Invoke();

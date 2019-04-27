@@ -22,6 +22,7 @@ public class BaseEnemy : MonoBehaviour {
     [Header("Shooting variables")]
     [Tooltip("Shooting manager of this enemy")]
     [SerializeField] ShootingManager _shootingManager;
+    [SerializeField] int _bulletPower;
 
     [Tooltip("Maximum distance for the enemy to shoot at the player")]
     [SerializeField] float _shootingDistance;
@@ -77,7 +78,7 @@ public class BaseEnemy : MonoBehaviour {
         _navMeshAgent.updatePosition = false;
         yield return new WaitForSeconds(_shootingDelays.x);
 
-        _shootingManager.Shoot(transform, _shootingSpreadRange);
+        _shootingManager.Shoot(transform, _shootingSpreadRange, _bulletPower);
         yield return new WaitForSeconds(_shootingDelays.y);
 
         _navMeshAgent.Warp(transform.position);
