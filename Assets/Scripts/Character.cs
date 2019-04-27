@@ -56,6 +56,10 @@ public class Character : MonoBehaviour
     [SerializeField] int _initialShield;
 
     public int HPMax => _initialHP;
+    [SerializeField] Vector2 _shootingSpreadRange;
+
+    ShootingManager _shootingManager;
+
     public int HP { get; private set; }
     public int Attack { get; private set; }
     public int Defense { get; private set; }
@@ -85,6 +89,8 @@ public class Character : MonoBehaviour
         _enemyComp?.Initialization();
 
         OnReady?.Invoke();
+
+        _shootingManager = GameObject.Find("ShootingManager").GetComponent<ShootingManager>();
 
         return this;
     }
@@ -170,18 +176,24 @@ public class Character : MonoBehaviour
 
     bool _canAttack = true;
 
-    public bool LaunchAttack()
+    public bool LaunchAttack(Vector3 target)
     {
         if (!_canAttack ) return false;
 
         // Fire
-        throw new NotImplementedException();
+        Ray ray = Camera.main.ScreenPointToRay(target);
+        RaycastHit hit;
 
+        if (Physics.Raycast(ray, out hit) && !hit.collider.CompareTag("Player")) {
+            _shootingManager.Shoot(transform, Vector3.forward, Vector3.zero, 30);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     internal void StopAttack()
     {
-        throw new NotImplementedException();
     }
 
     #endregion
