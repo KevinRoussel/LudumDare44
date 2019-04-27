@@ -23,8 +23,8 @@ public class InputManager : MonoBehaviour
             while (true)
             {
                 _move = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-                if (Input.GetMouseButtonDown(1)) _shootDown.Activate();
-                if (Input.GetMouseButtonDown(1)) _shootUp.Activate();
+                if (Input.GetMouseButtonDown(0)) _shootDown.Activate();
+                if (Input.GetMouseButtonUp(0)) _shootUp.Activate();
                 yield return null;
             }
         }
@@ -34,15 +34,7 @@ public class InputManager : MonoBehaviour
     {
         if (_move.magnitude > 0.001f)
             control.Move(_move);
-        if (_shootUp.IsActivated()) control.LaunchAttack();
-        if (_shootDown.IsActivated()) control.StopAttack();
+        if (_shootUp.IsActivated()) control.StopAttack();
+        if (_shootDown.IsActivated()) control.LaunchAttack(Input.mousePosition);
     }
-
-    
-
-
-
-
-
-
 }
