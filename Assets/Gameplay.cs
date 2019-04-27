@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-class Pact
+public class Pact
 {
 
 }
@@ -14,7 +14,7 @@ public class Gameplay : MonoBehaviour
     #region InternalTypes
 
     [Serializable]
-    class LevelStructure
+    public class LevelStructure
     {
         public Room Room;
         public List<GameObject> EnnemiesPrefab;
@@ -25,7 +25,7 @@ public class Gameplay : MonoBehaviour
 
     [Header("Managers")]
     [SerializeField] InputManager _inputManager;
-    [SerializeField] dynamic _keyManager;
+    [SerializeField] KeysManager _keyManager;
 
     [Header("Configuration")]
     [SerializeField] Transform _roomRoot;
@@ -33,7 +33,10 @@ public class Gameplay : MonoBehaviour
 
     [Header("Run config")]
     [SerializeField] List<LevelStructure> _mapStructure;
+    public List<LevelStructure> MapStructure => _mapStructure;
 
+    [Header("UI")]
+    [SerializeField] GameObject GameUI;
 
     public IEnumerator RunGame()
     {
@@ -48,7 +51,10 @@ public class Gameplay : MonoBehaviour
                 .GetComponent<Character>()
                 .Initialization();
 
-            currentCharacter.OnKeyCollected += _keyManager.AddKey();
+            currentCharacter.OnKeyCollected += _keyManager.KeyCollected;
+
+            // Activate Game UI
+            GameUI.SetActive(true);
 
             // Pact Room
             // yield return PactRoom();
