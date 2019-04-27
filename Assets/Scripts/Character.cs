@@ -18,7 +18,7 @@ public class Character : MonoBehaviour
     public event Action EndDeath;
     public event Action StartAttack;
     public event Action StartHit;
-    public event Action OnTakeDamage;
+    public event Action<int> OnTakeDamage;
     public event Action EndHit;
 
     public event Action<Vector3> OnStartDodge;
@@ -39,10 +39,11 @@ public class Character : MonoBehaviour
     [SerializeField] Collider _hitZone;
     [SerializeField] Transform _shieldRoot = null;
     [SerializeField] protected NavMeshAgent _navMeshAgent;
+    [SerializeField] BaseEnemy _enemyComp;
 
     protected bool _canMove;
     public Vector3 Position => transform.position;
-    
+    public BaseEnemy Enemy => _enemyComp;
 
     [Header("Conf")]
     [SerializeField] float _recoverTime;
@@ -54,6 +55,7 @@ public class Character : MonoBehaviour
     [SerializeField] int _initialSpeed;
     [SerializeField] int _initialShield;
 
+    public int HPMax => _initialHP;
     public int HP { get; private set; }
     public int Attack { get; private set; }
     public int Defense { get; private set; }
@@ -61,6 +63,7 @@ public class Character : MonoBehaviour
     public int Shield { get; private set; }
 
     public event Action OnKeyCollected;
+    public event Action<int> OnHPMaxUpdated;
 
     internal Character Initialization()
     {
@@ -79,6 +82,8 @@ public class Character : MonoBehaviour
             hit.position : transform.position;
 
         _navMeshAgent.enabled = true;
+        _enemyComp?.Initialization();
+
         OnReady?.Invoke();
 
         return this;
@@ -331,7 +336,7 @@ public class Character : MonoBehaviour
     bool _isInvincible = false;
     Coroutine _hitCoroutine;
 
-    void Hit(int amount)
+    public void Hit(int amount)
     {
         if (_hitCoroutine != null)
         {
@@ -345,6 +350,12 @@ public class Character : MonoBehaviour
             {
                 ShieldHit(amount);
             }
+            else
+            {
+                HP = Mathf.Max(0, HP - amount);
+                print(HP);
+                OnTakeDamage?.Invoke(HP);
+            }
 
             if (HP <= 0)
             {
@@ -352,9 +363,11 @@ public class Character : MonoBehaviour
                 foreach (var el in GetComponentsInParent<Collider>()) el.enabled = false;
                 _navMeshAgent.enabled = false;
 
-                EndDeath?.Invoke();
-            }
+                yield return new WaitForSeconds(2f);
 
+                EndDeath?.Invoke();
+                Destroy(gameObject);
+            }
             else
             {
                 StartHit?.Invoke();

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 class Pact
 {
@@ -25,15 +26,16 @@ public class Gameplay : MonoBehaviour
 
     [Header("Managers")]
     [SerializeField] InputManager _inputManager;
+    [SerializeField] ShootingManager _shootingManager;
     [SerializeField] dynamic _keyManager;
 
     [Header("Configuration")]
     [SerializeField] Transform _roomRoot;
     [SerializeField] GameObject _playerPrefab;
+    [SerializeField] Slider _hpSlider;
 
     [Header("Run config")]
     [SerializeField] List<LevelStructure> _mapStructure;
-
 
     public IEnumerator RunGame()
     {
@@ -48,7 +50,15 @@ public class Gameplay : MonoBehaviour
                 .GetComponent<Character>()
                 .Initialization();
 
-            currentCharacter.OnKeyCollected += _keyManager.AddKey();
+            _hpSlider.maxValue = currentCharacter.HPMax;
+            _hpSlider.value = currentCharacter.HP;
+
+            currentCharacter.OnHPMaxUpdated += (newMax) => _hpSlider.maxValue = newMax;
+            currentCharacter.OnTakeDamage += (newHP) =>  _hpSlider.value = newHP;
+
+            //currentCharacter.OnKeyCollected += _keyManager.AddKey();
+
+            foreach (var enemy in currentRoom.Enemies) enemy.Initialization();
 
             // Pact Room
             // yield return PactRoom();
@@ -57,8 +67,8 @@ public class Gameplay : MonoBehaviour
             while (true)
             {
                 _inputManager.ApplyInput(currentCharacter);
-
-
+                foreach (var el in currentRoom.Enemies) el.Enemy.Movement();
+                _shootingManager.UpdateBullets();
 
 
                 yield return null;
