@@ -34,11 +34,23 @@ public class Gameplay : MonoBehaviour
     [SerializeField] GameObject _playerPrefab;
     [SerializeField] Slider _hpSlider;
 
+    [Header("UI Game")]
+    [SerializeField] Animation _gameUI;
+    [SerializeField] AnimationClip _gameOpen;
+    [SerializeField] AnimationClip _gameClose;
+
+    [Header("UI GameOver")]
+    [SerializeField] Animation _gameOverUI;
+    [SerializeField] AnimationClip _gameOverOpen;
+    [SerializeField] AnimationClip _gameOverClose;
+
     [Header("Run config")]
     [SerializeField] List<LevelStructure> _mapStructure;
 
     public IEnumerator RunGame()
     {
+        _gameUI.gameObject.SetActive(true);
+        yield return _gameUI.PlayAndWait(_gameOpen);
         List<Pact> _selectedPacts = new List<Pact>();
 
         foreach(var level in _mapStructure)
@@ -64,7 +76,7 @@ public class Gameplay : MonoBehaviour
             // yield return PactRoom();
 
             // Main Game Loop
-            while (true)
+            while (currentCharacter.HP > 0)
             {
                 _inputManager.ApplyInput(currentCharacter);
                 foreach (var el in currentRoom.Enemies) el.Enemy.Movement();
@@ -75,10 +87,18 @@ public class Gameplay : MonoBehaviour
             }
 
         }
-        // GameOver Menu
+
+        yield return _gameUI.PlayAndWait(_gameClose);
+        _gameUI.gameObject.SetActive(false);
+
+        // GameOver Menu Open
+        _gameOverUI.gameObject.SetActive(true);
+        yield return _gameOverUI.PlayAndWait(_gameOverOpen);
+        yield return new WaitForSeconds(1f);
+        yield return _gameOverUI.PlayAndWait(_gameOverClose);
+        _gameOverUI.gameObject.SetActive(false);
 
         yield break;
-
     }
 
     IEnumerator PactRoom()
