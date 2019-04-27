@@ -30,15 +30,15 @@ public class Character : MonoBehaviour
     Trigger _deathEnd = new Trigger();
     void AcceptAttackEnd() => _attackEnd.Activate();
     internal void AcceptHitEnd() => _hitEnd.Activate();
+
+    
+
     internal void AcceptDeathEnd() => _deathEnd.Activate();
     #endregion
 
-    [SerializeField] Transform _healthBarAnchor = null;
     [SerializeField] Collider _hitZone;
-
     [SerializeField] Transform _shieldRoot = null;
     [SerializeField] protected NavMeshAgent _navMeshAgent;
-    [SerializeField] float _movementSpeed;
 
     protected bool _canMove;
     public Vector3 Position => transform.position;
@@ -160,18 +160,18 @@ public class Character : MonoBehaviour
 
     bool _canAttack = true;
 
-    internal void BlockAttack(bool v)
-    {
-        _canAttack = v;
-    }
-
-    public virtual bool LaunchAttack()
+    public bool LaunchAttack()
     {
         if (!_canAttack ) return false;
 
         // Fire
         throw new NotImplementedException();
 
+    }
+
+    internal void StopAttack()
+    {
+        throw new NotImplementedException();
     }
 
     #endregion
