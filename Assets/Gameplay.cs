@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
 
-class Pact
+public class Pact
 {
 
 }
@@ -15,7 +15,7 @@ public class Gameplay : MonoBehaviour
     #region InternalTypes
 
     [Serializable]
-    class LevelStructure
+    public class LevelStructure
     {
         public Room Room;
         public List<GameObject> EnnemiesPrefab;
@@ -27,7 +27,7 @@ public class Gameplay : MonoBehaviour
     [Header("Managers")]
     [SerializeField] InputManager _inputManager;
     [SerializeField] ShootingManager _shootingManager;
-    [SerializeField] dynamic _keyManager;
+    [SerializeField] KeysManager _keyManager;
 
     [Header("Configuration")]
     [SerializeField] Transform _roomRoot;
@@ -46,7 +46,10 @@ public class Gameplay : MonoBehaviour
 
     [Header("Run config")]
     [SerializeField] List<LevelStructure> _mapStructure;
+    public List<LevelStructure> MapStructure => _mapStructure;
 
+    [Header("UI")]
+    [SerializeField] GameObject GameUI;
     public IEnumerator RunGame()
     {
         _gameUI.gameObject.SetActive(true);
@@ -62,6 +65,10 @@ public class Gameplay : MonoBehaviour
                 .GetComponent<Character>()
                 .Initialization();
 
+            currentCharacter.OnKeyCollected += _keyManager.KeyCollected;
+
+            // Activate Game UI
+            GameUI.SetActive(true);
             _hpSlider.maxValue = currentCharacter.HPMax;
             _hpSlider.value = currentCharacter.HP;
 
