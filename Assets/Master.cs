@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class Master : MonoBehaviour
 {
-
+    [Header("Managers")]
     [SerializeField] Gameplay _gameplay;
 
     Coroutine _game;
@@ -48,6 +48,7 @@ public class Master : MonoBehaviour
         yield break;
     }
 
+    #region Menu
     [Header("Menu UI")]
     [SerializeField] Animation _menuAnimation;
     [SerializeField] AnimationClip _menuOpenAnimation;
@@ -78,8 +79,9 @@ public class Master : MonoBehaviour
         _menuAnimation.gameObject.SetActive(false);
         yield break;
     }
+    #endregion
 
-
+    #region Credit
     [Header("Credit")]
     [SerializeField] Animation _creditAnimation;
     [SerializeField] AnimationClip _creditOpenAnimation;
@@ -99,7 +101,9 @@ public class Master : MonoBehaviour
         _creditAnimation.gameObject.SetActive(false);
         yield break;
     }
+    #endregion
 
+    #region Tuto
     [Header("Tuto")]
     [SerializeField] Animation _tutoAnimation;
     [SerializeField] AnimationClip _tutoOpenAnimation;
@@ -119,5 +123,6 @@ public class Master : MonoBehaviour
         _tutoAnimation.gameObject.SetActive(false);
         yield break;
     }
+    #endregion
 
 }
