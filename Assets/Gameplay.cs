@@ -65,8 +65,6 @@ public class Gameplay : MonoBehaviour
                 .GetComponent<Character>()
                 .Initialization();
 
-            currentCharacter.OnKeyCollected += _keyManager.KeyCollected;
-
             // Activate Game UI
             GameUI.SetActive(true);
             _hpSlider.maxValue = currentCharacter.HPMax;
