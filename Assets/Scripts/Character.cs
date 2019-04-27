@@ -173,6 +173,7 @@ public class Character : MonoBehaviour
 
     #region Attack
     public event Action OnAttack;
+    public event Action OnStopAttack;
 
     bool _canAttack = true;
 
@@ -194,6 +195,8 @@ public class Character : MonoBehaviour
 
     internal void StopAttack()
     {
+
+        OnStopAttack?.Invoke();
     }
 
     #endregion

@@ -32,8 +32,7 @@ public class InputManager : MonoBehaviour
 
     public void ApplyInput(Character control)
     {
-        if (_move.magnitude > 0.001f)
-            control.Move(_move);
+        control.Move(_move);
         if (_shootUp.IsActivated()) control.StopAttack();
         if (_shootDown.IsActivated()) control.LaunchAttack(Input.mousePosition);
     }

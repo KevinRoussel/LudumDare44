@@ -612,6 +612,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1894202937266710841}
     m_Modifications:
+    - target: {fileID: 167114, guid: 7473a5138ccf3844a9cd93d43675b88e, type: 3}
+      propertyPath: m_Name
+      value: SM_Env_Rock_Flat_48
+      objectReference: {fileID: 0}
+    - target: {fileID: 167114, guid: 7473a5138ccf3844a9cd93d43675b88e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 484294, guid: 7473a5138ccf3844a9cd93d43675b88e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 16.98
@@ -667,14 +675,6 @@ PrefabInstance:
     - target: {fileID: 484294, guid: 7473a5138ccf3844a9cd93d43675b88e, type: 3}
       propertyPath: m_LocalScale.z
       value: 1.5207204
-      objectReference: {fileID: 0}
-    - target: {fileID: 167114, guid: 7473a5138ccf3844a9cd93d43675b88e, type: 3}
-      propertyPath: m_Name
-      value: SM_Env_Rock_Flat_48
-      objectReference: {fileID: 0}
-    - target: {fileID: 167114, guid: 7473a5138ccf3844a9cd93d43675b88e, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 2323890, guid: 7473a5138ccf3844a9cd93d43675b88e, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -1576,6 +1576,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1894202937266710841}
     m_Modifications:
+    - target: {fileID: 117630, guid: 3c7e3093f2f74ad499210774e0d01aea, type: 3}
+      propertyPath: m_Name
+      value: SM_Env_Rock_Flat_34
+      objectReference: {fileID: 0}
+    - target: {fileID: 117630, guid: 3c7e3093f2f74ad499210774e0d01aea, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 473574, guid: 3c7e3093f2f74ad499210774e0d01aea, type: 3}
       propertyPath: m_LocalPosition.x
       value: 20.67
@@ -1619,14 +1627,6 @@ PrefabInstance:
     - target: {fileID: 473574, guid: 3c7e3093f2f74ad499210774e0d01aea, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 117630, guid: 3c7e3093f2f74ad499210774e0d01aea, type: 3}
-      propertyPath: m_Name
-      value: SM_Env_Rock_Flat_34
-      objectReference: {fileID: 0}
-    - target: {fileID: 117630, guid: 3c7e3093f2f74ad499210774e0d01aea, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 2363364, guid: 3c7e3093f2f74ad499210774e0d01aea, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -1730,6 +1730,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1894202937266710841}
     m_Modifications:
+    - target: {fileID: 167560, guid: fe819f6613802b24cac5bd6f4a749f63, type: 3}
+      propertyPath: m_Name
+      value: SM_Env_RockPile_Rounded_07
+      objectReference: {fileID: 0}
+    - target: {fileID: 167560, guid: fe819f6613802b24cac5bd6f4a749f63, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 440830, guid: fe819f6613802b24cac5bd6f4a749f63, type: 3}
       propertyPath: m_LocalPosition.x
       value: 27.07
@@ -1785,14 +1793,6 @@ PrefabInstance:
     - target: {fileID: 440830, guid: fe819f6613802b24cac5bd6f4a749f63, type: 3}
       propertyPath: m_LocalScale.z
       value: 1.6199995
-      objectReference: {fileID: 0}
-    - target: {fileID: 167560, guid: fe819f6613802b24cac5bd6f4a749f63, type: 3}
-      propertyPath: m_Name
-      value: SM_Env_RockPile_Rounded_07
-      objectReference: {fileID: 0}
-    - target: {fileID: 167560, guid: fe819f6613802b24cac5bd6f4a749f63, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 2300632, guid: fe819f6613802b24cac5bd6f4a749f63, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -2070,6 +2070,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3202189980465161104}
     m_Modifications:
+    - target: {fileID: 9193721053286048403, guid: 3cdafc0cafad9224ba32f3d42ddbf1ad,
+        type: 3}
+      propertyPath: m_Name
+      value: EnemyBase
+      objectReference: {fileID: 0}
+    - target: {fileID: 9193721053286048403, guid: 3cdafc0cafad9224ba32f3d42ddbf1ad,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9193721053285819647, guid: 3cdafc0cafad9224ba32f3d42ddbf1ad,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2124,11 +2134,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9193721053286048403, guid: 3cdafc0cafad9224ba32f3d42ddbf1ad,
-        type: 3}
-      propertyPath: m_Name
-      value: EnemyBase
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3cdafc0cafad9224ba32f3d42ddbf1ad, type: 3}
@@ -2400,6 +2405,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1894202937266710841}
     m_Modifications:
+    - target: {fileID: 100000, guid: 35043f2399120734c877135d2725a5c5, type: 3}
+      propertyPath: m_Name
+      value: SM_Prop_Candle_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 35043f2399120734c877135d2725a5c5, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 35043f2399120734c877135d2725a5c5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 16.183577
@@ -2443,14 +2456,6 @@ PrefabInstance:
     - target: {fileID: 400000, guid: 35043f2399120734c877135d2725a5c5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 35043f2399120734c877135d2725a5c5, type: 3}
-      propertyPath: m_Name
-      value: SM_Prop_Candle_01
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 35043f2399120734c877135d2725a5c5, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: 35043f2399120734c877135d2725a5c5, type: 3}
       propertyPath: m_Materials.Array.data[0]
