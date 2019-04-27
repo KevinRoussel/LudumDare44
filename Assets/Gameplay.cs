@@ -1,38 +1,75 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+class Pact
+{
+
+}
+
 public class Gameplay : MonoBehaviour
 {
+    #region InternalTypes
+
+    [Serializable]
+    class LevelStructure
+    {
+        public Room Room;
+        public List<GameObject> EnnemiesPrefab;
+        public List<Pact> EnablePacts;  // String will be the new Class representing Bonus
+    }
+
+    #endregion
+
     [Header("Managers")]
     [SerializeField] InputManager _inputManager;
 
     [Header("Configuration")]
+    [SerializeField] Transform _roomRoot;
     [SerializeField] GameObject _playerPrefab;
-    [SerializeField] Transform _playerRoot;
 
-
-    Character _livePlayer;
+    [Header("Run config")]
+    [SerializeField] List<LevelStructure> _mapStructure;
 
 
     public IEnumerator RunGame()
     {
-        // Prepare Run
-        _livePlayer = Instantiate(_playerPrefab, _playerRoot).GetComponent<Character>();
+        List<Pact> _selectedPacts = new List<Pact>();
 
-        // Main Game Loop
-        while (true)
+        foreach(var level in _mapStructure)
         {
-            _inputManager.ApplyInput(_livePlayer);
+            // Spawn Room and Character
+            var currentRoom = level.Room;
+
+            var currentCharacter = Instantiate(_playerPrefab, currentRoom.PlayerSpawner)
+                .GetComponent<Character>()
+                .Initialization();
+
+            // Pact Room
+            // yield return PactRoom();
+
+            // Main Game Loop
+            while (true)
+            {
+                _inputManager.ApplyInput(currentCharacter);
 
 
-            yield return null;
+
+
+                yield return null;
+            }
+
         }
-
         // GameOver Menu
 
         yield break;
 
+    }
+
+    IEnumerator PactRoom()
+    {
+        yield break;
     }
 }

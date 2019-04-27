@@ -43,6 +43,8 @@ public class Character : MonoBehaviour
     protected bool _canMove;
     public Vector3 Position => transform.position;
 
+    
+
     [Header("Conf")]
     [SerializeField] float _recoverTime;
 
@@ -59,7 +61,7 @@ public class Character : MonoBehaviour
     public int Speed { get; private set; }
     public int Shield { get; private set; }
 
-    private void Start()
+    internal Character Initialization()
     {
         // Parameters validation & assignation
         HP = _initialHP;
@@ -71,12 +73,14 @@ public class Character : MonoBehaviour
         MovementEventInitialization();
 
         // NavMesh Initialization
+        transform.localPosition = Vector3.zero;
         transform.position = NavMesh.SamplePosition(transform.position, out NavMeshHit hit, 500f, NavMesh.AllAreas) ?
             hit.position : transform.position;
 
-
         _navMeshAgent.enabled = true;
         OnReady?.Invoke();
+
+        return this;
     }
 
     #region Move
