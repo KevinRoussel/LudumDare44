@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 9193721053286172622}
   m_Layer: 0
   m_Name: EnemyBase
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -192,6 +192,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerDetectionDistance: 50
   _nextWanderingPosRange: {x: 5, y: 15}
+  _wanderOnPlayerLost: 1
+  _shootingManager: {fileID: 0}
+  _shootingDistance: 35
+  _shootingSpreadRange: {x: -7.5, y: 7.5}
+  _shootingDelays: {x: 1, y: 1}
+  _shootingCooldown: 3
+  _canShootImmediately: 1
 --- !u!1 &9193721053286053171
 GameObject:
   m_ObjectHideFlags: 0
