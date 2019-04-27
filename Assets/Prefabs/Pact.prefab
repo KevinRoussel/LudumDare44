@@ -62,7 +62,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6847077622757608722}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -151,7 +151,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 25, y: -25}
-  m_SizeDelta: {x: 110, y: 110}
+  m_SizeDelta: {x: 110, y: 125}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &6847077622768966137
 CanvasRenderer:
@@ -224,7 +224,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -62.5, y: 160.90002}
+  m_AnchoredPosition: {x: -62.5, y: 150.66}
   m_SizeDelta: {x: 300, y: 60}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &6847077622824978121
@@ -256,11 +256,11 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 20
+    m_Font: {fileID: 12800000, guid: e88930a9af3ff68648c866f9b68859b9, type: 3}
+    m_FontSize: 26
     m_FontStyle: 2
     m_BestFit: 0
-    m_MinSize: 2
+    m_MinSize: 0
     m_MaxSize: 68
     m_Alignment: 0
     m_AlignByGeometry: 0
@@ -268,7 +268,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\x13Quos nihil ad si vel velimus nobis si amicis de."
+  m_Text: 'QUOS NIHIL AD SI VEL VELIMUS NOBIS SI AMICIS DE.
+
+'
 --- !u!1 &6847077622937185376
 GameObject:
   m_ObjectHideFlags: 0
@@ -335,7 +337,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: e88930a9af3ff68648c866f9b68859b9, type: 3}
     m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
@@ -347,7 +349,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Signature :'
+  m_Text: "SIGNATURE\_:"
 --- !u!1 &6847077623786552034
 GameObject:
   m_ObjectHideFlags: 0
@@ -414,11 +416,11 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 20
+    m_Font: {fileID: 12800000, guid: e88930a9af3ff68648c866f9b68859b9, type: 3}
+    m_FontSize: 18
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 2
+    m_MinSize: 1
     m_MaxSize: 68
     m_Alignment: 0
     m_AlignByGeometry: 0
@@ -426,7 +428,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Name of the demon / the servant
+  m_Text: "\x16NAME OF THE DEMON / THE SERVANT\n"
 --- !u!1 &6847077623796825102
 GameObject:
   m_ObjectHideFlags: 0
@@ -765,7 +767,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: e88930a9af3ff68648c866f9b68859b9, type: 3}
     m_FontSize: 27
     m_FontStyle: 0
     m_BestFit: 0
@@ -812,8 +814,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 30, y: -146.2}
-  m_SizeDelta: {x: 450, y: 389}
+  m_AnchoredPosition: {x: 30, y: -167}
+  m_SizeDelta: {x: 450, y: 372.8}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &6847077624636445527
 CanvasRenderer:
@@ -844,7 +846,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: e88930a9af3ff68648c866f9b68859b9, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
@@ -856,30 +858,30 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\x16\x1A\x16\x16Quod si rectum statuerimus vel concedere amicis, quidquid
-    velint, vel impetrare ab iis, quidquid velimus, perfecta quidem sapientia si simus,
-    nihil habeat res vitii; sed loquimur de iis amicis qui ante oculos sunt, quos
-    vidimus aut de quibus memoriam accepimus, quos novit vita communis. Ex hoc numero
-    nobis exempla sumenda sunt, et eorum quidem maxime qui ad sapientiam proxime accedunt.\n\nHaec
-    subinde Constantius audiens et quaedam referente Thalassio doctus, quem eum odisse
-    iam conpererat lege communi, scribens ad Caesarem blandius adiumenta paulatim
-    illi subtraxit, sollicitari se simulans ne, uti est militare otium fere tumultuosum,
-    in eius perniciem conspiraret, solisque scholis iussit esse contentum palatinis
-    et protectorum cum Scutariis et Gentilibus, et mandabat Domitiano, ex comite largitionum,
-    praefecto ut cum in Syriam venerit, Gallum, quem crebro acciverat, ad Italiam
-    properare blande hortaretur et verecunde.\n\nDein Syria per speciosam interpatet
-    diffusa planitiem. hanc nobilitat Antiochia, mundo cognita civitas, cui non certaverit
-    alia advecticiis ita adfluere copiis et internis, et Laodicia et Apamia itidemque
-    Seleucia iam inde a primis auspiciis florentissimae.\n\nHoc inmaturo interitu
-    ipse quoque sui pertaesus excessit e vita aetatis nono anno atque vicensimo cum
-    quadriennio imperasset. natus apud Tuscos in Massa Veternensi, patre Constantio
-    Constantini fratre imperatoris, matreque Galla sorore Rufini et Cerealis, quos
-    trabeae consulares nobilitarunt et praefecturae.\n\nPer hoc minui studium suum
-    existimans Paulus, ut erat in conplicandis negotiis artifex dirus, unde ei Catenae
-    inditum est cognomentum, vicarium ipsum eos quibus praeerat adhuc defensantem
-    ad sortem periculorum communium traxit. et instabat ut eum quoque cum tribunis
-    et aliis pluribus ad comitatum imperatoris vinctum perduceret: quo percitus ille
-    exitio urgente abrupto ferro eundem adoritur Paulum. et quia languente dextera,
-    letaliter ferire non potuit, iam districtum mucronem in proprium latus inpegit.
-    hocque deformi genere mortis excessit e vita iustissimus rector ausus miserabiles
-    casus levare multorum.\n"
+  m_Text: "\x16\x1AQUOD SI RECTUM STATUERIMUS VEL CONCEDERE AMICIS, QUIDQUID VELINT,
+    VEL IMPETRARE AB IIS, QUIDQUID VELIMUS, PERFECTA QUIDEM SAPIENTIA SI SIMUS, NIHIL
+    HABEAT RES VITII; SED LOQUIMUR DE IIS AMICIS QUI ANTE OCULOS SUNT, QUOS VIDIMUS
+    AUT DE QUIBUS MEMORIAM ACCEPIMUS, QUOS NOVIT VITA COMMUNIS. EX HOC NUMERO NOBIS
+    EXEMPLA SUMENDA SUNT, ET EORUM QUIDEM MAXIME QUI AD SAPIENTIAM PROXIME ACCEDUNT.\nHAEC
+    SUBINDE CONSTANTIUS AUDIENS ET QUAEDAM REFERENTE THALASSIO DOCTUS, QUEM EUM ODISSE
+    IAM CONPERERAT LEGE COMMUNI, SCRIBENS AD CAESAREM BLANDIUS ADIUMENTA PAULATIM
+    ILLI SUBTRAXIT, SOLLICITARI SE SIMULANS NE, UTI EST MILITARE OTIUM FERE TUMULTUOSUM,
+    IN EIUS PERNICIEM CONSPIRARET, SOLISQUE SCHOLIS IUSSIT ESSE CONTENTUM PALATINIS
+    ET PROTECTORUM CUM SCUTARIIS ET GENTILIBUS, ET MANDABAT DOMITIANO, EX COMITE LARGITIONUM,
+    PRAEFECTO UT CUM IN SYRIAM VENERIT, GALLUM, QUEM CREBRO ACCIVERAT, AD ITALIAM
+    PROPERARE BLANDE HORTARETUR ET VERECUNDE.\n\nDEIN SYRIA PER SPECIOSAM INTERPATET
+    DIFFUSA PLANITIEM. HANC NOBILITAT ANTIOCHIA, MUNDO COGNITA CIVITAS, CUI NON CERTAVERIT
+    ALIA ADVECTICIIS ITA ADFLUERE COPIIS ET INTERNIS, ET LAODICIA ET APAMIA ITIDEMQUE
+    SELEUCIA IAM INDE A PRIMIS AUSPICIIS FLORENTISSIMAE.\n\nHOC INMATURO INTERITU
+    IPSE QUOQUE SUI PERTAESUS EXCESSIT E VITA AETATIS NONO ANNO ATQUE VICENSIMO CUM
+    QUADRIENNIO IMPERASSET. NATUS APUD TUSCOS IN MASSA VETERNENSI, PATRE CONSTANTIO
+    CONSTANTINI FRATRE IMPERATORIS, MATREQUE GALLA SORORE RUFINI ET CEREALIS, QUOS
+    TRABEAE CONSULARES NOBILITARUNT ET PRAEFECTURAE.\n\nPER HOC MINUI STUDIUM SUUM
+    EXISTIMANS PAULUS, UT ERAT IN CONPLICANDIS NEGOTIIS ARTIFEX DIRUS, UNDE EI CATENAE
+    INDITUM EST COGNOMENTUM, VICARIUM IPSUM EOS QUIBUS PRAEERAT ADHUC DEFENSANTEM
+    AD SORTEM PERICULORUM COMMUNIUM TRAXIT. ET INSTABAT UT EUM QUOQUE CUM TRIBUNIS
+    ET ALIIS PLURIBUS AD COMITATUM IMPERATORIS VINCTUM PERDUCERET: QUO PERCITUS ILLE
+    EXITIO URGENTE ABRUPTO FERRO EUNDEM ADORITUR PAULUM. ET QUIA LANGUENTE DEXTERA,
+    LETALITER FERIRE NON POTUIT, IAM DISTRICTUM MUCRONEM IN PROPRIUM LATUS INPEGIT.
+    HOCQUE DEFORMI GENERE MORTIS EXCESSIT E VITA IUSTISSIMUS RECTOR AUSUS MISERABILES
+    CASUS LEVARE MULTORUM.\n"

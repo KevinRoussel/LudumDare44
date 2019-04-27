@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6808254549919028089}
   - component: {fileID: 6808254549919028095}
   - component: {fileID: 6808254549919028088}
+  - component: {fileID: 742369613}
   m_Layer: 5
   m_Name: Dialog
   m_TagString: Untagged
@@ -77,6 +78,20 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!114 &742369613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6808254549919028090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72b4b083e10616d338d471766fe1accb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: {fileID: 6808254550302672357}
+  dialogText: {fileID: 6808254551921276590}
 --- !u!1 &6808254550302672359
 GameObject:
   m_ObjectHideFlags: 0
@@ -143,7 +158,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: e88930a9af3ff68648c866f9b68859b9, type: 3}
     m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0
@@ -155,9 +170,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Name
-
-'
+  m_Text: NAME
 --- !u!1 &6808254551817809651
 GameObject:
   m_ObjectHideFlags: 0
@@ -283,7 +296,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 50, y: -85}
+  m_AnchoredPosition: {x: 50, y: -80}
   m_SizeDelta: {x: 1000, y: 200}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &6808254551921276589
@@ -315,8 +328,8 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 16
+    m_Font: {fileID: 12800000, guid: e88930a9af3ff68648c866f9b68859b9, type: 3}
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -327,6 +340,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\x16\x16Illud autem non dubitatur quod cum esset aliquando virtutum omnium
-    domicilium Roma, ingenuos advenas plerique nobilium, ut Homerici bacarum suavitate
-    Lotophagi, humanitatis multiformibus officiis retentabant."
+  m_Text: 'ILLUD AUTEM NON DUBITATUR QUOD CUM ESSET ALIQUANDO VIRTUTUM OMNIUM DOMICILIUM
+    ROMA, INGENUOS ADVENAS PLERIQUE NOBILIUM, UT HOMERICI BACARUM SUAVITATE LOTOPHAGI,
+    HUMANITATIS MULTIFORMIBUS OFFICIIS RETENTABANT.
+
+'

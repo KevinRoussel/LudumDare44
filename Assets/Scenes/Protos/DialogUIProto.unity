@@ -490,11 +490,11 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 6808254550523509299}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &742369613
+--- !u!114 &742369613 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 742369613, guid: d50f977f1b0b2a537b18f7200d2c7378,
+    type: 3}
+  m_PrefabInstance: {fileID: 6808254550523509299}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 742369609}
   m_Enabled: 1
@@ -502,8 +502,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72b4b083e10616d338d471766fe1accb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: {fileID: 861519830}
-  dialogText: {fileID: 1406651549}
 --- !u!1 &743715980
 GameObject:
   m_ObjectHideFlags: 0
@@ -583,18 +581,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 743715980}
   m_CullTransparentMesh: 0
---- !u!114 &861519830 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6808254550302672357, guid: d50f977f1b0b2a537b18f7200d2c7378,
-    type: 3}
-  m_PrefabInstance: {fileID: 6808254550523509299}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &869631222
 GameObject:
   m_ObjectHideFlags: 0
@@ -1055,18 +1041,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1374338461}
   m_CullTransparentMesh: 0
---- !u!114 &1406651549 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6808254551921276590, guid: d50f977f1b0b2a537b18f7200d2c7378,
-    type: 3}
-  m_PrefabInstance: {fileID: 6808254550523509299}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1562328749
 GameObject:
   m_ObjectHideFlags: 0
@@ -1557,11 +1531,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Dialog
-      objectReference: {fileID: 0}
-    - target: {fileID: 6808254549919028090, guid: d50f977f1b0b2a537b18f7200d2c7378,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6808254549919028089, guid: d50f977f1b0b2a537b18f7200d2c7378,
         type: 3}
