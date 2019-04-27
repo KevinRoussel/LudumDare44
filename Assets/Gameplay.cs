@@ -26,6 +26,7 @@ public class Gameplay : MonoBehaviour
     [Header("Managers")]
     [SerializeField] InputManager _inputManager;
     [SerializeField] ShootingManager _shootingManager;
+    [SerializeField] dynamic _keyManager;
 
     [Header("Configuration")]
     [SerializeField] Transform _roomRoot;
@@ -46,6 +47,8 @@ public class Gameplay : MonoBehaviour
             var currentCharacter = Instantiate(_playerPrefab, currentRoom.PlayerSpawner)
                 .GetComponent<Character>()
                 .Initialization();
+
+            currentCharacter.OnKeyCollected += _keyManager.AddKey();
 
             foreach (var enemy in currentRoom.Enemies) enemy.Initialization();
 

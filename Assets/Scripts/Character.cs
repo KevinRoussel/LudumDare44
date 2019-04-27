@@ -44,7 +44,7 @@ public class Character : MonoBehaviour
     protected bool _canMove;
     public Vector3 Position => transform.position;
     public BaseEnemy Enemy => _enemyComp;
-    
+
     [Header("Conf")]
     [SerializeField] float _recoverTime;
 
@@ -60,6 +60,8 @@ public class Character : MonoBehaviour
     public int Defense { get; private set; }
     public int Speed { get; private set; }
     public int Shield { get; private set; }
+
+    public event Action OnKeyCollected;
 
     internal Character Initialization()
     {
