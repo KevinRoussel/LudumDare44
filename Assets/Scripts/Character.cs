@@ -33,7 +33,6 @@ public class Character : MonoBehaviour
     internal void AcceptDeathEnd() => _deathEnd.Activate();
     #endregion
 
-    //[SerializeField] CharacterDefinition _characterDefinition;
     [SerializeField] Transform _healthBarAnchor = null;
     [SerializeField] Collider _hitZone;
 
@@ -128,7 +127,7 @@ public class Character : MonoBehaviour
         //     Dodge(direction);
         // }
 
-        if (!_canMove || IsShieldActivated || IsStone) return;
+        if (!_canMove || IsShieldActivated) return;
 
         // Finished Movement 
         if (direction.magnitude < 0.01f)
@@ -168,7 +167,7 @@ public class Character : MonoBehaviour
 
     public virtual bool LaunchAttack()
     {
-        if (IsStone || !_canAttack ) return false;
+        if (!_canAttack ) return false;
 
         // Fire
         throw new NotImplementedException();
@@ -220,7 +219,6 @@ public class Character : MonoBehaviour
         _shieldRecover = null;
         yield break;
     }
-
     
     IEnumerator ShieldProcess()
     {
@@ -257,7 +255,7 @@ public class Character : MonoBehaviour
         Shield -= amount;
         OnShieldUpdate?.Invoke(Shield);
     }
-    #endregion
+#endregion
 
 #if false
 #region Dodge
@@ -327,7 +325,6 @@ public class Character : MonoBehaviour
 #region Hit&Death IDestroyable Implementation
     bool _isInvincible = false;
     Coroutine _hitCoroutine;
-
 
     void Hit(int amount)
     {
