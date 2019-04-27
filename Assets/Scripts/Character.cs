@@ -55,6 +55,7 @@ public class Character : MonoBehaviour
     [SerializeField] int _initialSpeed;
     [SerializeField] int _initialShield;
 
+    public int HPMax => _initialHP;
     public int HP { get; private set; }
     public int Attack { get; private set; }
     public int Defense { get; private set; }
@@ -62,6 +63,7 @@ public class Character : MonoBehaviour
     public int Shield { get; private set; }
 
     public event Action OnKeyCollected;
+    public event Action<int> OnHPMaxUpdated;
 
     internal Character Initialization()
     {

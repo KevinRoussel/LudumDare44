@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 class Pact
 {
@@ -31,6 +32,7 @@ public class Gameplay : MonoBehaviour
     [Header("Configuration")]
     [SerializeField] Transform _roomRoot;
     [SerializeField] GameObject _playerPrefab;
+    [SerializeField] Slider _hpSlider;
 
     [Header("Run config")]
     [SerializeField] List<LevelStructure> _mapStructure;
@@ -47,6 +49,12 @@ public class Gameplay : MonoBehaviour
             var currentCharacter = Instantiate(_playerPrefab, currentRoom.PlayerSpawner)
                 .GetComponent<Character>()
                 .Initialization();
+
+            _hpSlider.maxValue = currentCharacter.HPMax;
+            _hpSlider.value = currentCharacter.HP;
+
+            currentCharacter.OnHPMaxUpdated += (newMax) => _hpSlider.maxValue = newMax;
+            currentCharacter.OnTakeDamage += (newHP) =>  _hpSlider.value = newHP;
 
             //currentCharacter.OnKeyCollected += _keyManager.AddKey();
 
