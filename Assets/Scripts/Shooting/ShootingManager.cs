@@ -11,6 +11,8 @@ public class ShootingManager : MonoBehaviour {
     [Tooltip("Prefab of the projectile to pool")]
     [SerializeField] BaseProjectile _projectile;
 
+    [SerializeField] Transform _bulletRoot;
+
     [Tooltip("Amount of projectiles to instantiate at the start")]
     [SerializeField] int _initialAmount;
 
@@ -58,7 +60,7 @@ public class ShootingManager : MonoBehaviour {
 
     BaseProjectile AddProjectileToPool() {
 
-        BaseProjectile projectile = Instantiate(_projectile);
+        BaseProjectile projectile = Instantiate(_projectile, _bulletRoot);
         projectile.gameObject.SetActive(false);
         _pool.Add(projectile);
         return projectile;
