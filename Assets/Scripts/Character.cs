@@ -45,7 +45,6 @@ public class Character : MonoBehaviour
     public Vector3 Position => transform.position;
     public BaseEnemy Enemy => _enemyComp;
     
-
     [Header("Conf")]
     [SerializeField] float _recoverTime;
 

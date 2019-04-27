@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,21 +20,15 @@ public class ShootingManager : MonoBehaviour {
     void Start () {
 
         _pool = new List<BaseProjectile>();
-
         StartCoroutine(StartPool());
         
     }
 
     IEnumerator StartPool () {
-
         for (int i = 0; i < _initialAmount; i++) {
-
             AddProjectileToPool();
-
             yield return new WaitForEndOfFrame();
-
         }        
-
     }
 
     public void Shoot (Transform shootingTransform, Vector2 spreadRange) {
@@ -43,11 +38,8 @@ public class ShootingManager : MonoBehaviour {
         foreach (BaseProjectile p in _pool) {
 
             if (!p.gameObject.activeSelf) {
-
                 projectile = p;
-
                 break;
-
             }
 
         }
@@ -55,14 +47,11 @@ public class ShootingManager : MonoBehaviour {
         if(!projectile && _canExpand)
             projectile = AddProjectileToPool();
 
-        if(projectile) {
-
-            Vector3 spreadDir = Quaternion.Euler(0, Random.Range(spreadRange.x, spreadRange.y), 0) * shootingTransform.forward;
-
+        if(projectile)
+        {
+            Vector3 spreadDir = Quaternion.Euler(0, UnityEngine.Random.Range(spreadRange.x, spreadRange.y), 0) * shootingTransform.forward;
             projectile.transform.SetPositionAndRotation(shootingTransform.position, Quaternion.LookRotation(spreadDir));
-
             projectile.gameObject.SetActive(true);
-
         }
 
     }
@@ -70,21 +59,16 @@ public class ShootingManager : MonoBehaviour {
     BaseProjectile AddProjectileToPool() {
 
         BaseProjectile projectile = Instantiate(_projectile);
-
         projectile.gameObject.SetActive(false);
-
         _pool.Add(projectile);
-
         return projectile;
 
     }
 
-    // Will eventually be deleted and changed into a Coroutine called by Master
-    void Update () {
-
+    internal void UpdateBullets()
+    {
         foreach (BaseProjectile p in _pool)
             p.transform.position += p.transform.forward * p.Speed * Time.deltaTime;
-
     }
 
 }

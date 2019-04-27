@@ -25,6 +25,7 @@ public class Gameplay : MonoBehaviour
 
     [Header("Managers")]
     [SerializeField] InputManager _inputManager;
+    [SerializeField] ShootingManager _shootingManager;
 
     [Header("Configuration")]
     [SerializeField] Transform _roomRoot;
@@ -32,7 +33,6 @@ public class Gameplay : MonoBehaviour
 
     [Header("Run config")]
     [SerializeField] List<LevelStructure> _mapStructure;
-
 
     public IEnumerator RunGame()
     {
@@ -57,7 +57,7 @@ public class Gameplay : MonoBehaviour
             {
                 _inputManager.ApplyInput(currentCharacter);
                 foreach (var el in currentRoom.Enemies) el.Enemy.Movement();
-
+                _shootingManager.UpdateBullets();
 
 
                 yield return null;

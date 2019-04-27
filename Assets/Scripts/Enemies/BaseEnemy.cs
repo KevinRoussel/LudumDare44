@@ -44,6 +44,7 @@ public class BaseEnemy : MonoBehaviour {
         _player = GameObject.FindGameObjectWithTag("Player");
         _navMeshAgent = GetComponent<NavMeshAgent>();
         _shootingTimer = _canShootImmediately ? _shootingCooldown : 0;
+        _shootingManager = GameObject.FindObjectOfType<ShootingManager>();
 
     }
 
@@ -64,7 +65,8 @@ public class BaseEnemy : MonoBehaviour {
             _navMeshAgent.SetDestination(hit.position);
         }
 
-        if((Vector3.Distance(_player.transform.position, transform.position) <= _shootingDistance) && (_shootingTimer >= _shootingCooldown))
+        if((Vector3.Distance(_player.transform.position, transform.position) <= _shootingDistance) && 
+            (_shootingTimer >= _shootingCooldown))
             StartCoroutine(Shoot());
 
     }
@@ -72,18 +74,14 @@ public class BaseEnemy : MonoBehaviour {
     IEnumerator Shoot () {
 
         _shootingTimer = -1;
-
         _navMeshAgent.updatePosition = false;
         yield return new WaitForSeconds(_shootingDelays.x);
 
         _shootingManager.Shoot(transform, _shootingSpreadRange);
-
         yield return new WaitForSeconds(_shootingDelays.y);
 
         _navMeshAgent.Warp(transform.position);
-
         _shootingTimer = 0;
-
         _navMeshAgent.updatePosition = true;
 
     }
