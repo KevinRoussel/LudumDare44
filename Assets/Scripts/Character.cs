@@ -131,7 +131,7 @@ public class Character : MonoBehaviour
         //     Dodge(direction);
         // }
 
-        if (!_canMove || IsShieldActivated) return;
+        if (IsShieldActivated) return;
 
         // Finished Movement 
         if (direction.magnitude < 0.01f)

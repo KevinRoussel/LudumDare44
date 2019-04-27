@@ -12,7 +12,7 @@ public class InputManager : MonoBehaviour
     Trigger _shootDown;
     Vector2 _move;
 
-    private void Awake()
+    private void Start()
     {
         _shootDown = new Trigger();
         _shootUp = new Trigger();
@@ -20,16 +20,20 @@ public class InputManager : MonoBehaviour
 
         IEnumerator InputRoutine()
         {
-            _move = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-            if (Input.GetMouseButtonDown(1)) _shootDown.Activate();
-            if (Input.GetMouseButtonDown(1)) _shootUp.Activate();
-            yield break;
+            while (true)
+            {
+                _move = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+                if (Input.GetMouseButtonDown(1)) _shootDown.Activate();
+                if (Input.GetMouseButtonDown(1)) _shootUp.Activate();
+                yield return null;
+            }
         }
     }
 
     public void ApplyInput(Character control)
     {
-        if (_move.magnitude > 0.001f) control.Move(_move);
+        if (_move.magnitude > 0.001f)
+            control.Move(_move);
         if (_shootUp.IsActivated()) control.LaunchAttack();
         if (_shootDown.IsActivated()) control.StopAttack();
     }
