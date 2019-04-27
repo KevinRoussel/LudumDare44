@@ -39,10 +39,11 @@ public class Character : MonoBehaviour
     [SerializeField] Collider _hitZone;
     [SerializeField] Transform _shieldRoot = null;
     [SerializeField] protected NavMeshAgent _navMeshAgent;
+    [SerializeField] BaseEnemy _enemyComp;
 
     protected bool _canMove;
     public Vector3 Position => transform.position;
-    
+    public BaseEnemy Enemy => _enemyComp;
 
     [Header("Conf")]
     [SerializeField] float _recoverTime;
@@ -79,6 +80,8 @@ public class Character : MonoBehaviour
             hit.position : transform.position;
 
         _navMeshAgent.enabled = true;
+        _enemyComp?.Initialization();
+
         OnReady?.Invoke();
 
         return this;

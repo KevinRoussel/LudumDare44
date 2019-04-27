@@ -25,6 +25,7 @@ public class Gameplay : MonoBehaviour
 
     [Header("Managers")]
     [SerializeField] InputManager _inputManager;
+    [SerializeField] ShootingManager _shootingManager;
     [SerializeField] dynamic _keyManager;
 
     [Header("Configuration")]
@@ -33,7 +34,6 @@ public class Gameplay : MonoBehaviour
 
     [Header("Run config")]
     [SerializeField] List<LevelStructure> _mapStructure;
-
 
     public IEnumerator RunGame()
     {
@@ -48,7 +48,9 @@ public class Gameplay : MonoBehaviour
                 .GetComponent<Character>()
                 .Initialization();
 
-            currentCharacter.OnKeyCollected += _keyManager.AddKey();
+            //currentCharacter.OnKeyCollected += _keyManager.AddKey();
+
+            foreach (var enemy in currentRoom.Enemies) enemy.Initialization();
 
             // Pact Room
             // yield return PactRoom();
@@ -57,8 +59,8 @@ public class Gameplay : MonoBehaviour
             while (true)
             {
                 _inputManager.ApplyInput(currentCharacter);
-
-
+                foreach (var el in currentRoom.Enemies) el.Enemy.Movement();
+                _shootingManager.UpdateBullets();
 
 
                 yield return null;

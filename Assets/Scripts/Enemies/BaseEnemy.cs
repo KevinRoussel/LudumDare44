@@ -4,8 +4,6 @@ using UnityEngine.AI;
 
 public class BaseEnemy : MonoBehaviour {
 
-    EnemiesManager _enemiesManager;
-
     GameObject _player;
 
     [Header("Movement variables")]
@@ -41,17 +39,12 @@ public class BaseEnemy : MonoBehaviour {
     [Tooltip("If true, the enemy can shoot right after it spawned, otherwise it will wait for its shooting cooldown")]
     [SerializeField] bool _canShootImmediately;
 
-    void Start () {
-
-        _enemiesManager = FindObjectOfType<EnemiesManager>();
+    public void Initialization () {
 
         _player = GameObject.FindGameObjectWithTag("Player");
-
         _navMeshAgent = GetComponent<NavMeshAgent>();
-
         _shootingTimer = _canShootImmediately ? _shootingCooldown : 0;
-
-        _enemiesManager.Enemies.Add(this);
+        _shootingManager = GameObject.FindObjectOfType<ShootingManager>();
 
     }
 
@@ -60,26 +53,20 @@ public class BaseEnemy : MonoBehaviour {
         _shootingTimer += (_shootingTimer != -1) ? Time.deltaTime : 0;
 
         if (Vector3.Distance(_player.transform.position, transform.position) <= _playerDetectionDistance) {
-
             _navMeshAgent.SetDestination(_player.transform.position);
-
             _wasChasingPlayer = true;
 
         }  else if ((_navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance) || (_wasChasingPlayer && _wanderOnPlayerLost)) {
 
             _wasChasingPlayer = false;
-
             Vector2 randomPosOnCircle = Random.insideUnitCircle;
-
             Vector3 randomPointInRange = new Vector3(randomPosOnCircle.x, 0, randomPosOnCircle.y) * Random.Range(_nextWanderingPosRange.x, _nextWanderingPosRange.y);
-
             NavMesh.SamplePosition(transform.position + randomPointInRange, out NavMeshHit hit, _nextWanderingPosRange.y, NavMesh.AllAreas);
-
             _navMeshAgent.SetDestination(hit.position);
-
         }
 
-        if((Vector3.Distance(_player.transform.position, transform.position) <= _shootingDistance) && (_shootingTimer >= _shootingCooldown))
+        if((Vector3.Distance(_player.transform.position, transform.position) <= _shootingDistance) && 
+            (_shootingTimer >= _shootingCooldown))
             StartCoroutine(Shoot());
 
     }
@@ -87,19 +74,14 @@ public class BaseEnemy : MonoBehaviour {
     IEnumerator Shoot () {
 
         _shootingTimer = -1;
-
         _navMeshAgent.updatePosition = false;
-
         yield return new WaitForSeconds(_shootingDelays.x);
 
         _shootingManager.Shoot(transform, _shootingSpreadRange);
-
         yield return new WaitForSeconds(_shootingDelays.y);
 
         _navMeshAgent.Warp(transform.position);
-
         _shootingTimer = 0;
-
         _navMeshAgent.updatePosition = true;
 
     }
