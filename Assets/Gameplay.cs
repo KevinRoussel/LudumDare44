@@ -48,7 +48,7 @@ public class Gameplay : MonoBehaviour
                 .GetComponent<Character>()
                 .Initialization();
 
-            currentCharacter.OnKeyCollected += _keyManager.AddKey();
+            //currentCharacter.OnKeyCollected += _keyManager.AddKey();
 
             foreach (var enemy in currentRoom.Enemies) enemy.Initialization();
 
