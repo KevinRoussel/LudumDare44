@@ -47,6 +47,8 @@ public class Gameplay : MonoBehaviour
                 .GetComponent<Character>()
                 .Initialization();
 
+            foreach (var enemy in currentRoom.Enemies) enemy.Initialization();
+
             // Pact Room
             // yield return PactRoom();
 
@@ -54,7 +56,7 @@ public class Gameplay : MonoBehaviour
             while (true)
             {
                 _inputManager.ApplyInput(currentCharacter);
-
+                foreach (var el in currentRoom.Enemies) el.Enemy.Movement();
 
 
 
