@@ -37,7 +37,7 @@ public class Character : MonoBehaviour
     #endregion
 
     [SerializeField] Collider _hitZone;
-    [SerializeField] Transform _shieldRoot = null;
+    // [SerializeField] Transform _shieldRoot = null;
     [SerializeField] protected NavMeshAgent _navMeshAgent;
     [SerializeField] BaseEnemy _enemyComp;
 
@@ -54,7 +54,7 @@ public class Character : MonoBehaviour
     [SerializeField] float _initialFireRate;
     [SerializeField] int _initialDefense;
     [SerializeField] int _initialSpeed;
-    [SerializeField] int _initialShield;
+    // [SerializeField] int _initialShield;
 
     public int HPMax => _initialHP;
 
@@ -69,7 +69,7 @@ public class Character : MonoBehaviour
     public float FireRate { get; private set; }
     public int Defense { get; private set; }
     public int Speed { get; private set; }
-    public int Shield { get; private set; }
+    // public int Shield { get; private set; }
 
     public event Action OnKeyCollected;
     public event Action<int> OnHPMaxUpdated;
@@ -79,8 +79,20 @@ public class Character : MonoBehaviour
         // Parameters validation & assignation
         HP = _initialHP;
         Attack = _initialAttack;
+        FireRate = _initialFireRate;
         Defense = _initialDefense;
         Speed = _initialSpeed;
+
+        // Setup Shield
+        OnShieldOn += () => {
+
+            _canShield = false;
+
+            _shield.SetActive(true);
+
+        };
+
+        OnShieldOff += () => { _shield.SetActive(false); };
 
         // Event Preparation
         MovementEventInitialization();
@@ -147,7 +159,7 @@ public class Character : MonoBehaviour
         //     Dodge(direction);
         // }
 
-        if (IsShieldActivated) return;
+        // if (IsShieldActivated) return;
 
         // Finished Movement 
         if (direction.magnitude < 0.01f)
@@ -250,8 +262,7 @@ public class Character : MonoBehaviour
     [Range(0, 1)]
     [SerializeField] float _rageFireRatePercentage;
 
-    bool _canRage = true;
-    bool _rageOn;
+    bool _canRage, _rageOn;
 
     public void StartRage () {
 
@@ -286,9 +297,42 @@ public class Character : MonoBehaviour
     #endregion
 
     #region Shield
+    [Header("Shield variables")]
+    [Tooltip("Shield gameobject")]
+    [SerializeField] GameObject _shield;
+
+    [Tooltip("Duration of the shield")]
+    [SerializeField] float _shieldDuration;
+
+    [Tooltip("Cooldown of the shield")]
+    [SerializeField] float _shieldCooldown;
+
+    bool _canShield;
+
     public event Action OnShieldOn;
     public event Action OnShieldOff;
-    public event Action OnShieldHit;
+
+    public void StartShield () {
+
+        StartCoroutine("Shield");
+
+    }
+
+    IEnumerator Shield () {
+
+        OnShieldOn();
+
+        yield return new WaitForSeconds(_shieldDuration);
+
+        OnShieldOff();
+
+        yield return new WaitForSeconds(_shieldCooldown);
+
+        _canShield = true;
+
+    }
+
+    /*public event Action OnShieldHit;
     public event Action OnShieldBreakOff;
     public event Action<int> OnShieldUpdate;
 
@@ -363,11 +407,11 @@ public class Character : MonoBehaviour
         // Update UI
         Shield -= amount;
         OnShieldUpdate?.Invoke(Shield);
-    }
-#endregion
+    }*/
+    #endregion
 
 #if false
-#region Dodge
+    #region Dodge
     Coroutine _dodgeProcess;
     float _magnitudeStreshold = 0.2f;
     float _lastDodgeDate;
@@ -428,10 +472,10 @@ public class Character : MonoBehaviour
     }
 
 
-#endregion
+    #endregion
 #endif
 
-#region Hit&Death IDestroyable Implementation
+    #region Hit&Death IDestroyable Implementation
     bool _isInvincible = false;
     Coroutine _hitCoroutine;
 
@@ -445,16 +489,16 @@ public class Character : MonoBehaviour
         _hitCoroutine = StartCoroutine(HitRoutine());
         IEnumerator HitRoutine()
         {
-            if (IsShieldActivated)
+            /*if (IsShieldActivated)
             {
                 ShieldHit(amount);
             }
             else
-            {
+            {*/
                 HP = Mathf.Max(0, HP - amount);
                 print(HP);
                 OnTakeDamage?.Invoke(HP);
-            }
+            //}
 
             if (HP <= 0)
             {

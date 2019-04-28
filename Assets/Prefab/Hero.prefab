@@ -146,9 +146,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4450923950018414682}
+  - component: {fileID: 1267848341074554827}
+  - component: {fileID: 8440472726719359922}
   m_Layer: 0
   m_Name: Shield
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -161,12 +163,57 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4450923950018414683}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.05, y: 0.75, z: 1}
+  m_LocalScale: {x: 1.25, y: 2, z: 0.1}
   m_Children: []
   m_Father: {fileID: 4450923950082764344}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &1267848341074554827
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4450923950018414683}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &8440472726719359922
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4450923950018414683}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 9485ef7d635897a4a9bae3a93f979846, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!1 &4450923950082764345
 GameObject:
   m_ObjectHideFlags: 0
@@ -243,7 +290,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hitZone: {fileID: 0}
-  _shieldRoot: {fileID: 4450923950018414682}
   _navMeshAgent: {fileID: 4450923950082764327}
   _enemyComp: {fileID: 0}
   _recoverTime: 1
@@ -252,7 +298,6 @@ MonoBehaviour:
   _initialFireRate: 0.3
   _initialDefense: 5
   _initialSpeed: 1
-  _initialShield: 30
   _shootingSpreadRange: {x: 0, y: 0}
   _shootingTransform: {fileID: 4490391576631688708}
   _rageDuration: 2
@@ -260,6 +305,9 @@ MonoBehaviour:
   _rageMultiplier: 2
   _rageProjectilesSpeedMultiplier: 1.5
   _rageFireRatePercentage: 0.5
+  _shield: {fileID: 4450923950018414683}
+  _shieldDuration: 2
+  _shieldCooldown: 5
 --- !u!65 &5837055499611638790
 BoxCollider:
   m_ObjectHideFlags: 0
