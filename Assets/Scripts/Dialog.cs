@@ -7,7 +7,6 @@ public class Dialog : MonoBehaviour
 {
     [SerializeField] Text name;
     [SerializeField] Text dialogText;
-
     [SerializeField] UITextTypeWriter typeWriter;
 
     public UITextTypeWriter TypeWriter => typeWriter;

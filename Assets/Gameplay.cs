@@ -28,6 +28,7 @@ public class Gameplay : MonoBehaviour
         public string CharacterName;
         public string DialogText;
         public Pact PactToApply;
+        public Sprite _characterImage;
     }
 
     #endregion
@@ -51,12 +52,15 @@ public class Gameplay : MonoBehaviour
     [SerializeField] Animation _pactUI;
     [SerializeField] AnimationClip _pactUIOpen;
     [SerializeField] AnimationClip _pactUIClose;
+    [SerializeField] Transform _demonSelection;
     [SerializeField] Dialog _dialog;
     [SerializeField] Dialog _pactSign;
     [SerializeField] Button _clickTrigger;
 
     [SerializeField] Button _pactSignOK;
     [SerializeField] Button _pactSignCancel;
+
+    [SerializeField] Image _characterImage;
 
     [Header("UI GameOver")]
     [SerializeField] Animation _gameOverUI;
@@ -80,46 +84,61 @@ public class Gameplay : MonoBehaviour
     public IEnumerator RunGame()
     {
         _gameUI.gameObject.SetActive(true);
-        yield return _gameUI.PlayAndWait(_gameOpen);
         List<Pact> _selectedPacts = new List<Pact>();
 
         foreach(var level in _mapStructure)
         {
             // Pact
-            // yield return PactRoom((newPact) => _selectedPacts.Add(newPact));
+            yield return PactRoom((newPact) => _selectedPacts.Add(newPact));
             IEnumerator PactRoom(Action<Pact> onPactSelected)
             {
                 _pactUI.gameObject.SetActive(true);
                 yield return _pactUI.PlayAndWait(_pactUIOpen);
 
-                // Select Deamon
-                _selectedDemon = -1;
-                yield return new WaitWhile(() => _selectedDemon == -1);
-
-                // Wait dialogue completion
-                _dialog.gameObject.SetActive(true);
-                _dialog.ChangeName(level.Pacts[_selectedDemon].CharacterName)
-                    .ChangeDialogText(level.Pacts[_selectedDemon].DialogText);
-                yield return _dialog.TypeWriter.CurrentCoroutine;
-                _dialog.gameObject.SetActive(false);
-
-                // Wait click
-                _clickTrigger.gameObject.SetActive(true);
-                bool isDone = false;
-                _clickTrigger.onClick.AddListener(() => isDone = true);
-                yield return new WaitWhile(() => !isDone);
-                _clickTrigger.onClick.RemoveAllListeners();
-                _clickTrigger.gameObject.SetActive(false);
-
-                // Show Contract
                 bool _pactCancel = false;
-                bool _pactOK = false;
-                _pactSign.gameObject.SetActive(true);
-                _pactSignCancel.onClick.AddListener(() => _pactCancel = true);
-                _pactSignOK.onClick.AddListener(() => _pactOK = true);
-                yield return new WaitWhile(() => !_pactCancel && !_pactOK);
 
+                _demonSelection.gameObject.SetActive(false);
+                _dialog.gameObject.SetActive(false);
+                _clickTrigger.gameObject.SetActive(false);
                 _pactSign.gameObject.SetActive(false);
+
+                do
+                {
+                    // Select Deamon
+                    _pactCancel = false;
+                    _demonSelection.gameObject.SetActive(true);
+                    _selectedDemon = -1;
+                    yield return new WaitWhile(() => _selectedDemon == -1);
+
+                    // Wait dialogue completion
+                    _dialog.gameObject.SetActive(true);
+                    _dialog.ChangeName(level.Pacts[_selectedDemon].CharacterName)
+                        .ChangeDialogText(level.Pacts[_selectedDemon].DialogText);
+                    yield return _dialog.TypeWriter.CurrentCoroutine;
+
+                    // Wait click
+                    _clickTrigger.gameObject.SetActive(true);
+                    bool isDone = false;
+                    _clickTrigger.onClick.AddListener(() => isDone = true);
+                    yield return new WaitWhile(() => !isDone);
+
+                    _demonSelection.gameObject.SetActive(false);
+                    _dialog.gameObject.SetActive(false);
+                    _clickTrigger.onClick.RemoveAllListeners();
+                    _clickTrigger.gameObject.SetActive(false);
+
+                    // Show Contract
+                    _characterImage.sprite = level.Pacts[_selectedDemon]._characterImage;
+                    bool _pactOK = false;
+                    _pactSign.gameObject.SetActive(true);
+                    _pactSignCancel.onClick.AddListener(() => _pactCancel = true);
+                    _pactSignOK.onClick.AddListener(() => _pactOK = true);
+                    yield return new WaitWhile(() => !_pactCancel && !_pactOK);
+                    _pactSign.gameObject.SetActive(false);
+
+                } while (_pactCancel);
+
+                onPactSelected?.Invoke(level.Pacts[_selectedDemon].PactToApply);
 
                 yield return _pactUI.PlayAndWait(_pactUIClose);
                 yield break;
@@ -127,19 +146,19 @@ public class Gameplay : MonoBehaviour
 
             // Spawn Room and Character
             var currentRoom = level.Room;
-
             var currentCharacter = Instantiate(_playerPrefab, currentRoom.PlayerSpawner)
                 .GetComponent<Character>()
                 .Initialization();
 
-            // Activate Game UI
             GameUI.SetActive(true);
+            yield return _gameUI.PlayAndWait(_gameOpen);
+
+            // Activate Game UI
             _hpSlider.maxValue = currentCharacter.HPMax;
             _hpSlider.value = currentCharacter.HP;
 
             currentCharacter.OnHPMaxUpdated += (newMax) => _hpSlider.maxValue = newMax;
             currentCharacter.OnTakeDamage += (newHP) =>  _hpSlider.value = newHP;
-
 
             foreach (var enemy in currentRoom.Enemies) enemy.Initialization();
 
@@ -151,7 +170,6 @@ public class Gameplay : MonoBehaviour
                 _inputManager.ApplyInput(currentCharacter);
                 foreach (var el in currentRoom.Enemies) el.Enemy.Tick();
                 _shootingManager.UpdateBullets();
-
 
                 yield return null;
             }
