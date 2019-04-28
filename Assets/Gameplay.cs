@@ -22,6 +22,12 @@ public class Gameplay : MonoBehaviour
         public List<Pact> EnablePacts;  // String will be the new Class representing Bonus
     }
 
+    [Serializable]
+    public class PactDialog
+    {
+
+    }
+
     #endregion
 
     [Header("Managers")]
@@ -43,6 +49,8 @@ public class Gameplay : MonoBehaviour
     [SerializeField] Animation _pactUI;
     [SerializeField] AnimationClip _pactUIOpen;
     [SerializeField] AnimationClip _pactUIClose;
+    [SerializeField] Dialog _dialog;
+    [SerializeField] Dialog _pactSign;
 
     [Header("UI GameOver")]
     [SerializeField] Animation _gameOverUI;
@@ -55,7 +63,13 @@ public class Gameplay : MonoBehaviour
 
     [Header("UI")]
     [SerializeField] GameObject GameUI;
-    
+
+    int _selectedDeamon;
+
+    public void SelectDeamon(int idx)
+    {
+        _selectedDeamon = idx;
+    }
 
     public IEnumerator RunGame()
     {
@@ -72,7 +86,11 @@ public class Gameplay : MonoBehaviour
                 _pactUI.gameObject.SetActive(true);
                 yield return _pactUI.PlayAndWait(_pactUIOpen);
 
+                _selectedDeamon = -1;
+                yield return new WaitWhile(() => _selectedDeamon == -1);
 
+                _dialog.gameObject.SetActive(true);
+                _dialog.ChangeName = 
 
                 yield return _pactUI.PlayAndWait(_pactUIClose);
                 yield break;
