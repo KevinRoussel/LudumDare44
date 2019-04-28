@@ -90,12 +90,24 @@ public abstract class BaseEnemy : MonoBehaviour {
 
     }
 
-    public virtual void Flashed (float duration) {
+    public virtual void Flashed (float duration, Vector2 upgradeEffect) {
 
         SetCanMove(false);
+
         StartCoroutine(Extension.WaitSecondsAnd(duration, () => {
+
             SetCanMove(true);
+
+            if(upgradeEffect != Vector2.zero) {
+
+                _navMeshAgent.speed /= upgradeEffect.x;
+
+                StartCoroutine(Extension.WaitSecondsAnd(upgradeEffect.y, () => { _navMeshAgent.speed *= upgradeEffect.x; }));
+
+            }
+
         }));
+
     }
 
     public void SetCanMove(bool can) {

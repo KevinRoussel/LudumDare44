@@ -428,6 +428,8 @@ public class Character : MonoBehaviour {
     public event Action OnFlashReady;
     Coroutine _flashRoutine;
 
+    public Vector2 FlashUpgradeEffect { get; set; }
+
     public void StartFlash () {
         if (_flashRoutine==null) _flashRoutine=StartCoroutine(Flash());
 
@@ -437,7 +439,11 @@ public class Character : MonoBehaviour {
 
             foreach (Character e in transform.GetComponentInParent<Room>().Enemies)
                 if (Vector3.Distance(e.transform.position, transform.position) <= _flashRadius)
-                    e.Enemy?.Flashed(_flashDuration);
+                    e.Enemy?.Flashed(_flashDuration, FlashUpgradeEffect);
+
+            NavMeshAgent.speed *= FlashUpgradeEffect.x;
+
+            Extension.WaitSecondsAnd(FlashUpgradeEffect.y, () => { NavMeshAgent.speed /= FlashUpgradeEffect.x; });
 
             Debug.Log("Flash", this);
             yield return new WaitForSeconds(_flashCooldown);
