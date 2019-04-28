@@ -50,7 +50,6 @@ public abstract class BaseEnemy : MonoBehaviour {
             Movement();
 
         }
-
     }
 
     protected void SetDestination () {

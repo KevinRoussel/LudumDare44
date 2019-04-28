@@ -145,9 +145,9 @@ public class Gameplay : MonoBehaviour
                 .GetComponent<Character>()
                 .Initialization();
 
-            selectedPacts[selectedPacts.Count - 1].Apply(currentCharacter);
-            selectedPacts[selectedPacts.Count - 1].Apply(currentRoom);
-            selectedPacts[selectedPacts.Count - 1].Apply(_gameUIControl);
+            // selectedPacts[selectedPacts.Count - 1].Apply(currentCharacter);
+            // selectedPacts[selectedPacts.Count - 1].Apply(currentRoom);
+            // selectedPacts[selectedPacts.Count - 1].Apply(_gameUIControl);
 
             GameUI.SetActive(true);
             yield return _gameUI.PlayAndWait(_gameOpen);
