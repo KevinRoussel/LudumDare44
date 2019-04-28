@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class ChargingMeleeEnemy : BaseEnemy {
 
-    float _baseSpeed;
-
     [Header("Charging enemy variables")]
-    [Tooltip("Speed at which the enemy charges the player")]
-    [SerializeField] float _chargeSpeed;
+    [Tooltip("Speed is multiplied by this value while the enemy charges the player")]
+    [SerializeField] float _chargeSpeedMultiplier;
 
     [Tooltip("Attack range")]
     [SerializeField] float _attackRange;
@@ -16,14 +14,6 @@ public class ChargingMeleeEnemy : BaseEnemy {
     [Tooltip("Attack time")]
     [SerializeField] float _attackTime;
     float _attackTimer;
-
-    public override void Initialization () {
-
-        base.Initialization();
-
-        _baseSpeed = _navMeshAgent.speed;
-
-    }
 
     public override void Tick () {
 
@@ -39,7 +29,7 @@ public class ChargingMeleeEnemy : BaseEnemy {
 
             base.PlayerDetected();
 
-            _navMeshAgent.speed = _chargeSpeed;
+            _navMeshAgent.speed *= _chargeSpeedMultiplier;
 
             if (_navMeshAgent.enabled)
                 _navMeshAgent.SetDestination(_player.transform.position);
@@ -58,7 +48,7 @@ public class ChargingMeleeEnemy : BaseEnemy {
 
     protected override void PlayerLost () {
 
-        _navMeshAgent.speed = _baseSpeed;
+        _navMeshAgent.speed /= _chargeSpeedMultiplier;
 
         base.PlayerLost();
 

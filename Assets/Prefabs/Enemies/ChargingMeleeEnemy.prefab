@@ -5178,17 +5178,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hitZone: {fileID: 6545931099981180879}
-  _shieldRoot: {fileID: 5586550359965939550}
   _navMeshAgent: {fileID: 6272733835887929790}
   _enemyComp: {fileID: 8516921764337616963}
   _recoverTime: 1
   _initialHP: 100
   _initialAttack: 10
+  _initialFireRate: 0
   _initialDefense: 5
   _initialSpeed: 1
-  _initialShield: 30
   _shootingSpreadRange: {x: 0, y: 0}
   _shootingTransform: {fileID: 0}
+  _rageDuration: 0
+  _rageCooldown: 0
+  _rageMultiplier: 0
+  _rageProjectilesSpeedMultiplier: 0
+  _rageFireRatePercentage: 0
+  _shield: {fileID: 0}
+  _shieldDuration: 0
+  _shieldCooldown: 0
+  _flashRadius: 0
+  _flashDuration: 0
+  _flashCooldown: 0
 --- !u!95 &6272733835880725116
 Animator:
   serializedVersion: 3
@@ -5244,7 +5254,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerDetectionDistance: 5
   _patrolPathEndPos: {fileID: 5594048532711993487}
-  _chargeSpeed: 7
+  _chargeSpeedMultiplier: 2
   _attackRange: 0.5
   _attackTime: 1
 --- !u!1 &6272733835888054886

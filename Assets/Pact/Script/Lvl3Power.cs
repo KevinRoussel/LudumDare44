@@ -20,4 +20,9 @@ public class Lvl3Power : Pact {
 
     }
 
+    public override void Apply (InputManager input) {
+
+        input.ReverseInputs();
+
+    }
 }
