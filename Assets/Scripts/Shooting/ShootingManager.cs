@@ -55,6 +55,7 @@ public class ShootingManager : MonoBehaviour {
             projectile.transform.SetPositionAndRotation(shootingTransform.position, Quaternion.LookRotation(spreadDir));
             projectile.TargetTag = targetTag;
             projectile.Speed *= speedBoost;
+            projectile.Instigator = shootingTransform.GetComponentInParent<Character>();
             projectile.gameObject.SetActive(true);
         }
     }
