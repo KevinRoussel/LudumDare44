@@ -10,13 +10,17 @@ public class Dialog : MonoBehaviour
 
     [SerializeField] UITextTypeWriter typeWriter;
 
-    public void ChangeName(string name) {
+    public UITextTypeWriter TypeWriter => typeWriter;
+
+    public Dialog ChangeName(string name) {
         this.name.text = name;
+        return this;
     }
 
-    public void ChangeDialogText(string dialogText) {
+    public Dialog ChangeDialogText(string dialogText) {
         this.dialogText.text = dialogText;
         this.Reset();
+        return this;
     }
 
     public void Reset() {

@@ -5,10 +5,12 @@ using UnityEngine.UI;
 
 public class UITextTypeWriter : MonoBehaviour
 {
-
     [SerializeField] float speed;
+    Coroutine _currentCoroutine;
     Text txt;
     string story;
+
+    public Coroutine CurrentCoroutine => _currentCoroutine;
 
     void Awake()
     {
@@ -28,7 +30,7 @@ public class UITextTypeWriter : MonoBehaviour
         story = txt.text;
         txt.text = "";
 
-        StartCoroutine("PlayText");
+        _currentCoroutine = StartCoroutine("PlayText");
     }
 
     IEnumerator PlayText()

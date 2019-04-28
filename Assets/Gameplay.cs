@@ -19,7 +19,15 @@ public class Gameplay : MonoBehaviour
     public class LevelStructure
     {
         public Room Room;
-        public List<Pact> EnablePacts;  // String will be the new Class representing Bonus
+        public List<PactDialog> Pacts;
+    }
+
+    [Serializable]
+    public class PactDialog
+    {
+        public string CharacterName;
+        public string DialogText;
+        public Pact PactToApply;
     }
 
     #endregion
@@ -43,6 +51,12 @@ public class Gameplay : MonoBehaviour
     [SerializeField] Animation _pactUI;
     [SerializeField] AnimationClip _pactUIOpen;
     [SerializeField] AnimationClip _pactUIClose;
+    [SerializeField] Dialog _dialog;
+    [SerializeField] Dialog _pactSign;
+    [SerializeField] Button _clickTrigger;
+
+    [SerializeField] Button _pactSignOK;
+    [SerializeField] Button _pactSignCancel;
 
     [Header("UI GameOver")]
     [SerializeField] Animation _gameOverUI;
@@ -55,7 +69,13 @@ public class Gameplay : MonoBehaviour
 
     [Header("UI")]
     [SerializeField] GameObject GameUI;
-    
+
+    int _selectedDemon;
+
+    public void SelectDeamon(int idx)
+    {
+        _selectedDemon = idx;
+    }
 
     public IEnumerator RunGame()
     {
@@ -66,18 +86,44 @@ public class Gameplay : MonoBehaviour
         foreach(var level in _mapStructure)
         {
             // Pact
-            //yield return PactRoom((newPact) => _selectedPacts.Add(newPact));
+            // yield return PactRoom((newPact) => _selectedPacts.Add(newPact));
             IEnumerator PactRoom(Action<Pact> onPactSelected)
             {
                 _pactUI.gameObject.SetActive(true);
                 yield return _pactUI.PlayAndWait(_pactUIOpen);
 
+                // Select Deamon
+                _selectedDemon = -1;
+                yield return new WaitWhile(() => _selectedDemon == -1);
 
+                // Wait dialogue completion
+                _dialog.gameObject.SetActive(true);
+                _dialog.ChangeName(level.Pacts[_selectedDemon].CharacterName)
+                    .ChangeDialogText(level.Pacts[_selectedDemon].DialogText);
+                yield return _dialog.TypeWriter.CurrentCoroutine;
+                _dialog.gameObject.SetActive(false);
+
+                // Wait click
+                _clickTrigger.gameObject.SetActive(true);
+                bool isDone = false;
+                _clickTrigger.onClick.AddListener(() => isDone = true);
+                yield return new WaitWhile(() => !isDone);
+                _clickTrigger.onClick.RemoveAllListeners();
+                _clickTrigger.gameObject.SetActive(false);
+
+                // Show Contract
+                bool _pactCancel = false;
+                bool _pactOK = false;
+                _pactSign.gameObject.SetActive(true);
+                _pactSignCancel.onClick.AddListener(() => _pactCancel = true);
+                _pactSignOK.onClick.AddListener(() => _pactOK = true);
+                yield return new WaitWhile(() => !_pactCancel && !_pactOK);
+
+                _pactSign.gameObject.SetActive(false);
 
                 yield return _pactUI.PlayAndWait(_pactUIClose);
                 yield break;
             }
-
 
             // Spawn Room and Character
             var currentRoom = level.Room;
