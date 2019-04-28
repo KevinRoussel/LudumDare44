@@ -11,14 +11,18 @@ public class FXOnEvent : MonoBehaviour
     [SerializeField] ParticleSystem _rageActivated;
     [SerializeField] ParticleSystem _shieldHit;
     [SerializeField] Animation _flashAnimation;
+    [SerializeField] ParticleSystem _flashed;
 
     private void Start()
     {
-        _target.OnRageReady += () => _rageActivated.Play();
-        _target.OnShieldHit += () => _shieldHit.Play();
-        _target.OnFlashLauched += () => _flashAnimation.Play();
-
+        _target.OnRageReady += () => _rageActivated?.Play();
+        _target.OnShieldHit += () => _shieldHit?.Play();
+        _target.OnFlashLauched += () => _flashAnimation?.Play();
+        _target.OnFlashed += () => _flashed?.Play();
 
     }
+
+
+
 
 }

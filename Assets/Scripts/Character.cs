@@ -426,7 +426,10 @@ public class Character : MonoBehaviour {
 
     public event Action OnFlashLauched;
     public event Action OnFlashReady;
+    public event Action OnFlashed;
     Coroutine _flashRoutine;
+
+    public void Flashed() => OnFlashed?.Invoke();
 
     public void StartFlash () {
         if (_flashRoutine==null) _flashRoutine=StartCoroutine(Flash());
@@ -568,7 +571,7 @@ public class Character : MonoBehaviour {
 
             HP = Mathf.Max(0, HP - (((Lvl3RageProjectilesSizeMultiplier != 0) && _rageOn) ? 0 : amount));
 
-            OnHit(instigator, amount);
+            OnHit?.Invoke(instigator, amount);
 
             print(HP);
             OnTakeDamage?.Invoke(HP);

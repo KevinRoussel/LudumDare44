@@ -92,6 +92,7 @@ public abstract class BaseEnemy : MonoBehaviour {
 
     public virtual void Flashed (float duration) {
 
+        GetComponent<Character>()?.Flashed();
         SetCanMove(false);
         StartCoroutine(Extension.WaitSecondsAnd(duration, () => {
             SetCanMove(true);
