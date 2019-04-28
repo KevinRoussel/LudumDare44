@@ -13,6 +13,10 @@ public class InputManager : MonoBehaviour
     Vector2 _move;
     Vector2 _mousePosition;
     bool _skillDown = false;
+
+    bool _reverseInputs = false;
+    public void ReverseInputs() => _reverseInputs = !_reverseInputs;
+
     //Trigger _mouse
 
     Vector2 _offset;
@@ -31,13 +35,13 @@ public class InputManager : MonoBehaviour
         {
             while (true)
             {
-                _move = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+                _move = (_reverseInputs ? -1 : 1) * new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
                 _mousePosition = Input.mousePosition;
-                if (Input.GetMouseButtonUp(0)) _shootUp.Activate();
-                if (Input.GetMouseButtonDown(0)) _shootDown.Activate();
+                if (Input.GetMouseButtonUp(_reverseInputs ? 1 : 0)) _shootUp.Activate();
+                if (Input.GetMouseButtonDown(_reverseInputs ? 1 : 0)) _shootDown.Activate();
 
-                if (Input.GetMouseButtonDown(1)) _skillDown = true;
-                if (Input.GetMouseButtonUp(1)) _skillDown = false;
+                if (Input.GetMouseButtonDown(_reverseInputs ? 0 : 1)) _skillDown = true;
+                if (Input.GetMouseButtonUp(_reverseInputs ? 0 : 1)) _skillDown = false;
                 yield return null;
                 ResetInput();
             }
