@@ -93,21 +93,15 @@ public abstract class BaseEnemy : MonoBehaviour {
     public virtual void Flashed (float duration) {
 
         SetCanMove(false);
-
         StartCoroutine(Extension.WaitSecondsAnd(duration, () => {
-
             SetCanMove(true);
-
         }));
-
     }
 
     public void SetCanMove(bool can) {
 
         CanMove += (can ? 1 : -1);
-
         _navMeshAgent.isStopped = (CanMove < 0);
-
     }
 
 }

@@ -125,7 +125,7 @@ public class Character : MonoBehaviour {
                 break;
             case SkillChoice.Flash:
                 Debug.Log("Launch Flash");
-                Flash();
+                StartFlash();
                 break;
             case SkillChoice.Null:
             default:
@@ -354,28 +354,25 @@ public class Character : MonoBehaviour {
     [Tooltip("Flash cooldown")]
     [SerializeField] float _flashCooldown;
 
-    bool _canFlash;
+    Coroutine _flashRoutine;
 
     public void StartFlash () {
+        if (_flashRoutine==null) _flashRoutine=StartCoroutine(Flash());
 
-        if (_canFlash)
-            StartCoroutine("Flash");
+        IEnumerator Flash()
+        {
+            foreach (Character e in transform.GetComponentInParent<Room>().Enemies)
+                if (Vector3.Distance(e.transform.position, transform.position) <= _flashRadius)
+                    e.Enemy?.Flashed(_flashDuration);
 
+            Debug.Log("Flash", this);
+            yield return new WaitForSeconds(_flashCooldown);
+            Debug.Log("Flash re-enabled", this);
+            _flashRoutine = null;
+        }
     }
 
-    IEnumerator Flash () {
-
-        _canFlash = false;
-
-        foreach (Character e in transform.parent.parent.GetComponent<Room>().Enemies)
-            if(Vector3.Distance(e.transform.position, transform.position) <= _flashRadius)
-                e.Enemy?.Flashed(_flashDuration);
-
-        yield return new WaitForSeconds(_flashCooldown);
-
-        _canFlash = true;
-
-    }
+    
     #endregion
 
 #if false
@@ -481,7 +478,7 @@ public class Character : MonoBehaviour {
         _hitCoroutine = StartCoroutine(HitRoutine());
         IEnumerator HitRoutine()
         {
-            if (_shield.gameObject.activeInHierarchy)
+            if (_shield!=null && (_shield?.gameObject.activeInHierarchy??false))
             {
                 _hitCoroutine = null;
                 yield break;
