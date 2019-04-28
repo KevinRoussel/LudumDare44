@@ -62,7 +62,6 @@ public class ShootingManager : MonoBehaviour {
     BaseProjectile AddProjectileToPool() {
 
         BaseProjectile projectile = Instantiate(_projectile, _bulletRoot);
-        projectile.gameObject.SetActive(false);
         _pool.Add(projectile);
         return projectile;
 
