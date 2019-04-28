@@ -66,7 +66,7 @@ public class Gameplay : MonoBehaviour
         foreach(var level in _mapStructure)
         {
             // Pact
-            yield return PactRoom((newPact) => _selectedPacts.Add(newPact));
+            //yield return PactRoom((newPact) => _selectedPacts.Add(newPact));
             IEnumerator PactRoom(Action<Pact> onPactSelected)
             {
                 _pactUI.gameObject.SetActive(true);
