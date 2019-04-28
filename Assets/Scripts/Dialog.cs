@@ -10,23 +10,25 @@ public class Dialog : MonoBehaviour
 
     [SerializeField] UITextTypeWriter typeWriter;
 
-    public void ChangeDialog(string newName, string newDialogText) {
-        this.ChangeName(newName);
-        this.ChangeDialogText(newDialogText);
-    }
-
     public void ChangeName(string name) {
         this.name.text = name;
     }
 
     public void ChangeDialogText(string dialogText) {
         this.dialogText.text = dialogText;
+        this.Reset();
+    }
+
+    public void Reset() {
+        if (this.gameObject.activeInHierarchy) {
+            this.typeWriter?.StartTyping();
+        }
     }
 
     public void Toggle() {
         if (!this.gameObject.activeInHierarchy) {
             this.gameObject.SetActive(true);
-            this.typeWriter?.StartTyping();
+            this.Reset();
         } else {
             this.gameObject.SetActive(false);
         }
