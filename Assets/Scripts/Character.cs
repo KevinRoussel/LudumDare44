@@ -209,7 +209,7 @@ public class Character : MonoBehaviour
             Vector3? result = GetRaycastResult(Input.mousePosition);
 
             if (result.HasValue) {
-                _shootingManager.Shoot(_shootingTransform, Vector3.zero, 30);
+                _shootingManager.Shoot(_shootingTransform, "Enemy", Vector3.zero, 30);
                 OnAttack?.Invoke();
             }
 

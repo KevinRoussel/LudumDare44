@@ -33,7 +33,7 @@ public class ShootingManager : MonoBehaviour {
         }        
     }
 
-    public void Shoot (Transform shootingTransform, Vector2 spreadRange, int bulletPower) {
+    public void Shoot (Transform shootingTransform, string targetTag, Vector2 spreadRange, int bulletPower) {
 
         BaseProjectile projectile = null;
 
@@ -52,6 +52,7 @@ public class ShootingManager : MonoBehaviour {
             Vector3 spreadDir = Quaternion.Euler(0, UnityEngine.Random.Range(spreadRange.x, spreadRange.y), 0) * shootingTransform.forward;
             projectile.Power = bulletPower;
             projectile.transform.SetPositionAndRotation(shootingTransform.position, Quaternion.LookRotation(spreadDir));
+            projectile.TargetTag = targetTag;
             projectile.gameObject.SetActive(true);
         }
     }

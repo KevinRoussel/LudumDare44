@@ -232,6 +232,7 @@ Transform:
   - {fileID: 5198358909793163241}
   - {fileID: 6418361574829614871}
   - {fileID: 5947971230681891856}
+  - {fileID: 7866201973127581273}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -258,7 +259,7 @@ MonoBehaviour:
   _initialSpeed: 1
   _initialShield: 30
   _shootingSpreadRange: {x: 0, y: 0}
-  _shootingTransform: {fileID: 0}
+  _shootingTransform: {fileID: 7866201973127581273}
 --- !u!95 &5198358909800156899
 Animator:
   serializedVersion: 3
@@ -5957,6 +5958,36 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!1 &6707712275862436808
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7866201973127581273}
+  m_Layer: 0
+  m_Name: ShootingBase
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7866201973127581273
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6707712275862436808}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 1.3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5198358909793123859}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8638644440049383968
 GameObject:
   m_ObjectHideFlags: 0

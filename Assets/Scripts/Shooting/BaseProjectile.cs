@@ -12,16 +12,14 @@ public class BaseProjectile : MonoBehaviour {
     public float Speed => _speed;
     public int Power { get => _power; set => _power = value; }
 
+    public string TargetTag { get; set; }
+
     void OnTriggerEnter (Collider other) {
 
-        if (!other.CompareTag("Enemy")) {
-
-            if (other.CompareTag("Player"))
-            {
-                gameObject.SetActive(false);
-                other.GetComponent<Character>().Hit(_power);
-            }
-
+        if (other.CompareTag(TargetTag))
+        {
+            gameObject.SetActive(false);
+            other.GetComponent<Character>().Hit(_power);
         }
 
     }
