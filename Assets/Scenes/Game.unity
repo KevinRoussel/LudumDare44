@@ -547,7 +547,7 @@ MonoBehaviour:
         type: 3}
     - CharacterName: Vert
       DialogText: COUCOU JE SUIS VERT
-      PactToApply: {fileID: 11400000, guid: b67fb703baffbe445a559112a9db247b, type: 2}
+      PactToApply: {fileID: 11400000, guid: dd1544c664a519f43a024b64fe2a8864, type: 2}
       _characterImage: {fileID: 21300000, guid: eba779deb50af7e40b058862ffebdb96,
         type: 3}
     - CharacterName: Bleu
@@ -5136,7 +5136,7 @@ PrefabInstance:
     - target: {fileID: 1755328033695244339, guid: fbe75632929eabf4fad5f1ad54af8950,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1755328033695244339, guid: fbe75632929eabf4fad5f1ad54af8950,
         type: 3}

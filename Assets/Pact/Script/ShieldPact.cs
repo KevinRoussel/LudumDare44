@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName ="UnderBreak/ShieldSkill")]
-public class ShieldSkillPact : Pact
+[CreateAssetMenu(menuName = "UnderBreak/ShieldSkill")]
+public class ShieldPact : Pact
 {
     public override void Apply(Character character)
     {

@@ -124,7 +124,7 @@ public class Character : MonoBehaviour {
         {
             case SkillChoice.Rage:
                 Debug.Log("Launch Rage");
-                Rage();
+                StartRage();
                 break;
             case SkillChoice.Shield:
                 Debug.Log("Launch Shield");
@@ -296,24 +296,26 @@ public class Character : MonoBehaviour {
     bool _canRage, _rageOn;
     Coroutine _rageCoroutine;
     public void StartRage () {
-        if (_rageCoroutine==null ) _rageCoroutine=StartCoroutine(Rage());
+        if (_rageCoroutine==null) _rageCoroutine=StartCoroutine(Rage());
+
+        IEnumerator Rage()
+        {
+            Attack *= _rageMultiplier;
+            FireRate *= _rageFireRatePercentage;
+
+            yield return new WaitForSeconds(_rageDuration);
+
+            Attack /= _rageMultiplier;
+            FireRate /= _rageFireRatePercentage;
+
+            yield return new WaitForSeconds(_rageCooldown);
+
+            _rageCoroutine = null;
+
+        }
     }
 
-    IEnumerator Rage () {
-
-        Attack *= _rageMultiplier;
-        FireRate *= _rageFireRatePercentage;
-
-        yield return new WaitForSeconds(_rageDuration);
-
-        Attack /= _rageMultiplier;
-        FireRate /= _rageFireRatePercentage;
-
-        yield return new WaitForSeconds(_rageCooldown);
-
-        _rageCoroutine = null;
-
-    }
+    
     #endregion
 
     #region Shield
