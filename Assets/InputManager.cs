@@ -12,6 +12,10 @@ public class InputManager : MonoBehaviour
     Trigger _shootDown;
     Vector2 _move;
     Vector2 _mousePosition;
+    //Trigger _mouse
+
+    Vector2 _offset;
+    public void SetOffset(Vector2 v) => _offset = v;
 
     private void Start()
     {
@@ -27,6 +31,7 @@ public class InputManager : MonoBehaviour
                 _mousePosition = Input.mousePosition;
                 if (Input.GetMouseButtonUp(0)) _shootUp.Activate();
                 if (Input.GetMouseButtonDown(0)) _shootDown.Activate();
+
                 yield return null;
                 ResetInput();
             }

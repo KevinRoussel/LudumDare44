@@ -218,12 +218,24 @@ public class Character : MonoBehaviour
         _isAttacking = false;
     }
 
+    float _shootConeAttack=0f;
+    public void ActivateConeAttack(float range) => _shootConeAttack = range;
+
     IEnumerator CallAttack() {
+
         while (_isAttacking) {
+
             Vector3? result = GetRaycastResult(Input.mousePosition);
 
             if (result.HasValue) {
-                _shootingManager.Shoot(_shootingTransform, "Enemy", Vector3.zero, Attack, _rageOn ? _rageProjectilesSpeedMultiplier : 1);
+                _shootingManager.Shoot(_shootingTransform, "Enemy", Vector3.zero, Attack, 0, _rageOn ? _rageProjectilesSpeedMultiplier : 1);
+
+                if (_shootConeAttack != 0f)
+                {
+                    _shootingManager.Shoot(_shootingTransform, "Enemy", Vector3.zero, Attack, _shootConeAttack, _rageOn ? _rageProjectilesSpeedMultiplier : 1);
+                    _shootingManager.Shoot(_shootingTransform, "Enemy", Vector3.zero, Attack, -_shootConeAttack, _rageOn ? _rageProjectilesSpeedMultiplier : 1);
+                }
+
                 OnAttack?.Invoke();
             }
 
@@ -265,16 +277,12 @@ public class Character : MonoBehaviour
     bool _canRage, _rageOn;
 
     public void StartRage () {
-
-        if (!_canRage)
-            StartCoroutine("Rage");
-
+        if (!_canRage) StartCoroutine("Rage");
     }
 
     IEnumerator Rage () {
 
         _canRage = false;
-
         _rageOn = true;
 
         Attack *= _rageMultiplier;
@@ -308,14 +316,12 @@ public class Character : MonoBehaviour
     [SerializeField] float _shieldCooldown;
 
     bool _canShield;
-
     public event Action OnShieldOn;
     public event Action OnShieldOff;
 
     public void StartShield () {
 
         StartCoroutine("Shield");
-
     }
 
     IEnumerator Shield () {
@@ -331,84 +337,8 @@ public class Character : MonoBehaviour
         _canShield = true;
 
     }
-
-    /*public event Action OnShieldHit;
-    public event Action OnShieldBreakOff;
-    public event Action<int> OnShieldUpdate;
-
-    Coroutine _shieldProcess;
-    Coroutine _shieldBreakOff;
-    Coroutine _shieldRecover;
-
-    Trigger _stopShield = new Trigger();
-
-    protected bool IsShieldActivated => _shieldProcess != null;
-
-    public bool LaunchShield(bool isActive)
-    {
-        if (isActive && _shieldProcess == null && _shieldBreakOff == null)
-        {
-            if (_shieldRecover != null) StopCoroutine(_shieldRecover);
-            _shieldProcess = StartCoroutine(ShieldProcess());
-            return true;
-        }
-        else if (!isActive && _shieldProcess != null)
-        {
-            _stopShield.Activate();
-            return true;
-        }
-
-        return false;
-    }
-
-    IEnumerator ShieldRecover()
-    {
-        while (Shield <= _initialShield)
-        {
-            yield return new WaitForSeconds(_recoverTime);
-            Shield = Mathf.Min(Shield+1, _initialShield);
-            OnShieldUpdate?.Invoke(Shield);
-        }
-        _shieldRecover = null;
-        yield break;
-    }
-    
-    IEnumerator ShieldProcess()
-    {
-        OnShieldOn?.Invoke();
-        _shieldRoot.gameObject.SetActive(true);
-
-        yield return new WaitWhile(() => !_stopShield.IsActivated());
-
-        _shieldRoot.gameObject.SetActive(false);
-
-        if (_shieldBreakOff == null)
-        {
-            _shieldRecover = StartCoroutine(ShieldRecover());
-            OnShieldOff?.Invoke();
-        }
-        _shieldProcess = null;
-        yield break;
-    }
-
-    void DecreaseShield(int amount)
-    {
-        while (true)
-        {
-            
-        }
-    }
-
-    void ShieldHit(int amount)
-    {
-        // Send right animation event
-        OnShieldHit?.Invoke();
-
-        // Update UI
-        Shield -= amount;
-        OnShieldUpdate?.Invoke(Shield);
-    }*/
     #endregion
+
 
 #if false
     #region Dodge
@@ -522,8 +452,7 @@ public class Character : MonoBehaviour
 
     }
 
-    
-#endregion
+    #endregion
 
 }
 
