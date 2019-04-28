@@ -8,12 +8,15 @@ public class FXOnEvent : MonoBehaviour
     [SerializeField] Character _target;
 
     [Header("SFX")]
-    ParticleSystem _rageActivated;
+    [SerializeField] ParticleSystem _rageActivated;
+    [SerializeField] ParticleSystem _shieldHit;
+    [SerializeField] Animation _flashAnimation;
 
     private void Start()
     {
         _target.OnRageReady += () => _rageActivated.Play();
-
+        _target.OnShieldHit += () => _shieldHit.Play();
+        _target.OnFlashLauched += () => _flashAnimation.Play();
 
 
     }

@@ -150,6 +150,7 @@ public class Gameplay : MonoBehaviour
                 pact.Apply(currentCharacter);
                 pact.Apply(currentRoom);
                 pact.Apply(_gameUIControl);
+                pact.Apply(_inputManager);
             }
 
             GameUI.SetActive(true);
