@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName ="UnderBreak/AutoBlock")]
-public class AutoBlock : Pact
+public class AutoBlock : Level2Pact
 {
     [SerializeField] float _cooldownDuration=5f;
 

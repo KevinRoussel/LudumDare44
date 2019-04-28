@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22fb48fd125d92b468ee5493af62af71, type: 3}
   m_Name: AutoBlock
   m_EditorClassIdentifier: 
+  type: 2
   _cooldownDuration: 5
