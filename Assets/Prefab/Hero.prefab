@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &416125127281264897
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4490391576631688708}
+  m_Layer: 0
+  m_Name: ShootingTransform
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4490391576631688708
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 416125127281264897}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 1.2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4450923950082764344}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4113341444375696112
 GameObject:
   m_ObjectHideFlags: 0
@@ -174,6 +204,7 @@ Transform:
   - {fileID: 4450923950018414682}
   - {fileID: 530717610344844688}
   - {fileID: 4889484865436018423}
+  - {fileID: 4490391576631688708}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -222,6 +253,7 @@ MonoBehaviour:
   _initialSpeed: 1
   _initialShield: 30
   _shootingSpreadRange: {x: 0, y: 0}
+  _shootingTransform: {fileID: 4490391576631688708}
 --- !u!65 &5837055499611638790
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -829,6 +861,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4450923950082764344}
     m_Modifications:
+    - target: {fileID: 6358660371097373173, guid: aed56094a11c58e48a9a470df157d71d,
+        type: 3}
+      propertyPath: m_Name
+      value: MinimapCamera
+      objectReference: {fileID: 0}
+    - target: {fileID: 6358660371097373173, guid: aed56094a11c58e48a9a470df157d71d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8913183570106502737, guid: aed56094a11c58e48a9a470df157d71d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -883,16 +925,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6358660371097373173, guid: aed56094a11c58e48a9a470df157d71d,
-        type: 3}
-      propertyPath: m_Name
-      value: MinimapCamera
-      objectReference: {fileID: 0}
-    - target: {fileID: 6358660371097373173, guid: aed56094a11c58e48a9a470df157d71d,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aed56094a11c58e48a9a470df157d71d, type: 3}

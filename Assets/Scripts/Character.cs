@@ -56,7 +56,10 @@ public class Character : MonoBehaviour
     [SerializeField] int _initialShield;
 
     public int HPMax => _initialHP;
+
+    [Header("Shoot")]
     [SerializeField] Vector2 _shootingSpreadRange;
+    [SerializeField] Transform _shootingTransform;
 
     ShootingManager _shootingManager;
 
@@ -165,9 +168,16 @@ public class Character : MonoBehaviour
 
         _navMeshAgent.Warp(transform.position);
         _navMeshAgent.Move(realDirection * Time.deltaTime * _navMeshAgent.speed);
-        transform.LookAt(transform.position + realDirection);
 
         _lastMovement = direction;
+    }
+
+    public void LookAt(Vector2 target) {
+        Vector3? result = GetRaycastResult(target);
+
+        if (result.HasValue) {
+            transform.LookAt(new Vector3(result.Value.x, transform.position.y, result.Value.z));
+        }
     }
     #endregion
 
@@ -197,14 +207,25 @@ public class Character : MonoBehaviour
 
     IEnumerator CallAttack() {
         while (_isAttacking) {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
+            Vector3? result = GetRaycastResult(Input.mousePosition);
 
-            if (Physics.Raycast(ray, out hit) && !hit.collider.CompareTag("Player")) {
-                _shootingManager.Shoot(transform, Vector3.forward, Vector3.zero, 30);
-            } 
+            if (result.HasValue) {
+                _shootingManager.Shoot(_shootingTransform, Vector3.zero, 30);
+                OnAttack?.Invoke();
+            }
 
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.3f);
+        }
+    }
+
+    Vector3? GetRaycastResult(Vector2 target) {
+        Ray ray = Camera.main.ScreenPointToRay(target);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit) && !hit.collider.CompareTag("Player")) {
+            return hit.point;
+        } else {
+            return null;
         }
     }
 

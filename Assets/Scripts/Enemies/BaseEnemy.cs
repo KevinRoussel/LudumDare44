@@ -78,7 +78,7 @@ public class BaseEnemy : MonoBehaviour {
         _navMeshAgent.updatePosition = false;
         yield return new WaitForSeconds(_shootingDelays.x);
 
-        _shootingManager.Shoot(transform, Vector3.zero, _shootingSpreadRange, _bulletPower);
+        _shootingManager.Shoot(transform, _shootingSpreadRange, _bulletPower);
         yield return new WaitForSeconds(_shootingDelays.y);
 
         _navMeshAgent.Warp(transform.position);
