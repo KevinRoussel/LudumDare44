@@ -1,14 +1,8 @@
 fileFormatVersion: 2
-<<<<<<< HEAD:Assets/Pact/Lvl 3 Defense.asset.meta
-guid: 5db4f8629acbb4a468e3d4eb50dab3e1
-NativeFormatImporter:
-=======
 guid: c816a53fb7c602b5bbc91ac0124de466
 folderAsset: yes
 DefaultImporter:
->>>>>>> 5d3cce7... Can add offset to move input:Assets/Pacts.meta
   externalObjects: {}
-  mainObjectFileID: 11400000
   userData: 
   assetBundleName: 
   assetBundleVariant: 

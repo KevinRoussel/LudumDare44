@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465785, g: 0.49641252, b: 0.574817, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -542,17 +542,17 @@ MonoBehaviour:
     Pacts:
     - CharacterName: Rouge
       DialogText: COUCOU JE SUIS ROUGE
-      PactToApply: {fileID: 11400000, guid: f85f1eddcbd483a46a6ae24a96546165, type: 2}
+      PactToApply: {fileID: 0}
       _characterImage: {fileID: 21300000, guid: 22edbb4121b300d429930022df0ca1a5,
         type: 3}
     - CharacterName: Vert
       DialogText: COUCOU JE SUIS VERT
-      PactToApply: {fileID: 11400000, guid: dd1544c664a519f43a024b64fe2a8864, type: 2}
+      PactToApply: {fileID: 0}
       _characterImage: {fileID: 21300000, guid: eba779deb50af7e40b058862ffebdb96,
         type: 3}
     - CharacterName: Bleu
       DialogText: COUCOU JE SUIS BLEU
-      PactToApply: {fileID: 11400000, guid: 9c67aa67e5011c84484a5a11e1a25635, type: 2}
+      PactToApply: {fileID: 0}
       _characterImage: {fileID: 21300000, guid: 98e68c762e58add4daff93ba97c75a33,
         type: 3}
   - Room: {fileID: 598314157}
@@ -3624,6 +3624,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _master: {fileID: 0}
+  offsetForce: 0.5
 --- !u!114 &1589421821 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6847077623980773124, guid: 60693694989e5244ba68b9d71ee9bf9c,

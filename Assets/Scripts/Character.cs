@@ -139,7 +139,7 @@ public class Character : MonoBehaviour {
     Vector2 _lastMovement;
     bool _isWalking;
 
-    enum OffsetType {
+    public enum OffsetType {
         NONE,
         FORWARD,
         BACKWARD,
@@ -148,6 +148,7 @@ public class Character : MonoBehaviour {
     }
 
     OffsetType _offsetType;
+    public void SetOffset(OffsetType type) { _offsetType = type; Debug.Log(_offsetType); }
 
     public void BlockMovement(bool canMove)
     {
