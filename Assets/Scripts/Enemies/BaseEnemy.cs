@@ -36,7 +36,7 @@ public abstract class BaseEnemy : MonoBehaviour {
 
     }
 
-    public void Tick () {
+    public virtual void Tick () {
 
         if (Vector3.Distance(_player.transform.position, transform.position) <= _playerDetectionDistance) {
 
