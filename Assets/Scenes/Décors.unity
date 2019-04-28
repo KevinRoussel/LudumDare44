@@ -2934,7 +2934,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &655627436
 Transform:
   m_ObjectHideFlags: 0
@@ -6494,7 +6494,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1659981759
 Transform:
   m_ObjectHideFlags: 0
@@ -11200,6 +11200,75 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2687152241628289376}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2726723923384405318
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2726723924301655837, guid: 7acdb539f30a66b48937c47e5ad4ffd8,
+        type: 3}
+      propertyPath: m_Name
+      value: 'Model 02 - Chr_Dungeon_GoblinChief_01 '
+      objectReference: {fileID: 0}
+    - target: {fileID: 2726723924301230909, guid: 7acdb539f30a66b48937c47e5ad4ffd8,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2726723924301230909, guid: 7acdb539f30a66b48937c47e5ad4ffd8,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2726723924301230909, guid: 7acdb539f30a66b48937c47e5ad4ffd8,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2726723924301230909, guid: 7acdb539f30a66b48937c47e5ad4ffd8,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2726723924301230909, guid: 7acdb539f30a66b48937c47e5ad4ffd8,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2726723924301230909, guid: 7acdb539f30a66b48937c47e5ad4ffd8,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2726723924301230909, guid: 7acdb539f30a66b48937c47e5ad4ffd8,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2726723924301230909, guid: 7acdb539f30a66b48937c47e5ad4ffd8,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2726723924301230909, guid: 7acdb539f30a66b48937c47e5ad4ffd8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2726723924301230909, guid: 7acdb539f30a66b48937c47e5ad4ffd8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2726723924301230909, guid: 7acdb539f30a66b48937c47e5ad4ffd8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7acdb539f30a66b48937c47e5ad4ffd8, type: 3}
 --- !u!1001 &2809945217256756125
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14557,6 +14626,75 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 5151070993088772376}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5188936686556355672
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5188936686858094038, guid: 1ad7b50b5f3615b4e897ca06cb7d10f0,
+        type: 3}
+      propertyPath: m_Name
+      value: 'Model 01 - Chr_Dungeon_GoblinChief_01 '
+      objectReference: {fileID: 0}
+    - target: {fileID: 5188936686858197494, guid: 1ad7b50b5f3615b4e897ca06cb7d10f0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 5188936686858197494, guid: 1ad7b50b5f3615b4e897ca06cb7d10f0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5188936686858197494, guid: 1ad7b50b5f3615b4e897ca06cb7d10f0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5188936686858197494, guid: 1ad7b50b5f3615b4e897ca06cb7d10f0,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5188936686858197494, guid: 1ad7b50b5f3615b4e897ca06cb7d10f0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5188936686858197494, guid: 1ad7b50b5f3615b4e897ca06cb7d10f0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5188936686858197494, guid: 1ad7b50b5f3615b4e897ca06cb7d10f0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5188936686858197494, guid: 1ad7b50b5f3615b4e897ca06cb7d10f0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5188936686858197494, guid: 1ad7b50b5f3615b4e897ca06cb7d10f0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5188936686858197494, guid: 1ad7b50b5f3615b4e897ca06cb7d10f0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5188936686858197494, guid: 1ad7b50b5f3615b4e897ca06cb7d10f0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1ad7b50b5f3615b4e897ca06cb7d10f0, type: 3}
 --- !u!1001 &5282151411423569491
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14949,7 +15087,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1001 &5757097737820921549
 PrefabInstance:
   m_ObjectHideFlags: 0
