@@ -312,29 +312,35 @@ public class Character : MonoBehaviour {
     [Range(0, 10)]
     [SerializeField] float _rageFireRatePercentage;
 
+    public Action OnRageStart;
+    public Action OnRageEnd;
+    public Action OnRageReady;
+
     bool _canRage, _rageOn;
     Coroutine _rageCoroutine;
+
     public void StartRage () {
         if (_rageCoroutine==null) _rageCoroutine=StartCoroutine(Rage());
 
         IEnumerator Rage()
         {
+            OnRageStart?.Invoke();
             Attack *= _rageMultiplier;
             FireRate *= _rageFireRatePercentage;
 
             yield return new WaitForSeconds(_rageDuration);
+            OnRageEnd?.Invoke();
 
             Attack /= _rageMultiplier;
             FireRate /= _rageFireRatePercentage;
 
             yield return new WaitForSeconds(_rageCooldown);
 
+            OnRageReady?.Invoke();
             _rageCoroutine = null;
-
         }
     }
 
-    
     #endregion
 
     #region Shield
@@ -351,6 +357,7 @@ public class Character : MonoBehaviour {
     Coroutine _shieldRoutine;
     public event Action OnShieldOn;
     public event Action OnShieldOff;
+    public event Action OnShieldHit;
 
     public void StartShield () {
 
@@ -366,10 +373,10 @@ public class Character : MonoBehaviour {
             _shieldRoutine = null;
         }
     }
-    
     #endregion
 
     #region Flash
+
     [Header("Flash variables")]
     [Tooltip("Flash radius")]
     [SerializeField] float _flashRadius;
@@ -380,6 +387,8 @@ public class Character : MonoBehaviour {
     [Tooltip("Flash cooldown")]
     [SerializeField] float _flashCooldown;
 
+    public event Action OnFlashLauched;
+    public event Action OnFlashReady;
     Coroutine _flashRoutine;
 
     public void StartFlash () {
@@ -387,18 +396,21 @@ public class Character : MonoBehaviour {
 
         IEnumerator Flash()
         {
+            OnFlashLauched?.Invoke();
+
             foreach (Character e in transform.GetComponentInParent<Room>().Enemies)
                 if (Vector3.Distance(e.transform.position, transform.position) <= _flashRadius)
                     e.Enemy?.Flashed(_flashDuration);
 
             Debug.Log("Flash", this);
             yield return new WaitForSeconds(_flashCooldown);
+
+            OnFlashReady?.Invoke();
             Debug.Log("Flash re-enabled", this);
             _flashRoutine = null;
         }
     }
 
-    
     #endregion
 
 #if false
@@ -506,6 +518,7 @@ public class Character : MonoBehaviour {
         {
             if (_shield!=null && (_shield?.gameObject.activeInHierarchy??false))
             {
+                OnShieldHit?.Invoke();
                 _hitCoroutine = null;
                 yield break;
             }
