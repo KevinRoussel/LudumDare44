@@ -84,7 +84,6 @@ public class Character : MonoBehaviour
         MovementEventInitialization();
 
         // NavMesh Initialization
-        transform.localPosition = Vector3.zero;
         transform.position = NavMesh.SamplePosition(transform.position, out NavMeshHit hit, 500f, NavMesh.AllAreas) ?
             hit.position : transform.position;
 
