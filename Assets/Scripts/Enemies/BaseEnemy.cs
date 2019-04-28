@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class BaseEnemy : MonoBehaviour {
+public abstract class BaseEnemy : MonoBehaviour {
 
     protected GameObject _player;
 
@@ -11,10 +11,9 @@ public class BaseEnemy : MonoBehaviour {
     [SerializeField] protected float _playerDetectionDistance;
     protected bool _playerDetected;
 
-    [Tooltip("Start of patrol path")]
-    [SerializeField] protected Transform _patrolPathStart;
+    protected Vector3 _patrolPathStart, _patrolPathEnd;
     [Tooltip("End of patrol path")]
-    [SerializeField] protected Transform _patrolPathEnd;
+    [SerializeField] protected Transform _patrolPathEndPos;
     protected bool _movingToEnd = true;
 
     protected NavMeshAgent _navMeshAgent;    
@@ -22,6 +21,10 @@ public class BaseEnemy : MonoBehaviour {
     public virtual void Initialization () {
 
         _player = GameObject.FindGameObjectWithTag("Player");
+
+        _patrolPathStart = transform.position;
+        _patrolPathEnd = _patrolPathEndPos.transform.position;
+
         _navMeshAgent = GetComponent<NavMeshAgent>();
         SetDestination();        
 
@@ -31,8 +34,7 @@ public class BaseEnemy : MonoBehaviour {
 
         if (Vector3.Distance(_player.transform.position, transform.position) <= _playerDetectionDistance) {
 
-            if(!_playerDetected)
-                PlayerDetected();
+            PlayerDetected();
 
         }  else {
 
@@ -47,7 +49,13 @@ public class BaseEnemy : MonoBehaviour {
 
     protected void SetDestination () {
 
-        NavMesh.SamplePosition((_movingToEnd ? _patrolPathEnd : _patrolPathStart).position, out NavMeshHit hit, 1f, NavMesh.AllAreas);
+        SetNavDestination(_movingToEnd ? _patrolPathEnd : _patrolPathStart);
+
+    }
+
+    protected void SetNavDestination (Vector3 target) {
+
+        NavMesh.SamplePosition(target, out NavMeshHit hit, 10f, NavMesh.AllAreas);
         _navMeshAgent.SetDestination(hit.position);
 
     }
