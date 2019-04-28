@@ -80,6 +80,9 @@ public class Character : MonoBehaviour {
         Defense = _initialDefense;
         Speed = _initialSpeed;
 
+        // Setup Rage
+        RageCooldown = _rageCooldown;
+
         // Setup Shield
         OnShieldOn += () => { _shield.SetActive(true); };
         OnShieldOff += () => { _shield.SetActive(false); };
@@ -266,12 +269,14 @@ public class Character : MonoBehaviour {
             Vector3? result = GetRaycastResult(Input.mousePosition);
 
             if (result.HasValue) {
-                _shootingManager.Shoot(_shootingTransform, "Enemy", Vector3.zero, Attack, 0, _rageOn ? _rageProjectilesSpeedMultiplier : 1);
 
-                if (_shootConeAttack != 0f)
-                {
-                    _shootingManager.Shoot(_shootingTransform, "Enemy", Vector3.zero, Attack, _shootConeAttack, _rageOn ? _rageProjectilesSpeedMultiplier : 1);
-                    _shootingManager.Shoot(_shootingTransform, "Enemy", Vector3.zero, Attack, -_shootConeAttack, _rageOn ? _rageProjectilesSpeedMultiplier : 1);
+                Shoot(0);
+
+                if (_shootConeAttack != 0f) {
+
+                    Shoot(_shootConeAttack);
+                    Shoot(-_shootConeAttack);
+
                 }
 
                 OnAttack?.Invoke();
@@ -292,6 +297,15 @@ public class Character : MonoBehaviour {
         }
     }
 
+    void Shoot(float rightOffset) {
+
+        BaseProjectile projectile = _shootingManager.Shoot(_shootingTransform, "Enemy", Vector3.zero, Attack, rightOffset);
+
+        projectile.Speed *= _rageOn ? _rageProjectilesSpeedMultiplier : 1;
+
+        projectile.transform.localScale *= (Lvl3RageProjectilesSizeMultiplier != 0) ? Lvl3RageProjectilesSizeMultiplier : 1;
+
+    }
     #endregion
 
     #region Rage
@@ -301,6 +315,7 @@ public class Character : MonoBehaviour {
 
     [Tooltip("Cooldown of the rage")]
     [SerializeField] float _rageCooldown;
+    public float RageCooldown { get; set; }
 
     [Tooltip("Damage multiplier while rage is on")]
     [SerializeField] int _rageMultiplier;
@@ -313,7 +328,11 @@ public class Character : MonoBehaviour {
     [SerializeField] float _rageFireRatePercentage;
 
     bool _canRage, _rageOn;
+
+    public float Lvl3RageProjectilesSizeMultiplier { get; set; }
+
     Coroutine _rageCoroutine;
+
     public void StartRage () {
         if (_rageCoroutine==null) _rageCoroutine=StartCoroutine(Rage());
 
@@ -327,7 +346,7 @@ public class Character : MonoBehaviour {
             Attack /= _rageMultiplier;
             FireRate /= _rageFireRatePercentage;
 
-            yield return new WaitForSeconds(_rageCooldown);
+            yield return new WaitForSeconds(RageCooldown);
 
             _rageCoroutine = null;
 
@@ -516,7 +535,7 @@ public class Character : MonoBehaviour {
                 amount = 0;
             }
 
-            HP = Mathf.Max(0, HP - amount);
+            HP = Mathf.Max(0, HP - (((Lvl3RageProjectilesSizeMultiplier != 0) && _rageOn) ? 0 : amount));
 
             OnHit(instigator, amount);
 
