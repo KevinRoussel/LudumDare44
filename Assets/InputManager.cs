@@ -52,7 +52,7 @@ public class InputManager : MonoBehaviour
 
     public void ApplyInput(Character control)
     {
-        control.Move(_move + new Vector2(control.ComputeOffset().x, control.ComputeOffset().z) * offsetForce);
+        control.Move(_move + (control.OffsetActivated() ? new Vector2(control.ComputeOffset().x, control.ComputeOffset().z) * offsetForce : Vector2.zero));
         if (_shootUp.IsActivated()) control.StopAttack();
         if (_shootDown.IsActivated()) control.LaunchAttack();
         if (_skillDown) control.LaunchSkill();
