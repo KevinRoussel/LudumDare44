@@ -528,8 +528,11 @@ MonoBehaviour:
   _gameOverClose: {fileID: 7400000, guid: 67a98b6d983536a479474cca760b4b24, type: 2}
   _mapStructure:
   - Room: {fileID: 1393260260}
-    EnnemiesPrefab:
-    - {fileID: 9193721053286048403, guid: 3cdafc0cafad9224ba32f3d42ddbf1ad, type: 3}
+    EnablePacts: []
+  - Room: {fileID: 598314157}
+    EnablePacts: []
+  - Room: {fileID: 1285002713}
+    EnablePacts: []
   GameUI: {fileID: 1964078272}
 --- !u!1 &175881755
 GameObject:
@@ -1240,6 +1243,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 598314155}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &598314157 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1894202938121885924, guid: 645159ccefa24ab40876a3ba476a9964,
+    type: 3}
+  m_PrefabInstance: {fileID: 598314155}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac4fcfa81b6995d469eb7393b106d05f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &601074587
 GameObject:
   m_ObjectHideFlags: 0
@@ -2486,6 +2501,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1285002711}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1285002713 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1894202938121885924, guid: d241f2546afa63042a8e1a958c8c8d34,
+    type: 3}
+  m_PrefabInstance: {fileID: 1285002711}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac4fcfa81b6995d469eb7393b106d05f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1299585646
 GameObject:
   m_ObjectHideFlags: 0

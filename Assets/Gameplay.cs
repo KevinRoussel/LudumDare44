@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
 
+[Serializable]
 public class Pact
 {
 
@@ -18,7 +19,6 @@ public class Gameplay : MonoBehaviour
     public class LevelStructure
     {
         public Room Room;
-        public List<GameObject> EnnemiesPrefab;
         public List<Pact> EnablePacts;  // String will be the new Class representing Bonus
     }
 
@@ -58,6 +58,10 @@ public class Gameplay : MonoBehaviour
 
         foreach(var level in _mapStructure)
         {
+            // Pact
+            // yield return PactRoom();
+
+
             // Spawn Room and Character
             var currentRoom = level.Room;
 
@@ -73,16 +77,14 @@ public class Gameplay : MonoBehaviour
             currentCharacter.OnHPMaxUpdated += (newMax) => _hpSlider.maxValue = newMax;
             currentCharacter.OnTakeDamage += (newHP) =>  _hpSlider.value = newHP;
 
-            //currentCharacter.OnKeyCollected += _keyManager.AddKey();
 
             foreach (var enemy in currentRoom.Enemies) enemy.Initialization();
-
-            // Pact Room
-            // yield return PactRoom();
 
             // Main Game Loop
             while (currentCharacter.HP > 0)
             {
+                //currentCharacter.OnKeyCollected += _keyManager.AddKey();
+
                 _inputManager.ApplyInput(currentCharacter);
                 foreach (var el in currentRoom.Enemies) el.Enemy.Tick();
                 _shootingManager.UpdateBullets();
