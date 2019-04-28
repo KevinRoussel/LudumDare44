@@ -62,7 +62,8 @@ public abstract class BaseEnemy : MonoBehaviour {
     protected void SetNavDestination (Vector3 target) {
 
         NavMesh.SamplePosition(target, out NavMeshHit hit, 10f, NavMesh.AllAreas);
-        _navMeshAgent.SetDestination(hit.position);
+        if(_navMeshAgent.enabled)
+            _navMeshAgent.SetDestination(hit.position);
 
     }
 
