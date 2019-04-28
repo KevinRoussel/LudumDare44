@@ -18,6 +18,8 @@ public abstract class BaseEnemy : MonoBehaviour {
 
     protected NavMeshAgent _navMeshAgent;    
 
+    public int CanMove { get; set; }
+
     void Awake() {
         _navMeshAgent = GetComponent<NavMeshAgent>();
         _navMeshAgent.enabled = false;
@@ -85,6 +87,26 @@ public abstract class BaseEnemy : MonoBehaviour {
             if(c == null) c=StartCoroutine(Extension.WaitSecondsAnd(0.5f, () => { SetDestination(); c = null; }));
 
         }
+
+    }
+
+    public virtual void Flashed (float duration) {
+
+        SetCanMove(false);
+
+        StartCoroutine(Extension.WaitSecondsAnd(duration, () => {
+
+            SetCanMove(true);
+
+        }));
+
+    }
+
+    public void SetCanMove(bool can) {
+
+        CanMove += (can ? 1 : -1);
+
+        _navMeshAgent.isStopped = (CanMove < 0);
 
     }
 
