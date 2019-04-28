@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName ="UnderBreak/ConeAttack")]
-public class ConeAttack : Pact
+public class ConeAttack : Level2Pact
 {
     [SerializeField] float range = 1;
 

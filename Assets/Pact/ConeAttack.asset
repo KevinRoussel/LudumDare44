@@ -12,3 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc9ab081c23568d48b9baefc3b4b5aaf, type: 3}
   m_Name: ConeAttack
   m_EditorClassIdentifier: 
+  type: 1
+  range: 1
