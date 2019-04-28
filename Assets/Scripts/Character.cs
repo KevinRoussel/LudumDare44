@@ -483,6 +483,7 @@ public class Character : MonoBehaviour {
         {
             if (_shield.gameObject.activeInHierarchy)
             {
+                _hitCoroutine = null;
                 yield break;
             }
 
@@ -495,7 +496,6 @@ public class Character : MonoBehaviour {
             HP = Mathf.Max(0, HP - amount);
             print(HP);
             OnTakeDamage?.Invoke(HP);
-            //}
 
             if (HP <= 0)
             {
