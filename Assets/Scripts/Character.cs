@@ -431,6 +431,30 @@ public class Character : MonoBehaviour {
     bool _isInvincible = false;
     Coroutine _hitCoroutine;
 
+    Coroutine _blockHit;
+    public void LaunchAutoBlock(float cooldown)
+    {
+        if(_blockHit==null)
+        {
+            _blockHit = StartCoroutine(BlockHit(cooldown));
+            IEnumerator BlockHit(float coolDown)
+            {
+                while (true)
+                {
+                    _isInvincible = true;
+                    bool done = false;
+                    Action<int> a = (hp) => done = true;
+                    OnTakeDamage += a;
+                    yield return new WaitWhile(() => !done);
+
+                    OnTakeDamage -= a;
+                    _isInvincible = false;
+                    yield return new WaitForSeconds(coolDown);
+                }
+            }
+        }
+    }
+
     public void Hit(int amount)
     {
         if (_hitCoroutine != null)
@@ -447,9 +471,15 @@ public class Character : MonoBehaviour {
             }
             else
             {*/
-                HP = Mathf.Max(0, HP - amount);
-                print(HP);
-                OnTakeDamage?.Invoke(HP);
+            if (_isInvincible)
+            {
+                Debug.Log("Blocked");
+                amount = 0;
+            }
+
+            HP = Mathf.Max(0, HP - amount);
+            print(HP);
+            OnTakeDamage?.Invoke(HP);
             //}
 
             if (HP <= 0)
