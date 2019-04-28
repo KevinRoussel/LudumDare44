@@ -41,7 +41,8 @@ public class ChargingMeleeEnemy : BaseEnemy {
 
             _navMeshAgent.speed = _chargeSpeed;
 
-            _navMeshAgent.SetDestination(_player.transform.position);
+            if (_navMeshAgent.enabled)
+                _navMeshAgent.SetDestination(_player.transform.position);
 
         }
 
