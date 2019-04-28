@@ -139,7 +139,18 @@ public class Character : MonoBehaviour {
     Vector2 _lastMovement;
     bool _isWalking;
 
-    public void BlockMovement (bool canMove) {
+    enum OffsetType {
+        NONE,
+        FORWARD,
+        BACKWARD,
+        RIGHT,
+        LEFT
+    }
+
+    OffsetType _offsetType;
+
+    public void BlockMovement(bool canMove)
+    {
         _canMove = canMove;
     }
 
@@ -198,7 +209,22 @@ public class Character : MonoBehaviour {
         _lastMovement = direction;
     }
 
-    public void LookAt (Vector2 target) {
+    public Vector3 ComputeOffset() {
+        switch (_offsetType) {
+            case OffsetType.FORWARD:
+                return transform.forward;
+            case OffsetType.BACKWARD:
+                return -transform.forward;
+            case OffsetType.LEFT:
+                return -transform.right;
+            case OffsetType.RIGHT:
+                return transform.right;
+            default:
+                return Vector3.zero;
+        }
+    }
+
+    public void LookAt(Vector2 target) {
         Vector3? result = GetRaycastResult(target);
 
         if (result.HasValue) {

@@ -18,6 +18,9 @@ public class InputManager : MonoBehaviour
     Vector2 _offset;
     public void SetOffset(Vector2 v) => _offset = v;
 
+    [Range(0f, 1f)]
+    [SerializeField] float offsetForce = 0.5f;
+
     private void Start()
     {
         _shootDown = new Trigger();
@@ -49,7 +52,7 @@ public class InputManager : MonoBehaviour
 
     public void ApplyInput(Character control)
     {
-        control.Move(_move);
+        control.Move(_move + new Vector2(control.ComputeOffset().x, control.ComputeOffset().z) * offsetForce);
         if (_shootUp.IsActivated()) control.StopAttack();
         if (_shootDown.IsActivated()) control.LaunchAttack();
         if (_skillDown) control.LaunchSkill();
