@@ -23,14 +23,11 @@ public class Character : MonoBehaviour {
     public event Action<Vector3> OnStartDodge;
     public event Action OnEndDodge;
 
-
     Trigger _attackEnd = new Trigger();
     Trigger _hitEnd = new Trigger();
     Trigger _deathEnd = new Trigger();
     void AcceptAttackEnd () => _attackEnd.Activate();
     internal void AcceptHitEnd () => _hitEnd.Activate();
-
-
 
     internal void AcceptDeathEnd () => _deathEnd.Activate();
     #endregion
@@ -38,6 +35,8 @@ public class Character : MonoBehaviour {
     [SerializeField] Collider _hitZone;
     // [SerializeField] Transform _shieldRoot = null;
     [SerializeField] protected NavMeshAgent _navMeshAgent;
+    public NavMeshAgent NavMeshAgent => _navMeshAgent;
+
     [SerializeField] BaseEnemy _enemyComp;
 
     protected bool _canMove;
@@ -65,7 +64,7 @@ public class Character : MonoBehaviour {
 
     public int HP { get; private set; }
     public int Attack { get; private set; }
-    public float FireRate { get; private set; }
+    public float FireRate { get; set; }
     public int Defense { get; private set; }
     public int Speed { get; private set; }
     // public int Shield { get; private set; }
@@ -468,7 +467,7 @@ public class Character : MonoBehaviour {
         }
     }
 
-    public void Hit(int amount)
+    public void Hit(Character instigator, int amount)
     {
         if (_hitCoroutine != null)
         {
@@ -491,6 +490,9 @@ public class Character : MonoBehaviour {
             }
 
             HP = Mathf.Max(0, HP - amount);
+
+            OnHit(instigator, amount);
+
             print(HP);
             OnTakeDamage?.Invoke(HP);
 
@@ -516,6 +518,8 @@ public class Character : MonoBehaviour {
 
     }
 
+    public delegate void OnHitDelegate (Character instigator, int amount);
+    public OnHitDelegate OnHit { get; set; }
     #endregion
 
 }

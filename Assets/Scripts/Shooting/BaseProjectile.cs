@@ -19,6 +19,8 @@ public class BaseProjectile : MonoBehaviour {
 
     public string TargetTag { get; set; }
 
+    public Character Instigator { get; set; }
+
     void OnEnable () {
 
         StartCoroutine("LifetimeDeactivation");
@@ -36,7 +38,7 @@ public class BaseProjectile : MonoBehaviour {
         if (other.CompareTag(TargetTag))
         {
             gameObject.SetActive(false);
-            other.GetComponent<Character>()?.Hit(_power);
+            other.GetComponent<Character>()?.Hit(Instigator, _power);
         }
 
     }
