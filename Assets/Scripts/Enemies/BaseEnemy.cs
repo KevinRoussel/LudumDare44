@@ -30,10 +30,8 @@ public abstract class BaseEnemy : MonoBehaviour {
         _patrolPathStart = transform.position;
         _patrolPathEnd = _patrolPathEndPos.transform.position;
 
-
         _navMeshAgent.enabled = true;
         SetDestination();        
-
     }
 
     public virtual void Tick () {
@@ -78,12 +76,13 @@ public abstract class BaseEnemy : MonoBehaviour {
 
     }
 
+    Coroutine c;
     protected virtual void Movement () {
 
         if (_navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance) {
 
             _movingToEnd ^= true;
-            SetDestination();
+            if(c == null) c=StartCoroutine(Extension.WaitSecondsAnd(0.5f, () => { SetDestination(); c = null; }));
 
         }
 
