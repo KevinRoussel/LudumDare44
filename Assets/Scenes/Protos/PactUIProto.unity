@@ -270,9 +270,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6847077624395522790}
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 6847077624395522791}
+        m_MethodName: Toggle
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -459,7 +459,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Activate
+  m_Text: Toggle
 --- !u!222 &536285374
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1517,7 +1517,7 @@ PrefabInstance:
     - target: {fileID: 6847077622757608722, guid: 60693694989e5244ba68b9d71ee9bf9c,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6847077622757608733, guid: 60693694989e5244ba68b9d71ee9bf9c,
         type: 3}
@@ -1636,19 +1636,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60693694989e5244ba68b9d71ee9bf9c, type: 3}
---- !u!1 &6847077624395522790 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6847077622757608722, guid: 60693694989e5244ba68b9d71ee9bf9c,
-    type: 3}
-  m_PrefabInstance: {fileID: 6847077624395522789}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &6847077624395522791 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6847077622757608723, guid: 60693694989e5244ba68b9d71ee9bf9c,
     type: 3}
   m_PrefabInstance: {fileID: 6847077624395522789}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6847077624395522790}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 72b4b083e10616d338d471766fe1accb, type: 3}

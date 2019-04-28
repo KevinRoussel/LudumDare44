@@ -92,6 +92,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: {fileID: 6808254550302672357}
   dialogText: {fileID: 6808254551921276590}
+  typeWriter: {fileID: 9019897000644345210}
 --- !u!1 &6808254550302672359
 GameObject:
   m_ObjectHideFlags: 0
@@ -273,6 +274,7 @@ GameObject:
   - component: {fileID: 6808254551921276591}
   - component: {fileID: 6808254551921276589}
   - component: {fileID: 6808254551921276590}
+  - component: {fileID: 9019897000644345210}
   m_Layer: 5
   m_Name: DialogText
   m_TagString: Untagged
@@ -345,3 +347,16 @@ MonoBehaviour:
     HUMANITATIS MULTIFORMIBUS OFFICIIS RETENTABANT.
 
 '
+--- !u!114 &9019897000644345210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6808254551921276584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6062085504b121c1818e74e786b598a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 100
