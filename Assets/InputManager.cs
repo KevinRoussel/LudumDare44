@@ -23,17 +23,24 @@ public class InputManager : MonoBehaviour
             while (true)
             {
                 _move = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-                if (Input.GetMouseButtonDown(0)) _shootDown.Activate();
                 if (Input.GetMouseButtonUp(0)) _shootUp.Activate();
+                if (Input.GetMouseButtonDown(0)) _shootDown.Activate();
                 yield return null;
+                ResetInput();
             }
         }
+    }
+    public void ResetInput()
+    {
+        _shootUp.IsActivated();
+        _shootDown.IsActivated();
+        _move = Vector2.zero;
     }
 
     public void ApplyInput(Character control)
     {
         control.Move(_move);
         if (_shootUp.IsActivated()) control.StopAttack();
-        if (_shootDown.IsActivated()) control.LaunchAttack(Input.mousePosition);
+        if (_shootDown.IsActivated()) control.LaunchAttack();
     }
 }

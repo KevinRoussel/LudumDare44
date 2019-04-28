@@ -177,26 +177,35 @@ public class Character : MonoBehaviour
 
     bool _canAttack = true;
 
-    public bool LaunchAttack(Vector3 target)
+    bool _isAttacking = false;
+
+    public bool LaunchAttack()
     {
         if (!_canAttack ) return false;
 
-        // Fire
-        Ray ray = Camera.main.ScreenPointToRay(target);
-        RaycastHit hit;
-
-        if (Physics.Raycast(ray, out hit) && !hit.collider.CompareTag("Player")) {
-            _shootingManager.Shoot(transform, Vector3.forward, Vector3.zero, 30);
-            return true;
-        } else {
-            return false;
-        }
+        _isAttacking = true;
+        StartCoroutine(CallAttack());
+        return true;
     }
 
     internal void StopAttack()
     {
 
         OnStopAttack?.Invoke();
+        _isAttacking = false;
+    }
+
+    IEnumerator CallAttack() {
+        while (_isAttacking) {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit) && !hit.collider.CompareTag("Player")) {
+                _shootingManager.Shoot(transform, Vector3.forward, Vector3.zero, 30);
+            } 
+
+            yield return new WaitForSeconds(0.1f);
+        }
     }
 
     #endregion
