@@ -8,8 +8,7 @@ using UnityEngine.Assertions;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-public class Character : MonoBehaviour
-{
+public class Character : MonoBehaviour {
     #region Events
     public event Action OnReady;
     public event Action StartWalking;
@@ -28,12 +27,12 @@ public class Character : MonoBehaviour
     Trigger _attackEnd = new Trigger();
     Trigger _hitEnd = new Trigger();
     Trigger _deathEnd = new Trigger();
-    void AcceptAttackEnd() => _attackEnd.Activate();
-    internal void AcceptHitEnd() => _hitEnd.Activate();
+    void AcceptAttackEnd () => _attackEnd.Activate();
+    internal void AcceptHitEnd () => _hitEnd.Activate();
 
-    
 
-    internal void AcceptDeathEnd() => _deathEnd.Activate();
+
+    internal void AcceptDeathEnd () => _deathEnd.Activate();
     #endregion
 
     [SerializeField] Collider _hitZone;
@@ -74,8 +73,7 @@ public class Character : MonoBehaviour
     public event Action OnKeyCollected;
     public event Action<int> OnHPMaxUpdated;
 
-    internal Character Initialization()
-    {
+    internal Character Initialization () {
         // Parameters validation & assignation
         HP = _initialHP;
         Attack = _initialAttack;
@@ -116,40 +114,33 @@ public class Character : MonoBehaviour
     Vector2 _lastMovement;
     bool _isWalking;
 
-    public void BlockMovement(bool canMove)
-    {
+    public void BlockMovement (bool canMove) {
         _canMove = canMove;
     }
 
-    void MovementEventInitialization()
-    {
+    void MovementEventInitialization () {
         OnAttack += () => { EndWalking?.Invoke(); };
 
-        StartWalking += () =>
-        {
+        StartWalking += () => {
             _isWalking = true;
             _navMeshAgent.isStopped = false;
         };
 
-        EndWalking += () =>
-        {
+        EndWalking += () => {
             _isWalking = false;
             _navMeshAgent.isStopped = true;
             _lastMovement = Vector2.zero;
         };
 
-        OnShieldOn += () =>
-        {
+        OnShieldOn += () => {
             if (_isWalking) EndWalking?.Invoke();
         };
     }
 
-    public void Move(Character target) => Move(new Vector2(target.Position.x - Position.x, target.Position.z - Position.z));
+    public void Move (Character target) => Move(new Vector2(target.Position.x - Position.x, target.Position.z - Position.z));
 
-    public void Move(Vector2 direction)
-    {
-        if ( HP<=0 )
-        {
+    public void Move (Vector2 direction) {
+        if (HP <= 0) {
             //Debug.Log("Can't move => Already dead", this);
             return;
         }
@@ -162,18 +153,15 @@ public class Character : MonoBehaviour
         // if (IsShieldActivated) return;
 
         // Finished Movement 
-        if (direction.magnitude < 0.01f)
-        {
-            if (_lastMovement != Vector2.zero)
-            {
+        if (direction.magnitude < 0.01f) {
+            if (_lastMovement != Vector2.zero) {
                 EndWalking?.Invoke();
             }
             return;
         }
 
         // Start walking
-        if (direction.magnitude > 0.01f && _lastMovement == Vector2.zero)
-        {
+        if (direction.magnitude > 0.01f && _lastMovement == Vector2.zero) {
             StartWalking?.Invoke();
         }
 
@@ -185,7 +173,7 @@ public class Character : MonoBehaviour
         _lastMovement = direction;
     }
 
-    public void LookAt(Vector2 target) {
+    public void LookAt (Vector2 target) {
         Vector3? result = GetRaycastResult(target);
 
         if (result.HasValue) {
@@ -202,17 +190,15 @@ public class Character : MonoBehaviour
 
     bool _isAttacking = false;
 
-    public bool LaunchAttack()
-    {
-        if (!_canAttack ) return false;
+    public bool LaunchAttack () {
+        if (!_canAttack) return false;
 
         _isAttacking = true;
         StartCoroutine(CallAttack());
         return true;
     }
 
-    internal void StopAttack()
-    {
+    internal void StopAttack () {
 
         OnStopAttack?.Invoke();
         _isAttacking = false;
@@ -221,7 +207,7 @@ public class Character : MonoBehaviour
     float _shootConeAttack=0f;
     public void ActivateConeAttack(float range) => _shootConeAttack = range;
 
-    IEnumerator CallAttack() {
+    IEnumerator CallAttack () {
 
         while (_isAttacking) {
 
@@ -243,7 +229,7 @@ public class Character : MonoBehaviour
         }
     }
 
-    Vector3? GetRaycastResult(Vector2 target) {
+    Vector3? GetRaycastResult (Vector2 target) {
         Ray ray = Camera.main.ScreenPointToRay(target);
         RaycastHit hit;
 
@@ -321,7 +307,8 @@ public class Character : MonoBehaviour
 
     public void StartShield () {
 
-        StartCoroutine("Shield");
+        if (_canShield)
+            StartCoroutine("Shield");
     }
 
     IEnumerator Shield () {
@@ -335,6 +322,41 @@ public class Character : MonoBehaviour
         yield return new WaitForSeconds(_shieldCooldown);
 
         _canShield = true;
+
+    }
+    #endregion
+
+    #region Flash
+    [Header("Flash variables")]
+    [Tooltip("Flash radius")]
+    [SerializeField] float _flashRadius;
+
+    [Tooltip("Duration of the flash")]
+    [SerializeField] float _flashDuration;
+
+    [Tooltip("Flash cooldown")]
+    [SerializeField] float _flashCooldown;
+
+    bool _canFlash;
+
+    public void StartFlash () {
+
+        if (_canFlash)
+            StartCoroutine("Flash");
+
+    }
+
+    IEnumerator Flash () {
+
+        _canFlash = false;
+
+        foreach (Character e in transform.parent.parent.GetComponent<Room>().Enemies)
+            if(Vector3.Distance(e.transform.position, transform.position) <= _flashRadius)
+                e.Enemy?.Flashed(_flashDuration);
+
+        yield return new WaitForSeconds(_flashCooldown);
+
+        _canFlash = true;
 
     }
     #endregion

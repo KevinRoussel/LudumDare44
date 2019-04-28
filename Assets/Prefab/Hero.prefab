@@ -154,7 +154,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4450923950018414682
 Transform:
   m_ObjectHideFlags: 0
@@ -308,6 +308,9 @@ MonoBehaviour:
   _shield: {fileID: 4450923950018414683}
   _shieldDuration: 2
   _shieldCooldown: 5
+  _flashRadius: 10
+  _flashDuration: 2
+  _flashCooldown: 5
 --- !u!65 &5837055499611638790
 BoxCollider:
   m_ObjectHideFlags: 0
