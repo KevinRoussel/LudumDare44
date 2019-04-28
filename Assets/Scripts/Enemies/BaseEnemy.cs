@@ -18,6 +18,11 @@ public abstract class BaseEnemy : MonoBehaviour {
 
     protected NavMeshAgent _navMeshAgent;    
 
+    void Awake() {
+        _navMeshAgent = GetComponent<NavMeshAgent>();
+        _navMeshAgent.enabled = false;
+    }
+
     public virtual void Initialization () {
 
         _player = GameObject.FindGameObjectWithTag("Player");
@@ -25,7 +30,8 @@ public abstract class BaseEnemy : MonoBehaviour {
         _patrolPathStart = transform.position;
         _patrolPathEnd = _patrolPathEndPos.transform.position;
 
-        _navMeshAgent = GetComponent<NavMeshAgent>();
+
+        _navMeshAgent.enabled = true;
         SetDestination();        
 
     }
