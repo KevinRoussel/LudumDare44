@@ -98,6 +98,8 @@ public class Character : MonoBehaviour {
 
         _shootingManager = GameObject.Find("ShootingManager").GetComponent<ShootingManager>();
 
+        StartCoroutine(UpdateOffsetFactor());
+
         return this;
     }
 
@@ -148,7 +150,10 @@ public class Character : MonoBehaviour {
     }
 
     OffsetType _offsetType;
-    public void SetOffset(OffsetType type) { _offsetType = type; Debug.Log(_offsetType); }
+    public void SetOffset(OffsetType type) => _offsetType = type;
+
+    bool _offsetActivated = false;
+    public bool OffsetActivated() => _offsetActivated;
 
     public void BlockMovement(bool canMove)
     {
@@ -172,6 +177,20 @@ public class Character : MonoBehaviour {
         OnShieldOn += () => {
             if (_isWalking) EndWalking?.Invoke();
         };
+    }
+
+    public IEnumerator UpdateOffsetFactor() {
+        while (true) {
+            float waitTime = 0f;
+            if (_offsetActivated) {
+                _offsetActivated = false;
+                waitTime = UnityEngine.Random.Range(2, 5);
+            } else {
+                _offsetActivated = true;
+                waitTime = UnityEngine.Random.Range(1, 3);
+            }
+            yield return new WaitForSeconds(waitTime);
+        }
     }
 
     public void Move (Character target) => Move(new Vector2(target.Position.x - Position.x, target.Position.z - Position.z));
