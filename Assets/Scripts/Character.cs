@@ -408,7 +408,7 @@ public class Character : MonoBehaviour {
     [Tooltip("Flash cooldown")]
     [SerializeField] float _flashCooldown;
 
-    bool _canFlash = true;
+    bool _canFlash;
 
     public void StartFlash () {
 
