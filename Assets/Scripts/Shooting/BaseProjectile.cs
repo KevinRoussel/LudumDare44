@@ -9,7 +9,7 @@ public class BaseProjectile : MonoBehaviour {
     [SerializeField] float _speed;
     [SerializeField] int _power;
 
-    public float Speed => _speed;
+    public float Speed { get => _speed; set => _speed = value; }
     public int Power { get => _power; set => _power = value; }
 
     public string TargetTag { get; set; }
@@ -19,7 +19,7 @@ public class BaseProjectile : MonoBehaviour {
         if (other.CompareTag(TargetTag))
         {
             gameObject.SetActive(false);
-            other.GetComponent<Character>().Hit(_power);
+            other.GetComponent<Character>()?.Hit(_power);
         }
 
     }

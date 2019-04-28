@@ -33,7 +33,7 @@ public class ShootingManager : MonoBehaviour {
         }        
     }
 
-    public void Shoot (Transform shootingTransform, string targetTag, Vector2 spreadRange, int bulletPower) {
+    public void Shoot (Transform shootingTransform, string targetTag, Vector2 spreadRange, int bulletPower, float speedBoost = 1) {
 
         BaseProjectile projectile = null;
 
@@ -53,6 +53,7 @@ public class ShootingManager : MonoBehaviour {
             projectile.Power = bulletPower;
             projectile.transform.SetPositionAndRotation(shootingTransform.position, Quaternion.LookRotation(spreadDir));
             projectile.TargetTag = targetTag;
+            projectile.Speed *= speedBoost;
             projectile.gameObject.SetActive(true);
         }
     }
