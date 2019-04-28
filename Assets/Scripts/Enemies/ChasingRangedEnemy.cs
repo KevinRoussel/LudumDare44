@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,6 +6,7 @@ public class ChasingRangedEnemy : BaseRangedEnemy {
 
     [Tooltip("Chasing radiu")]
     [SerializeField] protected float _chasingRadius;
+    bool _canChase;
 
     void OnValidate () {
 
@@ -17,20 +18,27 @@ public class ChasingRangedEnemy : BaseRangedEnemy {
 
         base.PlayerLost();
 
+        _canChase = true;
+
         SetChasingDestination();
 
     }
 
     bool SetChasingDestination () {
 
-        if (Vector3.Distance(_player.transform.position, transform.position) <= _chasingRadius) {
+        if (_canChase && (Vector3.Distance(_player.transform.position, transform.position) <= _chasingRadius)) {
 
             SetNavDestination(_player.transform.position + ((transform.position - _player.transform.position).normalized * _playerDetectionDistance * .8f));
 
             return true;
 
-        } else
+        } else {
+
+            _canChase = false;
+
             return false;
+
+        }
 
     }
 

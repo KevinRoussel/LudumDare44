@@ -41,7 +41,8 @@ public class ChargingMeleeEnemy : BaseEnemy {
 
             _navMeshAgent.speed = _chargeSpeed;
 
-            _navMeshAgent.SetDestination(_player.transform.position);
+            if (_navMeshAgent.enabled)
+                _navMeshAgent.SetDestination(_player.transform.position);
 
         }
 
@@ -52,6 +53,14 @@ public class ChargingMeleeEnemy : BaseEnemy {
             StartCoroutine("Attack");
 
         }
+
+    }
+
+    protected override void PlayerLost () {
+
+        _navMeshAgent.speed = _baseSpeed;
+
+        base.PlayerLost();
 
     }
 
