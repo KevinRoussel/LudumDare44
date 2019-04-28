@@ -304,7 +304,7 @@ MonoBehaviour:
   _rageCooldown: 5
   _rageMultiplier: 2
   _rageProjectilesSpeedMultiplier: 1.5
-  _rageFireRatePercentage: 0.5
+  _rageFireRatePercentage: 2
   _shield: {fileID: 4450923950018414683}
   _shieldDuration: 2
   _shieldCooldown: 5

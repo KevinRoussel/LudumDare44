@@ -542,17 +542,17 @@ MonoBehaviour:
     Pacts:
     - CharacterName: Rouge
       DialogText: COUCOU JE SUIS ROUGE
-      PactToApply: {fileID: 0}
+      PactToApply: {fileID: 11400000, guid: f85f1eddcbd483a46a6ae24a96546165, type: 2}
       _characterImage: {fileID: 21300000, guid: 22edbb4121b300d429930022df0ca1a5,
         type: 3}
     - CharacterName: Vert
       DialogText: COUCOU JE SUIS VERT
-      PactToApply: {fileID: 0}
+      PactToApply: {fileID: 11400000, guid: b67fb703baffbe445a559112a9db247b, type: 2}
       _characterImage: {fileID: 21300000, guid: eba779deb50af7e40b058862ffebdb96,
         type: 3}
     - CharacterName: Bleu
       DialogText: COUCOU JE SUIS BLEU
-      PactToApply: {fileID: 0}
+      PactToApply: {fileID: 11400000, guid: 9c67aa67e5011c84484a5a11e1a25635, type: 2}
       _characterImage: {fileID: 21300000, guid: 98e68c762e58add4daff93ba97c75a33,
         type: 3}
   - Room: {fileID: 598314157}

@@ -12,6 +12,7 @@ public class InputManager : MonoBehaviour
     Trigger _shootDown;
     Vector2 _move;
     Vector2 _mousePosition;
+    bool _skillDown = false;
     //Trigger _mouse
 
     Vector2 _offset;
@@ -32,6 +33,8 @@ public class InputManager : MonoBehaviour
                 if (Input.GetMouseButtonUp(0)) _shootUp.Activate();
                 if (Input.GetMouseButtonDown(0)) _shootDown.Activate();
 
+                if (Input.GetMouseButtonDown(1)) _skillDown = true;
+                if (Input.GetMouseButtonUp(1)) _skillDown = false;
                 yield return null;
                 ResetInput();
             }
@@ -49,7 +52,7 @@ public class InputManager : MonoBehaviour
         control.Move(_move);
         if (_shootUp.IsActivated()) control.StopAttack();
         if (_shootDown.IsActivated()) control.LaunchAttack();
-
+        if (_skillDown) control.LaunchSkill();
         control.LookAt(_mousePosition);
     }
 }

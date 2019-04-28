@@ -109,6 +109,39 @@ public class Character : MonoBehaviour {
         return this;
     }
 
+    #region Skill
+
+    public enum SkillChoice { Null, Rage, Shield, Flash}
+    SkillChoice _selectedSkill = SkillChoice.Null;
+    public void SetSkill(SkillChoice choice)
+    {
+        _selectedSkill = choice;
+    }
+
+    public void LaunchSkill()
+    {
+        switch (_selectedSkill)
+        {
+            case SkillChoice.Rage:
+                Debug.Log("Launch Rage");
+                Rage();
+                break;
+            case SkillChoice.Shield:
+                Debug.Log("Launch Shield");
+                Shield();
+                break;
+            case SkillChoice.Flash:
+                Debug.Log("Launch Flash");
+                Flash();
+                break;
+            case SkillChoice.Null:
+            default:
+                break;
+        }
+    }
+
+    #endregion
+
     #region Move
 
     Vector2 _lastMovement;
@@ -257,35 +290,28 @@ public class Character : MonoBehaviour {
     [SerializeField] float _rageProjectilesSpeedMultiplier;
 
     [Tooltip("Percentage of the base fire rate while rage is on")]
-    [Range(0, 1)]
+    [Range(0, 10)]
     [SerializeField] float _rageFireRatePercentage;
 
     bool _canRage, _rageOn;
-
+    Coroutine _rageCoroutine;
     public void StartRage () {
-        if (!_canRage) StartCoroutine("Rage");
+        if (_rageCoroutine==null ) _rageCoroutine=StartCoroutine(Rage());
     }
 
     IEnumerator Rage () {
 
-        _canRage = false;
-        _rageOn = true;
-
         Attack *= _rageMultiplier;
-
         FireRate *= _rageFireRatePercentage;
 
         yield return new WaitForSeconds(_rageDuration);
 
-        _rageOn = false;
-
         Attack /= _rageMultiplier;
-
         FireRate /= _rageFireRatePercentage;
 
         yield return new WaitForSeconds(_rageCooldown);
 
-        _canRage = true;
+        _rageCoroutine = null;
 
     }
     #endregion
@@ -360,7 +386,6 @@ public class Character : MonoBehaviour {
 
     }
     #endregion
-
 
 #if false
     #region Dodge

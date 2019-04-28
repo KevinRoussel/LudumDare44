@@ -147,9 +147,9 @@ public class Gameplay : MonoBehaviour
 
             foreach(var pact in selectedPacts)
             {
-                //pact.Apply(currentCharacter);
-                //pact.Apply(currentRoom);
-                //pact.Apply(_gameUIControl);
+                pact.Apply(currentCharacter);
+                pact.Apply(currentRoom);
+                pact.Apply(_gameUIControl);
             }
 
             GameUI.SetActive(true);
