@@ -249,11 +249,17 @@ MonoBehaviour:
   _recoverTime: 1
   _initialHP: 100
   _initialAttack: 10
+  _initialFireRate: 0.3
   _initialDefense: 5
   _initialSpeed: 1
   _initialShield: 30
   _shootingSpreadRange: {x: 0, y: 0}
   _shootingTransform: {fileID: 4490391576631688708}
+  _rageDuration: 2
+  _rageCooldown: 5
+  _rageMultiplier: 2
+  _rageProjectilesSpeedMultiplier: 1.5
+  _rageFireRatePercentage: 0.5
 --- !u!65 &5837055499611638790
 BoxCollider:
   m_ObjectHideFlags: 0

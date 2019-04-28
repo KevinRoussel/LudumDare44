@@ -51,6 +51,7 @@ public class Character : MonoBehaviour
     [Header("Stat")]
     [SerializeField] int _initialHP;
     [SerializeField] int _initialAttack;
+    [SerializeField] float _initialFireRate;
     [SerializeField] int _initialDefense;
     [SerializeField] int _initialSpeed;
     [SerializeField] int _initialShield;
@@ -65,6 +66,7 @@ public class Character : MonoBehaviour
 
     public int HP { get; private set; }
     public int Attack { get; private set; }
+    public float FireRate { get; private set; }
     public int Defense { get; private set; }
     public int Speed { get; private set; }
     public int Shield { get; private set; }
@@ -209,11 +211,11 @@ public class Character : MonoBehaviour
             Vector3? result = GetRaycastResult(Input.mousePosition);
 
             if (result.HasValue) {
-                _shootingManager.Shoot(_shootingTransform, "Enemy", Vector3.zero, 30);
+                _shootingManager.Shoot(_shootingTransform, "Enemy", Vector3.zero, Attack, _rageOn ? _rageProjectilesSpeedMultiplier : 1);
                 OnAttack?.Invoke();
             }
 
-            yield return new WaitForSeconds(0.3f);
+            yield return new WaitForSeconds(FireRate);
         }
     }
 
@@ -228,6 +230,59 @@ public class Character : MonoBehaviour
         }
     }
 
+    #endregion
+
+    #region Rage
+    [Header("Rage variables")]
+    [Tooltip("Duration of the rage")]
+    [SerializeField] float _rageDuration;
+
+    [Tooltip("Cooldown of the rage")]
+    [SerializeField] float _rageCooldown;
+
+    [Tooltip("Damage multiplier while rage is on")]
+    [SerializeField] int _rageMultiplier;
+
+    [Tooltip("Speed multiplierfor the projectiles while rage is on")]
+    [SerializeField] float _rageProjectilesSpeedMultiplier;
+
+    [Tooltip("Percentage of the base fire rate while rage is on")]
+    [Range(0, 1)]
+    [SerializeField] float _rageFireRatePercentage;
+
+    bool _canRage = true;
+    bool _rageOn;
+
+    public void StartRage () {
+
+        if (!_canRage)
+            StartCoroutine("Rage");
+
+    }
+
+    IEnumerator Rage () {
+
+        _canRage = false;
+
+        _rageOn = true;
+
+        Attack *= _rageMultiplier;
+
+        FireRate *= _rageFireRatePercentage;
+
+        yield return new WaitForSeconds(_rageDuration);
+
+        _rageOn = false;
+
+        Attack /= _rageMultiplier;
+
+        FireRate /= _rageFireRatePercentage;
+
+        yield return new WaitForSeconds(_rageCooldown);
+
+        _canRage = true;
+
+    }
     #endregion
 
     #region Shield
