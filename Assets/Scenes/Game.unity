@@ -516,6 +516,7 @@ MonoBehaviour:
   _inputManager: {fileID: 1520265996}
   _shootingManager: {fileID: 4488171472196091304}
   _keyManager: {fileID: 0}
+  _gameUIControl: {fileID: 1964078277}
   _roomRoot: {fileID: 175881756}
   _playerPrefab: {fileID: 4450923950082764345, guid: 92b348f4ea8376e4ab2f4e5ec381ac17,
     type: 3}
@@ -541,14 +542,17 @@ MonoBehaviour:
     Pacts:
     - CharacterName: Rouge
       DialogText: COUCOU JE SUIS ROUGE
+      PactToApply: {fileID: 0}
       _characterImage: {fileID: 21300000, guid: 22edbb4121b300d429930022df0ca1a5,
         type: 3}
     - CharacterName: Vert
       DialogText: COUCOU JE SUIS VERT
+      PactToApply: {fileID: 0}
       _characterImage: {fileID: 21300000, guid: eba779deb50af7e40b058862ffebdb96,
         type: 3}
     - CharacterName: Bleu
       DialogText: COUCOU JE SUIS BLEU
+      PactToApply: {fileID: 0}
       _characterImage: {fileID: 21300000, guid: 98e68c762e58add4daff93ba97c75a33,
         type: 3}
   - Room: {fileID: 598314157}
@@ -1559,7 +1563,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4924,13 +4928,14 @@ GameObject:
   - component: {fileID: 1964078276}
   - component: {fileID: 1964078275}
   - component: {fileID: 1964078274}
+  - component: {fileID: 1964078277}
   m_Layer: 0
   m_Name: Game
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1964078273
 Transform:
   m_ObjectHideFlags: 0
@@ -4986,6 +4991,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bda8fb0adad15184dbbefd572b439d2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1964078277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1964078272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29f72c1dc3a916243a91b115d3109b3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2064897368

@@ -5,12 +5,6 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
 
-[Serializable]
-public class Pact
-{
-
-}
-
 public class Gameplay : MonoBehaviour
 {
     #region InternalTypes
@@ -37,6 +31,7 @@ public class Gameplay : MonoBehaviour
     [SerializeField] InputManager _inputManager;
     [SerializeField] ShootingManager _shootingManager;
     [SerializeField] KeysManager _keyManager;
+    [SerializeField] GameUIControl _gameUIControl;
 
     [Header("Configuration")]
     [SerializeField] Transform _roomRoot;
@@ -84,12 +79,12 @@ public class Gameplay : MonoBehaviour
     public IEnumerator RunGame()
     {
         _gameUI.gameObject.SetActive(true);
-        List<Pact> _selectedPacts = new List<Pact>();
+        List<Pact> selectedPacts = new List<Pact>();
 
         foreach(var level in _mapStructure)
         {
             // Pact
-            yield return PactRoom((newPact) => _selectedPacts.Add(newPact));
+            yield return PactRoom((newPact) => selectedPacts.Add(newPact));
             IEnumerator PactRoom(Action<Pact> onPactSelected)
             {
                 _pactUI.gameObject.SetActive(true);
@@ -149,6 +144,10 @@ public class Gameplay : MonoBehaviour
             var currentCharacter = Instantiate(_playerPrefab, currentRoom.PlayerSpawner)
                 .GetComponent<Character>()
                 .Initialization();
+
+            selectedPacts[selectedPacts.Count - 1].Apply(currentCharacter);
+            selectedPacts[selectedPacts.Count - 1].Apply(currentRoom);
+            selectedPacts[selectedPacts.Count - 1].Apply(_gameUIControl);
 
             GameUI.SetActive(true);
             yield return _gameUI.PlayAndWait(_gameOpen);
