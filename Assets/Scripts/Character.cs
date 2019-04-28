@@ -82,14 +82,7 @@ public class Character : MonoBehaviour {
         Speed = _initialSpeed;
 
         // Setup Shield
-        OnShieldOn += () => {
-
-            _canShield = false;
-
-            _shield.SetActive(true);
-
-        };
-
+        OnShieldOn += () => { _shield.SetActive(true); };
         OnShieldOff += () => { _shield.SetActive(false); };
 
         // Event Preparation
@@ -128,7 +121,7 @@ public class Character : MonoBehaviour {
                 break;
             case SkillChoice.Shield:
                 Debug.Log("Launch Shield");
-                Shield();
+                StartShield();
                 break;
             case SkillChoice.Flash:
                 Debug.Log("Launch Flash");
@@ -329,29 +322,25 @@ public class Character : MonoBehaviour {
     [Tooltip("Cooldown of the shield")]
     [SerializeField] float _shieldCooldown;
 
-    bool _canShield;
+    Coroutine _shieldRoutine;
     public event Action OnShieldOn;
     public event Action OnShieldOff;
 
     public void StartShield () {
 
-        if (_canShield)
-            StartCoroutine("Shield");
+        if (_shieldRoutine == null) _shieldRoutine=StartCoroutine(Shield());
+        IEnumerator Shield()
+        {
+            OnShieldOn();
+            yield return new WaitForSeconds(_shieldDuration);
+
+            OnShieldOff();
+
+            yield return new WaitForSeconds(_shieldCooldown);
+            _shieldRoutine = null;
+        }
     }
-
-    IEnumerator Shield () {
-
-        OnShieldOn();
-
-        yield return new WaitForSeconds(_shieldDuration);
-
-        OnShieldOff();
-
-        yield return new WaitForSeconds(_shieldCooldown);
-
-        _canShield = true;
-
-    }
+    
     #endregion
 
     #region Flash
@@ -492,12 +481,11 @@ public class Character : MonoBehaviour {
         _hitCoroutine = StartCoroutine(HitRoutine());
         IEnumerator HitRoutine()
         {
-            /*if (IsShieldActivated)
+            if (_shield.gameObject.activeInHierarchy)
             {
-                ShieldHit(amount);
+                yield break;
             }
-            else
-            {*/
+
             if (_isInvincible)
             {
                 Debug.Log("Blocked");
