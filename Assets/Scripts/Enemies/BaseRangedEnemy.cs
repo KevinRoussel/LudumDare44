@@ -50,10 +50,9 @@ public class BaseRangedEnemy : BaseEnemy {
 
         while (true) {
 
-            _shootingManager.Shoot(transform, "Player", _shootingSpreadRange, _damage);            
+            _shootingManager.Shoot(transform, "Player", _shootingSpreadRange, _damage, 0);            
 
             yield return new WaitForSeconds(_fireRate);
-
         }
 
     }

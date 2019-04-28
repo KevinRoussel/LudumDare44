@@ -116,6 +116,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4450923949895829423}
+  - component: {fileID: 932016577345077481}
   m_Layer: 0
   m_Name: SFX
   m_TagString: Untagged
@@ -137,6 +138,18 @@ Transform:
   m_Father: {fileID: 4450923950082764344}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &932016577345077481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4450923949895829408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 870d558f96635da4e83cb6582181ecef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4450923950018414683
 GameObject:
   m_ObjectHideFlags: 0
@@ -154,7 +167,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4450923950018414682
 Transform:
   m_ObjectHideFlags: 0
@@ -308,6 +321,9 @@ MonoBehaviour:
   _shield: {fileID: 4450923950018414683}
   _shieldDuration: 2
   _shieldCooldown: 5
+  _flashRadius: 10
+  _flashDuration: 2
+  _flashCooldown: 5
 --- !u!65 &5837055499611638790
 BoxCollider:
   m_ObjectHideFlags: 0

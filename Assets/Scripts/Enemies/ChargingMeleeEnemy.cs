@@ -66,11 +66,11 @@ public class ChargingMeleeEnemy : BaseEnemy {
 
     IEnumerator Attack () {
 
-        _navMeshAgent.isStopped = true;
+        SetCanMove(false);
 
         yield return new WaitForSeconds(1);
 
-        _navMeshAgent.isStopped = false;
+        SetCanMove(true);
 
         _attackTimer = _attackTime;
 

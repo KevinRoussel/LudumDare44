@@ -15,12 +15,12 @@ GameObject:
   - component: {fileID: 3249061002501429255}
   - component: {fileID: 4619484246032083827}
   m_Layer: 0
-  m_Name: BaseEnemyProjectile
+  m_Name: BaseProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5228388315409178546
 Transform:
   m_ObjectHideFlags: 0
@@ -108,6 +108,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 5
   _power: 0
+  _lifetime: 10
 --- !u!54 &4619484246032083827
 Rigidbody:
   m_ObjectHideFlags: 0

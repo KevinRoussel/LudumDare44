@@ -12,6 +12,14 @@ public class InputManager : MonoBehaviour
     Trigger _shootDown;
     Vector2 _move;
     Vector2 _mousePosition;
+    bool _skillDown = false;
+    //Trigger _mouse
+
+    Vector2 _offset;
+    public void SetOffset(Vector2 v) => _offset = v;
+
+    [Range(0f, 1f)]
+    [SerializeField] float offsetForce = 0.5f;
 
     private void Start()
     {
@@ -27,6 +35,9 @@ public class InputManager : MonoBehaviour
                 _mousePosition = Input.mousePosition;
                 if (Input.GetMouseButtonUp(0)) _shootUp.Activate();
                 if (Input.GetMouseButtonDown(0)) _shootDown.Activate();
+
+                if (Input.GetMouseButtonDown(1)) _skillDown = true;
+                if (Input.GetMouseButtonUp(1)) _skillDown = false;
                 yield return null;
                 ResetInput();
             }
@@ -41,10 +52,10 @@ public class InputManager : MonoBehaviour
 
     public void ApplyInput(Character control)
     {
-        control.Move(_move);
+        control.Move(_move + (control.OffsetActivated() ? new Vector2(control.ComputeOffset().x, control.ComputeOffset().z) * offsetForce : Vector2.zero));
         if (_shootUp.IsActivated()) control.StopAttack();
         if (_shootDown.IsActivated()) control.LaunchAttack();
-
+        if (_skillDown) control.LaunchSkill();
         control.LookAt(_mousePosition);
     }
 }

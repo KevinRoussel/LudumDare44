@@ -8,8 +8,7 @@ using UnityEngine.Assertions;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-public class Character : MonoBehaviour
-{
+public class Character : MonoBehaviour {
     #region Events
     public event Action OnReady;
     public event Action StartWalking;
@@ -24,21 +23,20 @@ public class Character : MonoBehaviour
     public event Action<Vector3> OnStartDodge;
     public event Action OnEndDodge;
 
-
     Trigger _attackEnd = new Trigger();
     Trigger _hitEnd = new Trigger();
     Trigger _deathEnd = new Trigger();
-    void AcceptAttackEnd() => _attackEnd.Activate();
-    internal void AcceptHitEnd() => _hitEnd.Activate();
+    void AcceptAttackEnd () => _attackEnd.Activate();
+    internal void AcceptHitEnd () => _hitEnd.Activate();
 
-    
-
-    internal void AcceptDeathEnd() => _deathEnd.Activate();
+    internal void AcceptDeathEnd () => _deathEnd.Activate();
     #endregion
 
     [SerializeField] Collider _hitZone;
     // [SerializeField] Transform _shieldRoot = null;
     [SerializeField] protected NavMeshAgent _navMeshAgent;
+    public NavMeshAgent NavMeshAgent => _navMeshAgent;
+
     [SerializeField] BaseEnemy _enemyComp;
 
     protected bool _canMove;
@@ -66,7 +64,7 @@ public class Character : MonoBehaviour
 
     public int HP { get; private set; }
     public int Attack { get; private set; }
-    public float FireRate { get; private set; }
+    public float FireRate { get; set; }
     public int Defense { get; private set; }
     public int Speed { get; private set; }
     // public int Shield { get; private set; }
@@ -74,8 +72,7 @@ public class Character : MonoBehaviour
     public event Action OnKeyCollected;
     public event Action<int> OnHPMaxUpdated;
 
-    internal Character Initialization()
-    {
+    internal Character Initialization () {
         // Parameters validation & assignation
         HP = _initialHP;
         Attack = _initialAttack;
@@ -84,14 +81,7 @@ public class Character : MonoBehaviour
         Speed = _initialSpeed;
 
         // Setup Shield
-        OnShieldOn += () => {
-
-            _canShield = false;
-
-            _shield.SetActive(true);
-
-        };
-
+        OnShieldOn += () => { _shield.SetActive(true); };
         OnShieldOff += () => { _shield.SetActive(false); };
 
         // Event Preparation
@@ -108,48 +98,105 @@ public class Character : MonoBehaviour
 
         _shootingManager = GameObject.Find("ShootingManager").GetComponent<ShootingManager>();
 
+        StartCoroutine(UpdateOffsetFactor());
+
         return this;
     }
+
+    #region Skill
+
+    public enum SkillChoice { Null, Rage, Shield, Flash}
+    SkillChoice _selectedSkill = SkillChoice.Null;
+    public void SetSkill(SkillChoice choice)
+    {
+        _selectedSkill = choice;
+    }
+
+    public void LaunchSkill()
+    {
+        switch (_selectedSkill)
+        {
+            case SkillChoice.Rage:
+                Debug.Log("Launch Rage");
+                StartRage();
+                break;
+            case SkillChoice.Shield:
+                Debug.Log("Launch Shield");
+                StartShield();
+                break;
+            case SkillChoice.Flash:
+                Debug.Log("Launch Flash");
+                StartFlash();
+                break;
+            case SkillChoice.Null:
+            default:
+                break;
+        }
+    }
+
+    #endregion
 
     #region Move
 
     Vector2 _lastMovement;
     bool _isWalking;
 
+    public enum OffsetType {
+        NONE,
+        FORWARD,
+        BACKWARD,
+        RIGHT,
+        LEFT
+    }
+
+    OffsetType _offsetType;
+    public void SetOffset(OffsetType type) => _offsetType = type;
+
+    bool _offsetActivated = false;
+    public bool OffsetActivated() => _offsetActivated;
+
     public void BlockMovement(bool canMove)
     {
         _canMove = canMove;
     }
 
-    void MovementEventInitialization()
-    {
+    void MovementEventInitialization () {
         OnAttack += () => { EndWalking?.Invoke(); };
 
-        StartWalking += () =>
-        {
+        StartWalking += () => {
             _isWalking = true;
             _navMeshAgent.isStopped = false;
         };
 
-        EndWalking += () =>
-        {
+        EndWalking += () => {
             _isWalking = false;
             _navMeshAgent.isStopped = true;
             _lastMovement = Vector2.zero;
         };
 
-        OnShieldOn += () =>
-        {
+        OnShieldOn += () => {
             if (_isWalking) EndWalking?.Invoke();
         };
     }
 
-    public void Move(Character target) => Move(new Vector2(target.Position.x - Position.x, target.Position.z - Position.z));
+    public IEnumerator UpdateOffsetFactor() {
+        while (true) {
+            float waitTime = 0f;
+            if (_offsetActivated) {
+                _offsetActivated = false;
+                waitTime = UnityEngine.Random.Range(2, 5);
+            } else {
+                _offsetActivated = true;
+                waitTime = UnityEngine.Random.Range(1, 3);
+            }
+            yield return new WaitForSeconds(waitTime);
+        }
+    }
 
-    public void Move(Vector2 direction)
-    {
-        if ( HP<=0 )
-        {
+    public void Move (Character target) => Move(new Vector2(target.Position.x - Position.x, target.Position.z - Position.z));
+
+    public void Move (Vector2 direction) {
+        if (HP <= 0) {
             //Debug.Log("Can't move => Already dead", this);
             return;
         }
@@ -162,18 +209,15 @@ public class Character : MonoBehaviour
         // if (IsShieldActivated) return;
 
         // Finished Movement 
-        if (direction.magnitude < 0.01f)
-        {
-            if (_lastMovement != Vector2.zero)
-            {
+        if (direction.magnitude < 0.01f) {
+            if (_lastMovement != Vector2.zero) {
                 EndWalking?.Invoke();
             }
             return;
         }
 
         // Start walking
-        if (direction.magnitude > 0.01f && _lastMovement == Vector2.zero)
-        {
+        if (direction.magnitude > 0.01f && _lastMovement == Vector2.zero) {
             StartWalking?.Invoke();
         }
 
@@ -183,6 +227,21 @@ public class Character : MonoBehaviour
         _navMeshAgent.Move(realDirection * Time.deltaTime * _navMeshAgent.speed);
 
         _lastMovement = direction;
+    }
+
+    public Vector3 ComputeOffset() {
+        switch (_offsetType) {
+            case OffsetType.FORWARD:
+                return transform.forward;
+            case OffsetType.BACKWARD:
+                return -transform.forward;
+            case OffsetType.LEFT:
+                return -transform.right;
+            case OffsetType.RIGHT:
+                return transform.right;
+            default:
+                return Vector3.zero;
+        }
     }
 
     public void LookAt(Vector2 target) {
@@ -202,28 +261,38 @@ public class Character : MonoBehaviour
 
     bool _isAttacking = false;
 
-    public bool LaunchAttack()
-    {
-        if (!_canAttack ) return false;
+    public bool LaunchAttack () {
+        if (!_canAttack) return false;
 
         _isAttacking = true;
         StartCoroutine(CallAttack());
         return true;
     }
 
-    internal void StopAttack()
-    {
+    internal void StopAttack () {
 
         OnStopAttack?.Invoke();
         _isAttacking = false;
     }
 
-    IEnumerator CallAttack() {
+    float _shootConeAttack=0f;
+    public void ActivateConeAttack(float range) => _shootConeAttack = range;
+
+    IEnumerator CallAttack () {
+
         while (_isAttacking) {
+
             Vector3? result = GetRaycastResult(Input.mousePosition);
 
             if (result.HasValue) {
-                _shootingManager.Shoot(_shootingTransform, "Enemy", Vector3.zero, Attack, _rageOn ? _rageProjectilesSpeedMultiplier : 1);
+                _shootingManager.Shoot(_shootingTransform, "Enemy", Vector3.zero, Attack, 0, _rageOn ? _rageProjectilesSpeedMultiplier : 1);
+
+                if (_shootConeAttack != 0f)
+                {
+                    _shootingManager.Shoot(_shootingTransform, "Enemy", Vector3.zero, Attack, _shootConeAttack, _rageOn ? _rageProjectilesSpeedMultiplier : 1);
+                    _shootingManager.Shoot(_shootingTransform, "Enemy", Vector3.zero, Attack, -_shootConeAttack, _rageOn ? _rageProjectilesSpeedMultiplier : 1);
+                }
+
                 OnAttack?.Invoke();
             }
 
@@ -231,7 +300,7 @@ public class Character : MonoBehaviour
         }
     }
 
-    Vector3? GetRaycastResult(Vector2 target) {
+    Vector3? GetRaycastResult (Vector2 target) {
         Ray ray = Camera.main.ScreenPointToRay(target);
         RaycastHit hit;
 
@@ -259,41 +328,38 @@ public class Character : MonoBehaviour
     [SerializeField] float _rageProjectilesSpeedMultiplier;
 
     [Tooltip("Percentage of the base fire rate while rage is on")]
-    [Range(0, 1)]
+    [Range(0, 10)]
     [SerializeField] float _rageFireRatePercentage;
 
+    public Action OnRageStart;
+    public Action OnRageEnd;
+    public Action OnRageReady;
+
     bool _canRage, _rageOn;
+    Coroutine _rageCoroutine;
 
     public void StartRage () {
+        if (_rageCoroutine==null) _rageCoroutine=StartCoroutine(Rage());
 
-        if (!_canRage)
-            StartCoroutine("Rage");
+        IEnumerator Rage()
+        {
+            OnRageStart?.Invoke();
+            Attack *= _rageMultiplier;
+            FireRate *= _rageFireRatePercentage;
 
+            yield return new WaitForSeconds(_rageDuration);
+            OnRageEnd?.Invoke();
+
+            Attack /= _rageMultiplier;
+            FireRate /= _rageFireRatePercentage;
+
+            yield return new WaitForSeconds(_rageCooldown);
+
+            OnRageReady?.Invoke();
+            _rageCoroutine = null;
+        }
     }
 
-    IEnumerator Rage () {
-
-        _canRage = false;
-
-        _rageOn = true;
-
-        Attack *= _rageMultiplier;
-
-        FireRate *= _rageFireRatePercentage;
-
-        yield return new WaitForSeconds(_rageDuration);
-
-        _rageOn = false;
-
-        Attack /= _rageMultiplier;
-
-        FireRate /= _rageFireRatePercentage;
-
-        yield return new WaitForSeconds(_rageCooldown);
-
-        _canRage = true;
-
-    }
     #endregion
 
     #region Shield
@@ -307,107 +373,63 @@ public class Character : MonoBehaviour
     [Tooltip("Cooldown of the shield")]
     [SerializeField] float _shieldCooldown;
 
-    bool _canShield;
-
+    Coroutine _shieldRoutine;
     public event Action OnShieldOn;
     public event Action OnShieldOff;
+    public event Action OnShieldHit;
 
     public void StartShield () {
 
-        StartCoroutine("Shield");
-
-    }
-
-    IEnumerator Shield () {
-
-        OnShieldOn();
-
-        yield return new WaitForSeconds(_shieldDuration);
-
-        OnShieldOff();
-
-        yield return new WaitForSeconds(_shieldCooldown);
-
-        _canShield = true;
-
-    }
-
-    /*public event Action OnShieldHit;
-    public event Action OnShieldBreakOff;
-    public event Action<int> OnShieldUpdate;
-
-    Coroutine _shieldProcess;
-    Coroutine _shieldBreakOff;
-    Coroutine _shieldRecover;
-
-    Trigger _stopShield = new Trigger();
-
-    protected bool IsShieldActivated => _shieldProcess != null;
-
-    public bool LaunchShield(bool isActive)
-    {
-        if (isActive && _shieldProcess == null && _shieldBreakOff == null)
+        if (_shieldRoutine == null) _shieldRoutine=StartCoroutine(Shield());
+        IEnumerator Shield()
         {
-            if (_shieldRecover != null) StopCoroutine(_shieldRecover);
-            _shieldProcess = StartCoroutine(ShieldProcess());
-            return true;
+            OnShieldOn();
+            yield return new WaitForSeconds(_shieldDuration);
+
+            OnShieldOff();
+
+            yield return new WaitForSeconds(_shieldCooldown);
+            _shieldRoutine = null;
         }
-        else if (!isActive && _shieldProcess != null)
-        {
-            _stopShield.Activate();
-            return true;
-        }
-
-        return false;
     }
+    #endregion
 
-    IEnumerator ShieldRecover()
-    {
-        while (Shield <= _initialShield)
+    #region Flash
+
+    [Header("Flash variables")]
+    [Tooltip("Flash radius")]
+    [SerializeField] float _flashRadius;
+
+    [Tooltip("Duration of the flash")]
+    [SerializeField] float _flashDuration;
+
+    [Tooltip("Flash cooldown")]
+    [SerializeField] float _flashCooldown;
+
+    public event Action OnFlashLauched;
+    public event Action OnFlashReady;
+    Coroutine _flashRoutine;
+
+    public void StartFlash () {
+        if (_flashRoutine==null) _flashRoutine=StartCoroutine(Flash());
+
+        IEnumerator Flash()
         {
-            yield return new WaitForSeconds(_recoverTime);
-            Shield = Mathf.Min(Shield+1, _initialShield);
-            OnShieldUpdate?.Invoke(Shield);
-        }
-        _shieldRecover = null;
-        yield break;
-    }
-    
-    IEnumerator ShieldProcess()
-    {
-        OnShieldOn?.Invoke();
-        _shieldRoot.gameObject.SetActive(true);
+            OnFlashLauched?.Invoke();
 
-        yield return new WaitWhile(() => !_stopShield.IsActivated());
+            foreach (Character e in transform.GetComponentInParent<Room>().Enemies)
+                if (Vector3.Distance(e.transform.position, transform.position) <= _flashRadius)
+                    e.Enemy?.Flashed(_flashDuration);
 
-        _shieldRoot.gameObject.SetActive(false);
+            Debug.Log("Flash", this);
+            yield return new WaitForSeconds(_flashCooldown);
 
-        if (_shieldBreakOff == null)
-        {
-            _shieldRecover = StartCoroutine(ShieldRecover());
-            OnShieldOff?.Invoke();
-        }
-        _shieldProcess = null;
-        yield break;
-    }
-
-    void DecreaseShield(int amount)
-    {
-        while (true)
-        {
-            
+            OnFlashReady?.Invoke();
+            Debug.Log("Flash re-enabled", this);
+            _flashRoutine = null;
         }
     }
 
-    void ShieldHit(int amount)
-    {
-        // Send right animation event
-        OnShieldHit?.Invoke();
-
-        // Update UI
-        Shield -= amount;
-        OnShieldUpdate?.Invoke(Shield);
-    }*/
     #endregion
 
 #if false
@@ -479,7 +501,31 @@ public class Character : MonoBehaviour
     bool _isInvincible = false;
     Coroutine _hitCoroutine;
 
-    public void Hit(int amount)
+    Coroutine _blockHit;
+    public void LaunchAutoBlock(float cooldown)
+    {
+        if(_blockHit==null)
+        {
+            _blockHit = StartCoroutine(BlockHit(cooldown));
+            IEnumerator BlockHit(float coolDown)
+            {
+                while (true)
+                {
+                    _isInvincible = true;
+                    bool done = false;
+                    Action<int> a = (hp) => done = true;
+                    OnTakeDamage += a;
+                    yield return new WaitWhile(() => !done);
+
+                    OnTakeDamage -= a;
+                    _isInvincible = false;
+                    yield return new WaitForSeconds(coolDown);
+                }
+            }
+        }
+    }
+
+    public void Hit(Character instigator, int amount)
     {
         if (_hitCoroutine != null)
         {
@@ -489,16 +535,25 @@ public class Character : MonoBehaviour
         _hitCoroutine = StartCoroutine(HitRoutine());
         IEnumerator HitRoutine()
         {
-            /*if (IsShieldActivated)
+            if (_shield!=null && (_shield?.gameObject.activeInHierarchy??false))
             {
-                ShieldHit(amount);
+                OnShieldHit?.Invoke();
+                _hitCoroutine = null;
+                yield break;
             }
-            else
-            {*/
-                HP = Mathf.Max(0, HP - amount);
-                print(HP);
-                OnTakeDamage?.Invoke(HP);
-            //}
+
+            if (_isInvincible)
+            {
+                Debug.Log("Blocked");
+                amount = 0;
+            }
+
+            HP = Mathf.Max(0, HP - amount);
+
+            OnHit(instigator, amount);
+
+            print(HP);
+            OnTakeDamage?.Invoke(HP);
 
             if (HP <= 0)
             {
@@ -522,8 +577,9 @@ public class Character : MonoBehaviour
 
     }
 
-    
-#endregion
+    public delegate void OnHitDelegate (Character instigator, int amount);
+    public OnHitDelegate OnHit { get; set; }
+    #endregion
 
 }
 
