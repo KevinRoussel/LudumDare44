@@ -56,7 +56,10 @@ public class Character : MonoBehaviour
     [SerializeField] int _initialShield;
 
     public int HPMax => _initialHP;
+
+    [Header("Shoot")]
     [SerializeField] Vector2 _shootingSpreadRange;
+    [SerializeField] Transform _shootingTransform;
 
     ShootingManager _shootingManager;
 
@@ -81,7 +84,6 @@ public class Character : MonoBehaviour
         MovementEventInitialization();
 
         // NavMesh Initialization
-        transform.localPosition = Vector3.zero;
         transform.position = NavMesh.SamplePosition(transform.position, out NavMeshHit hit, 500f, NavMesh.AllAreas) ?
             hit.position : transform.position;
 
@@ -165,35 +167,65 @@ public class Character : MonoBehaviour
 
         _navMeshAgent.Warp(transform.position);
         _navMeshAgent.Move(realDirection * Time.deltaTime * _navMeshAgent.speed);
-        transform.LookAt(transform.position + realDirection);
 
         _lastMovement = direction;
+    }
+
+    public void LookAt(Vector2 target) {
+        Vector3? result = GetRaycastResult(target);
+
+        if (result.HasValue) {
+            transform.LookAt(new Vector3(result.Value.x, transform.position.y, result.Value.z));
+        }
     }
     #endregion
 
     #region Attack
     public event Action OnAttack;
+    public event Action OnStopAttack;
 
     bool _canAttack = true;
 
-    public bool LaunchAttack(Vector3 target)
+    bool _isAttacking = false;
+
+    public bool LaunchAttack()
     {
         if (!_canAttack ) return false;
 
-        // Fire
-        Ray ray = Camera.main.ScreenPointToRay(target);
-        RaycastHit hit;
-
-        if (Physics.Raycast(ray, out hit) && !hit.collider.CompareTag("Player")) {
-            _shootingManager.Shoot(transform, Vector3.forward, Vector3.zero, 30);
-            return true;
-        } else {
-            return false;
-        }
+        _isAttacking = true;
+        StartCoroutine(CallAttack());
+        return true;
     }
 
     internal void StopAttack()
     {
+
+        OnStopAttack?.Invoke();
+        _isAttacking = false;
+    }
+
+    IEnumerator CallAttack() {
+        while (_isAttacking) {
+            Vector3? result = GetRaycastResult(Input.mousePosition);
+
+            if (result.HasValue) {
+                _shootingManager.Shoot(_shootingTransform, Vector3.zero, 30);
+                OnAttack?.Invoke();
+            }
+
+            yield return new WaitForSeconds(0.3f);
+        }
+    }
+
+    Vector3? GetRaycastResult(Vector2 target) {
+        Ray ray = Camera.main.ScreenPointToRay(target);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit) && !hit.collider.CompareTag("Player")) {
+            return hit.point;
+        } else {
+            return null;
+        }
     }
 
     #endregion

@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
 
+[Serializable]
 public class Pact
 {
 
@@ -18,7 +19,6 @@ public class Gameplay : MonoBehaviour
     public class LevelStructure
     {
         public Room Room;
-        public List<GameObject> EnnemiesPrefab;
         public List<Pact> EnablePacts;  // String will be the new Class representing Bonus
     }
 
@@ -39,6 +39,11 @@ public class Gameplay : MonoBehaviour
     [SerializeField] AnimationClip _gameOpen;
     [SerializeField] AnimationClip _gameClose;
 
+    [Header("Pact UI")]
+    [SerializeField] Animation _pactUI;
+    [SerializeField] AnimationClip _pactUIOpen;
+    [SerializeField] AnimationClip _pactUIClose;
+
     [Header("UI GameOver")]
     [SerializeField] Animation _gameOverUI;
     [SerializeField] AnimationClip _gameOverOpen;
@@ -50,6 +55,8 @@ public class Gameplay : MonoBehaviour
 
     [Header("UI")]
     [SerializeField] GameObject GameUI;
+    
+
     public IEnumerator RunGame()
     {
         _gameUI.gameObject.SetActive(true);
@@ -58,6 +65,20 @@ public class Gameplay : MonoBehaviour
 
         foreach(var level in _mapStructure)
         {
+            // Pact
+            //yield return PactRoom((newPact) => _selectedPacts.Add(newPact));
+            IEnumerator PactRoom(Action<Pact> onPactSelected)
+            {
+                _pactUI.gameObject.SetActive(true);
+                yield return _pactUI.PlayAndWait(_pactUIOpen);
+
+
+
+                yield return _pactUI.PlayAndWait(_pactUIClose);
+                yield break;
+            }
+
+
             // Spawn Room and Character
             var currentRoom = level.Room;
 
@@ -73,18 +94,16 @@ public class Gameplay : MonoBehaviour
             currentCharacter.OnHPMaxUpdated += (newMax) => _hpSlider.maxValue = newMax;
             currentCharacter.OnTakeDamage += (newHP) =>  _hpSlider.value = newHP;
 
-            //currentCharacter.OnKeyCollected += _keyManager.AddKey();
 
             foreach (var enemy in currentRoom.Enemies) enemy.Initialization();
-
-            // Pact Room
-            // yield return PactRoom();
 
             // Main Game Loop
             while (currentCharacter.HP > 0)
             {
+                //currentCharacter.OnKeyCollected += _keyManager.AddKey();
+
                 _inputManager.ApplyInput(currentCharacter);
-                foreach (var el in currentRoom.Enemies) el.Enemy.Movement();
+                foreach (var el in currentRoom.Enemies) el.Enemy.Tick();
                 _shootingManager.UpdateBullets();
 
 
@@ -106,8 +125,5 @@ public class Gameplay : MonoBehaviour
         yield break;
     }
 
-    IEnumerator PactRoom()
-    {
-        yield break;
-    }
+    
 }

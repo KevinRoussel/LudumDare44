@@ -11,6 +11,7 @@ public class InputManager : MonoBehaviour
     Trigger _shootUp;
     Trigger _shootDown;
     Vector2 _move;
+    Vector2 _mousePosition;
 
     private void Start()
     {
@@ -23,18 +24,27 @@ public class InputManager : MonoBehaviour
             while (true)
             {
                 _move = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-                if (Input.GetMouseButtonDown(0)) _shootDown.Activate();
+                _mousePosition = Input.mousePosition;
                 if (Input.GetMouseButtonUp(0)) _shootUp.Activate();
+                if (Input.GetMouseButtonDown(0)) _shootDown.Activate();
                 yield return null;
+                ResetInput();
             }
         }
+    }
+    public void ResetInput()
+    {
+        _shootUp.IsActivated();
+        _shootDown.IsActivated();
+        _move = Vector2.zero;
     }
 
     public void ApplyInput(Character control)
     {
-        if (_move.magnitude > 0.001f)
-            control.Move(_move);
+        control.Move(_move);
         if (_shootUp.IsActivated()) control.StopAttack();
-        if (_shootDown.IsActivated()) control.LaunchAttack(Input.mousePosition);
+        if (_shootDown.IsActivated()) control.LaunchAttack();
+
+        control.LookAt(_mousePosition);
     }
 }
