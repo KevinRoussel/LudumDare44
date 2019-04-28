@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4634289975068647628
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7294036059528929020}
+  m_Layer: 0
+  m_Name: PatrolEnd
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7294036059528929020
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4634289975068647628}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 9193721053285819647}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7098169672989753171
 GameObject:
   m_ObjectHideFlags: 0
@@ -224,9 +254,9 @@ GameObject:
   - component: {fileID: 6660512862048776474}
   - component: {fileID: 9193721053295481871}
   - component: {fileID: 9193721053286172621}
-  - component: {fileID: 9193721053286172622}
+  - component: {fileID: 5655072933683195036}
   m_Layer: 0
-  m_Name: EnemyBase
+  m_Name: BaseRangedEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -259,6 +289,7 @@ Transform:
   - {fileID: 9193721053285728509}
   - {fileID: 9193721053285731589}
   - {fileID: 7971501822284758523}
+  - {fileID: 7294036059528929020}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -277,13 +308,15 @@ MonoBehaviour:
   _hitZone: {fileID: 8236031491218604476}
   _shieldRoot: {fileID: 7285974627020626221}
   _navMeshAgent: {fileID: 9193721053286172621}
-  _enemyComp: {fileID: 9193721053286172622}
+  _enemyComp: {fileID: 5655072933683195036}
   _recoverTime: 1
   _initialHP: 100
   _initialAttack: 10
   _initialDefense: 5
   _initialSpeed: 1
   _initialShield: 30
+  _shootingSpreadRange: {x: 0, y: 0}
+  _shootingTransform: {fileID: 0}
 --- !u!95 &9193721053295481871
 Animator:
   serializedVersion: 3
@@ -325,7 +358,7 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &9193721053286172622
+--- !u!114 &5655072933683195036
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -334,19 +367,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 9193721053286048403}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ab23e1efc0d4d743bc4673ec8c5d049, type: 3}
+  m_Script: {fileID: 11500000, guid: ac74e6bb06c532c47aa325fac510fca7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerDetectionDistance: 50
-  _nextWanderingPosRange: {x: 5, y: 15}
-  _wanderOnPlayerLost: 1
-  _shootingManager: {fileID: 0}
-  _bulletPower: 100
-  _shootingDistance: 35
-  _shootingSpreadRange: {x: -7.5, y: 7.5}
-  _shootingDelays: {x: 1, y: 1}
-  _shootingCooldown: 3
-  _canShootImmediately: 1
+  _playerDetectionDistance: 5
+  _patrolPathEndPos: {fileID: 7294036059528929020}
+  _damage: 1
+  _shootingSpreadRange: {x: -5, y: 5}
+  _shootingDelay: 0.5
+  _fireRate: 1.5
 --- !u!1 &9193721053286053171
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChasingRangedEnemy : BaseEnemy {
+public class ChasingRangedEnemy : BaseRangedEnemy {
 
     [Tooltip("Chasing radiu")]
     [SerializeField] protected float _chasingRadius;
@@ -25,7 +25,7 @@ public class ChasingRangedEnemy : BaseEnemy {
 
         if (Vector3.Distance(_player.transform.position, transform.position) <= _chasingRadius) {
 
-            _navMeshAgent.SetDestination(_player.transform.position + ((transform.position - _player.transform.position) * _playerDetectionDistance));
+            SetNavDestination(_player.transform.position + ((transform.position - _player.transform.position).normalized * _playerDetectionDistance * .8f));
 
             return true;
 
@@ -40,7 +40,7 @@ public class ChasingRangedEnemy : BaseEnemy {
 
             SetDestination();
 
-            Movement();
+            base.Movement();
 
         }            
 

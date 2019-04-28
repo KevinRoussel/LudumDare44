@@ -5,8 +5,7 @@ using UnityEngine;
 public class BaseRangedEnemy : BaseEnemy {
 
     [Header("Shooting variables")]
-    [Tooltip("Shooting manager of this enemy")]
-    [SerializeField] protected ShootingManager _shootingManager;
+    protected ShootingManager _shootingManager;
 
     [Tooltip("Damage of this enemy's attack")]
     [SerializeField] protected int _damage;
@@ -28,13 +27,19 @@ public class BaseRangedEnemy : BaseEnemy {
 
     }
 
-    protected override void PlayerDetected () {
+    protected override void PlayerDetected () {        
 
-        base.PlayerDetected();
+        if (!_playerDetected) {
 
-        _navMeshAgent.updatePosition = false;
+            base.PlayerDetected();
 
-        StartCoroutine(Shoot());
+            _navMeshAgent.updatePosition = false;
+
+            StartCoroutine("Shoot");            
+
+        }
+
+        _navMeshAgent.SetDestination(transform.position + (_player.transform.position - transform.position));
 
     }
 
@@ -56,7 +61,7 @@ public class BaseRangedEnemy : BaseEnemy {
 
         base.PlayerLost();
 
-        StopCoroutine(Shoot());
+        StopCoroutine("Shoot");
 
         _navMeshAgent.Warp(transform.position);
 
