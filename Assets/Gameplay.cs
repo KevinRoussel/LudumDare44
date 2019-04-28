@@ -84,7 +84,7 @@ public class Gameplay : MonoBehaviour
             while (currentCharacter.HP > 0)
             {
                 _inputManager.ApplyInput(currentCharacter);
-                foreach (var el in currentRoom.Enemies) el.Enemy.Movement();
+                foreach (var el in currentRoom.Enemies) el.Enemy.Tick();
                 _shootingManager.UpdateBullets();
 
 
