@@ -541,20 +541,20 @@ MonoBehaviour:
   - Name: Map 1
     Room: {fileID: 1393260260}
     Pacts:
-    - CharacterName: Rouge
+    - CharacterName: Belzedug
       DialogText: '"*BARK* HUMAN WEAKLING, PRAY YOUR NEW MASTER ! YOU MAY FEEL CONFLICTED,
         BUT YOU WILL FIND GREAT POWER DEEP WITHIN. "'
       PactToApply: {fileID: 11400000, guid: f85f1eddcbd483a46a6ae24a96546165, type: 2}
       _characterImage: {fileID: 21300000, guid: 22edbb4121b300d429930022df0ca1a5,
         type: 3}
-    - CharacterName: Vert
+    - CharacterName: Birg the Insecure
       DialogText: '"EEK ! DON''T TOUCH ME ! NO TOUCHING ! STAY AWAY YOU UNSTABLE MESS,
         AND PRAY FOR YOUR NEW LORD ! YOU WILL FEEL DIZZY, BUT YOUR HIDE WILL THICKEN
         ABUDANTLY."'
       PactToApply: {fileID: 11400000, guid: dd1544c664a519f43a024b64fe2a8864, type: 2}
       _characterImage: {fileID: 21300000, guid: eba779deb50af7e40b058862ffebdb96,
         type: 3}
-    - CharacterName: Bleu
+    - CharacterName: Viking Sans MS
       DialogText: '"I''VE JOURNEYED ALL ACROSS THE SEAS, I MAY HAVE SOMETHING FOR
         YOU. EMBRACE THE SEAS ! YOU WILL FEEL TIRED, BUT YOUR FOES WILL BE STRUCK
         WITH SICKNESS."'
@@ -564,14 +564,14 @@ MonoBehaviour:
   - Name: Map 2
     Room: {fileID: 598314157}
     Pacts:
-    - CharacterName: Rouge
+    - CharacterName: Belzedug
       DialogText: '"YOU ARE STILL SO MUCH WEAKER THAN YOUR FULLY REALIZED POTENTIAL.
         REJOICE AND PRAY FOR YOUR ONE AND ONLY LORD, AGAIN. YOU WILL KNOW THE UNFATHOMABLE
         DEPTH OF TRUE RAGE, BUT SO WILL YOUR FOES."'
       PactToApply: {fileID: 11400000, guid: f85f1eddcbd483a46a6ae24a96546165, type: 2}
       _characterImage: {fileID: 21300000, guid: 22edbb4121b300d429930022df0ca1a5,
         type: 3}
-    - CharacterName: Vert
+    - CharacterName: Birg the Insecure
       DialogText: "\"HOWDY HOWDY THERE ! HEY SO, WHAT'S UP? YOU LIKING IT SO FAR?
         YEAH? LOOK AT ME! YOU KNOW WHAT I LIKE? COMICS! YEAH! COMICS ARE THE SHIT!
         HERE, TAKE THIS HORN-CLAD SCREWDRIVER! HOLD IT IN THE AIR TO FREEZE YOUR FOES
@@ -580,7 +580,7 @@ MonoBehaviour:
       PactToApply: {fileID: 11400000, guid: dd1544c664a519f43a024b64fe2a8864, type: 2}
       _characterImage: {fileID: 21300000, guid: eba779deb50af7e40b058862ffebdb96,
         type: 3}
-    - CharacterName: Bleu
+    - CharacterName: Viking Sans MS
       DialogText: '"*URF* - WHAT YOU WANT ? YOU ARE TRY PLAY HARD TOO DETAIL, NOT
         SO GOOD FOR STAY ALIVE, THIS BOTTLE OF SEAVALER YOU! YOU DRINK! GOOD FOR GREEN
         GREEN SKIN! YOU CAN DEFEND FOREVER! NEVER TAKE YOU ALIVE! ALSO DON''T NEED
@@ -591,14 +591,14 @@ MonoBehaviour:
   - Name: Map 3
     Room: {fileID: 1285002713}
     Pacts:
-    - CharacterName: Rouge
+    - CharacterName: Belzedug
       DialogText: '"YOU COULD KILL MORE, MUCH, MUCH MORE! BLOOD... SHOULD... FLOW!
         GIVE IN TO YOUR NEW EVER-GRACEFUL MASTER!? YES! YOU SHALL! HE TEACHES YOU
         HOW TO TURN TO ASH ALL THAT MEETS YOUR EYE FROM NOW ON! HAHAHAHA!"'
       PactToApply: {fileID: 11400000, guid: f85f1eddcbd483a46a6ae24a96546165, type: 2}
       _characterImage: {fileID: 21300000, guid: 22edbb4121b300d429930022df0ca1a5,
         type: 3}
-    - CharacterName: Vert
+    - CharacterName: Birg the Insecure
       DialogText: "\"YOU\u2019VE MADE IT THUS FAR, VERY IMPRESSIVE I WANT TO SHARE
         A UNIQUE VIAL WITH YOU, MY NEWFOUND FRIEND - I COOKED IT UP MYSELF! DRINK
         IT! IT WILL CHANGE THE WAY YOU USE YOUR AMMUNITION. THERE MAY BE SOME SIDE
@@ -607,7 +607,7 @@ MonoBehaviour:
       PactToApply: {fileID: 11400000, guid: dd1544c664a519f43a024b64fe2a8864, type: 2}
       _characterImage: {fileID: 21300000, guid: eba779deb50af7e40b058862ffebdb96,
         type: 3}
-    - CharacterName: Bleu
+    - CharacterName: Viking Sans MS
       DialogText: '"HALT, STRANGER. I FEEL YOU''RE DIFFERENT. I LIKE THE DARK SPARLE
         IN YOUR EYE, LOOK AT THIS MINIATURE SHIP, I KNOW! HOW DID THEY GET IN THERE!
         IT''S VERY CLEVER! CARRY IT! FOES RECEIVE THEIR DAMAGE BACK, YOU SHALL WELCOME
