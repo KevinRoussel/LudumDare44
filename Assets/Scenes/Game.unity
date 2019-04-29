@@ -7513,6 +7513,11 @@ PrefabInstance:
       propertyPath: _pitches.Array.data[2]
       value: 0.8
       objectReference: {fileID: 0}
+    - target: {fileID: 9019897000644345210, guid: d50f977f1b0b2a537b18f7200d2c7378,
+        type: 3}
+      propertyPath: voiceSpeed
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d50f977f1b0b2a537b18f7200d2c7378, type: 3}
 --- !u!1001 &9022759030672465877

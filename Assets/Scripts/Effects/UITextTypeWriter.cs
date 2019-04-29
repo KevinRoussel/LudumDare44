@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class UITextTypeWriter : MonoBehaviour
 {
     [SerializeField] float speed;
+    [SerializeField] float voiceSpeed;
     Coroutine _currentCoroutine;
     Text txt;
     string story;
@@ -23,6 +24,7 @@ public class UITextTypeWriter : MonoBehaviour
 
     public event Action OnSkipDialogue;
     public Coroutine CurrentCoroutine => _currentCoroutine;
+    public Coroutine VoiceRoutine { get; private set; }
 
     void Awake()
     {
@@ -34,6 +36,13 @@ public class UITextTypeWriter : MonoBehaviour
             txt.text = story;
             StartCoroutine(Finish());
             OnSkipDialogue?.Invoke();
+
+            if(VoiceRoutine!= null)
+            {
+                StopCoroutine(VoiceRoutine);
+                VoiceRoutine = null;
+            }
+
         }
     }
 
@@ -53,16 +62,32 @@ public class UITextTypeWriter : MonoBehaviour
     {
         bool skip = false;
         OnSkipDialogue += () => skip = true;
+
+        VoiceRoutine = StartCoroutine(VoiceClock());
+        IEnumerator VoiceClock()
+        {
+            while(true)
+            {
+                _speaker.pitch = _pitches.PickRandom();
+                _speaker.Play();
+                yield return new WaitForSeconds(1f/voiceSpeed);
+            }
+        }
+
         foreach (char c in story)
         {
             if (skip) yield break;
 
-            _speaker.pitch = _pitches.PickRandom();
-            _speaker.Play();
-
             txt.text += c;
             yield return new WaitForSeconds(1f / speed);
         }
+
+        if (VoiceRoutine != null)
+        {
+            StopCoroutine(VoiceRoutine);
+            VoiceRoutine = null;
+        }
+
         StartCoroutine(Finish());
     }
 
