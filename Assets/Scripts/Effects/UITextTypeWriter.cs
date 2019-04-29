@@ -12,6 +12,15 @@ public class UITextTypeWriter : MonoBehaviour
     string story;
     bool running = false;
 
+    [Header("blabla support")]
+    [SerializeField] AudioSource _speaker;
+    [SerializeField] List<float> _pitches;
+
+    public void ChangeSound(AudioClip voice)
+    {
+        _speaker.clip = voice;
+    }
+
     public event Action OnSkipDialogue;
     public Coroutine CurrentCoroutine => _currentCoroutine;
 
@@ -47,6 +56,9 @@ public class UITextTypeWriter : MonoBehaviour
         foreach (char c in story)
         {
             if (skip) yield break;
+
+            _speaker.pitch = _pitches.PickRandom();
+            _speaker.Play();
 
             txt.text += c;
             yield return new WaitForSeconds(1f / speed);

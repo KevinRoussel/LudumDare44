@@ -9,9 +9,10 @@ public class Dialog : MonoBehaviour
     [SerializeField] Text dialogText;
     [SerializeField] UITextTypeWriter typeWriter;
 
+    
     public UITextTypeWriter TypeWriter => typeWriter;
-
     public bool IsTyping() => typeWriter.Running();
+    
 
     public Dialog ChangeName(string name) {
         this.name.text = name;

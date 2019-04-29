@@ -25,6 +25,7 @@ public class Gameplay : MonoBehaviour
         public string DialogText;
         public Pact PactToApply;
         public Sprite _characterImage;
+        public AudioClip _voice;
     }
 
     #endregion
@@ -56,7 +57,6 @@ public class Gameplay : MonoBehaviour
 
     [SerializeField] Button _pactSignOK;
     [SerializeField] Button _pactSignCancel;
-
     [SerializeField] Image _characterImage;
 
     [Header("UI GameOver")]
@@ -122,6 +122,7 @@ public class Gameplay : MonoBehaviour
 
                     // Wait dialogue completion
                     _dialog.gameObject.SetActive(true);
+                    _dialog.TypeWriter.ChangeSound(level.Pacts[_selectedDemon]._voice);
                     _dialog.ChangeName(level.Pacts[_selectedDemon].CharacterName)
                         .ChangeDialogText(level.Pacts[_selectedDemon].DialogText);
                     yield return _dialog.TypeWriter.CurrentCoroutine;
