@@ -199,6 +199,7 @@ public class Gameplay : MonoBehaviour
                 _selectedPactsIcon[idx].transform.GetChild(1).GetComponent<Image>().sprite = level.Pacts[_selectedDemon]._pactIcon[1];
                 _selectedPactsIcon[idx].transform.GetChild(2).GetComponent<Image>().sprite = level.Pacts[_selectedDemon]._pactIcon[2];
                 _selectedPactsIcon[idx].transform.GetChild(3).GetComponent<Image>().sprite = level.Pacts[_selectedDemon]._pactIcon[3];
+                _selectedPactsIcon[idx].transform.GetChild(4).GetComponent<Image>().sprite = level.Pacts[_selectedDemon]._pactIcon[4];
 
                 _pactUI.Play(_pactUIClose.name);
                 yield break;

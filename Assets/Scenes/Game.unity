@@ -835,7 +835,12 @@ MonoBehaviour:
       - {fileID: 21300000, guid: 86025b37733879a4f9b728f7975129c2, type: 3}
       - {fileID: 21300000, guid: bb9d7e6fa5814b140a861ec83345dd8a, type: 3}
       - {fileID: 21300000, guid: 9b597994702b4ec41baa615149fe5c00, type: 3}
-      _pactIcon: []
+      _pactIcon:
+      - {fileID: 21300000, guid: 8c447b0a510452c448080e338eb450e2, type: 3}
+      - {fileID: 21300000, guid: e957bec604abc5949a6a018834ab82b8, type: 3}
+      - {fileID: 21300000, guid: c5759149a4be58340ba1f526451d680d, type: 3}
+      - {fileID: 21300000, guid: 6369f03b43b0c804bbca2deb5bd81551, type: 3}
+      - {fileID: 21300000, guid: e3fd8fe3b7f53b642bd1c11ebbe7c099, type: 3}
       _voice: {fileID: 8300000, guid: 3c89c59f54cfca647b13683d6b034d11, type: 3}
     - CharacterName: Birg the Insecure
       DialogText: '"EEK ! DON''T TOUCH ME ! NO TOUCHING ! STAY AWAY YOU UNSTABLE MESS,
@@ -847,7 +852,12 @@ MonoBehaviour:
       - {fileID: 21300000, guid: cc0c61d454791774bbaef5a64b73292c, type: 3}
       - {fileID: 21300000, guid: 768159c54877a0940ad84765b6b7df7c, type: 3}
       - {fileID: 21300000, guid: 1e1cdec9fefbc7847a6eaa50d10de57b, type: 3}
-      _pactIcon: []
+      _pactIcon:
+      - {fileID: 21300000, guid: 5f2a481f7213518498a3dcf9d010ff51, type: 3}
+      - {fileID: 21300000, guid: 049ebb7d09809bd4ba57bb37c31e3849, type: 3}
+      - {fileID: 21300000, guid: 60e863b189fc47343bd8c540b5b53e1b, type: 3}
+      - {fileID: 21300000, guid: a7e6714bedcf06243b28eda999a400c6, type: 3}
+      - {fileID: 21300000, guid: a058f91c214e0694cb52c52103b7aa7c, type: 3}
       _voice: {fileID: 8300000, guid: 9e64b8488e20065429d846b04d836063, type: 3}
     - CharacterName: Viking Sans MS
       DialogText: '"I''VE JOURNEYED ALL ACROSS THE SEAS, I MAY HAVE SOMETHING FOR
@@ -859,7 +869,12 @@ MonoBehaviour:
       - {fileID: 21300000, guid: 7ddb1b1df8b725c4ba3e15ba84eed327, type: 3}
       - {fileID: 21300000, guid: b6fae916133e05e4e8f7134f7b8747bc, type: 3}
       - {fileID: 21300000, guid: b07d501b3a4a7774ca3b8a33c9de33eb, type: 3}
-      _pactIcon: []
+      _pactIcon:
+      - {fileID: 21300000, guid: 3d7962db5a7be084b8093c96c988d850, type: 3}
+      - {fileID: 21300000, guid: cb0271bfbbea68540a7f8aa4328da5fa, type: 3}
+      - {fileID: 21300000, guid: 9fec9ddfddea198478a2a44500898139, type: 3}
+      - {fileID: 21300000, guid: 3384f174b16e1e24595d9d76ff1a809d, type: 3}
+      - {fileID: 21300000, guid: c586f30c890f4234a868c85de6b382fa, type: 3}
       _voice: {fileID: 8300000, guid: 3b57da9c390a0904aa520731b7daf80b, type: 3}
   - Name: Map 2
     Room: {fileID: 1894202938619335759}
@@ -874,7 +889,12 @@ MonoBehaviour:
       - {fileID: 21300000, guid: 86025b37733879a4f9b728f7975129c2, type: 3}
       - {fileID: 21300000, guid: bb9d7e6fa5814b140a861ec83345dd8a, type: 3}
       - {fileID: 21300000, guid: 9b597994702b4ec41baa615149fe5c00, type: 3}
-      _pactIcon: []
+      _pactIcon:
+      - {fileID: 21300000, guid: 8fe59b763422cd64ca49a2776db9fa4b, type: 3}
+      - {fileID: 21300000, guid: 315ac46cf60811d47878d6a82cc77c7c, type: 3}
+      - {fileID: 21300000, guid: 56b032a260fb29449a93734bf82640eb, type: 3}
+      - {fileID: 21300000, guid: 5b775bab9c121384ebe3f9ac109814d8, type: 3}
+      - {fileID: 21300000, guid: 4426bc3c3e08e534eb11aeb50b9f8107, type: 3}
       _voice: {fileID: 8300000, guid: b13632df95f0c0e418971197f454c141, type: 3}
     - CharacterName: Birg the Insecure
       DialogText: "\"HOWDY HOWDY THERE ! HEY SO, WHAT'S UP? YOU LIKING IT SO FAR?
@@ -888,7 +908,12 @@ MonoBehaviour:
       - {fileID: 21300000, guid: c1b8f4e5c84ca8945bb6fe4ac3ad94e7, type: 3}
       - {fileID: 21300000, guid: 4e4ecb3446ab3264eae85911c2e26bfe, type: 3}
       - {fileID: 21300000, guid: 0dcd5a90af607ed419848d32bf2faec2, type: 3}
-      _pactIcon: []
+      _pactIcon:
+      - {fileID: 21300000, guid: ba8d3693ea2259844b145a3420739133, type: 3}
+      - {fileID: 21300000, guid: f26ec0bf54c8c8548a22c1f07f50b701, type: 3}
+      - {fileID: 21300000, guid: b172958f07dd9fe47ba800db315d4f64, type: 3}
+      - {fileID: 21300000, guid: 52d2566601e7f9b4fb006adbc2e837b6, type: 3}
+      - {fileID: 21300000, guid: 620689c650a07834586f60628c7704d4, type: 3}
       _voice: {fileID: 8300000, guid: 59198b6af98e0114f845373ca6d63a0e, type: 3}
     - CharacterName: Viking Sans MS
       DialogText: '"*URF* - WHAT YOU WANT ? YOU ARE TRY PLAY HARD TOO DETAIL, NOT
@@ -901,7 +926,12 @@ MonoBehaviour:
       - {fileID: 21300000, guid: be572572912dc2446ae7a4d7f5d6c9de, type: 3}
       - {fileID: 21300000, guid: 2081397ede858f74dbffae41b8233e78, type: 3}
       - {fileID: 21300000, guid: 1d2cd94a5626430479fd4f3d86d564dd, type: 3}
-      _pactIcon: []
+      _pactIcon:
+      - {fileID: 21300000, guid: 3d7962db5a7be084b8093c96c988d850, type: 3}
+      - {fileID: 21300000, guid: cb0271bfbbea68540a7f8aa4328da5fa, type: 3}
+      - {fileID: 21300000, guid: 9fec9ddfddea198478a2a44500898139, type: 3}
+      - {fileID: 21300000, guid: 3384f174b16e1e24595d9d76ff1a809d, type: 3}
+      - {fileID: 21300000, guid: c586f30c890f4234a868c85de6b382fa, type: 3}
       _voice: {fileID: 8300000, guid: d6649aebc144dbe4ca5ce9f4bd73943b, type: 3}
   - Name: Map 3
     Room: {fileID: 1894202936990764339}
@@ -912,7 +942,12 @@ MonoBehaviour:
         HOW TO TURN TO ASH ALL THAT MEETS YOUR EYE FROM NOW ON! HAHAHAHA!"'
       PactToApply: {fileID: 11400000, guid: 01ae93a0678a93f4b937f3d0e49a03cf, type: 2}
       _characterImage: []
-      _pactIcon: []
+      _pactIcon:
+      - {fileID: 21300000, guid: 8fe59b763422cd64ca49a2776db9fa4b, type: 3}
+      - {fileID: 21300000, guid: 315ac46cf60811d47878d6a82cc77c7c, type: 3}
+      - {fileID: 21300000, guid: 56b032a260fb29449a93734bf82640eb, type: 3}
+      - {fileID: 21300000, guid: 5b775bab9c121384ebe3f9ac109814d8, type: 3}
+      - {fileID: 21300000, guid: 4426bc3c3e08e534eb11aeb50b9f8107, type: 3}
       _voice: {fileID: 8300000, guid: 1b971d7b75e57d142a96bc00172616b0, type: 3}
     - CharacterName: Birg the Insecure
       DialogText: "\"YOU\u2019VE MADE IT THUS FAR, VERY IMPRESSIVE I WANT TO SHARE
@@ -926,7 +961,12 @@ MonoBehaviour:
       - {fileID: 21300000, guid: 6653900f87334c14ca77b74ec9905146, type: 3}
       - {fileID: 21300000, guid: 7d7a155552e760142aefe6cc7e31fb6b, type: 3}
       - {fileID: 21300000, guid: ce721f157a6fb7b4980be7671d04ca7a, type: 3}
-      _pactIcon: []
+      _pactIcon:
+      - {fileID: 21300000, guid: 9788754df2c9664418b086c4f75075d0, type: 3}
+      - {fileID: 21300000, guid: 0460520875f136449b98e6d34392bc96, type: 3}
+      - {fileID: 21300000, guid: 512434522f919cb44a0f1ea0daf0fb05, type: 3}
+      - {fileID: 21300000, guid: c96a408873a9ab54293e0d47167761f9, type: 3}
+      - {fileID: 21300000, guid: d6e59a929424e27469d9b6805560943f, type: 3}
       _voice: {fileID: 8300000, guid: f4fcc3180bc92dc478ef5136d32eefb2, type: 3}
     - CharacterName: Viking Sans MS
       DialogText: '"HALT, STRANGER. I FEEL YOU''RE DIFFERENT. I LIKE THE DARK SPARLE
@@ -935,7 +975,12 @@ MonoBehaviour:
         PAIN WITH OPEN ARMS! WHILE YOU CONTINUE UP... OR DOWN... TRUST ME! "'
       PactToApply: {fileID: 11400000, guid: f25b804b9b3c891408e5bb576c023a5c, type: 2}
       _characterImage: []
-      _pactIcon: []
+      _pactIcon:
+      - {fileID: 21300000, guid: 3d7962db5a7be084b8093c96c988d850, type: 3}
+      - {fileID: 21300000, guid: cb0271bfbbea68540a7f8aa4328da5fa, type: 3}
+      - {fileID: 21300000, guid: 9fec9ddfddea198478a2a44500898139, type: 3}
+      - {fileID: 21300000, guid: 3384f174b16e1e24595d9d76ff1a809d, type: 3}
+      - {fileID: 21300000, guid: c586f30c890f4234a868c85de6b382fa, type: 3}
       _voice: {fileID: 8300000, guid: d6649aebc144dbe4ca5ce9f4bd73943b, type: 3}
   GameUI: {fileID: 1964078272}
 --- !u!1 &175881755
@@ -972,6 +1017,80 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &227368707
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 227368708}
+  - component: {fileID: 227368710}
+  - component: {fileID: 227368709}
+  m_Layer: 0
+  m_Name: Image5
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &227368708
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 227368707}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1789070848}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &227368709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 227368707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: 639c9bcc9fb9ce246a22acfa3b843924, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+--- !u!222 &227368710
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 227368707}
+  m_CullTransparentMesh: 0
 --- !u!1 &257567930
 GameObject:
   m_ObjectHideFlags: 0
@@ -1511,6 +1630,80 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 380464219}
+  m_CullTransparentMesh: 0
+--- !u!1 &381208775
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 381208776}
+  - component: {fileID: 381208778}
+  - component: {fileID: 381208777}
+  m_Layer: 0
+  m_Name: Image5
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &381208776
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 381208775}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1162365537}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &381208777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 381208775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: 639c9bcc9fb9ce246a22acfa3b843924, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+--- !u!222 &381208778
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 381208775}
   m_CullTransparentMesh: 0
 --- !u!1 &410310060
 GameObject:
@@ -4953,6 +5146,7 @@ RectTransform:
   - {fileID: 1689067516}
   - {fileID: 1848432616}
   - {fileID: 1689457718}
+  - {fileID: 381208776}
   m_Father: {fileID: 1964078273}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5007,9 +5201,9 @@ Animation:
   m_GameObject: {fileID: 1162365536}
   m_Enabled: 1
   serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 5128e79a1eb4a79459cddee8aa9d6385, type: 2}
+  m_Animation: {fileID: 7400000, guid: 8376aa801d9b35741901618e5c530293, type: 2}
   m_Animations:
-  - {fileID: 7400000, guid: 5128e79a1eb4a79459cddee8aa9d6385, type: 2}
+  - {fileID: 7400000, guid: 8376aa801d9b35741901618e5c530293, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
@@ -5161,6 +5355,80 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1197951737}
+  m_CullTransparentMesh: 0
+--- !u!1 &1236432453
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1236432454}
+  - component: {fileID: 1236432456}
+  - component: {fileID: 1236432455}
+  m_Layer: 0
+  m_Name: Image5
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1236432454
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1236432453}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1486199579}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1236432455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1236432453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: 639c9bcc9fb9ce246a22acfa3b843924, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+--- !u!222 &1236432456
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1236432453}
   m_CullTransparentMesh: 0
 --- !u!1 &1240477946
 GameObject:
@@ -7043,6 +7311,7 @@ RectTransform:
   - {fileID: 2020009962}
   - {fileID: 3553366}
   - {fileID: 1397516558}
+  - {fileID: 1236432454}
   m_Father: {fileID: 1964078273}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7097,9 +7366,9 @@ Animation:
   m_GameObject: {fileID: 1486199578}
   m_Enabled: 1
   serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 5128e79a1eb4a79459cddee8aa9d6385, type: 2}
+  m_Animation: {fileID: 7400000, guid: 8376aa801d9b35741901618e5c530293, type: 2}
   m_Animations:
-  - {fileID: 7400000, guid: 5128e79a1eb4a79459cddee8aa9d6385, type: 2}
+  - {fileID: 7400000, guid: 8376aa801d9b35741901618e5c530293, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
@@ -8857,6 +9126,7 @@ RectTransform:
   - {fileID: 1435443572}
   - {fileID: 766245326}
   - {fileID: 935626114}
+  - {fileID: 227368708}
   m_Father: {fileID: 1964078273}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8911,9 +9181,9 @@ Animation:
   m_GameObject: {fileID: 1789070847}
   m_Enabled: 1
   serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 5128e79a1eb4a79459cddee8aa9d6385, type: 2}
+  m_Animation: {fileID: 7400000, guid: 8376aa801d9b35741901618e5c530293, type: 2}
   m_Animations:
-  - {fileID: 7400000, guid: 5128e79a1eb4a79459cddee8aa9d6385, type: 2}
+  - {fileID: 7400000, guid: 8376aa801d9b35741901618e5c530293, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
