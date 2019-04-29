@@ -853,11 +853,11 @@ MonoBehaviour:
       - {fileID: 21300000, guid: 768159c54877a0940ad84765b6b7df7c, type: 3}
       - {fileID: 21300000, guid: 1e1cdec9fefbc7847a6eaa50d10de57b, type: 3}
       _pactIcon:
-      - {fileID: 21300000, guid: 5f2a481f7213518498a3dcf9d010ff51, type: 3}
-      - {fileID: 21300000, guid: 049ebb7d09809bd4ba57bb37c31e3849, type: 3}
-      - {fileID: 21300000, guid: 60e863b189fc47343bd8c540b5b53e1b, type: 3}
-      - {fileID: 21300000, guid: a7e6714bedcf06243b28eda999a400c6, type: 3}
-      - {fileID: 21300000, guid: a058f91c214e0694cb52c52103b7aa7c, type: 3}
+      - {fileID: 21300000, guid: 3d7962db5a7be084b8093c96c988d850, type: 3}
+      - {fileID: 21300000, guid: cb0271bfbbea68540a7f8aa4328da5fa, type: 3}
+      - {fileID: 21300000, guid: 9fec9ddfddea198478a2a44500898139, type: 3}
+      - {fileID: 21300000, guid: 3384f174b16e1e24595d9d76ff1a809d, type: 3}
+      - {fileID: 21300000, guid: c586f30c890f4234a868c85de6b382fa, type: 3}
       _voice: {fileID: 8300000, guid: 9e64b8488e20065429d846b04d836063, type: 3}
     - CharacterName: Viking Sans MS
       DialogText: '"I''VE JOURNEYED ALL ACROSS THE SEAS, I MAY HAVE SOMETHING FOR
@@ -870,16 +870,16 @@ MonoBehaviour:
       - {fileID: 21300000, guid: b6fae916133e05e4e8f7134f7b8747bc, type: 3}
       - {fileID: 21300000, guid: b07d501b3a4a7774ca3b8a33c9de33eb, type: 3}
       _pactIcon:
-      - {fileID: 21300000, guid: 3d7962db5a7be084b8093c96c988d850, type: 3}
-      - {fileID: 21300000, guid: cb0271bfbbea68540a7f8aa4328da5fa, type: 3}
-      - {fileID: 21300000, guid: 9fec9ddfddea198478a2a44500898139, type: 3}
-      - {fileID: 21300000, guid: 3384f174b16e1e24595d9d76ff1a809d, type: 3}
-      - {fileID: 21300000, guid: c586f30c890f4234a868c85de6b382fa, type: 3}
+      - {fileID: 21300000, guid: 5f2a481f7213518498a3dcf9d010ff51, type: 3}
+      - {fileID: 21300000, guid: 049ebb7d09809bd4ba57bb37c31e3849, type: 3}
+      - {fileID: 21300000, guid: 60e863b189fc47343bd8c540b5b53e1b, type: 3}
+      - {fileID: 21300000, guid: a7e6714bedcf06243b28eda999a400c6, type: 3}
+      - {fileID: 21300000, guid: a058f91c214e0694cb52c52103b7aa7c, type: 3}
       _voice: {fileID: 8300000, guid: 3b57da9c390a0904aa520731b7daf80b, type: 3}
   - Name: Map 2
     Room: {fileID: 1894202938619335759}
     Pacts:
-    - CharacterName: Belzedug
+    - CharacterName: The Duke of Ill-Fortune
       DialogText: '"YOU ARE STILL SO MUCH WEAKER THAN YOUR FULLY REALIZED POTENTIAL.
         REJOICE AND PRAY FOR YOUR ONE AND ONLY LORD, AGAIN. YOU WILL KNOW THE UNFATHOMABLE
         DEPTH OF TRUE RAGE, BUT SO WILL YOUR FOES."'
@@ -896,7 +896,7 @@ MonoBehaviour:
       - {fileID: 21300000, guid: 5b775bab9c121384ebe3f9ac109814d8, type: 3}
       - {fileID: 21300000, guid: 4426bc3c3e08e534eb11aeb50b9f8107, type: 3}
       _voice: {fileID: 8300000, guid: b13632df95f0c0e418971197f454c141, type: 3}
-    - CharacterName: Birg the Insecure
+    - CharacterName: Lord Seerious
       DialogText: "\"HOWDY HOWDY THERE ! HEY SO, WHAT'S UP? YOU LIKING IT SO FAR?
         YEAH? LOOK AT ME! YOU KNOW WHAT I LIKE? COMICS! YEAH! COMICS ARE THE SHIT!
         HERE, TAKE THIS HORN-CLAD SCREWDRIVER! HOLD IT IN THE AIR TO FREEZE YOUR FOES
@@ -909,13 +909,13 @@ MonoBehaviour:
       - {fileID: 21300000, guid: 4e4ecb3446ab3264eae85911c2e26bfe, type: 3}
       - {fileID: 21300000, guid: 0dcd5a90af607ed419848d32bf2faec2, type: 3}
       _pactIcon:
-      - {fileID: 21300000, guid: ba8d3693ea2259844b145a3420739133, type: 3}
-      - {fileID: 21300000, guid: f26ec0bf54c8c8548a22c1f07f50b701, type: 3}
-      - {fileID: 21300000, guid: b172958f07dd9fe47ba800db315d4f64, type: 3}
-      - {fileID: 21300000, guid: 52d2566601e7f9b4fb006adbc2e837b6, type: 3}
-      - {fileID: 21300000, guid: 620689c650a07834586f60628c7704d4, type: 3}
+      - {fileID: 21300000, guid: 13f099924679c544f996c454cc1c9383, type: 3}
+      - {fileID: 21300000, guid: 1ae02a1a5874df04588a62ba29c93a64, type: 3}
+      - {fileID: 21300000, guid: 71535333e1e918f4e8dd635ecdf18265, type: 3}
+      - {fileID: 21300000, guid: 7ba86b3823ada7b4a8a3c95ce9f82963, type: 3}
+      - {fileID: 21300000, guid: b5b7c7eaa93f00f44a01bd20069121b5, type: 3}
       _voice: {fileID: 8300000, guid: 59198b6af98e0114f845373ca6d63a0e, type: 3}
-    - CharacterName: Viking Sans MS
+    - CharacterName: TwoDee Will-o'
       DialogText: '"*URF* - WHAT YOU WANT ? YOU ARE TRY PLAY HARD TOO DETAIL, NOT
         SO GOOD FOR STAY ALIVE, THIS BOTTLE OF SEAVALER YOU! YOU DRINK! GOOD FOR GREEN
         GREEN SKIN! YOU CAN DEFEND FOREVER! NEVER TAKE YOU ALIVE! ALSO DON''T NEED
@@ -927,11 +927,11 @@ MonoBehaviour:
       - {fileID: 21300000, guid: 2081397ede858f74dbffae41b8233e78, type: 3}
       - {fileID: 21300000, guid: 1d2cd94a5626430479fd4f3d86d564dd, type: 3}
       _pactIcon:
-      - {fileID: 21300000, guid: 13f099924679c544f996c454cc1c9383, type: 3}
-      - {fileID: 21300000, guid: 1ae02a1a5874df04588a62ba29c93a64, type: 3}
-      - {fileID: 21300000, guid: 71535333e1e918f4e8dd635ecdf18265, type: 3}
-      - {fileID: 21300000, guid: 7ba86b3823ada7b4a8a3c95ce9f82963, type: 3}
-      - {fileID: 21300000, guid: b5b7c7eaa93f00f44a01bd20069121b5, type: 3}
+      - {fileID: 21300000, guid: ba8d3693ea2259844b145a3420739133, type: 3}
+      - {fileID: 21300000, guid: f26ec0bf54c8c8548a22c1f07f50b701, type: 3}
+      - {fileID: 21300000, guid: b172958f07dd9fe47ba800db315d4f64, type: 3}
+      - {fileID: 21300000, guid: 52d2566601e7f9b4fb006adbc2e837b6, type: 3}
+      - {fileID: 21300000, guid: 620689c650a07834586f60628c7704d4, type: 3}
       _voice: {fileID: 8300000, guid: d6649aebc144dbe4ca5ce9f4bd73943b, type: 3}
   - Name: Map 3
     Room: {fileID: 1894202936990764339}
@@ -949,7 +949,7 @@ MonoBehaviour:
       - {fileID: 21300000, guid: 572ff7a3c50c48d4ba6ba1eeef686c7c, type: 3}
       - {fileID: 21300000, guid: d18b4ca05e6c6314e8e891932901c0d5, type: 3}
       _voice: {fileID: 8300000, guid: 1b971d7b75e57d142a96bc00172616b0, type: 3}
-    - CharacterName: Birg the Insecure
+    - CharacterName: Brudawg the Proud
       DialogText: "\"YOU\u2019VE MADE IT THUS FAR, VERY IMPRESSIVE I WANT TO SHARE
         A UNIQUE VIAL WITH YOU, MY NEWFOUND FRIEND - I COOKED IT UP MYSELF! DRINK
         IT! IT WILL CHANGE THE WAY YOU USE YOUR AMMUNITION. THERE MAY BE SOME SIDE
@@ -962,13 +962,13 @@ MonoBehaviour:
       - {fileID: 21300000, guid: 7d7a155552e760142aefe6cc7e31fb6b, type: 3}
       - {fileID: 21300000, guid: ce721f157a6fb7b4980be7671d04ca7a, type: 3}
       _pactIcon:
-      - {fileID: 21300000, guid: 9788754df2c9664418b086c4f75075d0, type: 3}
-      - {fileID: 21300000, guid: 0460520875f136449b98e6d34392bc96, type: 3}
-      - {fileID: 21300000, guid: 512434522f919cb44a0f1ea0daf0fb05, type: 3}
-      - {fileID: 21300000, guid: c96a408873a9ab54293e0d47167761f9, type: 3}
-      - {fileID: 21300000, guid: d6e59a929424e27469d9b6805560943f, type: 3}
+      - {fileID: 21300000, guid: 914359327f513c445952305c37dc752a, type: 3}
+      - {fileID: 21300000, guid: 1332fdce4f59339438f839b650f363bb, type: 3}
+      - {fileID: 21300000, guid: 129836cd19bf0974ea5f120c680068ae, type: 3}
+      - {fileID: 21300000, guid: 5ce4dcef9d041ff4cbbbdea358bb60c1, type: 3}
+      - {fileID: 21300000, guid: 5b50f85315d1c2747a314762f2ffb78a, type: 3}
       _voice: {fileID: 8300000, guid: f4fcc3180bc92dc478ef5136d32eefb2, type: 3}
-    - CharacterName: Viking Sans MS
+    - CharacterName: Kirzig the Fanatic
       DialogText: '"HALT, STRANGER. I FEEL YOU''RE DIFFERENT. I LIKE THE DARK SPARLE
         IN YOUR EYE, LOOK AT THIS MINIATURE SHIP, I KNOW! HOW DID THEY GET IN THERE!
         IT''S VERY CLEVER! CARRY IT! FOES RECEIVE THEIR DAMAGE BACK, YOU SHALL WELCOME
@@ -976,11 +976,11 @@ MonoBehaviour:
       PactToApply: {fileID: 11400000, guid: f25b804b9b3c891408e5bb576c023a5c, type: 2}
       _characterImage: []
       _pactIcon:
-      - {fileID: 21300000, guid: 914359327f513c445952305c37dc752a, type: 3}
-      - {fileID: 21300000, guid: 1332fdce4f59339438f839b650f363bb, type: 3}
-      - {fileID: 21300000, guid: 129836cd19bf0974ea5f120c680068ae, type: 3}
-      - {fileID: 21300000, guid: 5ce4dcef9d041ff4cbbbdea358bb60c1, type: 3}
-      - {fileID: 21300000, guid: 5b50f85315d1c2747a314762f2ffb78a, type: 3}
+      - {fileID: 21300000, guid: 9788754df2c9664418b086c4f75075d0, type: 3}
+      - {fileID: 21300000, guid: 0460520875f136449b98e6d34392bc96, type: 3}
+      - {fileID: 21300000, guid: 512434522f919cb44a0f1ea0daf0fb05, type: 3}
+      - {fileID: 21300000, guid: c96a408873a9ab54293e0d47167761f9, type: 3}
+      - {fileID: 21300000, guid: d6e59a929424e27469d9b6805560943f, type: 3}
       _voice: {fileID: 8300000, guid: d6649aebc144dbe4ca5ce9f4bd73943b, type: 3}
   GameUI: {fileID: 1964078272}
 --- !u!1 &175881755
@@ -1225,7 +1225,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b26acc8f725dfe75590cb47af9b420cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  evilPoints: 15
   badEndingThreshold: 10
   badEnding: {fileID: 1405396589}
   goodEnding: {fileID: 1405396588}
