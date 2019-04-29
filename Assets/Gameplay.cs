@@ -36,6 +36,8 @@ public class Gameplay : MonoBehaviour
     [SerializeField] KeysManager _keyManager;
     [SerializeField] GameUIControl _gameUIControl;
 
+    
+
     [Header("Configuration")]
     [SerializeField] Transform _roomRoot;
     [SerializeField] GameObject _playerPrefab;
@@ -65,6 +67,11 @@ public class Gameplay : MonoBehaviour
     [SerializeField] AnimationClip _gameOverClose;
     [SerializeField] Button _returnMenu;
 
+    [Header("Ending")]
+    [SerializeField] EndingDecision _endingDecision;
+    [SerializeField] BadEnding _badEnding;
+    [SerializeField] GoodEnding _goodEnding;
+
     [Header("Run config")]
     [SerializeField] List<LevelStructure> _mapStructure;
     public List<LevelStructure> MapStructure => _mapStructure;
@@ -92,7 +99,7 @@ public class Gameplay : MonoBehaviour
 
         List<Pact> selectedPacts = new List<Pact>();
 
-        foreach(var level in _mapStructure)
+        foreach(var level in _mapStructure.Skip(2))
         {
             OnNextLevel?.Invoke();
             if (level == _mapStructure.Last()) OnFinalFight?.Invoke();
@@ -220,8 +227,10 @@ public class Gameplay : MonoBehaviour
 
             Destroy(currentCharacter.gameObject);
         }
+        
         // ENDING HERE
         OnEnding?.Invoke();
+        yield return _endingDecision.StartEnding();
 
 
         yield return _gameUI.PlayAndWait(_gameClose);

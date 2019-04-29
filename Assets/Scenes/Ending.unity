@@ -388,6 +388,8 @@ MonoBehaviour:
   _BILAL: {fileID: 875396267}
   _minScale: 0.7
   _targetScale: 1
+  _cinematic: {fileID: 0}
+  _goodEndingClip: {fileID: 0}
 --- !u!4 &433109242 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4450923950082764344, guid: 92b348f4ea8376e4ab2f4e5ec381ac17,
@@ -1005,7 +1007,7 @@ Camera:
   field of view: 60
   orthographic: 1
   orthographic size: 9.5
-  m_Depth: -1
+  m_Depth: 10
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295

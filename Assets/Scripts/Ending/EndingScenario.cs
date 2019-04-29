@@ -22,8 +22,8 @@ public class EndingScenario : MonoBehaviour
         _BILAL.localScale = new Vector3(BILAL ? _targetScale:_minScale, BILAL ? _targetScale : _minScale, BILAL ? _targetScale : _minScale);
     }
     
-    public void Activate() {
-        StartCoroutine(RunScenario());
+    public IEnumerator Activate() {
+        yield return StartCoroutine(RunScenario());
     }
 
     protected virtual IEnumerator RunScenario() {
