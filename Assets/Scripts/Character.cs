@@ -76,6 +76,7 @@ public class Character : MonoBehaviour {
     public UnityEvent OnFireOn;
     public UnityEvent OnFireOff;
     public UnityEvent OnHitEvent;
+    public UnityEvent OnDeathEvent;
 
     internal Character Initialization () {
         // Parameters validation & assignation
@@ -597,7 +598,7 @@ public class Character : MonoBehaviour {
             if (HP <= 0)
             {
                 GameObject.FindObjectOfType<EndingDecision>().AddEvilPoint();
-
+                OnDeathEvent?.Invoke();
                 StartDeath?.Invoke();
                 foreach (var el in GetComponentsInParent<Collider>()) el.enabled = false;
                 _navMeshAgent.enabled = false;
