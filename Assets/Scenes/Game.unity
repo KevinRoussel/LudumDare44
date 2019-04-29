@@ -927,11 +927,11 @@ MonoBehaviour:
       - {fileID: 21300000, guid: 2081397ede858f74dbffae41b8233e78, type: 3}
       - {fileID: 21300000, guid: 1d2cd94a5626430479fd4f3d86d564dd, type: 3}
       _pactIcon:
-      - {fileID: 21300000, guid: 3d7962db5a7be084b8093c96c988d850, type: 3}
-      - {fileID: 21300000, guid: cb0271bfbbea68540a7f8aa4328da5fa, type: 3}
-      - {fileID: 21300000, guid: 9fec9ddfddea198478a2a44500898139, type: 3}
-      - {fileID: 21300000, guid: 3384f174b16e1e24595d9d76ff1a809d, type: 3}
-      - {fileID: 21300000, guid: c586f30c890f4234a868c85de6b382fa, type: 3}
+      - {fileID: 21300000, guid: 13f099924679c544f996c454cc1c9383, type: 3}
+      - {fileID: 21300000, guid: 1ae02a1a5874df04588a62ba29c93a64, type: 3}
+      - {fileID: 21300000, guid: 71535333e1e918f4e8dd635ecdf18265, type: 3}
+      - {fileID: 21300000, guid: 7ba86b3823ada7b4a8a3c95ce9f82963, type: 3}
+      - {fileID: 21300000, guid: b5b7c7eaa93f00f44a01bd20069121b5, type: 3}
       _voice: {fileID: 8300000, guid: d6649aebc144dbe4ca5ce9f4bd73943b, type: 3}
   - Name: Map 3
     Room: {fileID: 1894202936990764339}
@@ -943,11 +943,11 @@ MonoBehaviour:
       PactToApply: {fileID: 11400000, guid: 01ae93a0678a93f4b937f3d0e49a03cf, type: 2}
       _characterImage: []
       _pactIcon:
-      - {fileID: 21300000, guid: 8fe59b763422cd64ca49a2776db9fa4b, type: 3}
-      - {fileID: 21300000, guid: 315ac46cf60811d47878d6a82cc77c7c, type: 3}
-      - {fileID: 21300000, guid: 56b032a260fb29449a93734bf82640eb, type: 3}
-      - {fileID: 21300000, guid: 5b775bab9c121384ebe3f9ac109814d8, type: 3}
-      - {fileID: 21300000, guid: 4426bc3c3e08e534eb11aeb50b9f8107, type: 3}
+      - {fileID: 21300000, guid: d0686a950f0f17843b5ba8fd0fbd361e, type: 3}
+      - {fileID: 21300000, guid: 48c52ead9cb51e547bf2263a3bfc5677, type: 3}
+      - {fileID: 21300000, guid: 71c53564aa4dd2f46959dd5643e4caca, type: 3}
+      - {fileID: 21300000, guid: 572ff7a3c50c48d4ba6ba1eeef686c7c, type: 3}
+      - {fileID: 21300000, guid: d18b4ca05e6c6314e8e891932901c0d5, type: 3}
       _voice: {fileID: 8300000, guid: 1b971d7b75e57d142a96bc00172616b0, type: 3}
     - CharacterName: Birg the Insecure
       DialogText: "\"YOU\u2019VE MADE IT THUS FAR, VERY IMPRESSIVE I WANT TO SHARE
@@ -976,11 +976,11 @@ MonoBehaviour:
       PactToApply: {fileID: 11400000, guid: f25b804b9b3c891408e5bb576c023a5c, type: 2}
       _characterImage: []
       _pactIcon:
-      - {fileID: 21300000, guid: 3d7962db5a7be084b8093c96c988d850, type: 3}
-      - {fileID: 21300000, guid: cb0271bfbbea68540a7f8aa4328da5fa, type: 3}
-      - {fileID: 21300000, guid: 9fec9ddfddea198478a2a44500898139, type: 3}
-      - {fileID: 21300000, guid: 3384f174b16e1e24595d9d76ff1a809d, type: 3}
-      - {fileID: 21300000, guid: c586f30c890f4234a868c85de6b382fa, type: 3}
+      - {fileID: 21300000, guid: 914359327f513c445952305c37dc752a, type: 3}
+      - {fileID: 21300000, guid: 1332fdce4f59339438f839b650f363bb, type: 3}
+      - {fileID: 21300000, guid: 129836cd19bf0974ea5f120c680068ae, type: 3}
+      - {fileID: 21300000, guid: 5ce4dcef9d041ff4cbbbdea358bb60c1, type: 3}
+      - {fileID: 21300000, guid: 5b50f85315d1c2747a314762f2ffb78a, type: 3}
       _voice: {fileID: 8300000, guid: d6649aebc144dbe4ca5ce9f4bd73943b, type: 3}
   GameUI: {fileID: 1964078272}
 --- !u!1 &175881755
