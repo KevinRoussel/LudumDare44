@@ -51,7 +51,7 @@ public class BaseRangedEnemy : BaseEnemy {
 
         while (true) {
             _character.EventFire();
-            _character.transform.LookAt(_player.transform.position);
+            if(_player!=null) _character.transform.LookAt(_player.transform.position);
             _shootingManager.Shoot(transform, "Player", _shootingSpreadRange, _damage, 0);            
             yield return new WaitForSeconds(_fireRate);
         }

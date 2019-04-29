@@ -25,6 +25,7 @@ public class Gameplay : MonoBehaviour
         public string DialogText;
         public Pact PactToApply;
         public Sprite _characterImage;
+        public AudioClip _voice;
     }
 
     #endregion
@@ -56,13 +57,13 @@ public class Gameplay : MonoBehaviour
 
     [SerializeField] Button _pactSignOK;
     [SerializeField] Button _pactSignCancel;
-
     [SerializeField] Image _characterImage;
 
     [Header("UI GameOver")]
     [SerializeField] Animation _gameOverUI;
     [SerializeField] AnimationClip _gameOverOpen;
     [SerializeField] AnimationClip _gameOverClose;
+    [SerializeField] Button _returnMenu;
 
     [Header("Run config")]
     [SerializeField] List<LevelStructure> _mapStructure;
@@ -77,6 +78,7 @@ public class Gameplay : MonoBehaviour
     public event Action OnPactStart;
     public event Action OnMapStart;
     public event Action OnEnding;
+    public event Action OnFinalFight;
 
     int _selectedDemon;
 
@@ -93,6 +95,7 @@ public class Gameplay : MonoBehaviour
         foreach(var level in _mapStructure)
         {
             OnNextLevel?.Invoke();
+            if (level == _mapStructure.Last()) OnFinalFight?.Invoke();
 
             // Pact
             yield return PactRoom((newPact) => selectedPacts.Add(newPact));
@@ -119,6 +122,7 @@ public class Gameplay : MonoBehaviour
 
                     // Wait dialogue completion
                     _dialog.gameObject.SetActive(true);
+                    _dialog.TypeWriter.ChangeSound(level.Pacts[_selectedDemon]._voice);
                     _dialog.ChangeName(level.Pacts[_selectedDemon].CharacterName)
                         .ChangeDialogText(level.Pacts[_selectedDemon].DialogText);
                     yield return _dialog.TypeWriter.CurrentCoroutine;
@@ -141,6 +145,8 @@ public class Gameplay : MonoBehaviour
                     _pactSignCancel.onClick.AddListener(() => _pactCancel = true);
                     _pactSignOK.onClick.AddListener(() => _pactOK = true);
                     yield return new WaitWhile(() => !_pactCancel && !_pactOK);
+                    yield return null;
+                    yield return null;
                     _pactSign.gameObject.SetActive(false);
 
                 } while (_pactCancel);
@@ -193,7 +199,12 @@ public class Gameplay : MonoBehaviour
                     // GameOver Menu Open
                     _gameOverUI.gameObject.SetActive(true);
                     yield return _gameOverUI.PlayAndWait(_gameOverOpen);
-                    yield return new WaitForSeconds(1f);
+
+                    bool _done = false;
+                    _returnMenu.onClick.AddListener(() => _done = true);
+                    yield return new WaitWhile(()=>!_done);
+                    _returnMenu.onClick.RemoveAllListeners();
+
                     yield return _gameOverUI.PlayAndWait(_gameOverClose);
                     _gameOverUI.gameObject.SetActive(false);
 

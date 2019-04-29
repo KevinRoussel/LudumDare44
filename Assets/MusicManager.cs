@@ -11,6 +11,7 @@ public class MusicManager : MonoBehaviour
     [Header("Sources")]
     [SerializeField] AudioSource _menuMusic;
     [SerializeField] AudioSource _fightMusic;
+    [SerializeField] AudioSource _finalFightMusic;
     [SerializeField] AudioSource _pactMusic;
     [SerializeField] AudioSource _endingMusic;
 
@@ -43,6 +44,11 @@ public class MusicManager : MonoBehaviour
         {
             StopAll();
             _endingMusic.Play();
+        };
+        _gameplay.OnFinalFight += () =>
+        {
+            StopAll();
+            _finalFightMusic.Play();
         };
     }
 
