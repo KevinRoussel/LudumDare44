@@ -78,6 +78,7 @@ public class Gameplay : MonoBehaviour
     public event Action OnPactStart;
     public event Action OnMapStart;
     public event Action OnEnding;
+    public event Action OnFinalFight;
 
     int _selectedDemon;
 
@@ -94,6 +95,7 @@ public class Gameplay : MonoBehaviour
         foreach(var level in _mapStructure)
         {
             OnNextLevel?.Invoke();
+            if (level == _mapStructure.Last()) OnFinalFight?.Invoke();
 
             // Pact
             yield return PactRoom((newPact) => selectedPacts.Add(newPact));
