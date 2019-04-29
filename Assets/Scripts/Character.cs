@@ -74,7 +74,6 @@ public class Character : MonoBehaviour {
     public UnityEvent OnMoveOn;
     public UnityEvent OnMoveOff;
     public UnityEvent OnFireOn;
-    public UnityEvent OnFireOff;
     public UnityEvent OnHitEvent;
     public UnityEvent OnDeathEvent;
     public UnityEvent OnSHieldStart;
@@ -284,7 +283,6 @@ public class Character : MonoBehaviour {
     public bool LaunchAttack () {
         if (!_canAttack) return false;
 
-        OnFireOn?.Invoke();
         _isAttacking = true;
         StartCoroutine(CallAttack());
         return true;
@@ -292,7 +290,6 @@ public class Character : MonoBehaviour {
 
     internal void StopAttack () {
 
-        OnFireOff?.Invoke();
         OnStopAttack?.Invoke();
         _isAttacking = false;
     }
@@ -308,6 +305,7 @@ public class Character : MonoBehaviour {
 
             if (result.HasValue) {
 
+                OnFireOn?.Invoke();
                 Shoot(0);
 
                 if (_shootConeAttack != 0f) {

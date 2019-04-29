@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6604625451387427130}
   - component: {fileID: 1308502652395758217}
+  - component: {fileID: 6237904555512966427}
   m_Layer: 0
   m_Name: CharacterShoot
   m_TagString: Untagged
@@ -40,12 +41,13 @@ AudioSource:
   m_GameObject: {fileID: 337267724553317324}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243999714117098328, guid: 74b7f7ff7bccd4c4ca516aabb6063112,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: f6baf6ee1b0087848b4ede53a15d2ec5, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.165
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -127,6 +129,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6237904555512966427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 337267724553317324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65428dc3d7ea32a4b938b1a80b2691c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  source: {fileID: 1308502652395758217}
+  pitches:
+  - 1
 --- !u!1 &416125127281264897
 GameObject:
   m_ObjectHideFlags: 0
@@ -704,13 +721,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  OnFireOff:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1308502652395758217}
-        m_MethodName: Stop
+      - m_Target: {fileID: 6237904555512966427}
+        m_MethodName: ChangePitch
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
