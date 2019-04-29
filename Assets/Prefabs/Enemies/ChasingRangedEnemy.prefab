@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5198358909793123859}
   - component: {fileID: 7772098448198953974}
-  - component: {fileID: 5198358909800156899}
   - component: {fileID: 5198358909792951585}
   - component: {fileID: 8254802077976808082}
   - component: {fileID: 7504341281117195138}
@@ -74,25 +73,6 @@ MonoBehaviour:
   _flashRadius: 0
   _flashDuration: 0
   _flashCooldown: 0
---- !u!95 &5198358909800156899
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5198358909792827519}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 3a5e32bef04849f44b5fe880a72a97ec, type: 3}
-  m_Controller: {fileID: 9100000, guid: 02bed053da4634547af3bbcf4b6a6330, type: 2}
-  m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!195 &5198358909792951585
 NavMeshAgent:
   m_ObjectHideFlags: 0

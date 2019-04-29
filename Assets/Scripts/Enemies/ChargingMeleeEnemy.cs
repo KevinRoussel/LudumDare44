@@ -16,11 +16,9 @@ public class ChargingMeleeEnemy : BaseEnemy {
     float _attackTimer;
 
     public override void Tick () {
-
         _attackTimer -= (_attackTimer != -1) ? Time.deltaTime : 0;
 
         base.Tick();
-
     }
 
     protected override void PlayerDetected () {
@@ -32,14 +30,21 @@ public class ChargingMeleeEnemy : BaseEnemy {
             _navMeshAgent.speed *= _chargeSpeedMultiplier;
 
             if (_navMeshAgent.enabled)
+            {
+                _character.FireWalk();
                 _navMeshAgent.SetDestination(_player.transform.position);
+            }
+            else
+            {
+                _character.FireStopWalk();
+            }
 
         }
 
         if ((_navMeshAgent.remainingDistance <= _attackRange) && (_attackTimer <= 0)) {
 
             _attackTimer = -1;
-
+            _character.EventFire();
             StartCoroutine("Attack");
 
         }
@@ -57,8 +62,9 @@ public class ChargingMeleeEnemy : BaseEnemy {
     IEnumerator Attack () {
 
         SetCanMove(false);
-
+        _character.EventFire();
         yield return new WaitForSeconds(1);
+        _character.EventFireStop();
 
         SetCanMove(true);
 

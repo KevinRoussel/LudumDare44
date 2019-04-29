@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BaseRangedEnemy : BaseEnemy {
 
+
     [Header("Shooting variables")]
     protected ShootingManager _shootingManager;
 
@@ -22,25 +23,25 @@ public class BaseRangedEnemy : BaseEnemy {
     public override void Initialization () {
 
         base.Initialization();
-
         _shootingManager = FindObjectOfType<ShootingManager>();
-
     }
 
     protected override void PlayerDetected () {        
 
         if (!_playerDetected) {
-
             base.PlayerDetected();
-
             _navMeshAgent.updatePosition = false;
-
             StartCoroutine("Shoot");            
-
         }
 
         if (_navMeshAgent.enabled)
+        {
             _navMeshAgent.SetDestination(transform.position + (_player.transform.position - transform.position));
+        }
+        else
+        {
+            _character.FireStopWalk();
+        }
 
     }
 
@@ -49,9 +50,9 @@ public class BaseRangedEnemy : BaseEnemy {
         yield return new WaitForSeconds(_shootingDelay);
 
         while (true) {
-
+            _character.EventFire();
+            _character.transform.LookAt(_player.transform.position);
             _shootingManager.Shoot(transform, "Player", _shootingSpreadRange, _damage, 0);            
-
             yield return new WaitForSeconds(_fireRate);
         }
 
@@ -60,11 +61,9 @@ public class BaseRangedEnemy : BaseEnemy {
     protected override void PlayerLost () {
 
         base.PlayerLost();
-
         StopCoroutine("Shoot");
-
+        _character.EventFireStop();
         _navMeshAgent.Warp(transform.position);
-
         _navMeshAgent.updatePosition = true;
 
     }

@@ -17,12 +17,18 @@ public abstract class BaseEnemy : MonoBehaviour {
     protected bool _movingToEnd = true;
 
     protected NavMeshAgent _navMeshAgent;    
+    protected Character _character;
+
 
     public int CanMove { get; set; }
 
     void Awake() {
+        _character = GetComponent<Character>();
         _navMeshAgent = GetComponent<NavMeshAgent>();
         _navMeshAgent.enabled = false;
+
+        // TODO
+
     }
 
     public virtual void Initialization () {
@@ -54,6 +60,7 @@ public abstract class BaseEnemy : MonoBehaviour {
 
     protected void SetDestination () {
 
+        _character.FireWalk();
         SetNavDestination(_movingToEnd ? _patrolPathEnd : _patrolPathStart);
 
     }
@@ -82,9 +89,13 @@ public abstract class BaseEnemy : MonoBehaviour {
     protected virtual void Movement () {
 
         if (_navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance) {
-
             _movingToEnd ^= true;
-            if(c == null) c=StartCoroutine(Extension.WaitSecondsAnd(0.5f, () => { SetDestination(); c = null; }));
+            _character.FireStopWalk();
+
+            if (c == null)
+            {
+                c = StartCoroutine(Extension.WaitSecondsAnd(0.5f, () => { SetDestination(); c = null; }));
+            }
 
         }
 
