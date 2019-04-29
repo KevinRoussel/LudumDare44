@@ -1,5 +1,24 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &8120028672815535092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2624565891486794940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef2b97fc95dd5c8488826d9b181937db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _character: {fileID: 6660512862048776474}
+  _animator: {fileID: 2624565891479385982}
+  _firingBool: Firing
+  _walkingBool: Walking
+  _shieldBool: Shield
+  _damageTrigger: Damage
+  _deadTrigger: Dead
 --- !u!1 &4634289975068647628
 GameObject:
   m_ObjectHideFlags: 0
@@ -348,11 +367,29 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.4
       objectReference: {fileID: 0}
+    - target: {fileID: 5188936686867461652, guid: 1ad7b50b5f3615b4e897ca06cb7d10f0,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: 62fc0829c10f534428d1cc7622a8fef0,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ad7b50b5f3615b4e897ca06cb7d10f0, type: 3}
+--- !u!1 &2624565891486794940 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5188936686858094038, guid: 1ad7b50b5f3615b4e897ca06cb7d10f0,
+    type: 3}
+  m_PrefabInstance: {fileID: 7813352456280473962}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2624565891486636188 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5188936686858197494, guid: 1ad7b50b5f3615b4e897ca06cb7d10f0,
+    type: 3}
+  m_PrefabInstance: {fileID: 7813352456280473962}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &2624565891479385982 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5188936686867461652, guid: 1ad7b50b5f3615b4e897ca06cb7d10f0,
     type: 3}
   m_PrefabInstance: {fileID: 7813352456280473962}
   m_PrefabAsset: {fileID: 0}
