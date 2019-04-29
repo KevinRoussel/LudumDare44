@@ -25,7 +25,7 @@ public class Gameplay : MonoBehaviour
         public string CharacterName;
         public string DialogText;
         public Pact PactToApply;
-        public Sprite _characterImage;
+        public Sprite[] _characterImage;
         public AudioClip _voice;
     }
 
@@ -55,6 +55,10 @@ public class Gameplay : MonoBehaviour
     [SerializeField] Dialog _dialog;
     [SerializeField] Dialog _pactSign;
     [SerializeField] Button _clickTrigger;
+
+    [SerializeField] Image RedCharacter;
+    [SerializeField] Image GreenCharacter;
+    [SerializeField] Image BlueCharacter;
 
     [SerializeField] Button _pactSignOK;
     [SerializeField] Button _pactSignCancel;
@@ -120,13 +124,36 @@ public class Gameplay : MonoBehaviour
 
                 do
                 {
-                    // Select Deamon
-                    _pactCancel = false;
                     _demonSelection.gameObject.SetActive(true);
+
+                    // Prepare Deamon image
+                    RedCharacter.transform.GetChild(0).GetComponent<Image>().sprite = level.Pacts[0]._characterImage[0];
+                    RedCharacter.transform.GetChild(1).GetComponent<Image>().sprite = level.Pacts[0]._characterImage[1];
+                    RedCharacter.transform.GetChild(2).GetComponent<Image>().sprite = level.Pacts[0]._characterImage[2];
+                    RedCharacter.transform.GetChild(3).GetComponent<Image>().sprite = level.Pacts[0]._characterImage[3];
+
+                    GreenCharacter.transform.GetChild(0).GetComponent<Image>().sprite = level.Pacts[1]._characterImage[0];
+                    GreenCharacter.transform.GetChild(1).GetComponent<Image>().sprite = level.Pacts[1]._characterImage[1];
+                    GreenCharacter.transform.GetChild(2).GetComponent<Image>().sprite = level.Pacts[1]._characterImage[2];
+                    GreenCharacter.transform.GetChild(3).GetComponent<Image>().sprite = level.Pacts[1]._characterImage[3];
+
+                    BlueCharacter.transform.GetChild(0).GetComponent<Image>().sprite = level.Pacts[2]._characterImage[0];
+                    BlueCharacter.transform.GetChild(1).GetComponent<Image>().sprite = level.Pacts[2]._characterImage[1];
+                    BlueCharacter.transform.GetChild(2).GetComponent<Image>().sprite = level.Pacts[2]._characterImage[2];
+                    BlueCharacter.transform.GetChild(3).GetComponent<Image>().sprite = level.Pacts[2]._characterImage[3];
+
+                    RedCharacter.GetComponent<Animation>().Play("_RunPortrait");
+                    GreenCharacter.GetComponent<Animation>().Play("_RunPortrait");
+                    BlueCharacter.GetComponent<Animation>().Play("_RunPortrait");
+
+                    // Select Demon
+                    _pactCancel = false;
                     _selectedDemon = -1;
                     yield return new WaitWhile(() => _selectedDemon == -1);
 
                     // Wait dialogue completion
+                   
+
                     _dialog.gameObject.SetActive(true);
                     _dialog.TypeWriter.ChangeSound(level.Pacts[_selectedDemon]._voice);
                     _dialog.ChangeName(level.Pacts[_selectedDemon].CharacterName)
@@ -145,8 +172,14 @@ public class Gameplay : MonoBehaviour
                     _clickTrigger.gameObject.SetActive(false);
 
                     // Show Contract
-                    _characterImage.sprite = level.Pacts[_selectedDemon]._characterImage;
+                    
+
                     bool _pactOK = false;
+                    _characterImage.transform.GetChild(0).GetComponent<Image>().sprite = level.Pacts[_selectedDemon]._characterImage[0];
+                    _characterImage.transform.GetChild(1).GetComponent<Image>().sprite = level.Pacts[_selectedDemon]._characterImage[1];
+                    _characterImage.transform.GetChild(2).GetComponent<Image>().sprite = level.Pacts[_selectedDemon]._characterImage[2];
+                    _characterImage.transform.GetChild(3).GetComponent<Image>().sprite = level.Pacts[_selectedDemon]._characterImage[3];
+
                     _pactSign.gameObject.SetActive(true);
                     _pactSignCancel.onClick.AddListener(() => _pactCancel = true);
                     _pactSignOK.onClick.AddListener(() => _pactOK = true);
