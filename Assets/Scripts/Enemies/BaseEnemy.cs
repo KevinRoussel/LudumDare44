@@ -19,19 +19,23 @@ public abstract class BaseEnemy : MonoBehaviour {
     protected NavMeshAgent _navMeshAgent;    
     protected Character _character;
 
-
     public int CanMove { get; set; }
 
+    protected bool MovingEnemy { get { return Vector3.Distance(_patrolPathStart, _patrolPathEnd) > _navMeshAgent.stoppingDistance; } }
+
+    protected Animator _animator;
+
     void Awake() {
+
         _character = GetComponent<Character>();
         _navMeshAgent = GetComponent<NavMeshAgent>();
         _navMeshAgent.enabled = false;
 
-        // TODO
-
     }
 
     public virtual void Initialization () {
+
+        _animator = GetComponentInChildren<Animator>();
 
         _player = GameObject.FindGameObjectWithTag("Player");
 
@@ -39,7 +43,11 @@ public abstract class BaseEnemy : MonoBehaviour {
         _patrolPathEnd = _patrolPathEndPos.transform.position;
 
         _navMeshAgent.enabled = true;
-        SetDestination();        
+        SetDestination();
+
+        if (MovingEnemy)
+            _character.FireWalk();
+        
     }
 
     public virtual void Tick () {
@@ -53,14 +61,15 @@ public abstract class BaseEnemy : MonoBehaviour {
             if (_playerDetected)
                 PlayerLost();
 
-            Movement();
+            if(MovingEnemy)
+                Movement();
 
         }
+
     }
 
     protected void SetDestination () {
 
-        _character.FireWalk();
         SetNavDestination(_movingToEnd ? _patrolPathEnd : _patrolPathStart);
 
     }
@@ -68,6 +77,7 @@ public abstract class BaseEnemy : MonoBehaviour {
     protected void SetNavDestination (Vector3 target) {
 
         NavMesh.SamplePosition(target, out NavMeshHit hit, 10f, NavMesh.AllAreas);
+
         if(_navMeshAgent.enabled)
             _navMeshAgent.SetDestination(hit.position);
 
@@ -85,17 +95,17 @@ public abstract class BaseEnemy : MonoBehaviour {
 
     }
 
-    Coroutine c;
+    // Coroutine c;
     protected virtual void Movement () {
 
         if (_navMeshAgent.enabled && _navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance) {
-            _movingToEnd ^= true;
-            _character.FireStopWalk();
 
-            if (c == null)
-            {
-                c = StartCoroutine(Extension.WaitSecondsAnd(0.5f, () => { SetDestination(); c = null; }));
-            }
+            _movingToEnd ^= true;
+
+            SetDestination();
+
+            /*if (c == null)
+                c = StartCoroutine(Extension.WaitSecondsAnd(0.5f, () => { SetDestination(); c = null; }));*/            
 
         }
 
@@ -104,6 +114,7 @@ public abstract class BaseEnemy : MonoBehaviour {
     public virtual void Flashed (float duration, Vector2 upgradeEffect) {
 
         GetComponent<Character>()?.Flashed();
+
         SetCanMove(false);
 
         StartCoroutine(Extension.WaitSecondsAnd(duration, () => {
@@ -125,7 +136,12 @@ public abstract class BaseEnemy : MonoBehaviour {
     public void SetCanMove(bool can) {
 
         CanMove += (can ? 1 : -1);
-        _navMeshAgent.isStopped = (CanMove < 0);
+
+        if ((CanMove < 0) && !_navMeshAgent.isStopped)
+            _character.FireStopWalk();
+        else if ((CanMove >= 0) && _navMeshAgent.isStopped)
+            _character.FireWalk();
+
     }
 
 }

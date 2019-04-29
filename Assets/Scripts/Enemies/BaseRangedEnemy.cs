@@ -4,12 +4,8 @@ using UnityEngine;
 
 public class BaseRangedEnemy : BaseEnemy {
 
-
     [Header("Shooting variables")]
     protected ShootingManager _shootingManager;
-
-    [Tooltip("Damage of this enemy's attack")]
-    [SerializeField] protected int _damage;
 
     [Tooltip("Range for the \"spread\" of the shooting")]
     [SerializeField] protected Vector2 _shootingSpreadRange;
@@ -23,24 +19,52 @@ public class BaseRangedEnemy : BaseEnemy {
     public override void Initialization () {
 
         base.Initialization();
+
         _shootingManager = FindObjectOfType<ShootingManager>();
+
+        _character.StartDeath += () => {
+
+            StopCoroutine("RotateToPlayer");
+
+            StopCoroutine("Shoot");
+
+        };
+
     }
 
-    protected override void PlayerDetected () {        
+    protected override void PlayerDetected () {
 
-        if (!_playerDetected) {
-            base.PlayerDetected();
-            _navMeshAgent.updatePosition = false;
-            StartCoroutine("Shoot");            
-        }
+        if (_navMeshAgent.enabled) {
 
-        if (_navMeshAgent.enabled)
-        {
+            if (!_playerDetected) {
+
+                base.PlayerDetected();
+
+                SetCanMove(false);
+
+                _animator.SetBool("Firing", true);
+
+                StartCoroutine("Shoot");
+
+                StartCoroutine("RotateToPlayer");
+
+            }
+
             _navMeshAgent.SetDestination(transform.position + (_player.transform.position - transform.position));
+
         }
-        else
-        {
-            _character.FireStopWalk();
+
+    }
+
+    protected IEnumerator RotateToPlayer () {
+
+        while (true) {
+
+            if (_player)
+                _character.transform.LookAt(_player.transform.position);
+
+            yield return new WaitForEndOfFrame();
+
         }
 
     }
@@ -50,10 +74,11 @@ public class BaseRangedEnemy : BaseEnemy {
         yield return new WaitForSeconds(_shootingDelay);
 
         while (true) {
-            _character.EventFire();
-            if(_player!=null) _character.transform.LookAt(_player.transform.position);
-            _shootingManager.Shoot(transform, "Player", _shootingSpreadRange, _damage, 0);            
+
+            _shootingManager.Shoot(transform, "Player", _shootingSpreadRange, _character.Attack, 0);     
+            
             yield return new WaitForSeconds(_fireRate);
+
         }
 
     }
@@ -61,10 +86,15 @@ public class BaseRangedEnemy : BaseEnemy {
     protected override void PlayerLost () {
 
         base.PlayerLost();
+
+        StopCoroutine("RotateToPlayer");
+
         StopCoroutine("Shoot");
+
         _character.EventFireStop();
-        _navMeshAgent.Warp(transform.position);
-        _navMeshAgent.updatePosition = true;
+
+        if (MovingEnemy)
+            SetCanMove(true);
 
     }
 
