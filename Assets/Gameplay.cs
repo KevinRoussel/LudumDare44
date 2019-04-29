@@ -99,7 +99,7 @@ public class Gameplay : MonoBehaviour
 
         List<Pact> selectedPacts = new List<Pact>();
 
-        foreach(var level in _mapStructure.Skip(2))
+        foreach(var level in _mapStructure/*.Skip(2)*/)
         {
             OnNextLevel?.Invoke();
             if (level == _mapStructure.Last()) OnFinalFight?.Invoke();
