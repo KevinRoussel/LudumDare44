@@ -25,22 +25,15 @@ public class ChargingMeleeEnemy : BaseEnemy {
 
     protected override void PlayerDetected () {
 
-        if (!_playerDetected) {
+        if (!_playerDetected && _navMeshAgent.enabled) {
 
             base.PlayerDetected();
 
             _navMeshAgent.speed *= _chargeSpeedMultiplier;
 
-            if (_navMeshAgent.enabled) {
+            _navMeshAgent.SetDestination(_player.transform.position);
 
-                _character.FireWalk();
-                _navMeshAgent.SetDestination(_player.transform.position);
-
-            } else {
-
-                _character.FireStopWalk();
-
-            }
+            _animator.SetBool("Walking", true);
 
         }
 

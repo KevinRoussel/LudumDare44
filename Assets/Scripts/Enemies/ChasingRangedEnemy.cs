@@ -16,11 +16,11 @@ public class ChasingRangedEnemy : BaseRangedEnemy {
 
     protected override void PlayerLost () {
 
-        base.PlayerLost();
-
         _canChase = true;
 
         SetChasingDestination();
+
+        base.PlayerLost();        
 
     }
 
@@ -28,14 +28,12 @@ public class ChasingRangedEnemy : BaseRangedEnemy {
 
         if (_canChase && (Vector3.Distance(_player.transform.position, transform.position) <= _chasingRadius)) {
 
-            // _character.FireWalk();
             SetNavDestination(_player.transform.position + ((transform.position - _player.transform.position).normalized * _playerDetectionDistance * .8f));
 
             return true;
 
         } else {
 
-            // _character.FireStopWalk();
             _canChase = false;
 
             return false;
