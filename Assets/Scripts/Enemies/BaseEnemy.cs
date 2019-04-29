@@ -21,7 +21,7 @@ public abstract class BaseEnemy : MonoBehaviour {
 
     public int CanMove { get; set; }
 
-    protected bool MovingEnemy { get { return Vector3.Distance(_patrolPathStart, _patrolPathEnd) > _navMeshAgent.stoppingDistance; } }
+    protected bool Moving { get { return Vector3.Distance(transform.position, _navMeshAgent.destination) > _navMeshAgent.stoppingDistance; } }
 
     protected Animator _animator;
 
@@ -45,7 +45,7 @@ public abstract class BaseEnemy : MonoBehaviour {
         _navMeshAgent.enabled = true;
         SetDestination();
 
-        if (MovingEnemy)
+        if (Moving)
             _character.FireWalk();
         
     }
@@ -61,8 +61,7 @@ public abstract class BaseEnemy : MonoBehaviour {
             if (_playerDetected)
                 PlayerLost();
 
-            if(MovingEnemy)
-                Movement();
+            Movement();
 
         }
 
@@ -135,12 +134,16 @@ public abstract class BaseEnemy : MonoBehaviour {
 
     public void SetCanMove(bool can) {
 
-        CanMove += (can ? 1 : -1);
+        if (_navMeshAgent.enabled) {
 
-        if ((CanMove < 0) && !_navMeshAgent.isStopped)
-            _character.FireStopWalk();
-        else if ((CanMove >= 0) && _navMeshAgent.isStopped)
-            _character.FireWalk();
+            CanMove += (can ? 1 : -1);
+
+            if ((CanMove < 0) && !_navMeshAgent.isStopped)
+                _character.FireStopWalk();
+            else if ((CanMove >= 0) && _navMeshAgent.isStopped && Moving)
+                _character.FireWalk();
+
+        }
 
     }
 

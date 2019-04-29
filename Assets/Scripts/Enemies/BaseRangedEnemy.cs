@@ -87,8 +87,7 @@ public class BaseRangedEnemy : BaseEnemy {
 
         _character.EventFireStop();
 
-        if (MovingEnemy)
-            SetCanMove(true);
+        SetCanMove(true);
 
     }
 
