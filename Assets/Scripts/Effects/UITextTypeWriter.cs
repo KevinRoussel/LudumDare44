@@ -10,6 +10,7 @@ public class UITextTypeWriter : MonoBehaviour
     Coroutine _currentCoroutine;
     Text txt;
     string story;
+    bool running = false;
 
     public event Action OnSkipDialogue;
     public Coroutine CurrentCoroutine => _currentCoroutine;
@@ -22,6 +23,7 @@ public class UITextTypeWriter : MonoBehaviour
     void Update() {
         if (Input.GetButtonDown("Jump") || Input.GetMouseButtonDown(0)) {
             txt.text = story;
+            StartCoroutine(Finish());
             OnSkipDialogue?.Invoke();
         }
     }
@@ -31,9 +33,12 @@ public class UITextTypeWriter : MonoBehaviour
 
         story = txt.text;
         txt.text = "";
+        running = true;
 
         _currentCoroutine = StartCoroutine(PlayText());
     }
+
+    public bool Running() => running;
 
     IEnumerator PlayText()
     {
@@ -46,6 +51,12 @@ public class UITextTypeWriter : MonoBehaviour
             txt.text += c;
             yield return new WaitForSeconds(1f / speed);
         }
+        StartCoroutine(Finish());
+    }
+
+    IEnumerator Finish() {
+        yield return null;
+        running = false;
     }
 
 }

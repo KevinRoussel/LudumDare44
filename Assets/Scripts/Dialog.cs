@@ -11,6 +11,8 @@ public class Dialog : MonoBehaviour
 
     public UITextTypeWriter TypeWriter => typeWriter;
 
+    public bool IsTyping() => typeWriter.Running();
+
     public Dialog ChangeName(string name) {
         this.name.text = name;
         return this;
