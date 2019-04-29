@@ -8,9 +8,7 @@ public class PlayAnimOnHover : MonoBehaviour, IPointerEnterHandler, IPointerExit
     [SerializeField] Animation animToPlay;
     [SerializeField] AnimationClip _empty;
     [SerializeField] AnimationClip _mouvement;
-
     [SerializeField] AudioSource _onOver;
-
 
     public void OnPointerEnter(PointerEventData eventData)
     {

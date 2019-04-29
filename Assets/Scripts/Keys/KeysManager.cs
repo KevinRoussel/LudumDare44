@@ -5,6 +5,7 @@ public class KeysManager : MonoBehaviour {
 
     [SerializeField] Gameplay _gameplay;
 
+    [SerializeField] AudioSource _allKeysSound;
     Room CurrentRoom { get { return _gameplay.CurrentRoom; } }
 
     [Header("UI")]
@@ -23,7 +24,8 @@ public class KeysManager : MonoBehaviour {
         _keysCollected++;
         SetKeysText(_keysCollected);
         CurrentRoom.ExitTrigger.Ready = (_keysCollected == CurrentRoom.Keys.Length);
-
+        if (CurrentRoom.ExitTrigger.Ready)
+            _allKeysSound.Play();
     }
 
     void SetKeysText(int collected) {

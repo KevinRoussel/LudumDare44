@@ -77,6 +77,11 @@ public class Character : MonoBehaviour {
     public UnityEvent OnFireOff;
     public UnityEvent OnHitEvent;
     public UnityEvent OnDeathEvent;
+    public UnityEvent OnSHieldStart;
+    public UnityEvent OnSHieldHit;
+    public UnityEvent OnLaunchRage;
+    public UnityEvent OnFlash;
+
 
     internal Character Initialization () {
         // Parameters validation & assignation
@@ -375,6 +380,7 @@ public class Character : MonoBehaviour {
 
         IEnumerator Rage()
         {
+            OnLaunchRage?.Invoke();
             OnRageStart?.Invoke();
             Attack *= _rageMultiplier;
             FireRate *= _rageFireRatePercentage;
@@ -410,11 +416,13 @@ public class Character : MonoBehaviour {
     public event Action OnShieldOff;
     public event Action OnShieldHit;
 
+
     public void StartShield () {
 
         if (_shieldRoutine == null) _shieldRoutine=StartCoroutine(Shield());
         IEnumerator Shield()
         {
+            OnSHieldStart?.Invoke();
             OnShieldOn();
             yield return new WaitForSeconds(_shieldDuration);
 
@@ -451,6 +459,7 @@ public class Character : MonoBehaviour {
 
         IEnumerator Flash()
         {
+            OnFlash?.Invoke();
             OnFlashLauched?.Invoke();
 
             foreach (Character e in transform.GetComponentInParent<Room>().Enemies)
@@ -578,6 +587,7 @@ public class Character : MonoBehaviour {
             if (_shield!=null && (_shield?.gameObject.activeInHierarchy??false))
             {
                 OnShieldHit?.Invoke();
+                OnSHieldHit?.Invoke();
                 _hitCoroutine = null;
                 yield break;
             }
