@@ -112,6 +112,7 @@ MonoBehaviour:
   _power: 0
   _lifetime: 10
   _projectileRenderer: {fileID: 3592643444809355883}
+  _projectileCollider: {fileID: 4787140112929579781}
   _light: {fileID: 2640406430023710035}
   _onContactEvent:
     m_PersistentCalls:
