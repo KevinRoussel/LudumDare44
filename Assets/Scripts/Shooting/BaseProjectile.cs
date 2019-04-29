@@ -17,6 +17,7 @@ public class BaseProjectile : MonoBehaviour {
     [SerializeField] float _lifetime;
 
     [SerializeField] MeshRenderer _projectileRenderer;
+    [SerializeField] Collider _projectileCollider;
     [SerializeField] Light _light;
     [SerializeField] UnityEvent _onContactEvent;
 
@@ -36,6 +37,7 @@ public class BaseProjectile : MonoBehaviour {
 
     void OnEnable () {
         _projectileRenderer.enabled = true;
+        _projectileCollider.enabled = true;
         StartCoroutine("LifetimeDeactivation");
         _speed = _initialSpeed;
     }
@@ -50,6 +52,7 @@ public class BaseProjectile : MonoBehaviour {
         {
             _onContactEvent?.Invoke();
             _projectileRenderer.enabled = false;
+            _projectileCollider.enabled = false;
             StartCoroutine(ContactEffect());
             other.GetComponent<Character>()?.Hit(Instigator, _power);
         }
