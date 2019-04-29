@@ -74,6 +74,9 @@ public class Gameplay : MonoBehaviour
     public Room CurrentRoom { get; set; }
 
     public event Action OnNextLevel;
+    public event Action OnPactStart;
+    public event Action OnMapStart;
+    public event Action OnEnding;
 
     int _selectedDemon;
 
@@ -84,6 +87,7 @@ public class Gameplay : MonoBehaviour
 
     public IEnumerator RunGame()
     {
+
         List<Pact> selectedPacts = new List<Pact>();
 
         foreach(var level in _mapStructure)
@@ -94,6 +98,7 @@ public class Gameplay : MonoBehaviour
             yield return PactRoom((newPact) => selectedPacts.Add(newPact));
             IEnumerator PactRoom(Action<Pact> onPactSelected)
             {
+                OnPactStart?.Invoke();
                 _pactUI.gameObject.SetActive(true);
                 _pactUI.Play(_pactUIOpen.name);
 
@@ -146,6 +151,7 @@ public class Gameplay : MonoBehaviour
                 yield break;
             }
 
+            OnMapStart?.Invoke();
             _gameUI.gameObject.SetActive(true);
 
             // Spawn Room and Character
@@ -202,8 +208,9 @@ public class Gameplay : MonoBehaviour
             }
 
             Destroy(currentCharacter.gameObject);
-                
         }
+        // ENDING HERE
+        OnEnding?.Invoke();
 
 
         yield return _gameUI.PlayAndWait(_gameClose);

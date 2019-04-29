@@ -57,9 +57,12 @@ public class Master : MonoBehaviour
     [SerializeField] Button _creditButton; 
     [SerializeField] Button _tutoButton;
 
+    public Action OnMenuStart;
+
     enum MenuReturn { Null, StartGame, Credit, Tuto }
     IEnumerator Menu(Action<MenuReturn> @return)
     {
+        OnMenuStart?.Invoke();
         _menuAnimation.gameObject.SetActive(true);
         _menuAnimation.Play(_menuOpenAnimation.name);
 
