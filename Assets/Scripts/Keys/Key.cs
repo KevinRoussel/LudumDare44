@@ -6,6 +6,7 @@ public class Key : MonoBehaviour {
     [SerializeField] MeshRenderer _renderer;
     [SerializeField] ParticleSystem _collectingKeyEffect;
     [SerializeField] Light _collectingLight;
+    [SerializeField] AudioSource _collectSound;
 
     Coroutine collecting;
     void OnTriggerEnter (Collider other) {
@@ -15,11 +16,11 @@ public class Key : MonoBehaviour {
             FindObjectOfType<KeysManager>().KeyCollected();
             if(collecting==null) collecting = StartCoroutine(Collecting());
         }
-
     }
 
     IEnumerator Collecting()
     {
+        _collectSound?.Play();
         _renderer.enabled = false;
         _collectingKeyEffect.Play();
 
@@ -28,8 +29,6 @@ public class Key : MonoBehaviour {
         _collectingLight.enabled = false;
 
         yield return new WaitForSeconds(1f);
-
-
         Destroy(gameObject);
         yield break;
     }
