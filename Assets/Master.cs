@@ -124,5 +124,4 @@ public class Master : MonoBehaviour
         yield break;
     }
     #endregion
-
 }
