@@ -588,6 +588,8 @@ public class Character : MonoBehaviour {
 
             if (HP <= 0)
             {
+                GameObject.FindObjectOfType<EndingDecision>().AddEvilPoint();
+
                 StartDeath?.Invoke();
                 foreach (var el in GetComponentsInParent<Collider>()) el.enabled = false;
                 _navMeshAgent.enabled = false;

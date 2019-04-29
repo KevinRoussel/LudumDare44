@@ -40,6 +40,9 @@ public class BadEnding : EndingScenario
         yield return UserAction();
         _dialog.ChangeDialogText("PERHAPS SOMEONE ELSE WILL GRASP THIS FACT AND WON'T SPEND ALL THEIR LIFE ESSENCE SEEKING DEATH.");
         yield return UserAction();
+
+        _dialog.ChangeDialogText($"KARMA SCORE : {GameObject.FindObjectOfType<EndingDecision>().CurrentEvilPoint}. MAYBE AN OTHER TIME ....");
+        yield return UserAction();
         _dialog.Toggle();
     }
 }
