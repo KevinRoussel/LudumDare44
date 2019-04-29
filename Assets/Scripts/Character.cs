@@ -5,10 +5,12 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Assertions;
+using UnityEngine.Events;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class Character : MonoBehaviour {
+    
     #region Events
     public event Action OnReady;
     public event Action StartWalking;
@@ -33,7 +35,6 @@ public class Character : MonoBehaviour {
     #endregion
 
     [SerializeField] Collider _hitZone;
-    // [SerializeField] Transform _shieldRoot = null;
     [SerializeField] protected NavMeshAgent _navMeshAgent;
     public NavMeshAgent NavMeshAgent => _navMeshAgent;
 
@@ -46,14 +47,12 @@ public class Character : MonoBehaviour {
     [Header("Conf")]
     [SerializeField] float _recoverTime;
 
-
     [Header("Stat")]
     [SerializeField] int _initialHP;
     [SerializeField] int _initialAttack;
     [SerializeField] float _initialFireRate;
     [SerializeField] int _initialDefense;
     [SerializeField] int _initialSpeed;
-    // [SerializeField] int _initialShield;
 
     public int HPMax => _initialHP;
 
@@ -68,10 +67,15 @@ public class Character : MonoBehaviour {
     public float FireRate { get; set; }
     public int Defense { get; private set; }
     public int Speed { get; private set; }
-    // public int Shield { get; private set; }
 
     public event Action OnKeyCollected;
     public event Action<int> OnHPMaxUpdated;
+
+    public UnityEvent OnMoveOn;
+    public UnityEvent OnMoveOff;
+    public UnityEvent OnFireOn;
+    public UnityEvent OnFireOff;
+    public UnityEvent OnHitEvent;
 
     internal Character Initialization () {
         // Parameters validation & assignation
@@ -217,6 +221,7 @@ public class Character : MonoBehaviour {
         // Finished Movement 
         if (direction.magnitude < 0.01f) {
             if (_lastMovement != Vector2.zero) {
+                OnMoveOff?.Invoke();
                 EndWalking?.Invoke();
             }
             return;
@@ -224,6 +229,7 @@ public class Character : MonoBehaviour {
 
         // Start walking
         if (direction.magnitude > 0.01f && _lastMovement == Vector2.zero) {
+            OnMoveOn?.Invoke();
             StartWalking?.Invoke();
         }
 
@@ -272,6 +278,7 @@ public class Character : MonoBehaviour {
     public bool LaunchAttack () {
         if (!_canAttack) return false;
 
+        OnFireOn?.Invoke();
         _isAttacking = true;
         StartCoroutine(CallAttack());
         return true;
@@ -279,6 +286,7 @@ public class Character : MonoBehaviour {
 
     internal void StopAttack () {
 
+        OnFireOff?.Invoke();
         OnStopAttack?.Invoke();
         _isAttacking = false;
     }
@@ -582,7 +590,7 @@ public class Character : MonoBehaviour {
             HP = Mathf.Max(0, HP - (((Lvl3RageProjectilesSizeMultiplier != 0) && _rageOn) ? 0 : amount));
 
             OnHit?.Invoke(instigator, amount);
-
+            OnHitEvent?.Invoke();
             print(HP);
             OnTakeDamage?.Invoke(HP);
 
