@@ -88,7 +88,7 @@ public abstract class BaseEnemy : MonoBehaviour {
     Coroutine c;
     protected virtual void Movement () {
 
-        if (_navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance) {
+        if (_navMeshAgent.enabled && _navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance) {
             _movingToEnd ^= true;
             _character.FireStopWalk();
 

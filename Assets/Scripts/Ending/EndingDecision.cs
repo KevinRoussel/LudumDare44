@@ -8,30 +8,31 @@ public class EndingDecision : MonoBehaviour
 
     [SerializeField] int badEndingThreshold;
 
-    private EndingScenario badEnding;
-    private EndingScenario goodEnding;
+    [SerializeField] BadEnding badEnding;
+    [SerializeField] GoodEnding goodEnding;
 
-    void Awake() {
-        badEnding = GetComponent<BadEnding>();
-        goodEnding = GetComponent<GoodEnding>();
-    }
+    [SerializeField] List<Transform> _toDesactivate;
 
-    // TODO : Delete Start function and integrate ending decision in the coroutine process
-    void Start()
+    public IEnumerator StartEnding()
     {
         if (evilPoints > badEndingThreshold) {
-            CallBadEnding();
+            yield return CallBadEnding();
         } else {
-            CallGoodEnding();
+            yield return CallGoodEnding();
         }
-
     }
 
-    void CallBadEnding() {
-        badEnding.Activate();
+    IEnumerator CallBadEnding() {
+        _toDesactivate.ForEach(i => i.gameObject.SetActive(false));
+        badEnding.gameObject.SetActive(true);
+        yield return badEnding.Activate();
+        _toDesactivate.ForEach(i => i.gameObject.SetActive(true));
     }
 
-    void CallGoodEnding() {
-        goodEnding.Activate();
+    IEnumerator CallGoodEnding() {
+        _toDesactivate.ForEach(i => i.gameObject.SetActive(false));
+        goodEnding.gameObject.SetActive(true);
+        yield return goodEnding.Activate();
+        _toDesactivate.ForEach(i => i.gameObject.SetActive(true));
     }
 }
