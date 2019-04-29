@@ -9,7 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0674c5dbfec3f7f8b937d093f8f3be6e, type: 3}
-  m_Name: Left
+  m_Script: {fileID: 11500000, guid: 3a635fa7b3ae48d4194df4c7c2dcf8df, type: 3}
+  m_Name: Lvl 3 Power
   m_EditorClassIdentifier: 
-  type: 4
+  _rageCooldownDivider: 0
+  _rageProjectilesSizeMultiplier: 0
