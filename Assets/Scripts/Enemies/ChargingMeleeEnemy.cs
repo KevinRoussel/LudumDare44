@@ -52,11 +52,8 @@ public class ChargingMeleeEnemy : BaseEnemy {
     }
 
     protected override void PlayerLost () {
-
         _navMeshAgent.speed /= _chargeSpeedMultiplier;
-
         base.PlayerLost();
-
     }
 
     IEnumerator Attack () {
