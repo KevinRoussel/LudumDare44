@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Gameplay : MonoBehaviour
@@ -35,8 +36,6 @@ public class Gameplay : MonoBehaviour
     [SerializeField] ShootingManager _shootingManager;
     [SerializeField] KeysManager _keyManager;
     [SerializeField] GameUIControl _gameUIControl;
-
-    
 
     [Header("Configuration")]
     [SerializeField] Transform _roomRoot;
@@ -99,7 +98,7 @@ public class Gameplay : MonoBehaviour
 
         List<Pact> selectedPacts = new List<Pact>();
 
-        foreach(var level in _mapStructure/*.Skip(2)*/)
+        foreach(var level in _mapStructure)
         {
             OnNextLevel?.Invoke();
             if (level == _mapStructure.Last()) OnFinalFight?.Invoke();
@@ -216,6 +215,7 @@ public class Gameplay : MonoBehaviour
                     _gameOverUI.gameObject.SetActive(false);
 
                     _gameUI.gameObject.SetActive(false);
+                    SceneManager.LoadScene(0);
                     yield break;
                 }
                 _inputManager.ApplyInput(currentCharacter);

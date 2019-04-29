@@ -10,7 +10,7 @@ public class Key : MonoBehaviour {
     Coroutine collecting;
     void OnTriggerEnter (Collider other) {
         
-        if(other.CompareTag("Player")) {
+        if(other.CompareTag("Player") && collecting==null) {
 
             FindObjectOfType<KeysManager>().KeyCollected();
             if(collecting==null) collecting = StartCoroutine(Collecting());
