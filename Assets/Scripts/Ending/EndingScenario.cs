@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class EndingScenario : MonoBehaviour
 {
-    [SerializeField] GameObject _characterSlots;
-    [SerializeField] Dialog _dialog;
-    [SerializeField] Light _light;
+    [SerializeField] protected GameObject _characterSlots;
+    [SerializeField] protected Dialog _dialog;
+    [SerializeField] protected Light _light;
+    
     public void Activate() {
         StartCoroutine(RunScenario());
     }

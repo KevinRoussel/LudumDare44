@@ -8,14 +8,15 @@ public class EndingDecision : MonoBehaviour
 
     [SerializeField] int badEndingThreshold;
 
-    private EndingScenario ending;
-
-    // TODO : Delete Start function and integrate ending decision in the coroutine process
+    private EndingScenario badEnding;
+    private EndingScenario goodEnding;
 
     void Awake() {
-        ending = GetComponent<EndingScenario>();
+        badEnding = GetComponent<BadEnding>();
+        goodEnding = GetComponent<GoodEnding>();
     }
 
+    // TODO : Delete Start function and integrate ending decision in the coroutine process
     void Start()
     {
         if (evilPoints > badEndingThreshold) {
@@ -24,16 +25,13 @@ public class EndingDecision : MonoBehaviour
             CallGoodEnding();
         }
 
-        Debug.Log(ending);
     }
 
     void CallBadEnding() {
-        Debug.Log("Bad Ending");
-        ending.Activate();
+        badEnding.Activate();
     }
 
     void CallGoodEnding() {
-        Debug.Log("Good Ending");
-        ending.Activate();
+        goodEnding.Activate();
     }
 }
