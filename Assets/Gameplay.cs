@@ -63,6 +63,7 @@ public class Gameplay : MonoBehaviour
     [SerializeField] Animation _gameOverUI;
     [SerializeField] AnimationClip _gameOverOpen;
     [SerializeField] AnimationClip _gameOverClose;
+    [SerializeField] Button _returnMenu;
 
     [Header("Run config")]
     [SerializeField] List<LevelStructure> _mapStructure;
@@ -195,7 +196,12 @@ public class Gameplay : MonoBehaviour
                     // GameOver Menu Open
                     _gameOverUI.gameObject.SetActive(true);
                     yield return _gameOverUI.PlayAndWait(_gameOverOpen);
-                    yield return new WaitForSeconds(1f);
+
+                    bool _done = false;
+                    _returnMenu.onClick.AddListener(() => _done = true);
+                    yield return new WaitWhile(()=>!_done);
+                    _returnMenu.onClick.RemoveAllListeners();
+
                     yield return _gameOverUI.PlayAndWait(_gameOverClose);
                     _gameOverUI.gameObject.SetActive(false);
 
