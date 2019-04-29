@@ -7,6 +7,20 @@ public class EndingScenario : MonoBehaviour
     [SerializeField] protected GameObject _characterSlots;
     [SerializeField] protected Dialog _dialog;
     [SerializeField] protected Light _light;
+    [Header("Slots")]
+    [SerializeField] RectTransform _SATAN;
+    [SerializeField] RectTransform _LEVIATHAN;
+    [SerializeField] RectTransform _BILAL;
+    [SerializeField] float _minScale;
+    [SerializeField] float _targetScale;
+
+
+    protected void ChangeScale(bool SATAN, bool LEVIATHAN, bool BILAL)
+    {
+        _SATAN.localScale = new Vector3(SATAN? _targetScale:_minScale, SATAN ? _targetScale : _minScale, SATAN ? _targetScale : _minScale);
+        _LEVIATHAN.localScale = new Vector3(LEVIATHAN ? _targetScale:_minScale, LEVIATHAN ? _targetScale : _minScale, LEVIATHAN ? _targetScale : _minScale);
+        _BILAL.localScale = new Vector3(BILAL ? _targetScale:_minScale, BILAL ? _targetScale : _minScale, BILAL ? _targetScale : _minScale);
+    }
     
     public void Activate() {
         StartCoroutine(RunScenario());
@@ -29,22 +43,27 @@ public class EndingScenario : MonoBehaviour
         _characterSlots.SetActive(true);
         yield return new WaitForSeconds(1.5f);
 
+
         _dialog.ChangeName("SATAN");
+        ChangeScale(SATAN: true, LEVIATHAN: false, BILAL: false);
         _dialog.ChangeDialogText("CONGRATULATIONS, PERSON. YOU MADE YOUR WAY UP HERE...");
         _dialog.Toggle();
         yield return UserAction();
 
         _dialog.ChangeName("LEVIATHAN");
+        ChangeScale(SATAN: false, LEVIATHAN: true, BILAL: false);
         _dialog.ChangeDialogText("DO YOU KNOW WHAT WE ARE?");
         yield return UserAction();
 
         _dialog.ChangeName("BILAL");
+        ChangeScale(SATAN: false, LEVIATHAN: false, BILAL: true);
         _dialog.ChangeDialogText("THE THREE PRIMARY DEMONS.");
         yield return UserAction();
         _dialog.ChangeDialogText("LORDS OF THIS UNDERWORLD.");
         yield return UserAction();
 
         _dialog.ChangeName("LEVIATHAN");
+        ChangeScale(SATAN: false, LEVIATHAN: true, BILAL: false);
         _dialog.ChangeDialogText("WE ARE THE LAST GATE BETWEEN THIS WORLD AND YOURS.");
         yield return UserAction();
     }
