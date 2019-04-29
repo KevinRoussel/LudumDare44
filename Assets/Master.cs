@@ -27,6 +27,7 @@ public class Master : MonoBehaviour
             switch (menuChoice)
             {
                 case MenuReturn.StartGame:
+                    yield return Tuto();
                     yield return _gameplay.RunGame();
                     break;
 
@@ -108,23 +109,21 @@ public class Master : MonoBehaviour
 
     #region Tuto
     [Header("Tuto")]
-    [SerializeField] Animation _tutoAnimation;
-    [SerializeField] AnimationClip _tutoOpenAnimation;
-    [SerializeField] AnimationClip _tutoCloseAnimation;
+    [SerializeField] Transform _tutoAnimation;
     [SerializeField] Button _nextButton;
+
     IEnumerator Tuto()
     {
         _tutoAnimation.gameObject.SetActive(true);
-        yield return _tutoAnimation.PlayAndWait(_tutoOpenAnimation.name);
 
         bool done = false;
         _nextButton.onClick.AddListener(() => done = true);
         yield return new WaitWhile(() => !done);
         _nextButton.onClick.RemoveAllListeners();
 
-        yield return _tutoAnimation.PlayAndWait(_tutoCloseAnimation.name);
         _tutoAnimation.gameObject.SetActive(false);
         yield break;
     }
     #endregion
+
 }
