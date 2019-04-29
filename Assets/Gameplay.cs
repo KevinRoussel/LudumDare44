@@ -26,6 +26,7 @@ public class Gameplay : MonoBehaviour
         public string DialogText;
         public Pact PactToApply;
         public Sprite[] _characterImage;
+        public Sprite[] _pactIcon;
         public AudioClip _voice;
     }
 
@@ -46,6 +47,7 @@ public class Gameplay : MonoBehaviour
     [SerializeField] Animation _gameUI;
     [SerializeField] AnimationClip _gameOpen;
     [SerializeField] AnimationClip _gameClose;
+    [SerializeField] Image[] _selectedPactsIcon;
 
     [Header("Pact UI")]
     [SerializeField] Animation _pactUI;
@@ -101,9 +103,10 @@ public class Gameplay : MonoBehaviour
     {
 
         List<Pact> selectedPacts = new List<Pact>();
-
+        var idx = -1;
         foreach(var level in _mapStructure)
         {
+            idx++;
             OnNextLevel?.Invoke();
             if (level == _mapStructure.Last()) OnFinalFight?.Invoke();
 
@@ -191,6 +194,11 @@ public class Gameplay : MonoBehaviour
                 } while (_pactCancel);
 
                 onPactSelected?.Invoke(level.Pacts[_selectedDemon].PactToApply);
+
+                _selectedPactsIcon[idx].transform.GetChild(0).GetComponent<Image>().sprite = level.Pacts[_selectedDemon]._pactIcon[0];
+                _selectedPactsIcon[idx].transform.GetChild(1).GetComponent<Image>().sprite = level.Pacts[_selectedDemon]._pactIcon[1];
+                _selectedPactsIcon[idx].transform.GetChild(2).GetComponent<Image>().sprite = level.Pacts[_selectedDemon]._pactIcon[2];
+                _selectedPactsIcon[idx].transform.GetChild(3).GetComponent<Image>().sprite = level.Pacts[_selectedDemon]._pactIcon[3];
 
                 _pactUI.Play(_pactUIClose.name);
                 yield break;
