@@ -31,10 +31,10 @@ public class EndingScenario : MonoBehaviour
         _dialog.ChangeName("????");
         _dialog.ChangeDialogText("Hehehe... So here you are...".ToUpper());
         _dialog.Toggle();
-        yield return UserAction();
+        yield return WaitForUserAction();
 
         _dialog.ChangeDialogText("Come in, person.".ToUpper());
-        yield return UserAction();
+        yield return WaitForUserAction();
 
         _dialog.Toggle();
         yield return new WaitForSeconds(1.5f);
@@ -48,27 +48,32 @@ public class EndingScenario : MonoBehaviour
         ChangeScale(SATAN: true, LEVIATHAN: false, BILAL: false);
         _dialog.ChangeDialogText("CONGRATULATIONS, PERSON. YOU MADE YOUR WAY UP HERE...");
         _dialog.Toggle();
-        yield return UserAction();
+        yield return WaitForUserAction();
 
         _dialog.ChangeName("LEVIATHAN");
         ChangeScale(SATAN: false, LEVIATHAN: true, BILAL: false);
         _dialog.ChangeDialogText("DO YOU KNOW WHAT WE ARE?");
-        yield return UserAction();
+        yield return WaitForUserAction();
 
         _dialog.ChangeName("BILAL");
         ChangeScale(SATAN: false, LEVIATHAN: false, BILAL: true);
         _dialog.ChangeDialogText("THE THREE PRIMARY DEMONS.");
-        yield return UserAction();
+        yield return WaitForUserAction();
         _dialog.ChangeDialogText("LORDS OF THIS UNDERWORLD.");
-        yield return UserAction();
+        yield return WaitForUserAction();
 
         _dialog.ChangeName("LEVIATHAN");
         ChangeScale(SATAN: false, LEVIATHAN: true, BILAL: false);
         _dialog.ChangeDialogText("WE ARE THE LAST GATE BETWEEN THIS WORLD AND YOURS.");
-        yield return UserAction();
+        yield return WaitForUserAction();
     }
 
-    public IEnumerator UserAction() {
+    public IEnumerator WaitForUserAction() {
         yield return new WaitUntil(() => !_dialog.IsTyping() && (Input.GetButtonDown("Jump") || Input.GetMouseButtonDown(0)));
+    }
+
+    public IEnumerator WaitForTypingFinished() {
+        yield return new WaitUntil(() => !_dialog.IsTyping());
+        yield return new WaitForSeconds(0.3f);
     }
 }
