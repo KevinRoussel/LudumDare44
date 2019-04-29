@@ -26,11 +26,20 @@ public class BadEnding : EndingScenario
         _dialog.ChangeDialogText("YOU DOOMED YOURSELF BY YOUR ACTIONS. YOU SOLD YOUR LIFE TO US.");
         yield return UserAction();
 
-        _dialog.ChangeDialogText("NOW YOU ARE OUR MINION FOR ETERNITY.");
+        _dialog.ChangeDialogText("NOW YOU ARE OUR SLAVE FOR ETERNITY.");
         yield return UserAction();
+        _dialog.Toggle();
 
         yield return _cinematic.PlayAndWait(_badEndingClip);
         yield return new WaitForSeconds(2f);
 
+        _dialog.ChangeDialogText("YOU'RE LIVING IN A WORLD WHERE YOUR ACTIONS HAVE CONSEQUENCES, SLAVE.");
+        _dialog.Toggle();
+        yield return UserAction();
+        _dialog.ChangeDialogText("MANY BEFORE YOU HAVE TRIED TO ESCAPE. THEY ALL FAILED, JUST LIKE YOU.");
+        yield return UserAction();
+        _dialog.ChangeDialogText("PERHAPS SOMEONE ELSE WILL GRASP THIS FACT AND WON'T SPEND ALL THEIR LIFE ESSENCE SEEKING DEATH.");
+        yield return UserAction();
+        _dialog.Toggle();
     }
 }

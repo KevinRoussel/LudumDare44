@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 7986838915182594447}
   - component: {fileID: 3027906350900104306}
   m_Layer: 0
-  m_Name: BaseRangedEnemy
+  m_Name: BaseRangedEnemyRouge
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -202,7 +202,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerDetectionDistance: 5
   _patrolPathEndPos: {fileID: 7294036059528929020}
-  _damage: 1
   _shootingSpreadRange: {x: -5, y: 5}
   _shootingDelay: 0.5
   _fireRate: 1.5
@@ -272,11 +271,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9193721053285819647}
     m_Modifications:
-    - target: {fileID: 5188936686858094038, guid: 1ad7b50b5f3615b4e897ca06cb7d10f0,
+    - target: {fileID: 5188936686867461652, guid: 1ad7b50b5f3615b4e897ca06cb7d10f0,
         type: 3}
-      propertyPath: m_Name
-      value: Model 01 - Chr_Dungeon_GoblinChief_01  Variant
-      objectReference: {fileID: 0}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: 62fc0829c10f534428d1cc7622a8fef0,
+        type: 2}
     - target: {fileID: 5188936686858197494, guid: 1ad7b50b5f3615b4e897ca06cb7d10f0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -347,12 +347,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.4
       objectReference: {fileID: 0}
-    - target: {fileID: 5188936686867461652, guid: 1ad7b50b5f3615b4e897ca06cb7d10f0,
+    - target: {fileID: 5188936686858094038, guid: 1ad7b50b5f3615b4e897ca06cb7d10f0,
         type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 22100000, guid: 62fc0829c10f534428d1cc7622a8fef0,
-        type: 2}
+      propertyPath: m_Name
+      value: Model 01 - Chr_Dungeon_GoblinChief_01  Variant
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ad7b50b5f3615b4e897ca06cb7d10f0, type: 3}
 --- !u!1 &2624565891486794940 stripped
