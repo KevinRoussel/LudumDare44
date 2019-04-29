@@ -141,6 +141,8 @@ public class Gameplay : MonoBehaviour
                     _pactSignCancel.onClick.AddListener(() => _pactCancel = true);
                     _pactSignOK.onClick.AddListener(() => _pactOK = true);
                     yield return new WaitWhile(() => !_pactCancel && !_pactOK);
+                    yield return null;
+                    yield return null;
                     _pactSign.gameObject.SetActive(false);
 
                 } while (_pactCancel);
