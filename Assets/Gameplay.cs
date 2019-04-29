@@ -12,6 +12,7 @@ public class Gameplay : MonoBehaviour
     [Serializable]
     public class LevelStructure
     {
+        public string Name;
         public Room Room;
         public List<PactDialog> Pacts;
     }
@@ -166,29 +167,38 @@ public class Gameplay : MonoBehaviour
             foreach (var enemy in currentRoom.Enemies) enemy.Initialization();
 
             // Main Game Loop
-            while (currentCharacter.HP > 0)
+            bool nextLevel = false;
+            currentRoom.ExitTrigger.OnGoNextLevel += () => nextLevel = true;
+            while (!nextLevel)
             {
                 //currentCharacter.OnKeyCollected += _keyManager.AddKey();
 
+                // GameOver
+                if (currentCharacter.HP <= 0)
+                {
+                    // GameOver Menu Open
+                    _gameOverUI.gameObject.SetActive(true);
+                    yield return _gameOverUI.PlayAndWait(_gameOverOpen);
+                    yield return new WaitForSeconds(1f);
+                    yield return _gameOverUI.PlayAndWait(_gameOverClose);
+                    _gameOverUI.gameObject.SetActive(false);
+
+                    _gameUI.gameObject.SetActive(false);
+                    yield break;
+                }
                 _inputManager.ApplyInput(currentCharacter);
                 foreach (var el in currentRoom.Enemies) el.Enemy.Tick();
                 _shootingManager.UpdateBullets();
 
                 yield return null;
             }
+            
 
         }
 
+
         yield return _gameUI.PlayAndWait(_gameClose);
         _gameUI.gameObject.SetActive(false);
-
-        // GameOver Menu Open
-        _gameOverUI.gameObject.SetActive(true);
-        yield return _gameOverUI.PlayAndWait(_gameOverOpen);
-        yield return new WaitForSeconds(1f);
-        yield return _gameOverUI.PlayAndWait(_gameOverClose);
-        _gameOverUI.gameObject.SetActive(false);
-
         yield break;
     }
 
