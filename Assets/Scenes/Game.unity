@@ -6360,6 +6360,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Map01
       objectReference: {fileID: 0}
+    - target: {fileID: 1894202938121885850, guid: 702698c6f55fecf4c97dd40454a0cb06,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1894202938121885851, guid: 702698c6f55fecf4c97dd40454a0cb06,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6449,6 +6454,21 @@ PrefabInstance:
         type: 3}
       propertyPath: _damage
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 543266196076620486, guid: 702698c6f55fecf4c97dd40454a0cb06,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 7.527
+      objectReference: {fileID: 0}
+    - target: {fileID: 2783042160512592475, guid: 702698c6f55fecf4c97dd40454a0cb06,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 7.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 1439468147175429940, guid: 702698c6f55fecf4c97dd40454a0cb06,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 7.57
       objectReference: {fileID: 0}
     - target: {fileID: 7973972098942650337, guid: 702698c6f55fecf4c97dd40454a0cb06,
         type: 3}
