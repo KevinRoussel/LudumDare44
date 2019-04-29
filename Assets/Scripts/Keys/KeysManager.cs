@@ -13,7 +13,7 @@ public class KeysManager : MonoBehaviour {
     int _currentRoom, _keysCollected;
 
     void Awake () {
-
+        _gameplay.OnNextLevel += () => { SetKeysText(0); _keysCollected = 0; };
         SetKeysText(0);
 
     }
@@ -21,9 +21,7 @@ public class KeysManager : MonoBehaviour {
     public void KeyCollected() {
 
         _keysCollected++;
-
         SetKeysText(_keysCollected);
-
         CurrentRoom.ExitTrigger.Ready = (_keysCollected == CurrentRoom.Keys.Length);
 
     }

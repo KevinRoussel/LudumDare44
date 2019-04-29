@@ -73,6 +73,8 @@ public class Gameplay : MonoBehaviour
 
     public Room CurrentRoom { get; set; }
 
+    public event Action OnNextLevel;
+
     int _selectedDemon;
 
     public void SelectDeamon(int idx)
@@ -87,6 +89,9 @@ public class Gameplay : MonoBehaviour
 
         foreach(var level in _mapStructure)
         {
+
+            OnNextLevel?.Invoke();
+
             // Pact
             yield return PactRoom((newPact) => selectedPacts.Add(newPact));
             IEnumerator PactRoom(Action<Pact> onPactSelected)
