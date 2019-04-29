@@ -34,23 +34,17 @@ public class BaseRangedEnemy : BaseEnemy {
 
     protected override void PlayerDetected () {
 
-        if (_navMeshAgent.enabled) {
+        if (_navMeshAgent.enabled && !_playerDetected) {
 
-            if (!_playerDetected) {
+            base.PlayerDetected();
 
-                base.PlayerDetected();
+            SetCanMove(false);
 
-                SetCanMove(false);
+            _animator.SetBool("Firing", true);
 
-                _animator.SetBool("Firing", true);
+            StartCoroutine("Shoot");
 
-                StartCoroutine("Shoot");
-
-                StartCoroutine("RotateToPlayer");
-
-            }
-
-            _navMeshAgent.SetDestination(transform.position + (_player.transform.position - transform.position));
+            StartCoroutine("RotateToPlayer");
 
         }
 
