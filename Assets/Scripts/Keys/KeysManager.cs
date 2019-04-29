@@ -5,7 +5,7 @@ public class KeysManager : MonoBehaviour {
 
     [SerializeField] Gameplay _gameplay;
 
-    Room CurrentRoom { get { return _gameplay.MapStructure[_currentRoom].Room; } }
+    Room CurrentRoom { get { return _gameplay.CurrentRoom; } }
 
     [Header("UI")]
     [SerializeField] TextMeshProUGUI _keysText;
@@ -13,7 +13,7 @@ public class KeysManager : MonoBehaviour {
     int _currentRoom, _keysCollected;
 
     void Awake () {
-
+        _gameplay.OnNextLevel += () => { SetKeysText(0); _keysCollected = 0; };
         SetKeysText(0);
 
     }
@@ -21,16 +21,14 @@ public class KeysManager : MonoBehaviour {
     public void KeyCollected() {
 
         _keysCollected++;
-
         SetKeysText(_keysCollected);
-
         CurrentRoom.ExitTrigger.Ready = (_keysCollected == CurrentRoom.Keys.Length);
 
     }
 
     void SetKeysText(int collected) {
 
-        _keysText.text = collected + " / " + CurrentRoom.Keys.Length;
+        _keysText.text = collected + " / " + CurrentRoom?.Keys.Length;
 
     }
 

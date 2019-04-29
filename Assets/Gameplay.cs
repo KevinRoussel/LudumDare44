@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
@@ -70,6 +71,13 @@ public class Gameplay : MonoBehaviour
     [Header("UI")]
     [SerializeField] GameObject GameUI;
 
+    public Room CurrentRoom { get; set; }
+
+    public event Action OnNextLevel;
+    public event Action OnPactStart;
+    public event Action OnMapStart;
+    public event Action OnEnding;
+
     int _selectedDemon;
 
     public void SelectDeamon(int idx)
@@ -79,17 +87,20 @@ public class Gameplay : MonoBehaviour
 
     public IEnumerator RunGame()
     {
-        _gameUI.gameObject.SetActive(true);
+
         List<Pact> selectedPacts = new List<Pact>();
 
         foreach(var level in _mapStructure)
         {
+            OnNextLevel?.Invoke();
+
             // Pact
             yield return PactRoom((newPact) => selectedPacts.Add(newPact));
             IEnumerator PactRoom(Action<Pact> onPactSelected)
             {
+                OnPactStart?.Invoke();
                 _pactUI.gameObject.SetActive(true);
-                yield return _pactUI.PlayAndWait(_pactUIOpen);
+                _pactUI.Play(_pactUIOpen.name);
 
                 bool _pactCancel = false;
 
@@ -136,26 +147,28 @@ public class Gameplay : MonoBehaviour
 
                 onPactSelected?.Invoke(level.Pacts[_selectedDemon].PactToApply);
 
-                yield return _pactUI.PlayAndWait(_pactUIClose);
+                _pactUI.Play(_pactUIClose.name);
                 yield break;
             }
 
+            OnMapStart?.Invoke();
+            _gameUI.gameObject.SetActive(true);
+
             // Spawn Room and Character
-            var currentRoom = level.Room;
-            var currentCharacter = Instantiate(_playerPrefab, currentRoom.PlayerSpawner)
+            CurrentRoom = level.Room;
+            var currentCharacter = Instantiate(_playerPrefab, CurrentRoom.PlayerSpawner)
                 .GetComponent<Character>()
                 .Initialization();
 
             foreach(var pact in selectedPacts)
             {
                 pact.Apply(currentCharacter);
-                pact.Apply(currentRoom);
+                pact.Apply(CurrentRoom);
                 pact.Apply(_gameUIControl);
                 pact.Apply(_inputManager);
             }
 
             GameUI.SetActive(true);
-            yield return _gameUI.PlayAndWait(_gameOpen);
 
             // Activate Game UI
             _hpSlider.maxValue = currentCharacter.HPMax;
@@ -164,11 +177,12 @@ public class Gameplay : MonoBehaviour
             currentCharacter.OnHPMaxUpdated += (newMax) => _hpSlider.maxValue = newMax;
             currentCharacter.OnTakeDamage += (newHP) =>  _hpSlider.value = newHP;
 
-            foreach (var enemy in currentRoom.Enemies) enemy.Initialization();
+            foreach (var enemy in CurrentRoom.Enemies) enemy.Initialization();
 
             // Main Game Loop
             bool nextLevel = false;
-            currentRoom.ExitTrigger.OnGoNextLevel += () => nextLevel = true;
+            CurrentRoom.ExitTrigger.OnGoNextLevel += () => nextLevel = true;
+
             while (!nextLevel)
             {
                 //currentCharacter.OnKeyCollected += _keyManager.AddKey();
@@ -187,14 +201,16 @@ public class Gameplay : MonoBehaviour
                     yield break;
                 }
                 _inputManager.ApplyInput(currentCharacter);
-                foreach (var el in currentRoom.Enemies) el.Enemy.Tick();
+                foreach (var el in CurrentRoom.Enemies) el.Enemy.Tick();
                 _shootingManager.UpdateBullets();
 
                 yield return null;
             }
-            
 
+            Destroy(currentCharacter.gameObject);
         }
+        // ENDING HERE
+        OnEnding?.Invoke();
 
 
         yield return _gameUI.PlayAndWait(_gameClose);

@@ -46,6 +46,7 @@ public class Character : MonoBehaviour {
     [Header("Conf")]
     [SerializeField] float _recoverTime;
 
+
     [Header("Stat")]
     [SerializeField] int _initialHP;
     [SerializeField] int _initialAttack;
@@ -143,6 +144,8 @@ public class Character : MonoBehaviour {
 
     Vector2 _lastMovement;
     bool _isWalking;
+    public void FireWalk() => StartWalking?.Invoke();
+    public void FireStopWalk() => EndWalking?.Invoke();
 
     public enum OffsetType {
         NONE,
@@ -260,8 +263,10 @@ public class Character : MonoBehaviour {
     public event Action OnAttack;
     public event Action OnStopAttack;
 
-    bool _canAttack = true;
+    internal void EventFire() => OnAttack?.Invoke();
+    internal void EventFireStop() => OnStopAttack?.Invoke();
 
+    bool _canAttack = true;
     bool _isAttacking = false;
 
     public bool LaunchAttack () {

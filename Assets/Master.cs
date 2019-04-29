@@ -57,11 +57,14 @@ public class Master : MonoBehaviour
     [SerializeField] Button _creditButton; 
     [SerializeField] Button _tutoButton;
 
+    public Action OnMenuStart;
+
     enum MenuReturn { Null, StartGame, Credit, Tuto }
     IEnumerator Menu(Action<MenuReturn> @return)
     {
+        OnMenuStart?.Invoke();
         _menuAnimation.gameObject.SetActive(true);
-        yield return _menuAnimation.PlayAndWait(_menuOpenAnimation.name);
+        _menuAnimation.Play(_menuOpenAnimation.name);
 
         MenuReturn choice = MenuReturn.Null;
         _gameButton.onClick.AddListener(() => choice = MenuReturn.StartGame);
@@ -75,7 +78,7 @@ public class Master : MonoBehaviour
         _tutoButton.onClick.RemoveAllListeners();
         @return.Invoke(choice);
 
-        yield return _menuAnimation.PlayAndWait(_menuCloseAnimation.name);
+        //yield return _menuAnimation.PlayAndWait(_menuCloseAnimation.name);
         _menuAnimation.gameObject.SetActive(false);
         yield break;
     }
