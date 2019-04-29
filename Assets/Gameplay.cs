@@ -84,12 +84,10 @@ public class Gameplay : MonoBehaviour
 
     public IEnumerator RunGame()
     {
-        _gameUI.gameObject.SetActive(true);
         List<Pact> selectedPacts = new List<Pact>();
 
         foreach(var level in _mapStructure)
         {
-
             OnNextLevel?.Invoke();
 
             // Pact
@@ -97,7 +95,7 @@ public class Gameplay : MonoBehaviour
             IEnumerator PactRoom(Action<Pact> onPactSelected)
             {
                 _pactUI.gameObject.SetActive(true);
-                yield return _pactUI.PlayAndWait(_pactUIOpen);
+                _pactUI.Play(_pactUIOpen.name);
 
                 bool _pactCancel = false;
 
@@ -144,9 +142,11 @@ public class Gameplay : MonoBehaviour
 
                 onPactSelected?.Invoke(level.Pacts[_selectedDemon].PactToApply);
 
-                yield return _pactUI.PlayAndWait(_pactUIClose);
+                _pactUI.Play(_pactUIClose.name);
                 yield break;
             }
+
+            _gameUI.gameObject.SetActive(true);
 
             // Spawn Room and Character
             CurrentRoom = level.Room;
@@ -163,7 +163,6 @@ public class Gameplay : MonoBehaviour
             }
 
             GameUI.SetActive(true);
-            yield return _gameUI.PlayAndWait(_gameOpen);
 
             // Activate Game UI
             _hpSlider.maxValue = currentCharacter.HPMax;
@@ -201,6 +200,7 @@ public class Gameplay : MonoBehaviour
 
                 yield return null;
             }
+
             Destroy(currentCharacter.gameObject);
                 
         }
