@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
@@ -69,6 +70,8 @@ public class Gameplay : MonoBehaviour
 
     [Header("UI")]
     [SerializeField] GameObject GameUI;
+
+    public Room CurrentRoom { get; set; }
 
     int _selectedDemon;
 
@@ -141,15 +144,15 @@ public class Gameplay : MonoBehaviour
             }
 
             // Spawn Room and Character
-            var currentRoom = level.Room;
-            var currentCharacter = Instantiate(_playerPrefab, currentRoom.PlayerSpawner)
+            CurrentRoom = level.Room;
+            var currentCharacter = Instantiate(_playerPrefab, CurrentRoom.PlayerSpawner)
                 .GetComponent<Character>()
                 .Initialization();
 
             foreach(var pact in selectedPacts)
             {
                 pact.Apply(currentCharacter);
-                pact.Apply(currentRoom);
+                pact.Apply(CurrentRoom);
                 pact.Apply(_gameUIControl);
                 pact.Apply(_inputManager);
             }
@@ -164,11 +167,12 @@ public class Gameplay : MonoBehaviour
             currentCharacter.OnHPMaxUpdated += (newMax) => _hpSlider.maxValue = newMax;
             currentCharacter.OnTakeDamage += (newHP) =>  _hpSlider.value = newHP;
 
-            foreach (var enemy in currentRoom.Enemies) enemy.Initialization();
+            foreach (var enemy in CurrentRoom.Enemies) enemy.Initialization();
 
             // Main Game Loop
             bool nextLevel = false;
-            currentRoom.ExitTrigger.OnGoNextLevel += () => nextLevel = true;
+            CurrentRoom.ExitTrigger.OnGoNextLevel += () => nextLevel = true;
+
             while (!nextLevel)
             {
                 //currentCharacter.OnKeyCollected += _keyManager.AddKey();
@@ -187,13 +191,13 @@ public class Gameplay : MonoBehaviour
                     yield break;
                 }
                 _inputManager.ApplyInput(currentCharacter);
-                foreach (var el in currentRoom.Enemies) el.Enemy.Tick();
+                foreach (var el in CurrentRoom.Enemies) el.Enemy.Tick();
                 _shootingManager.UpdateBullets();
 
                 yield return null;
             }
-            
-
+            Destroy(currentCharacter.gameObject);
+                
         }
 
 

@@ -5,7 +5,7 @@ public class KeysManager : MonoBehaviour {
 
     [SerializeField] Gameplay _gameplay;
 
-    Room CurrentRoom { get { return _gameplay.MapStructure[_currentRoom].Room; } }
+    Room CurrentRoom { get { return _gameplay.CurrentRoom; } }
 
     [Header("UI")]
     [SerializeField] TextMeshProUGUI _keysText;
@@ -30,7 +30,7 @@ public class KeysManager : MonoBehaviour {
 
     void SetKeysText(int collected) {
 
-        _keysText.text = collected + " / " + CurrentRoom.Keys.Length;
+        _keysText.text = collected + " / " + CurrentRoom?.Keys.Length;
 
     }
 
