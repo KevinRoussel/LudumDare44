@@ -1,5 +1,55 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1782473673393523448
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2351265936694194656}
+  - component: {fileID: 8805063095611901631}
+  m_Layer: 0
+  m_Name: FX
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2351265936694194656
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1782473673393523448}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 3853937796353763028}
+  m_Father: {fileID: 9193721053285819647}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8805063095611901631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1782473673393523448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91efbe8d1f22f0041948045794bdc663, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _target: {fileID: 6660512862048776474}
+  _rageActivated: {fileID: 0}
+  _shieldHit: {fileID: 0}
+  _flashAnimation: {fileID: 0}
+  _flashed: {fileID: 0}
+  _hit: {fileID: 3853937796353763029}
 --- !u!114 &8120028672815535092
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,6 +179,7 @@ Transform:
   - {fileID: 7285974627020626221}
   - {fileID: 7294036059528929020}
   - {fileID: 2624565891486636188}
+  - {fileID: 2351265936694194656}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -155,6 +206,56 @@ MonoBehaviour:
   _initialSpeed: 1
   _shootingSpreadRange: {x: 0, y: 0}
   _shootingTransform: {fileID: 0}
+  OnMoveOn:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnMoveOff:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnFireOn:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnFireOff:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnHitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnDeathEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnSHieldStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnSHieldHit:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnLaunchRage:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnFlash:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   _rageDuration: 0
   _rageCooldown: 0
   _rageMultiplier: 0
@@ -264,6 +365,92 @@ Transform:
   m_Father: {fileID: 9193721053285819647}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &6411998923734548315
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2351265936694194656}
+    m_Modifications:
+    - target: {fileID: 7890323096727214476, guid: fc823e9b7e5cf8e4c83b32a57795bf01,
+        type: 3}
+      propertyPath: m_Name
+      value: Sang
+      objectReference: {fileID: 0}
+    - target: {fileID: 7890323096727214479, guid: fc823e9b7e5cf8e4c83b32a57795bf01,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.7879999
+      objectReference: {fileID: 0}
+    - target: {fileID: 7890323096727214479, guid: fc823e9b7e5cf8e4c83b32a57795bf01,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.4999999
+      objectReference: {fileID: 0}
+    - target: {fileID: 7890323096727214479, guid: fc823e9b7e5cf8e4c83b32a57795bf01,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7890323096727214479, guid: fc823e9b7e5cf8e4c83b32a57795bf01,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7890323096727214479, guid: fc823e9b7e5cf8e4c83b32a57795bf01,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7890323096727214479, guid: fc823e9b7e5cf8e4c83b32a57795bf01,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7890323096727214479, guid: fc823e9b7e5cf8e4c83b32a57795bf01,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7890323096727214479, guid: fc823e9b7e5cf8e4c83b32a57795bf01,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7890323096727214479, guid: fc823e9b7e5cf8e4c83b32a57795bf01,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7890323096727214479, guid: fc823e9b7e5cf8e4c83b32a57795bf01,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7890323096727214479, guid: fc823e9b7e5cf8e4c83b32a57795bf01,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7890323096727214478, guid: fc823e9b7e5cf8e4c83b32a57795bf01,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fc823e9b7e5cf8e4c83b32a57795bf01, type: 3}
+--- !u!4 &3853937796353763028 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7890323096727214479, guid: fc823e9b7e5cf8e4c83b32a57795bf01,
+    type: 3}
+  m_PrefabInstance: {fileID: 6411998923734548315}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &3853937796353763029 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 7890323096727214478, guid: fc823e9b7e5cf8e4c83b32a57795bf01,
+    type: 3}
+  m_PrefabInstance: {fileID: 6411998923734548315}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7813352456280473962
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -271,12 +458,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9193721053285819647}
     m_Modifications:
-    - target: {fileID: 5188936686867461652, guid: 1ad7b50b5f3615b4e897ca06cb7d10f0,
+    - target: {fileID: 5188936686858094038, guid: 1ad7b50b5f3615b4e897ca06cb7d10f0,
         type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 22100000, guid: 62fc0829c10f534428d1cc7622a8fef0,
-        type: 2}
+      propertyPath: m_Name
+      value: Model 01 - Chr_Dungeon_GoblinChief_01  Variant
+      objectReference: {fileID: 0}
     - target: {fileID: 5188936686858197494, guid: 1ad7b50b5f3615b4e897ca06cb7d10f0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -347,11 +533,12 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.4
       objectReference: {fileID: 0}
-    - target: {fileID: 5188936686858094038, guid: 1ad7b50b5f3615b4e897ca06cb7d10f0,
+    - target: {fileID: 5188936686867461652, guid: 1ad7b50b5f3615b4e897ca06cb7d10f0,
         type: 3}
-      propertyPath: m_Name
-      value: Model 01 - Chr_Dungeon_GoblinChief_01  Variant
-      objectReference: {fileID: 0}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: 62fc0829c10f534428d1cc7622a8fef0,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ad7b50b5f3615b4e897ca06cb7d10f0, type: 3}
 --- !u!1 &2624565891486794940 stripped
