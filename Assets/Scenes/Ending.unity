@@ -399,8 +399,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _characterSlots: {fileID: 1477641357}
-  dialog: {fileID: 132783477}
-  light: {fileID: 1761242287}
+  _dialog: {fileID: 132783477}
+  _light: {fileID: 1761242287}
 --- !u!114 &268612302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1092,7 +1092,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1761242286
 Transform:
   m_ObjectHideFlags: 0
@@ -1114,7 +1114,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1761242285}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 8
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -2898,11 +2898,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerSpawner: {fileID: 7894194132370071716}
   _enemiesRoot: {fileID: 0}
+  _exitTrigger: {fileID: 0}
   _keys:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  _exitTrigger: {fileID: 0}
 --- !u!4 &7657818755180109530
 Transform:
   m_ObjectHideFlags: 0
