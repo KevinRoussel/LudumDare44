@@ -280,8 +280,7 @@ public class Gameplay : MonoBehaviour
 
                     _gameUI.gameObject.SetActive(false);
 
-                    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-                    SceneManager.LoadScene(0);
+                    SceneManager.LoadScene(1);
                     yield break;
                 }
                 _inputManager.ApplyInput(currentCharacter);
@@ -297,9 +296,8 @@ public class Gameplay : MonoBehaviour
         // ENDING HERE
         OnEnding?.Invoke();
         yield return _endingDecision.StartEnding();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(1);
 
-        yield break;
     }
 
     
