@@ -8,6 +8,7 @@ public class Master : MonoBehaviour
 {
     [Header("Managers")]
     [SerializeField] Gameplay _gameplay;
+    [SerializeField] CanvasGroup _splashScreen;
 
     Coroutine _game;
 
@@ -19,6 +20,31 @@ public class Master : MonoBehaviour
 
     IEnumerator Game()
     {
+        yield return SplashScreen();
+        IEnumerator SplashScreen()
+        {
+            _splashScreen.gameObject.SetActive(true);
+            _splashScreen.alpha = 0;
+
+            CountDown cd = new CountDown(0.5f);
+            while(!cd.isDone)
+            {
+                _splashScreen.alpha = cd.Progress;
+                yield return null;
+            }
+            yield return new WaitForSeconds(1f);
+
+            cd = new CountDown(0.5f);
+            while (!cd.isDone)
+            {
+                _splashScreen.alpha = 1-cd.Progress;
+                yield return null;
+            }
+
+            _splashScreen.gameObject.SetActive(false);
+            yield break;
+        }
+
         while(true)
         {
             MenuReturn menuChoice = MenuReturn.Null;
