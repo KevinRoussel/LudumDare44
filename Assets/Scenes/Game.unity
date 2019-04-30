@@ -613,9 +613,29 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6257417356102254779, guid: 5492be844f0bd038f95263a4912dcf10,
         type: 3}
+      propertyPath: _pitches.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6257417356102254779, guid: 5492be844f0bd038f95263a4912dcf10,
+        type: 3}
       propertyPath: _speaker
       value: 
       objectReference: {fileID: 1157218287}
+    - target: {fileID: 6257417356102254779, guid: 5492be844f0bd038f95263a4912dcf10,
+        type: 3}
+      propertyPath: _pitches.Array.data[0]
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6257417356102254779, guid: 5492be844f0bd038f95263a4912dcf10,
+        type: 3}
+      propertyPath: _pitches.Array.data[1]
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6257417356102254779, guid: 5492be844f0bd038f95263a4912dcf10,
+        type: 3}
+      propertyPath: _pitches.Array.data[2]
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5492be844f0bd038f95263a4912dcf10, type: 3}
 --- !u!224 &132783476 stripped
@@ -4426,7 +4446,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &860089361
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6623,7 +6643,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1242638555
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7916,7 +7936,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1405396587
 Transform:
   m_ObjectHideFlags: 0
