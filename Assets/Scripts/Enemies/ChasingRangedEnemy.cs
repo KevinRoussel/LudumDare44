@@ -30,8 +30,6 @@ public class ChasingRangedEnemy : BaseRangedEnemy {
 
             SetNavDestination(_player.transform.position + ((transform.position - _player.transform.position).normalized * _playerDetectionDistance * .8f));
 
-            _animator.SetBool("Walking", true);
-
             return true;
 
         } else {

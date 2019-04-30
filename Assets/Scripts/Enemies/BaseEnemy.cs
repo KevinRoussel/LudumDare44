@@ -97,20 +97,14 @@ public abstract class BaseEnemy : MonoBehaviour {
     // Coroutine c;
     protected virtual void Movement () {
 
-        if (_navMeshAgent.enabled && _navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance) {            
+        if (_navMeshAgent.enabled && _navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance) {
 
             _movingToEnd ^= true;
-
-            _animator.SetBool("Walking", Moving);
 
             SetDestination();
 
             /*if (c == null)
                 c = StartCoroutine(Extension.WaitSecondsAnd(0.5f, () => { SetDestination(); c = null; }));*/            
-
-        } else {
-
-            _animator.SetBool("Walking", true);
 
         }
 
@@ -146,7 +140,7 @@ public abstract class BaseEnemy : MonoBehaviour {
 
             if ((CanMove < 0) && !_navMeshAgent.isStopped)
                 _character.FireStopWalk();
-            else if ((CanMove >= 0) && _navMeshAgent.isStopped)
+            else if ((CanMove >= 0) && _navMeshAgent.isStopped && Moving)
                 _character.FireWalk();
 
         }

@@ -12,7 +12,6 @@ public class FXOnEvent : MonoBehaviour
     [SerializeField] ParticleSystem _shieldHit;
     [SerializeField] Animation _flashAnimation;
     [SerializeField] ParticleSystem _flashed;
-    [SerializeField] ParticleSystem _hit;
 
     private void Start()
     {
@@ -20,7 +19,6 @@ public class FXOnEvent : MonoBehaviour
         _target.OnShieldHit += () => _shieldHit?.Play();
         _target.OnFlashLauched += () => _flashAnimation?.Play();
         _target.OnFlashed += () => _flashed?.Play();
-        _target.StartHit += () => _hit?.Play();
 
     }
 
