@@ -160,6 +160,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 7.28
       objectReference: {fileID: 0}
+    - target: {fileID: 2385292512874791372, guid: dee320e756a261a4286146c641f83d54,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7772098448198953974, guid: dee320e756a261a4286146c641f83d54,
         type: 3}
       propertyPath: OnDeathEvent.m_PersistentCalls.m_Calls.Array.size
@@ -189,6 +194,16 @@ PrefabInstance:
         type: 3}
       propertyPath: OnDeathEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254802077976808082, guid: dee320e756a261a4286146c641f83d54,
+        type: 3}
+      propertyPath: _playerDetectionDistance
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254802077976808082, guid: dee320e756a261a4286146c641f83d54,
+        type: 3}
+      propertyPath: _chasingRadius
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 6570948451683624446, guid: dee320e756a261a4286146c641f83d54,
         type: 3}

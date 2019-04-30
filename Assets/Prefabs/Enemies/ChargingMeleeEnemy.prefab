@@ -276,6 +276,11 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  OnRageFinished:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   OnFlash:
     m_PersistentCalls:
       m_Calls: []
@@ -329,7 +334,7 @@ MonoBehaviour:
   _playerDetectionDistance: 5
   _patrolPathEndPos: {fileID: 5594048532711993487}
   _chargeSpeedMultiplier: 2
-  _attackRange: 0.5
+  _attackRange: 0.2
   _attackTime: 1
 --- !u!65 &7065373785232673374
 BoxCollider:
