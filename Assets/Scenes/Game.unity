@@ -3091,7 +3091,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 207, y: -698}
+  m_AnchoredPosition: {x: 207, y: -772}
   m_SizeDelta: {x: 1343.5, y: 1780.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &436890670
@@ -3128,10 +3128,9 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "Lead Game Design :Yacine Djadja\r\nGame Design : Benjamin Ramaug\xE9\nGame
-    Design : Guillaume Andr\xE9\n\nLead Game Art : Anna Bressan\nGame Art : Axel Suzanne\nGame
-    Art : Chlo\xE9 Viatg\xE9\n\nLead Developpement : K\xE9vin Roussel\nDeveloppement
-    : Benjamin Robcis\nDeveloppement : Julien Lemaire\n\nLead Sound Design : Tom Laporte\n\nProduction
-    : Yann Roirand\r\n\n"
+    Design : Guillaume Andr\xE9\n\nLead Game Art : Anna Bressan\nGame Art : Axel Suzanne\n\nLead
+    Developpement : K\xE9vin Roussel\nDeveloppement : Benjamin Robcis\nDeveloppement
+    : Julien Lemaire\n\nLead Sound Design : Tom Laporte\n\nProduction : Yann Roirand\r\n\n"
 --- !u!222 &436890671
 CanvasRenderer:
   m_ObjectHideFlags: 0
