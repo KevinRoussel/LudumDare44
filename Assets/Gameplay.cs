@@ -185,7 +185,7 @@ public class Gameplay : MonoBehaviour
                     _characterImage.transform.GetChild(2).GetComponent<Image>().sprite = level.Pacts[_selectedDemon]._characterImage[2];
                     _characterImage.transform.GetChild(3).GetComponent<Image>().sprite = level.Pacts[_selectedDemon]._characterImage[3];
 
-                    _contractPunchLine.text = level.Pacts[_selectedDemon].ContractPunchline;
+                    _contractPunchLine.text = level.Pacts[_selectedDemon].ContractPunchline ?? " ";
                     _pactSign.gameObject.SetActive(true);
                     _pactSignCancel.onClick.AddListener(() => _pactCancel = true);
                     _pactSignOK.onClick.AddListener(() => _pactOK = true);
