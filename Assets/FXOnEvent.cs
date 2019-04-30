@@ -15,7 +15,6 @@ public class FXOnEvent : MonoBehaviour
 
     private void Start()
     {
-        _target.OnRageReady += () => _rageActivated?.Play();
         _target.OnShieldHit += () => _shieldHit?.Play();
         _target.OnFlashLauched += () => _flashAnimation?.Play();
         _target.OnFlashed += () => _flashed?.Play();

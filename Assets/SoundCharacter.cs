@@ -12,7 +12,7 @@ public class SoundCharacter : MonoBehaviour
 
     private void Start()
     {
-        _target.OnRageReady += () => _rageActivated.Play();
+        //_target.OnRageReady += () => _rageActivated.Play();
 
 
 

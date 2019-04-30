@@ -391,6 +391,7 @@ public class Character : MonoBehaviour {
             Attack /= _rageMultiplier;
             FireRate /= _rageFireRatePercentage;
 
+            GameObject.FindObjectOfType<Cooldown>().StartCooldown(RageCooldown);
             yield return new WaitForSeconds(RageCooldown);
 
             OnRageReady?.Invoke();
@@ -428,7 +429,9 @@ public class Character : MonoBehaviour {
 
             OnShieldOff();
 
+            GameObject.FindObjectOfType<Cooldown>().StartCooldown(_shieldCooldown);
             yield return new WaitForSeconds(_shieldCooldown);
+
             _shieldRoutine = null;
         }
     }
@@ -471,6 +474,8 @@ public class Character : MonoBehaviour {
             Extension.WaitSecondsAnd(FlashUpgradeEffect.y, () => { NavMeshAgent.speed /= FlashUpgradeEffect.x; });
 
             Debug.Log("Flash", this);
+
+            GameObject.FindObjectOfType<Cooldown>().StartCooldown(_flashCooldown);
             yield return new WaitForSeconds(_flashCooldown);
 
             OnFlashReady?.Invoke();
