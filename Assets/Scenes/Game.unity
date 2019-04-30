@@ -8683,7 +8683,7 @@ MonoBehaviour:
   _targetScale: 1
   _cinematic: {fileID: 7657818755180109532}
   _goodEndingClip: {fileID: 7400000, guid: d0f5a9598f7c86642a5f4dd503dfe39f, type: 2}
-  exitLight: {fileID: 0}
+  exitLight: {fileID: 26785871}
 --- !u!114 &1405396589
 MonoBehaviour:
   m_ObjectHideFlags: 0
