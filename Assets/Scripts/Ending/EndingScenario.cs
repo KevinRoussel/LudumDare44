@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EndingScenario : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class EndingScenario : MonoBehaviour
     [SerializeField] protected GameObject _characterSlots;
     [SerializeField] protected Dialog _dialog;
     [SerializeField] protected Light _light;
+    [SerializeField] protected CanvasGroup _background;
+
     [Header("Slots")]
     [SerializeField] RectTransform _SATAN;
     [SerializeField] RectTransform _LEVIATHAN;

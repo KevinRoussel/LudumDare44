@@ -273,7 +273,7 @@ public class Gameplay : MonoBehaviour
         // ENDING HERE
         OnEnding?.Invoke();
         yield return _endingDecision.StartEnding();
-
+        SceneManager.LoadScene(0);
 
         yield return _gameUI.PlayAndWait(_gameClose);
         _gameUI.gameObject.SetActive(false);

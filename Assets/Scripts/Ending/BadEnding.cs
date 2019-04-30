@@ -50,6 +50,15 @@ public class BadEnding : EndingScenario
 
         _dialog.ChangeDialogText($"KARMA SCORE : {GameObject.FindObjectOfType<EndingDecision>().CurrentEvilPoint}. MAYBE AN OTHER TIME ....");
         yield return UserAction();
+
+        //CountDown cd = new CountDown(1f);
+        //while(!cd.isDone)
+        //{
+        //    _background.alpha = cd.Progress;
+        //    yield return null;
+        //}
+        //_background.alpha = 1;
         _dialog.Toggle();
+
     }
 }

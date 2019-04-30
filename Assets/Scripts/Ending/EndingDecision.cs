@@ -11,7 +11,7 @@ public class EndingDecision : MonoBehaviour
 
     [SerializeField] List<Transform> _toDesactivate;
 
-    int _evilPoints=0;
+    int _evilPoints=50;
 
     public int CurrentEvilPoint => _evilPoints;
     public void AddEvilPoint() => _evilPoints++;
