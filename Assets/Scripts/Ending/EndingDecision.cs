@@ -30,13 +30,11 @@ public class EndingDecision : MonoBehaviour
         _toDesactivate.ForEach(i => i.gameObject.SetActive(false));
         badEnding.gameObject.SetActive(true);
         yield return badEnding.Activate();
-        _toDesactivate.ForEach(i => i.gameObject.SetActive(true));
     }
 
     IEnumerator CallGoodEnding() {
         _toDesactivate.ForEach(i => i.gameObject.SetActive(false));
         goodEnding.gameObject.SetActive(true);
         yield return goodEnding.Activate();
-        _toDesactivate.ForEach(i => i.gameObject.SetActive(true));
     }
 }

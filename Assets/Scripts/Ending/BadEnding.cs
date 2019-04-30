@@ -52,6 +52,6 @@ public class BadEnding : EndingScenario
         yield return WaitForUserAction();
 
         _dialog.Toggle();
-
+        yield break;
     }
 }

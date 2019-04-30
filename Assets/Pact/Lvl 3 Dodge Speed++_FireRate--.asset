@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f8b2066b7cc2154b89c9232b33009c5, type: 3}
   m_Name: Lvl 3 Dodge Speed++_FireRate--
   m_EditorClassIdentifier: 
-  _moveSpeedMultiplier: 1.2
-  _fireRateMalusMultiplier: 0.5
+  _moveSpeedMultiplier: 1.5
+  _fireRateMalusMultiplier: 1.5
