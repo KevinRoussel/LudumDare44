@@ -473,6 +473,8 @@ public class Character : MonoBehaviour {
 
             Extension.WaitSecondsAnd(FlashUpgradeEffect.y, () => { NavMeshAgent.speed /= FlashUpgradeEffect.x; });
 
+            NavMeshAgent.speed /= FlashUpgradeEffect.x > 0 ? FlashUpgradeEffect.x : 1;
+
             Debug.Log("Flash", this);
 
             GameObject.FindObjectOfType<Cooldown>().StartCooldown(_flashCooldown);
