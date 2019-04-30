@@ -943,6 +943,7 @@ MonoBehaviour:
   _dialog: {fileID: 742369613}
   _pactSign: {fileID: 707544520}
   _clickTrigger: {fileID: 1696840331}
+  _contractPunchLine: {fileID: 1390127223}
   RedCharacter: {fileID: 1878541168}
   GreenCharacter: {fileID: 1755140714}
   BlueCharacter: {fileID: 1123816554}
@@ -6742,7 +6743,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1242638555
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7791,7 +7792,7 @@ PrefabInstance:
     - target: {fileID: 6847077622757608722, guid: f50b2824532ca0540940cfa1d3efd93d,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6847077622757608733, guid: f50b2824532ca0540940cfa1d3efd93d,
         type: 3}
@@ -7980,8 +7981,25 @@ PrefabInstance:
       propertyPath: m_FontData.m_FontSize
       value: 28
       objectReference: {fileID: 0}
+    - target: {fileID: 6847077622824978124, guid: f50b2824532ca0540940cfa1d3efd93d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f50b2824532ca0540940cfa1d3efd93d, type: 3}
+--- !u!114 &1390127223 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6847077622824978126, guid: f50b2824532ca0540940cfa1d3efd93d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1390127222}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1397516557
 GameObject:
   m_ObjectHideFlags: 0
