@@ -127,7 +127,6 @@ public class Master : MonoBehaviour
         yield return new WaitWhile(() => !done);
         _returnButton.onClick.RemoveAllListeners();
 
-        yield return _creditAnimation.PlayAndWait(_creditCloseAnimation.name);
         _creditAnimation.gameObject.SetActive(false);
         yield break;
     }
