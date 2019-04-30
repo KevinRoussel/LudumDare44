@@ -104,7 +104,7 @@ public class Gameplay : MonoBehaviour
 
         List<Pact> selectedPacts = new List<Pact>();
         var idx = -1;
-        foreach(var level in _mapStructure.Skip(3))
+        foreach(var level in _mapStructure)
         {
             idx++;
             OnNextLevel?.Invoke();
@@ -273,6 +273,7 @@ public class Gameplay : MonoBehaviour
         // ENDING HERE
         OnEnding?.Invoke();
         yield return _endingDecision.StartEnding();
+
         SceneManager.LoadScene(0);
 
         yield return _gameUI.PlayAndWait(_gameClose);
