@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class EndingScenario : MonoBehaviour
 {
+
+    [Header("Managers")]
+    [SerializeField] protected Gameplay _gameplay;
+
     [SerializeField] protected GameObject _characterSlots;
     [SerializeField] protected Dialog _dialog;
     [SerializeField] protected Light _light;
@@ -45,17 +49,20 @@ public class EndingScenario : MonoBehaviour
 
 
         _dialog.ChangeName("SATAN");
+        _dialog.TypeWriter.ChangeSound(_gameplay.MapStructure[0].Pacts[0]._voice);
         ChangeScale(SATAN: true, LEVIATHAN: false, BILAL: false);
         _dialog.ChangeDialogText("CONGRATULATIONS, PERSON. YOU MADE YOUR WAY UP HERE...");
         _dialog.Toggle();
         yield return UserAction();
 
         _dialog.ChangeName("LEVIATHAN");
+        _dialog.TypeWriter.ChangeSound(_gameplay.MapStructure[0].Pacts[1]._voice);
         ChangeScale(SATAN: false, LEVIATHAN: true, BILAL: false);
         _dialog.ChangeDialogText("DO YOU KNOW WHAT WE ARE?");
         yield return UserAction();
 
         _dialog.ChangeName("BILAL");
+        _dialog.TypeWriter.ChangeSound(_gameplay.MapStructure[0].Pacts[2]._voice);
         ChangeScale(SATAN: false, LEVIATHAN: false, BILAL: true);
         _dialog.ChangeDialogText("THE THREE PRIMARY DEMONS.");
         yield return UserAction();
@@ -63,6 +70,7 @@ public class EndingScenario : MonoBehaviour
         yield return UserAction();
 
         _dialog.ChangeName("LEVIATHAN");
+        _dialog.TypeWriter.ChangeSound(_gameplay.MapStructure[0].Pacts[1]._voice);
         ChangeScale(SATAN: false, LEVIATHAN: true, BILAL: false);
         _dialog.ChangeDialogText("WE ARE THE LAST GATE BETWEEN THIS WORLD AND YOURS.");
         yield return UserAction();
