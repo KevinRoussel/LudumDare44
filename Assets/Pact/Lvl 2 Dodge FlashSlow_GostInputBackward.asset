@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Lvl 2 Dodge FlashSlow_GostInputBackward
   m_EditorClassIdentifier: 
   type: 2
-  _flashUpgradeEffect: 0.5
+  _flashUpgradeEffect: 1.4
   _flashUpgradeEffectDuration: 2
