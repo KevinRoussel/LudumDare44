@@ -14,7 +14,7 @@ public class Master : MonoBehaviour
 
     void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
         _game = StartCoroutine(Game());
     }
 
@@ -55,6 +55,7 @@ public class Master : MonoBehaviour
                 case MenuReturn.StartGame:
                     yield return Tuto();
                     yield return _gameplay.RunGame();
+                    yield break;
                     break;
 
                 case MenuReturn.Credit:
