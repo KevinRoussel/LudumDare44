@@ -19,7 +19,6 @@ public class Lvl3Defense : Pact {
     public override void Apply (GameUIControl UI) {
 
         UI.PlayerHealthBar.SetActive(false);
-        UI.PlayerMinimap.SetActive(false);
 
     }
 
