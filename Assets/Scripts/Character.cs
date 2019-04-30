@@ -79,6 +79,7 @@ public class Character : MonoBehaviour {
     public UnityEvent OnSHieldStart;
     public UnityEvent OnSHieldHit;
     public UnityEvent OnLaunchRage;
+    public UnityEvent OnRageFinished;
     public UnityEvent OnFlash;
 
 
@@ -385,6 +386,7 @@ public class Character : MonoBehaviour {
 
             yield return new WaitForSeconds(_rageDuration);
             OnRageEnd?.Invoke();
+            OnRageFinished.Invoke();
 
             Attack /= _rageMultiplier;
             FireRate /= _rageFireRatePercentage;
