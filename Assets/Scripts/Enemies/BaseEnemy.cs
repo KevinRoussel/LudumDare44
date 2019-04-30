@@ -101,10 +101,15 @@ public abstract class BaseEnemy : MonoBehaviour {
 
             _movingToEnd ^= true;
 
+_animator.SetBool("Walking", Moving);
             SetDestination();
 
             /*if (c == null)
                 c = StartCoroutine(Extension.WaitSecondsAnd(0.5f, () => { SetDestination(); c = null; }));*/            
+
+} else if (!_navMeshAgent.isStopped) {
+
+            _animator.SetBool("Walking", true);
 
         }
 
@@ -112,7 +117,7 @@ public abstract class BaseEnemy : MonoBehaviour {
 
     public virtual void Flashed (float duration, Vector2 upgradeEffect) {
 
-        GetComponent<Character>()?.Flashed();
+        // GetComponent<Character>()?.Flashed();
 
         SetCanMove(false);
 
