@@ -1247,7 +1247,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &172815614
 Transform:
   m_ObjectHideFlags: 0
@@ -1318,7 +1318,7 @@ MonoBehaviour:
     - CharacterName: Satan
       DialogText: '"*BARK* HUMAN WEAKLING, PRAY YOUR NEW MASTER ! YOU MAY FEEL CONFLICTED,
         BUT YOU WILL FIND GREAT POWER DEEP WITHIN. "'
-      ContractPunchlineBonus: 
+      ContractPunchlineBonus: 'RAGE SKILL: DAMAGE BOOST FOR A SHORT DURATION'
       ContractPunchlineMalus: 
       PactToApply: {fileID: 11400000, guid: f85f1eddcbd483a46a6ae24a96546165, type: 2}
       _characterImage:
@@ -1337,7 +1337,7 @@ MonoBehaviour:
       DialogText: '"EEK ! DON''T TOUCH ME ! NO TOUCHING ! STAY AWAY YOU UNSTABLE MESS,
         AND PRAY FOR YOUR NEW LORD ! YOU WILL FEEL DIZZY, BUT YOUR HIDE WILL THICKEN
         ABUDANTLY"'
-      ContractPunchlineBonus: 
+      ContractPunchlineBonus: 'SHIELD SKILL : ABSORBS DAMAGE FOR A SHORT DURATION'
       ContractPunchlineMalus: 
       PactToApply: {fileID: 11400000, guid: dd1544c664a519f43a024b64fe2a8864, type: 2}
       _characterImage:
@@ -1356,7 +1356,7 @@ MonoBehaviour:
       DialogText: '"I''VE JOURNEYED ALL ACROSS THE SEAS, I MAY HAVE SOMETHING FOR
         YOU. EMBRACE THE SEAS ! YOU WILL FEEL TIRED, BUT YOUR FOES WILL BE STRUCK
         WITH SICKNESS."'
-      ContractPunchlineBonus: 
+      ContractPunchlineBonus: 'FLASH SKILL : STUNS ENEMIES IN AN AREA AROUND THE PLAYER'
       ContractPunchlineMalus: 
       PactToApply: {fileID: 11400000, guid: 9c67aa67e5011c84484a5a11e1a25635, type: 2}
       _characterImage:
@@ -1378,8 +1378,8 @@ MonoBehaviour:
       DialogText: '"YOU ARE STILL SO MUCH WEAKER THAN YOUR FULLY REALIZED POTENTIAL.
         REJOICE AND PRAY FOR YOUR ONE AND ONLY LORD, AGAIN. YOU WILL KNOW THE UNFATHOMABLE
         DEPTH OF TRUE RAGE, BUT SO WILL YOUR FOES."'
-      ContractPunchlineBonus: 
-      ContractPunchlineMalus: 
+      ContractPunchlineBonus: SHOOT IN A CONE
+      ContractPunchlineMalus: FORWARD MOVEMENT DISTURBED
       PactToApply: {fileID: 11400000, guid: 340afa1484008b44fa7db78dc7a365dc, type: 2}
       _characterImage:
       - {fileID: 21300000, guid: 990fec0a2c4b6da4bab94084d7b24370, type: 3}
@@ -1399,8 +1399,8 @@ MonoBehaviour:
         HERE, TAKE THIS HORN-CLAD SCREWDRIVER! HOLD IT IN THE AIR TO FREEZE YOUR FOES
         - YEAH, COOL, AL-RIIIGHT! THE WAY IT WORKS IS\u2026 IT\u2019S A LIGHT THIEF\u2026
         SO, EEEH... OK, GOT TO GO NOW ! BYE ! \""
-      ContractPunchlineBonus: 
-      ContractPunchlineMalus: 
+      ContractPunchlineBonus: ABSORBS A SHOT AFTER NOT TAKING DAMAGE FOR A WHILE
+      ContractPunchlineMalus: BACKWARDS MOVEMENT DISTURBED
       PactToApply: {fileID: 11400000, guid: aa4bccbb0c2163848a049c8b02c07f40, type: 2}
       _characterImage:
       - {fileID: 21300000, guid: c8b1c054bc5ca724fa5ac348bcfa761d, type: 3}
@@ -1419,8 +1419,8 @@ MonoBehaviour:
         SO GOOD FOR STAY ALIVE, THIS BOTTLE OF SEAVALER YOU! YOU DRINK! GOOD FOR GREEN
         GREEN SKIN! YOU CAN DEFEND FOREVER! NEVER TAKE YOU ALIVE! ALSO DON''T NEED
         ALL THIS BUTTONS, RITE ? "'
-      ContractPunchlineBonus: 
-      ContractPunchlineMalus: 
+      ContractPunchlineBonus: FLASH STEALS MOVEMENT SPEED FROM ENEMIES
+      ContractPunchlineMalus: SIDEWARDS MOVEMENT DISTURBED
       PactToApply: {fileID: 11400000, guid: a87fa9030fc74eb4d9485ca0b7eaa3b9, type: 2}
       _characterImage:
       - {fileID: 21300000, guid: 16775a65147ba7741ba01b442f7bb0c3, type: 3}
@@ -1441,8 +1441,8 @@ MonoBehaviour:
       DialogText: '"YOU COULD KILL MORE, MUCH, MUCH MORE! BLOOD... SHOULD... FLOW!
         GIVE IN TO YOUR NEW EVER-GRACEFUL MASTER!? YES! YOU SHALL! HE TEACHES YOU
         HOW TO TURN TO ASH ALL THAT MEETS YOUR EYE FROM NOW ON! HAHAHAHA!"'
-      ContractPunchlineBonus: 
-      ContractPunchlineMalus: 
+      ContractPunchlineBonus: RAGE GRANTS DAMAGE IMMUNITY
+      ContractPunchlineMalus: 'REVERSE MOVEMENT '
       PactToApply: {fileID: 11400000, guid: 01ae93a0678a93f4b937f3d0e49a03cf, type: 2}
       _characterImage:
       - {fileID: 21300000, guid: 010cd811554865049889b12688ba13d5, type: 3}
@@ -1462,8 +1462,8 @@ MonoBehaviour:
         IT! IT WILL CHANGE THE WAY YOU USE YOUR AMMUNITION. THERE MAY BE SOME SIDE
         EFFECTS BUT\u2026 NOTHING TO WORRY ABOUT! WELL I GUESS\u2026 SEE YOU LATER
         THEN - I SURE HOPE WE DO, BRAVE ONE!\""
-      ContractPunchlineBonus: 
-      ContractPunchlineMalus: 
+      ContractPunchlineBonus: REFLECT A PORTION OF DAMAGE TAKEN
+      ContractPunchlineMalus: LIFEBAR HIDDEN
       PactToApply: {fileID: 11400000, guid: 8a8dbb6084c613035886c552314591c1, type: 2}
       _characterImage:
       - {fileID: 21300000, guid: 421168f803c804040aced9e5953b0a34, type: 3}
@@ -1482,8 +1482,8 @@ MonoBehaviour:
         IN YOUR EYE, LOOK AT THIS MINIATURE SHIP, I KNOW! HOW DID THEY GET IN THERE!
         IT''S VERY CLEVER! CARRY IT! FOES RECEIVE THEIR DAMAGE BACK, YOU SHALL WELCOME
         PAIN WITH OPEN ARMS! WHILE YOU CONTINUE UP... OR DOWN... TRUST ME! "'
-      ContractPunchlineBonus: 
-      ContractPunchlineMalus: 
+      ContractPunchlineBonus: GREATER MOVEMENT SPEED
+      ContractPunchlineMalus: SLOWER FIRE RATE
       PactToApply: {fileID: 11400000, guid: f25b804b9b3c891408e5bb576c023a5c, type: 2}
       _characterImage:
       - {fileID: 21300000, guid: 45533a7e0a765844fb1ef28cf7c965ba, type: 3}
@@ -4253,9 +4253,9 @@ RectTransform:
   m_Father: {fileID: 1732171561}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: -284.90002}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 369, y: 88.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &695870440
@@ -5661,9 +5661,9 @@ RectTransform:
   m_Father: {fileID: 1732171561}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: -44.2}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 369, y: 88.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &970651379
@@ -7341,7 +7341,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1242638555
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7356,8 +7356,8 @@ RectTransform:
   - {fileID: 1472926440}
   - {fileID: 410310061}
   - {fileID: 742369610}
-  - {fileID: 1832166138}
   - {fileID: 1696840330}
+  - {fileID: 1832166138}
   m_Father: {fileID: 601074591}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8405,7 +8405,7 @@ PrefabInstance:
     - target: {fileID: 6847077622757608722, guid: f50b2824532ca0540940cfa1d3efd93d,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6847077622757608733, guid: f50b2824532ca0540940cfa1d3efd93d,
         type: 3}
@@ -8717,7 +8717,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1420963566
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10192,7 +10192,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1621919632
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10941,7 +10941,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1242638555}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -11066,7 +11066,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 960.0001, y: -497.04822}
+  m_AnchoredPosition: {x: 960.0001, y: -587}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1732171562
@@ -13908,7 +13908,7 @@ PrefabInstance:
     - target: {fileID: 6808254549919028090, guid: d50f977f1b0b2a537b18f7200d2c7378,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6808254549919028089, guid: d50f977f1b0b2a537b18f7200d2c7378,
         type: 3}

@@ -38,7 +38,7 @@ public class ShootingManager : MonoBehaviour {
         BaseProjectile projectile = null;
 
         foreach (BaseProjectile p in _pool) {
-            if (!p.gameObject.activeSelf) {
+            if (p != null && !p.gameObject.activeSelf) {
                 projectile = p;
                 break;
             }

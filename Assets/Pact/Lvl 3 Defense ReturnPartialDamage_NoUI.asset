@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b4bf0c2fbd321b44846c13ecc365f75, type: 3}
   m_Name: Lvl 3 Defense ReturnPartialDamage_NoUI
   m_EditorClassIdentifier: 
-  _damageReturnPercent: 0
+  _damageReturnPercent: 0.5
