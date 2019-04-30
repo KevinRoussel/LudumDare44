@@ -19,6 +19,7 @@ public class MusicManager : MonoBehaviour
     {
         _menuMusic.Stop();
         _fightMusic.Stop();
+        _finalFightMusic.Stop();
         _pactMusic.Stop();
         _endingMusic.Stop();
     }

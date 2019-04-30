@@ -109,8 +109,8 @@ public class Gameplay : MonoBehaviour
         foreach(var level in _mapStructure)
         {
             idx++;
+
             OnNextLevel?.Invoke();
-            if (level == _mapStructure.Last()) OnFinalFight?.Invoke();
 
             // Pact
             yield return PactRoom((newPact) => selectedPacts.Add(newPact));
@@ -222,6 +222,8 @@ public class Gameplay : MonoBehaviour
             }
 
             OnMapStart?.Invoke();
+            if (level == _mapStructure.Last()) OnFinalFight?.Invoke();
+
             _gameUI.gameObject.SetActive(true);
 
             // Spawn Room and Character
