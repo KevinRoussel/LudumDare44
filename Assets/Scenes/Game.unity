@@ -267,6 +267,75 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bda8fb0adad15184dbbefd572b439d2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &26785870
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 26785872}
+  - component: {fileID: 26785871}
+  m_Layer: 0
+  m_Name: Spot Light (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!108 &26785871
+Light:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 26785870}
+  m_Enabled: 0
+  serializedVersion: 8
+  m_Type: 0
+  m_Color: {r: 1, g: 0.8113208, b: 0.8113208, a: 1}
+  m_Intensity: 80.1
+  m_Range: 8.69
+  m_SpotAngle: 54
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 4
+  m_LightShadowCasterMode: 0
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
+--- !u!4 &26785872
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 26785870}
+  m_LocalRotation: {x: 0.6532298, y: -0.27061936, z: 0.27057648, w: 0.6533333}
+  m_LocalPosition: {x: 1.32, y: 10.17, z: 4.01}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 569998345}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 90.00001, y: 0, z: 44.994003}
 --- !u!114 &64948997 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6847077623980773124, guid: f50b2824532ca0540940cfa1d3efd93d,
@@ -1489,7 +1558,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b26acc8f725dfe75590cb47af9b420cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  badEndingThreshold: 10
+  badEndingThreshold: 75
   badEnding: {fileID: 1405396589}
   goodEnding: {fileID: 1405396588}
   _toDesactivate:
@@ -2925,6 +2994,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1761242286}
+  - {fileID: 26785872}
   m_Father: {fileID: 7197073746311623431}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8115,6 +8185,7 @@ MonoBehaviour:
   _targetScale: 1
   _cinematic: {fileID: 7657818755180109532}
   _goodEndingClip: {fileID: 7400000, guid: d0f5a9598f7c86642a5f4dd503dfe39f, type: 2}
+  exitLight: {fileID: 26785871}
 --- !u!114 &1405396589
 MonoBehaviour:
   m_ObjectHideFlags: 0
