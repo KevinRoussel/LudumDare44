@@ -464,7 +464,7 @@ public class Character : MonoBehaviour {
                 if (Vector3.Distance(e.transform.position, transform.position) <= _flashRadius)
                     e.Enemy?.Flashed(_flashDuration, FlashUpgradeEffect);
 
-            NavMeshAgent.speed *= FlashUpgradeEffect.x;
+            NavMeshAgent.speed *= FlashUpgradeEffect.x>0?FlashUpgradeEffect.x:1;
 
             Extension.WaitSecondsAnd(FlashUpgradeEffect.y, () => { NavMeshAgent.speed /= FlashUpgradeEffect.x; });
 
@@ -479,70 +479,6 @@ public class Character : MonoBehaviour {
 
     #endregion
 
-#if false
-    #region Dodge
-    Coroutine _dodgeProcess;
-    float _magnitudeStreshold = 0.2f;
-    float _lastDodgeDate;
-    float _dodgeCooldown = 0.4f;
-
-    void Dodge(Vector2 direction, bool log = true)
-    {
-        if (_dodgeProcess != null) return;
-        if (_shieldProcess == null) return;
-        if (direction.magnitude < _magnitudeStreshold) return;
-        if (LiveCharacter.CurrentShield < LiveCharacter.Definition.DodgeCost) return;
-        if (_lastDodgeDate + _dodgeCooldown > Time.fixedTime) return;
-
-        LiveCharacter.DecreaseShield(LiveCharacter.Definition.DodgeCost);
-        _healthSlider.UpdateShield();
-        _lastDodgeDate = Time.fixedTime;
-        _dodgeProcess = StartCoroutine(DodgeProcess());
-
-        IEnumerator DodgeProcess()
-        {
-            Keyframe destinationKey = LiveCharacter.Definition.DodgeConfiguration.keys.Last();
-            var startPosition = transform.position;
-            var lastOffsetApplyed = Vector3.zero;
-            var realDirection = new Vector3(direction.x, 0, direction.y).normalized;
-            var destinationPosition = transform.position + (realDirection * destinationKey.value);
-            SpecialCountDown _timer = new SpecialCountDown(destinationKey.time);
-
-            if (log)
-            {
-                Debug.Log($"Joystick : {realDirection}");
-                Debug.Log($"start : {startPosition}");
-                Debug.Log($"destionation : {destinationPosition}");
-                Debug.Log($"destination - start : {destinationPosition - startPosition}");
-                Debug.Log($"movement duration : {destinationKey.time}");
-                Debug.Log("[Dodge started]");
-            }
-
-            OnStartDodge?.Invoke(destinationPosition - startPosition);
-
-            // Freeze rotation movement
-            var angularSpeedCache = _navMeshAgent.angularSpeed;
-            _navMeshAgent.angularSpeed = 0f;
-            while (!_timer.isDone)
-            {
-                var delta = (realDirection * LiveCharacter.Definition.DodgeConfiguration.Evaluate(_timer.ConsumedTime)) - lastOffsetApplyed;
-                if (log) Debug.Log(delta);
-                _navMeshAgent.Move(delta);
-                lastOffsetApplyed += delta;
-                yield return null;
-            }
-            if (log) Debug.Log("[Dodge finished]");
-
-            _navMeshAgent.angularSpeed = angularSpeedCache;
-            OnEndDodge?.Invoke();
-            _dodgeProcess = null;
-            yield break;
-        }
-    }
-
-
-    #endregion
-#endif
 
     #region Hit&Death IDestroyable Implementation
     bool _isInvincible = false;
