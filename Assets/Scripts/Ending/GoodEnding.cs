@@ -95,11 +95,10 @@ public class GoodEnding : EndingScenario
         yield return WaitForTypingFinished();
         _dialog.ChangeName("BILAL");
         _dialog.TypeWriter.ChangeSound(_gameplay.MapStructure[0].Pacts[2]._voice);
-        _dialog.ChangeDialogText("KK");
+        _dialog.ChangeDialogText("OK");
         yield return WaitForTypingFinished();
         yield return new WaitForSeconds(1f);
         _dialog.Toggle();
-
 
         yield return new WaitForSeconds(3f);
         _dialog.ChangeDialogText("");
@@ -132,7 +131,7 @@ public class GoodEnding : EndingScenario
         _dialog.Toggle();
 
         yield return new WaitForSeconds(1f);
-        exitLight.enabled = true;
+        yield return _cinematic.PlayAndWait(_goodEndingClip);
         yield return new WaitForSeconds(1f);
 
         _dialog.ChangeDialogText("");
