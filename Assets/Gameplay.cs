@@ -275,6 +275,8 @@ public class Gameplay : MonoBehaviour
                     _gameOverUI.gameObject.SetActive(false);
 
                     _gameUI.gameObject.SetActive(false);
+
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
                     SceneManager.LoadScene(0);
                     yield break;
                 }
@@ -291,11 +293,11 @@ public class Gameplay : MonoBehaviour
         // ENDING HERE
         OnEnding?.Invoke();
         yield return _endingDecision.StartEnding();
-
-        SceneManager.LoadScene(0);
-
         yield return _gameUI.PlayAndWait(_gameClose);
+
         _gameUI.gameObject.SetActive(false);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
         yield break;
     }
 
