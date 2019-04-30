@@ -611,6 +611,21 @@ PrefabInstance:
       propertyPath: m_Color.a
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8466789392246700071, guid: 5492be844f0bd038f95263a4912dcf10,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8466789390627539822, guid: 5492be844f0bd038f95263a4912dcf10,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8466789390861718323, guid: 5492be844f0bd038f95263a4912dcf10,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6257417356102254779, guid: 5492be844f0bd038f95263a4912dcf10,
         type: 3}
       propertyPath: _pitches.Array.size
@@ -943,7 +958,8 @@ MonoBehaviour:
   _dialog: {fileID: 742369613}
   _pactSign: {fileID: 707544520}
   _clickTrigger: {fileID: 1696840331}
-  _contractPunchLine: {fileID: 1390127223}
+  _contractPunchLineMalus: {fileID: 1133685523}
+  _contractPunchLineBonus: {fileID: 1390127223}
   RedCharacter: {fileID: 1878541168}
   GreenCharacter: {fileID: 1755140714}
   BlueCharacter: {fileID: 1123816554}
@@ -964,7 +980,8 @@ MonoBehaviour:
     - CharacterName: Satan
       DialogText: '"*BARK* HUMAN WEAKLING, PRAY YOUR NEW MASTER ! YOU MAY FEEL CONFLICTED,
         BUT YOU WILL FIND GREAT POWER DEEP WITHIN. "'
-      ContractPunchline: 'RAGE SKILL: DAMAGE BOOST FOR A SHORT DURATION'
+      ContractPunchlineBonus: 'RAGE SKILL : DAMAGE BOOST FOR A SHORT DURATION'
+      ContractPunchlineMalus: '-'
       PactToApply: {fileID: 11400000, guid: f85f1eddcbd483a46a6ae24a96546165, type: 2}
       _characterImage:
       - {fileID: 21300000, guid: 8230fa8a05c1abe42beab3e0b6ac26a7, type: 3}
@@ -982,7 +999,8 @@ MonoBehaviour:
       DialogText: '"EEK ! DON''T TOUCH ME ! NO TOUCHING ! STAY AWAY YOU UNSTABLE MESS,
         AND PRAY FOR YOUR NEW LORD ! YOU WILL FEEL DIZZY, BUT YOUR HIDE WILL THICKEN
         ABUDANTLY"'
-      ContractPunchline: 'SHIELD SKILL: PARRY PROJECTILES FOR A SHORT DURATION'
+      ContractPunchlineBonus: 'SHIELD SKILL : ABSORB PROJECTILES FOR A SHORT DURATION'
+      ContractPunchlineMalus: '-'
       PactToApply: {fileID: 11400000, guid: dd1544c664a519f43a024b64fe2a8864, type: 2}
       _characterImage:
       - {fileID: 21300000, guid: 3526002f54ca6a540998ccd766213f3e, type: 3}
@@ -1000,7 +1018,8 @@ MonoBehaviour:
       DialogText: '"I''VE JOURNEYED ALL ACROSS THE SEAS, I MAY HAVE SOMETHING FOR
         YOU. EMBRACE THE SEAS ! YOU WILL FEEL TIRED, BUT YOUR FOES WILL BE STRUCK
         WITH SICKNESS."'
-      ContractPunchline: 'FLASH SKILL: STUN ENEMIES IN AN AREA AROUND THE PLAYER'
+      ContractPunchlineBonus: 'FLASH SKILL : STUN ENEMIES IN A AREA AROUND THE PLAYER'
+      ContractPunchlineMalus: '-'
       PactToApply: {fileID: 11400000, guid: 9c67aa67e5011c84484a5a11e1a25635, type: 2}
       _characterImage:
       - {fileID: 21300000, guid: 17f42cebd6b09d44d918c867a9a94899, type: 3}
@@ -1021,7 +1040,8 @@ MonoBehaviour:
       DialogText: '"YOU ARE STILL SO MUCH WEAKER THAN YOUR FULLY REALIZED POTENTIAL.
         REJOICE AND PRAY FOR YOUR ONE AND ONLY LORD, AGAIN. YOU WILL KNOW THE UNFATHOMABLE
         DEPTH OF TRUE RAGE, BUT SO WILL YOUR FOES."'
-      ContractPunchline: SHOOT IN A CONE BUT FORWARD MOVEMENT DISTURBANCE
+      ContractPunchlineBonus: SHOOT IN A CONE
+      ContractPunchlineMalus: FORWARD MOVEMENT DISTURBED
       PactToApply: {fileID: 11400000, guid: 340afa1484008b44fa7db78dc7a365dc, type: 2}
       _characterImage:
       - {fileID: 21300000, guid: 990fec0a2c4b6da4bab94084d7b24370, type: 3}
@@ -1041,8 +1061,9 @@ MonoBehaviour:
         HERE, TAKE THIS HORN-CLAD SCREWDRIVER! HOLD IT IN THE AIR TO FREEZE YOUR FOES
         - YEAH, COOL, AL-RIIIGHT! THE WAY IT WORKS IS\u2026 IT\u2019S A LIGHT THIEF\u2026
         SO, EEEH... OK, GOT TO GO NOW ! BYE ! \""
-      ContractPunchline: ABSORB THE FIRST HIT AFTER A FEW SECONDS NOT BEING HIT BUT
-        BACKWARDS MOVEMENT DISTURBED
+      ContractPunchlineBonus: ABSORB FIRST DAMAGE TAKEN AFTERNOT BEING HIT FOR A SHORT
+        DURATION
+      ContractPunchlineMalus: BACKWARDS MOVEMENT DISTURBED
       PactToApply: {fileID: 11400000, guid: aa4bccbb0c2163848a049c8b02c07f40, type: 2}
       _characterImage:
       - {fileID: 21300000, guid: c8b1c054bc5ca724fa5ac348bcfa761d, type: 3}
@@ -1061,7 +1082,8 @@ MonoBehaviour:
         SO GOOD FOR STAY ALIVE, THIS BOTTLE OF SEAVALER YOU! YOU DRINK! GOOD FOR GREEN
         GREEN SKIN! YOU CAN DEFEND FOREVER! NEVER TAKE YOU ALIVE! ALSO DON''T NEED
         ALL THIS BUTTONS, RITE ? "'
-      ContractPunchline: FLASH STEALS SPEEDS FROM ENEMIES BUT SIDES MOVEMENT DISTURBED
+      ContractPunchlineBonus: FLASH SKILL STEALS MOVEMENT SPEED FROM ENEMIES
+      ContractPunchlineMalus: SIDE MOVEMENT DISTURBED
       PactToApply: {fileID: 11400000, guid: a87fa9030fc74eb4d9485ca0b7eaa3b9, type: 2}
       _characterImage:
       - {fileID: 21300000, guid: 16775a65147ba7741ba01b442f7bb0c3, type: 3}
@@ -1082,8 +1104,8 @@ MonoBehaviour:
       DialogText: '"YOU COULD KILL MORE, MUCH, MUCH MORE! BLOOD... SHOULD... FLOW!
         GIVE IN TO YOUR NEW EVER-GRACEFUL MASTER!? YES! YOU SHALL! HE TEACHES YOU
         HOW TO TURN TO ASH ALL THAT MEETS YOUR EYE FROM NOW ON! HAHAHAHA!"'
-      ContractPunchline: USING THE RAGE WILL MAKE YOU INVINCIBLE BUT YOUR CONTROL
-        KEYS ARE REVERSED
+      ContractPunchlineBonus: RAGE SKILL GRANTS INVUNERABILITY
+      ContractPunchlineMalus: REVERSE PLAYER MOVEMENT
       PactToApply: {fileID: 11400000, guid: 01ae93a0678a93f4b937f3d0e49a03cf, type: 2}
       _characterImage:
       - {fileID: 21300000, guid: 010cd811554865049889b12688ba13d5, type: 3}
@@ -1103,8 +1125,8 @@ MonoBehaviour:
         IT! IT WILL CHANGE THE WAY YOU USE YOUR AMMUNITION. THERE MAY BE SOME SIDE
         EFFECTS BUT\u2026 NOTHING TO WORRY ABOUT! WELL I GUESS\u2026 SEE YOU LATER
         THEN - I SURE HOPE WE DO, BRAVE ONE!\""
-      ContractPunchline: HURT TO ENEMIES WHEN YOU ARE DAMAGED BUT YOU CAN'T SEE INTERFACE
-        ELEMENTS
+      ContractPunchlineBonus: REFLECT A PORTION OF DAMAGE TAKEN
+      ContractPunchlineMalus: LOOSE INTERFACE ELEMENTS
       PactToApply: {fileID: 11400000, guid: 8a8dbb6084c613035886c552314591c1, type: 2}
       _characterImage:
       - {fileID: 21300000, guid: 421168f803c804040aced9e5953b0a34, type: 3}
@@ -1123,7 +1145,8 @@ MonoBehaviour:
         IN YOUR EYE, LOOK AT THIS MINIATURE SHIP, I KNOW! HOW DID THEY GET IN THERE!
         IT''S VERY CLEVER! CARRY IT! FOES RECEIVE THEIR DAMAGE BACK, YOU SHALL WELCOME
         PAIN WITH OPEN ARMS! WHILE YOU CONTINUE UP... OR DOWN... TRUST ME! "'
-      ContractPunchline: MOVE FASTER BUT SHOOT AT REDUCED CANDENCY
+      ContractPunchlineBonus: GREATLY IMPROVE MOVEMENT SPEED
+      ContractPunchlineMalus: GREATLY REDUCES FIRE RATE
       PactToApply: {fileID: 11400000, guid: f25b804b9b3c891408e5bb576c023a5c, type: 2}
       _characterImage:
       - {fileID: 21300000, guid: 45533a7e0a765844fb1ef28cf7c965ba, type: 3}
@@ -1766,7 +1789,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.08966714, g: 0.09762253, b: 0.6132076, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -6186,6 +6209,87 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1129254704}
   m_CullTransparentMesh: 0
+--- !u!1 &1133685521
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1133685522}
+  - component: {fileID: 1133685524}
+  - component: {fileID: 1133685523}
+  m_Layer: 5
+  m_Name: Contract PunchlineMalus
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1133685522
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1133685521}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1832166138}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 4, y: -68}
+  m_SizeDelta: {x: 450, y: 104.5}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1133685523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1133685521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.5529412, g: 0.12495552, b: 0.12495552, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: e88930a9af3ff68648c866f9b68859b9, type: 3}
+    m_FontSize: 28
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 68
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1.35
+  m_Text: 'WILL YOU PLEDGE ALLEGIANCE TO THIS DEMON ?
+
+'
+--- !u!222 &1133685524
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1133685521}
+  m_CullTransparentMesh: 0
 --- !u!1 &1139075685
 GameObject:
   m_ObjectHideFlags: 0
@@ -6911,7 +7015,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1242638555
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7960,7 +8064,7 @@ PrefabInstance:
     - target: {fileID: 6847077622757608722, guid: f50b2824532ca0540940cfa1d3efd93d,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6847077622757608733, guid: f50b2824532ca0540940cfa1d3efd93d,
         type: 3}
@@ -8082,15 +8186,40 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3897927516390410189, guid: f50b2824532ca0540940cfa1d3efd93d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -3.0999475
+      objectReference: {fileID: 0}
+    - target: {fileID: 3897927516390410189, guid: f50b2824532ca0540940cfa1d3efd93d,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1249.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3897927516390410189, guid: f50b2824532ca0540940cfa1d3efd93d,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 980.8
+      objectReference: {fileID: 0}
     - target: {fileID: 6847077622768966143, guid: f50b2824532ca0540940cfa1d3efd93d,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -100
+      value: -154
       objectReference: {fileID: 0}
     - target: {fileID: 6847077622768966143, guid: f50b2824532ca0540940cfa1d3efd93d,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 259
+      value: 390.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6847077622768966143, guid: f50b2824532ca0540940cfa1d3efd93d,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 251.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6847077622768966143, guid: f50b2824532ca0540940cfa1d3efd93d,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 249.9
       objectReference: {fileID: 0}
     - target: {fileID: 6847077622824978127, guid: f50b2824532ca0540940cfa1d3efd93d,
         type: 3}
@@ -8105,12 +8234,27 @@ PrefabInstance:
     - target: {fileID: 6847077622824978127, guid: f50b2824532ca0540940cfa1d3efd93d,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 5
+      value: 41
+      objectReference: {fileID: 0}
+    - target: {fileID: 6847077622602342052, guid: f50b2824532ca0540940cfa1d3efd93d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -45
+      objectReference: {fileID: 0}
+    - target: {fileID: 6847077622602342053, guid: f50b2824532ca0540940cfa1d3efd93d,
+        type: 3}
+      propertyPath: m_Name
+      value: ConfirmZone
       objectReference: {fileID: 0}
     - target: {fileID: 6847077622824978124, guid: f50b2824532ca0540940cfa1d3efd93d,
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6847077622824978124, guid: f50b2824532ca0540940cfa1d3efd93d,
+        type: 3}
+      propertyPath: m_Name
+      value: Contract PunchlineBonus
       objectReference: {fileID: 0}
     - target: {fileID: 6847077624199170657, guid: f50b2824532ca0540940cfa1d3efd93d,
         type: 3}
@@ -8143,6 +8287,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_FontData.m_FontSize
       value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 6847077622824978126, guid: f50b2824532ca0540940cfa1d3efd93d,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.3049057
+      objectReference: {fileID: 0}
+    - target: {fileID: 6847077622824978126, guid: f50b2824532ca0540940cfa1d3efd93d,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.5188679
+      objectReference: {fileID: 0}
+    - target: {fileID: 6847077622824978126, guid: f50b2824532ca0540940cfa1d3efd93d,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.14929688
       objectReference: {fileID: 0}
     - target: {fileID: 2027199876079487635, guid: f50b2824532ca0540940cfa1d3efd93d,
         type: 3}
@@ -10603,7 +10762,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -39}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1696840331
@@ -13367,7 +13526,7 @@ PrefabInstance:
     - target: {fileID: 6808254549919028090, guid: d50f977f1b0b2a537b18f7200d2c7378,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6808254549919028089, guid: d50f977f1b0b2a537b18f7200d2c7378,
         type: 3}
@@ -13442,7 +13601,7 @@ PrefabInstance:
     - target: {fileID: 6808254549919028089, guid: d50f977f1b0b2a537b18f7200d2c7378,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 150
+      value: 282
       objectReference: {fileID: 0}
     - target: {fileID: 6808254549919028089, guid: d50f977f1b0b2a537b18f7200d2c7378,
         type: 3}
@@ -13482,22 +13641,62 @@ PrefabInstance:
     - target: {fileID: 6808254550302672358, guid: d50f977f1b0b2a537b18f7200d2c7378,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 53
+      value: -7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6808254550302672358, guid: d50f977f1b0b2a537b18f7200d2c7378,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 251.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6808254550302672358, guid: d50f977f1b0b2a537b18f7200d2c7378,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 47.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6808254550302672358, guid: d50f977f1b0b2a537b18f7200d2c7378,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6808254551921276591, guid: d50f977f1b0b2a537b18f7200d2c7378,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -14
+      value: -32
+      objectReference: {fileID: 0}
+    - target: {fileID: 6808254551921276591, guid: d50f977f1b0b2a537b18f7200d2c7378,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6808254551817809650, guid: d50f977f1b0b2a537b18f7200d2c7378,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -58.1
+      value: 237
+      objectReference: {fileID: 0}
+    - target: {fileID: 6808254551817809650, guid: d50f977f1b0b2a537b18f7200d2c7378,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6808254551817809650, guid: d50f977f1b0b2a537b18f7200d2c7378,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6808254551817809650, guid: d50f977f1b0b2a537b18f7200d2c7378,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6808254551817809651, guid: d50f977f1b0b2a537b18f7200d2c7378,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6808254550302672357, guid: d50f977f1b0b2a537b18f7200d2c7378,
         type: 3}
       propertyPath: m_FontData.m_FontSize
-      value: 20
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 6808254550302672357, guid: d50f977f1b0b2a537b18f7200d2c7378,
         type: 3}
@@ -13512,7 +13711,7 @@ PrefabInstance:
     - target: {fileID: 6808254551921276590, guid: d50f977f1b0b2a537b18f7200d2c7378,
         type: 3}
       propertyPath: m_FontData.m_FontSize
-      value: 30
+      value: 29
       objectReference: {fileID: 0}
     - target: {fileID: 9019897000644345210, guid: d50f977f1b0b2a537b18f7200d2c7378,
         type: 3}
@@ -13543,6 +13742,21 @@ PrefabInstance:
         type: 3}
       propertyPath: voiceSpeed
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6363856204110778598, guid: d50f977f1b0b2a537b18f7200d2c7378,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -127
+      objectReference: {fileID: 0}
+    - target: {fileID: 6363856204110778598, guid: d50f977f1b0b2a537b18f7200d2c7378,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6363856204110778598, guid: d50f977f1b0b2a537b18f7200d2c7378,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d50f977f1b0b2a537b18f7200d2c7378, type: 3}

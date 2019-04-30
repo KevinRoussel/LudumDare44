@@ -24,7 +24,8 @@ public class Gameplay : MonoBehaviour
     {
         public string CharacterName;
         public string DialogText;
-        public string ContractPunchline;
+        public string ContractPunchlineBonus;
+        public string ContractPunchlineMalus;
         public Pact PactToApply;
         public Sprite[] _characterImage;
         public Sprite[] _pactIcon;
@@ -58,7 +59,8 @@ public class Gameplay : MonoBehaviour
     [SerializeField] Dialog _dialog;
     [SerializeField] Dialog _pactSign;
     [SerializeField] Button _clickTrigger;
-    [SerializeField] Text _contractPunchLine;
+    [SerializeField] Text _contractPunchLineMalus;
+    [SerializeField] Text _contractPunchLineBonus;
 
     [SerializeField] Image RedCharacter;
     [SerializeField] Image GreenCharacter;
@@ -185,7 +187,9 @@ public class Gameplay : MonoBehaviour
                     _characterImage.transform.GetChild(2).GetComponent<Image>().sprite = level.Pacts[_selectedDemon]._characterImage[2];
                     _characterImage.transform.GetChild(3).GetComponent<Image>().sprite = level.Pacts[_selectedDemon]._characterImage[3];
 
-                    _contractPunchLine.text = level.Pacts[_selectedDemon].ContractPunchline ?? " ";
+                    _contractPunchLineMalus.text = level.Pacts[_selectedDemon].ContractPunchlineMalus ?? " ";
+                    _contractPunchLineBonus.text = level.Pacts[_selectedDemon].ContractPunchlineBonus ?? " ";
+
                     _pactSign.gameObject.SetActive(true);
                     _pactSignCancel.onClick.AddListener(() => _pactCancel = true);
                     _pactSignOK.onClick.AddListener(() => _pactOK = true);
