@@ -205,6 +205,19 @@ public class Gameplay : MonoBehaviour
                 _selectedPactsIcon[idx].transform.GetChild(4).GetComponent<Image>().sprite = level.Pacts[_selectedDemon]._pactIcon[4];
 
                 _pactUI.Play(_pactUIClose.name);
+                switch(_selectedDemon)
+                {
+                    case 0:
+                        GameObject.FindObjectOfType<EndingDecision>().AddEvilPoint(7);
+                        break;
+                    case 1:
+                        GameObject.FindObjectOfType<EndingDecision>().AddEvilPoint(4);
+                        break;
+                    case 2:
+                        GameObject.FindObjectOfType<EndingDecision>().AddEvilPoint(0);
+                        break;
+                }
+
                 yield break;
             }
 

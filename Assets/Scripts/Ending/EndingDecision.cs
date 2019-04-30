@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EndingDecision : MonoBehaviour
 {
+
     [SerializeField] int badEndingThreshold;
 
     [SerializeField] BadEnding badEnding;
@@ -11,10 +12,10 @@ public class EndingDecision : MonoBehaviour
 
     [SerializeField] List<Transform> _toDesactivate;
 
-    int _evilPoints=50;
+    [SerializeField] int _evilPoints=0;
 
     public int CurrentEvilPoint => _evilPoints;
-    public void AddEvilPoint() => _evilPoints++;
+    public void AddEvilPoint(int amount) => _evilPoints+=amount;
 
     public IEnumerator StartEnding()
     {
