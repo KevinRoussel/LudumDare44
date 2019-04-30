@@ -78,7 +78,7 @@ QualitySettings:
     excludedTargetPlatforms: []
   - serializedVersion: 2
     name: Medium
-    pixelLightCount: 1
+    pixelLightCount: 4
     shadows: 1
     shadowResolution: 1
     shadowProjection: 0
@@ -216,4 +216,7 @@ QualitySettings:
     asyncUploadPersistentBuffer: 1
     resolutionScalingFixedDPIFactor: 1
     excludedTargetPlatforms: []
-  m_PerPlatformDefaultQuality: {}
+  m_PerPlatformDefaultQuality:
+    Android: 2
+    Standalone: 2
+    WebGL: 2
