@@ -32,7 +32,7 @@ public class Master : MonoBehaviour
                 _splashScreen.alpha = cd.Progress;
                 yield return null;
             }
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(1f);
 
             cd = new CountDown(0.5f);
             while (!cd.isDone)
