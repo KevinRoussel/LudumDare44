@@ -5092,6 +5092,7 @@ GameObject:
   - component: {fileID: 6434756568244906357}
   - component: {fileID: 1029309199600065927}
   - component: {fileID: 5745199617354990571}
+  - component: {fileID: 3982792660913070449}
   m_Layer: 0
   m_Name: Key
   m_TagString: Untagged
@@ -5170,6 +5171,22 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!114 &3982792660913070449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8494655230828906572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 0
+  m_Area: 0
+  m_IgnoreFromBuild: 1
+  m_AffectedAgents: ffffffff
 --- !u!1001 &8840390703927884277
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5247,15 +5264,15 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 84b9aae998ad90446877f1bdcc48f68e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec8dbca3b01a5bd4193486c69fe831d5, type: 3}
---- !u!4 &8840390703928271733 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 400000, guid: ec8dbca3b01a5bd4193486c69fe831d5,
-    type: 3}
-  m_PrefabInstance: {fileID: 8840390703927884277}
-  m_PrefabAsset: {fileID: 0}
 --- !u!23 &8840390703930040725 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 2300000, guid: ec8dbca3b01a5bd4193486c69fe831d5,
+    type: 3}
+  m_PrefabInstance: {fileID: 8840390703927884277}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8840390703928271733 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400000, guid: ec8dbca3b01a5bd4193486c69fe831d5,
     type: 3}
   m_PrefabInstance: {fileID: 8840390703927884277}
   m_PrefabAsset: {fileID: 0}
