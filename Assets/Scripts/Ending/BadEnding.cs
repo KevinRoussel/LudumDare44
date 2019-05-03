@@ -27,7 +27,7 @@ public class BadEnding : EndingScenario
         _dialog.ChangeDialogText("JUST LIKE FOR MANY OTHERS BEFORE YOU, WE ACHIEVED TO CONSUME YOUR LIFE AND CORRUPT YOUR SOUL DURING YOUR QUEST.");
         yield return WaitForUserAction();
 
-        _dialog.ChangeName("BILAL");
+        _dialog.ChangeName("BELIAL");
         _dialog.TypeWriter.ChangeSound(_gameplay.MapStructure[0].Pacts[2]._voice);
         ChangeScale(SATAN: false, LEVIATHAN: false, BILAL: true);
         _dialog.ChangeDialogText("YOU DOOMED YOURSELF BY YOUR ACTIONS. YOU SOLD YOUR LIFE TO US.");

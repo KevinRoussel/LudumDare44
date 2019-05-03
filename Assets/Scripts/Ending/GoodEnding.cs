@@ -34,7 +34,7 @@ public class GoodEnding : EndingScenario
         _dialog.ChangeDialogText("WHAT SHOULD WE DO WITH YOU NOW??");
         ChangeScale(SATAN: false, LEVIATHAN: true, BILAL: false);
         yield return WaitForUserAction();
-        _dialog.ChangeName("BILAL");
+        _dialog.ChangeName("BELIAL");
         _dialog.TypeWriter.ChangeSound(_gameplay.MapStructure[0].Pacts[2]._voice);
         _dialog.ChangeDialogText("HMM...");
         ChangeScale(SATAN: false, LEVIATHAN: false, BILAL: true);
@@ -45,7 +45,7 @@ public class GoodEnding : EndingScenario
         yield return new WaitForSeconds(2f);
 
         _dialog.Toggle();
-        _dialog.ChangeName("BILAL");
+        _dialog.ChangeName("BELIAL");
         _dialog.TypeWriter.ChangeSound(_gameplay.MapStructure[0].Pacts[2]._voice);
         _dialog.ChangeDialogText("SO WHAT SHOULD WE DO OF THIS BORING LIGHTHEARTED SOUL?");
         yield return WaitForTypingFinished();
@@ -61,7 +61,7 @@ public class GoodEnding : EndingScenario
         _dialog.TypeWriter.ChangeSound(_gameplay.MapStructure[0].Pacts[0]._voice);
         _dialog.ChangeDialogText("I KNOW RIGHT THAT'S WHAT I AM SAYING");
         yield return WaitForTypingFinished();
-        _dialog.ChangeName("BILAL");
+        _dialog.ChangeName("BELIAL");
         _dialog.TypeWriter.ChangeSound(_gameplay.MapStructure[0].Pacts[2]._voice);
         _dialog.ChangeDialogText("THEY MIGHT BRING EVEN MORE BOREDOM IN THE UNDERWORLD");
         yield return WaitForTypingFinished();
@@ -77,7 +77,7 @@ public class GoodEnding : EndingScenario
         _dialog.TypeWriter.ChangeSound(_gameplay.MapStructure[0].Pacts[0]._voice);
         _dialog.ChangeDialogText("OH NO! NOT PBR GRAPHICS! I DON'T WANT ALL OF THIS TO BECAME YET ANOTHER BORING SEQUEL OF ASSASSIN'S CREED!");
         yield return WaitForTypingFinished();
-        _dialog.ChangeName("BILAL");
+        _dialog.ChangeName("BELIAL");
         _dialog.TypeWriter.ChangeSound(_gameplay.MapStructure[0].Pacts[2]._voice);
         _dialog.ChangeDialogText("WE SHOULD LET HIM MAKE THE HUMAN WORLD EVEN MORE BORING I GUESS?");
         yield return WaitForTypingFinished();
@@ -85,7 +85,7 @@ public class GoodEnding : EndingScenario
         _dialog.TypeWriter.ChangeSound(_gameplay.MapStructure[0].Pacts[1]._voice);
         _dialog.ChangeDialogText("SO YOU MEAN LIKE, TRIGGERING THE GOOD ENDING? THEY REALLY WERE THIS BORING?");
         yield return WaitForTypingFinished();
-        _dialog.ChangeName("BILAL");
+        _dialog.ChangeName("BELIAL");
         _dialog.TypeWriter.ChangeSound(_gameplay.MapStructure[0].Pacts[2]._voice);
         _dialog.ChangeDialogText("YEAH AND THANKFULLY THERE ARE ONLY THREE LEVELS, SINCE IT'S ONLY THE JAM VERSION...");
         yield return WaitForTypingFinished();
@@ -93,7 +93,7 @@ public class GoodEnding : EndingScenario
         _dialog.TypeWriter.ChangeSound(_gameplay.MapStructure[0].Pacts[0]._voice);
         _dialog.ChangeDialogText("LET'S JUST DO THIS, I CAN'T STAND THIS GAME ANYMORE I WANT TO GO TO SLEEP");
         yield return WaitForTypingFinished();
-        _dialog.ChangeName("BILAL");
+        _dialog.ChangeName("BELIAL");
         _dialog.TypeWriter.ChangeSound(_gameplay.MapStructure[0].Pacts[2]._voice);
         _dialog.ChangeDialogText("KK");
         yield return WaitForTypingFinished();
@@ -105,7 +105,7 @@ public class GoodEnding : EndingScenario
         _dialog.ChangeDialogText("");
         _dialog.Toggle();
         ChangeScale(SATAN: false, LEVIATHAN: false, BILAL: true);
-        _dialog.ChangeName("BILAL");
+        _dialog.ChangeName("BELIAL");
         _dialog.TypeWriter.ChangeSound(_gameplay.MapStructure[0].Pacts[2]._voice);
         _dialog.ChangeDialogText("PERSON...");
         yield return WaitForUserAction();

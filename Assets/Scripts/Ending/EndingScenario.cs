@@ -64,7 +64,7 @@ public class EndingScenario : MonoBehaviour
         _dialog.ChangeDialogText("DO YOU KNOW WHAT WE ARE?");
         yield return WaitForUserAction();
 
-        _dialog.ChangeName("BILAL");
+        _dialog.ChangeName("BELIAL");
         _dialog.TypeWriter.ChangeSound(_gameplay.MapStructure[0].Pacts[2]._voice);
         ChangeScale(SATAN: false, LEVIATHAN: false, BILAL: true);
         _dialog.ChangeDialogText("THE THREE PRIMARY DEMONS.");
