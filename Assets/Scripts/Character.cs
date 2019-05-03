@@ -102,6 +102,7 @@ public class Character : MonoBehaviour {
         MovementEventInitialization();
 
         // NavMesh Initialization
+        _lastMovement = Vector2.zero;
         transform.position = NavMesh.SamplePosition(transform.position, out NavMeshHit hit, 500f, NavMesh.AllAreas) ?
             hit.position : transform.position;
 
@@ -226,9 +227,12 @@ public class Character : MonoBehaviour {
 
         // Finished Movement 
         if (direction.magnitude < 0.01f) {
+            _navMeshAgent.isStopped = true;
             if (_lastMovement != Vector2.zero) {
                 OnMoveOff?.Invoke();
                 EndWalking?.Invoke();
+                _navMeshAgent.velocity = Vector3.zero;
+                _navMeshAgent.Stop();
             }
             return;
         }
@@ -236,8 +240,8 @@ public class Character : MonoBehaviour {
         // Start walking
         if (direction.magnitude > 0.01f && _lastMovement == Vector2.zero) {
             OnMoveOn?.Invoke();
-            StartWalking?.Invoke();
         }
+        StartWalking?.Invoke();
 
         var realDirection = new Vector3(direction.x, 0, direction.y);
 
@@ -487,7 +491,6 @@ public class Character : MonoBehaviour {
     }
 
     #endregion
-
 
     #region Hit&Death IDestroyable Implementation
     bool _isInvincible = false;
