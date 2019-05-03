@@ -108,7 +108,7 @@ public class Gameplay : MonoBehaviour
 
         List<Pact> selectedPacts = new List<Pact>();
         var idx = -1;
-        foreach(var level in _mapStructure.Skip(2))
+        foreach(var level in _mapStructure)
         {
             idx++;
 

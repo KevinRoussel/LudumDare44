@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 
 public abstract class BaseEnemy : MonoBehaviour {
 
@@ -15,6 +16,10 @@ public abstract class BaseEnemy : MonoBehaviour {
     [Tooltip("End of patrol path")]
     [SerializeField] protected Transform _patrolPathEndPos;
     protected bool _movingToEnd = true;
+
+    [Header("Events")]
+    [SerializeField] UnityEvent _onFlashedStart;
+    [SerializeField] UnityEvent _onFlashedEnd;
 
     protected NavMeshAgent _navMeshAgent;    
     protected Character _character;
@@ -118,11 +123,11 @@ _animator.SetBool("Walking", Moving);
     public virtual void Flashed (float duration, Vector2 upgradeEffect) {
 
         // GetComponent<Character>()?.Flashed();
-
+        _onFlashedStart?.Invoke();
         SetCanMove(false);
 
         StartCoroutine(Extension.WaitSecondsAnd(duration, () => {
-
+            _onFlashedEnd?.Invoke();
             SetCanMove(true);
 
             if(upgradeEffect != Vector2.zero) {
