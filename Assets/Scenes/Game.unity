@@ -1492,7 +1492,7 @@ MonoBehaviour:
       - {fileID: 21300000, guid: c5759149a4be58340ba1f526451d680d, type: 3}
       - {fileID: 21300000, guid: 6369f03b43b0c804bbca2deb5bd81551, type: 3}
       - {fileID: 21300000, guid: e3fd8fe3b7f53b642bd1c11ebbe7c099, type: 3}
-      _voice: {fileID: 8300000, guid: 3c89c59f54cfca647b13683d6b034d11, type: 3}
+      _voice: {fileID: 8300000, guid: b13632df95f0c0e418971197f454c141, type: 3}
     - CharacterName: Birg the Insecure
       DialogText: '"EEK ! DON''T TOUCH ME ! NO TOUCHING ! STAY AWAY YOU UNSTABLE MESS,
         AND PRAY FOR YOUR NEW LORD ! YOU WILL FEEL DIZZY, BUT YOUR HIDE WILL THICKEN
@@ -1511,7 +1511,7 @@ MonoBehaviour:
       - {fileID: 21300000, guid: 9fec9ddfddea198478a2a44500898139, type: 3}
       - {fileID: 21300000, guid: 3384f174b16e1e24595d9d76ff1a809d, type: 3}
       - {fileID: 21300000, guid: c586f30c890f4234a868c85de6b382fa, type: 3}
-      _voice: {fileID: 8300000, guid: 9e64b8488e20065429d846b04d836063, type: 3}
+      _voice: {fileID: 8300000, guid: 3b57da9c390a0904aa520731b7daf80b, type: 3}
     - CharacterName: Viking Sans MS
       DialogText: '"I''VE JOURNEYED ALL ACROSS THE SEAS, I MAY HAVE SOMETHING FOR
         YOU. EMBRACE THE SEAS ! YOU WILL FEEL TIRED, BUT YOUR FOES WILL BE STRUCK
@@ -1530,7 +1530,7 @@ MonoBehaviour:
       - {fileID: 21300000, guid: 60e863b189fc47343bd8c540b5b53e1b, type: 3}
       - {fileID: 21300000, guid: a7e6714bedcf06243b28eda999a400c6, type: 3}
       - {fileID: 21300000, guid: a058f91c214e0694cb52c52103b7aa7c, type: 3}
-      _voice: {fileID: 8300000, guid: 3b57da9c390a0904aa520731b7daf80b, type: 3}
+      _voice: {fileID: 8300000, guid: 59198b6af98e0114f845373ca6d63a0e, type: 3}
   - Name: Map 2
     Room: {fileID: 7008255488318011385}
     Pacts:
@@ -1552,7 +1552,7 @@ MonoBehaviour:
       - {fileID: 21300000, guid: 56b032a260fb29449a93734bf82640eb, type: 3}
       - {fileID: 21300000, guid: 5b775bab9c121384ebe3f9ac109814d8, type: 3}
       - {fileID: 21300000, guid: 4426bc3c3e08e534eb11aeb50b9f8107, type: 3}
-      _voice: {fileID: 8300000, guid: b13632df95f0c0e418971197f454c141, type: 3}
+      _voice: {fileID: 8300000, guid: 1b971d7b75e57d142a96bc00172616b0, type: 3}
     - CharacterName: Lord Seerious
       DialogText: "\"HOWDY HOWDY THERE ! HEY SO, WHAT'S UP? YOU LIKING IT SO FAR?
         YEAH? LOOK AT ME! YOU KNOW WHAT I LIKE? COMICS! YEAH! COMICS ARE THE SHIT!
@@ -1574,7 +1574,7 @@ MonoBehaviour:
       - {fileID: 21300000, guid: 71535333e1e918f4e8dd635ecdf18265, type: 3}
       - {fileID: 21300000, guid: 7ba86b3823ada7b4a8a3c95ce9f82963, type: 3}
       - {fileID: 21300000, guid: b5b7c7eaa93f00f44a01bd20069121b5, type: 3}
-      _voice: {fileID: 8300000, guid: 59198b6af98e0114f845373ca6d63a0e, type: 3}
+      _voice: {fileID: 8300000, guid: d6649aebc144dbe4ca5ce9f4bd73943b, type: 3}
     - CharacterName: TwoDee Will-o'
       DialogText: '"*URF* - WHAT YOU WANT ? YOU ARE TRY PLAY HARD TOO DETAIL, NOT
         SO GOOD FOR STAY ALIVE, THIS BOTTLE OF SEAVALER YOU! YOU DRINK! GOOD FOR GREEN
@@ -1594,7 +1594,7 @@ MonoBehaviour:
       - {fileID: 21300000, guid: b172958f07dd9fe47ba800db315d4f64, type: 3}
       - {fileID: 21300000, guid: 52d2566601e7f9b4fb006adbc2e837b6, type: 3}
       - {fileID: 21300000, guid: 620689c650a07834586f60628c7704d4, type: 3}
-      _voice: {fileID: 8300000, guid: d6649aebc144dbe4ca5ce9f4bd73943b, type: 3}
+      _voice: {fileID: 8300000, guid: f4fcc3180bc92dc478ef5136d32eefb2, type: 3}
   - Name: Map 3
     Room: {fileID: 7271138910885278253}
     Pacts:
@@ -1616,7 +1616,7 @@ MonoBehaviour:
       - {fileID: 21300000, guid: 71c53564aa4dd2f46959dd5643e4caca, type: 3}
       - {fileID: 21300000, guid: 572ff7a3c50c48d4ba6ba1eeef686c7c, type: 3}
       - {fileID: 21300000, guid: d18b4ca05e6c6314e8e891932901c0d5, type: 3}
-      _voice: {fileID: 8300000, guid: 1b971d7b75e57d142a96bc00172616b0, type: 3}
+      _voice: {fileID: 8300000, guid: b13632df95f0c0e418971197f454c141, type: 3}
     - CharacterName: Brudawg the Proud
       DialogText: "\"YOU\u2019VE MADE IT THUS FAR, VERY IMPRESSIVE I WANT TO SHARE
         A UNIQUE VIAL WITH YOU, MY NEWFOUND FRIEND - I COOKED IT UP MYSELF! DRINK
@@ -1637,7 +1637,7 @@ MonoBehaviour:
       - {fileID: 21300000, guid: 129836cd19bf0974ea5f120c680068ae, type: 3}
       - {fileID: 21300000, guid: 5ce4dcef9d041ff4cbbbdea358bb60c1, type: 3}
       - {fileID: 21300000, guid: 5b50f85315d1c2747a314762f2ffb78a, type: 3}
-      _voice: {fileID: 8300000, guid: f4fcc3180bc92dc478ef5136d32eefb2, type: 3}
+      _voice: {fileID: 8300000, guid: 3b57da9c390a0904aa520731b7daf80b, type: 3}
     - CharacterName: Kirzig the Fanatic
       DialogText: '"HALT, STRANGER. I FEEL YOU''RE DIFFERENT. I LIKE THE DARK SPARLE
         IN YOUR EYE, LOOK AT THIS MINIATURE SHIP, I KNOW! HOW DID THEY GET IN THERE!
@@ -1657,7 +1657,7 @@ MonoBehaviour:
       - {fileID: 21300000, guid: 512434522f919cb44a0f1ea0daf0fb05, type: 3}
       - {fileID: 21300000, guid: c96a408873a9ab54293e0d47167761f9, type: 3}
       - {fileID: 21300000, guid: d6e59a929424e27469d9b6805560943f, type: 3}
-      _voice: {fileID: 8300000, guid: d6649aebc144dbe4ca5ce9f4bd73943b, type: 3}
+      _voice: {fileID: 8300000, guid: 59198b6af98e0114f845373ca6d63a0e, type: 3}
   GameUI: {fileID: 1964078272}
 --- !u!1 &175881755
 GameObject:
