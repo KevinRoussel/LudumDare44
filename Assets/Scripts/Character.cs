@@ -289,7 +289,8 @@ public class Character : MonoBehaviour {
         if (!_canAttack) return false;
 
         _isAttacking = true;
-        StartCoroutine(CallAttack());
+
+        if(_attackRoutine==null) _attackRoutine=StartCoroutine(CallAttack());
         return true;
     }
 
@@ -299,8 +300,10 @@ public class Character : MonoBehaviour {
         _isAttacking = false;
     }
 
+    float _lastShootTime;
     float _shootConeAttack=0f;
     public void ActivateConeAttack(float range) => _shootConeAttack = range;
+    Coroutine _attackRoutine;
 
     IEnumerator CallAttack () {
 
@@ -325,6 +328,7 @@ public class Character : MonoBehaviour {
 
             yield return new WaitForSeconds(FireRate);
         }
+        _attackRoutine = null;
     }
 
     Vector3? GetRaycastResult (Vector2 target) {
